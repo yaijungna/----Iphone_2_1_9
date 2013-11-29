@@ -1,0 +1,54 @@
+//
+// Prefix header for all source files of the 'PeopleNewsReaderPhone' target in the 'PeopleNewsReaderPhone' project
+//
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <CoreData/CoreData.h>
+    #import "PeopleNewsStati.h"
+    #import "BaiduMobStat.h"
+    #import "UIImage+customer.h"
+    #import "LygNavigationBar.h"
+    //#import "PeopleNewsReaderPhoneAppDelegate.h"
+#endif
+
+#define RELEASE
+#ifdef  RELEASE
+#define NSLog(...)
+#define printf(...)
+#endif
+
+#ifdef MYDEBUG
+#define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+//#define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define FSLog(...)
+#endif
+
+#define ISIPHONE5   ([UIScreen mainScreen].bounds.size.height - 480 > 10?1:0)
+#define ISIOS7      ([UIDevice currentDevice].systemVersion.floatValue >6.5?1:0)
+#define GETVERSION  ([UIDevice currentDevice].systemVersion.floatValue)
+
+
+#define QQAPPKEY  @"801359590"
+//#define QQAPPKEY  @"801327874"
+#define QQSECRET  @"b1d02cc7dddba7ef9864063c627c4b29"
+//#define QQSECRET  @"ac84e250295bbbfa85b6d0784b0ffb02"
+//#define REDIRECTURL @"http://weibo.com/u/1160145827"
+#define QQREDIRECTURL @"http://mobile.app.people.com.cn/soft/peopleclient.apk"
+
+
+#define BAIDUAPPKEY   @"0e2f90a612"
+#define FONTSIZEOFABSTRACT    12.0f
+#define ABSTRACTTITLECOLOR    [UIColor grayColor]
+
+#define YOUMENGKEY     @"52612f2e56240b87bc0193eb"
+#define YOUMENGKEY2     @"4ed5f5da527015150700001b"
+

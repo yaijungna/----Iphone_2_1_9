@@ -1,0 +1,7 @@
+*.xcbkptlist
+*.xcuserstate
+PeopleNewsReaderPhone.xcscheme
+/PeopleNewsReaderPhone.xcodeproj/xcuserdata/lygn128.xcuserdatad/xcschemes/xcschememanagement.plist
+/PeopleNewsReaderPhone.xcodeproj/project.xcworkspace/xcshareddata/
+/.DS_Store
+/.gitignore
