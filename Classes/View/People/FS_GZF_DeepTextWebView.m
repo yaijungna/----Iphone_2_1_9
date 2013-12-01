@@ -434,6 +434,10 @@
     if ([urlString hasPrefix:@"http://"]) {
         [self tapImage:urlString];
         return NO;
+    }else if ([urlString isEqualToString:@"more://comment.list"])
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"deepMoreComment" object:self.getCommentListDao.deepid];
+        return  NO;
     }
     
     return YES;

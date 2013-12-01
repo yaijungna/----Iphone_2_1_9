@@ -55,10 +55,19 @@
 }
 
 -(void)initDataModel{
-    _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
-    _fs_GZF_CommentListDAO.parentDelegate = self;
-    _fs_GZF_CommentListDAO.newsid = self.newsid;
-    _fs_GZF_CommentListDAO.count = @"0";
+    if (self.newsid) {
+        _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
+        _fs_GZF_CommentListDAO.parentDelegate = self;
+        _fs_GZF_CommentListDAO.newsid = self.newsid;
+        _fs_GZF_CommentListDAO.count = @"0";
+
+    }else
+    {
+        _getCommentListDao = [[LygDeepCommentListDao alloc] init];
+        _getCommentListDao.parentDelegate    = self;
+        _getCommentListDao.deepid            = self.deepid;
+        _getCommentListDao.count             = @"20";
+    }
 }
 
 -(void)loadChildView{
@@ -71,6 +80,7 @@
     _fsNewsCommentListView = [[FSNewsCommentListView alloc] init];
     _fsNewsCommentListView.parentDelegate = self;
     [self.view addSubview:_fsNewsCommentListView];
+    _fsNewsCommentListView.isDeep = (self.deepid?YES:NO);
     
     
     
@@ -132,7 +142,12 @@
 }
 
 -(void)doSomethingForViewFirstTimeShow{
-    [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+    if (_fs_GZF_CommentListDAO) {
+        [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+    }else
+    {
+        [_getCommentListDao HTTPGetDataWithKind:GET_DataKind_Refresh];
+    }
 }
 
 
@@ -147,6 +162,16 @@
             }
             
         }
+    }else
+    {
+        if (status == FSBaseDAOCallBack_BufferSuccessfulStatus || status == FSBaseDAOCallBack_SuccessfulStatus) {
+//            FSLog(@"_fs_GZF_CommentListDAO:%d",[_fs_GZF_CommentListDAO.objectList count]);
+            
+            _fsNewsCommentListView.data = _getCommentListDao.objectList;
+            if (status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
+                [_getCommentListDao operateOldBufferData];
+            }
+            }
     }
 }
 
@@ -162,10 +187,19 @@
 
 
 -(void)fsBaseContainerViewTouchEvent:(FSBaseContainerView *)sender{
+    if (self.fs_GZF_CommentListDAO) {
+        FSCommentObject *o = [_fs_GZF_CommentListDAO.objectList lastObject];
+        _fs_GZF_CommentListDAO.lastCommentid = o.commentid;
+        [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Next];
+    }else
+    {
+        FSDeepCommentObject *o = [_getCommentListDao.objectList lastObject];
+        _getCommentListDao.lastCommentid = [o.commentid description];
+        _getCommentListDao.deepid        = self.deepid;
+        _getCommentListDao.count         = @"20";
+        [_getCommentListDao HTTPGetDataWithKind:GET_DataKind_Next];
+    }
     
-    FSCommentObject *o = [_fs_GZF_CommentListDAO.objectList lastObject];
-    _fs_GZF_CommentListDAO.lastCommentid = o.commentid;
-    [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Next];
 }
 
 

@@ -9,7 +9,7 @@
 #import "FSDeepTextViewController.h"
 #import "FSDeepContentObject.h"
 #import "FS_GZF_DeepTextDAO.h"
-
+#import "FSCommentListViewController.h"
 //评论块
 //@"<div class='comment_block_even'><div class='comment_title_row'><span class='comment_nickname'>%@</span><span class='comment_datetime'>%@</span></div><div class='comment_body'>%@</div><div class='comment_comefrom'></div></div><HR class='comment_HR' width='100'>"
 //#define CONTENTWEBVIEW_COMMENT_BLOCK @"<div class='comment_block_even'>" \
@@ -70,7 +70,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showMoreComment:) name:@"deepMoreComment" object:nil];
 	// Do any additional setup after loading the view.
+}
+
+-(void)showMoreComment:(NSNotification*)sender
+{
+    UINavigationController * navi = (UINavigationController *)([UIApplication sharedApplication].keyWindow.rootViewController);
+    FSCommentListViewController *fsCommentListViewController = [[FSCommentListViewController alloc] init];
+    fsCommentListViewController.deepid = sender.object;
+    //        fsCommentListViewController.withnavTopBar                = YES;
+    fsCommentListViewController.isnavTopBar             = YES;
+    //fsCommentListViewController.newsid = _fs_GZF_CommentListDAO.newsid;
+    //[self.navigationController pushViewController:fsCommentListViewController animated:YES];
+    //[self presentViewController:fsCommentListViewController animated:YES completion:nil];
+    [navi pushViewController:fsCommentListViewController animated:YES];
+    [fsCommentListViewController release];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -282,6 +298,8 @@
     
     return templateString;
 }
+
+
 
 
 @end

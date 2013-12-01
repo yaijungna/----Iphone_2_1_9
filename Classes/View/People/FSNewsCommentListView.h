@@ -15,7 +15,7 @@
     NSInteger _oldCount;
     CGFloat _scorllOffsetY;
 }
-
+@property (nonatomic,assign)BOOL isDeep;
 -(void)loadWebPageWithContent:(NSString *)contentFile;
 
 -(NSString *)processCommentList:(NSString *)templateString;
@@ -23,5 +23,6 @@
 -(NSString *)replayString:(NSString *)baseString oldString:(NSString *)oldString newString:(NSString *)newString;
 
 -(NSString *)returnFontSizeName:(NSInteger)n;
+
 
 @end
