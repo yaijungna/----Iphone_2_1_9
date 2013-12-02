@@ -15,6 +15,7 @@
 #import "FS_GZF_GetWeatherMessageDAO.h"
 #import "YXApi.h"
 #import "YXApiObject.h"
+#import "FSCheckAppStoreVersionObject.h"
 //#import "MobClick.h"
 NSString * getCityName();
 @class FSTabBarViewCotnroller;
@@ -47,7 +48,7 @@ NSString * getCityName();
 @property (nonatomic, copy)             NSString               * cityName;
 @property (nonatomic, retain)           FS_GZF_GetWeatherMessageDAO * fs_GZF_localGetWeatherMessageDAO;
 @property (nonatomic, retain)           FS_GZF_GetWeatherMessageDAO * fs_GZF_localGetWeatherMessageDAO2;
-
+@property (nonatomic,retain)            FSCheckAppStoreVersionObject* checkVersionObject;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)saveContext;
 

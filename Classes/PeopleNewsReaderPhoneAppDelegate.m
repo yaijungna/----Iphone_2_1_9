@@ -319,10 +319,10 @@ NSString * getCityName()
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-	FSCheckAppStoreVersionObject *checkAppStoreVersionObject = [[FSCheckAppStoreVersionObject alloc] init];
-	[checkAppStoreVersionObject checkAppVersion:MYAPPLICATIONID_IN_APPSTORE];
-	[checkAppStoreVersionObject release];
-    
+    if (!self.checkVersionObject) {
+        _checkVersionObject = [[FSCheckAppStoreVersionObject alloc] init];
+        [_checkVersionObject checkAppVersion:MYAPPLICATIONID_IN_APPSTORE];
+    }
 }
 
 

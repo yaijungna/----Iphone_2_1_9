@@ -7,8 +7,15 @@
 //
 
 #import "FSCheckAppStoreVersionObject.h"
-
-
+#import "PeopleNewsReaderPhoneAppDelegate.h"
+static void releaseSomeThing(id a)
+{
+//    [a release];
+//    a = nil;
+    PeopleNewsReaderPhoneAppDelegate * delegate =   (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    [delegate.checkVersionObject release];
+    
+}
 @implementation FSCheckAppStoreVersionObject
 
 @synthesize isManual = _isManual;
@@ -35,8 +42,9 @@
 	if ([sender isEqual:_checkData]) {
 		if (status == FSBaseDAOCallBack_SuccessfulStatus) {
 			if (_checkData.hasNewsAppStoreVersion) {
-				NSString *alertTile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
-				UIAlertView *alertUpdate = [[UIAlertView alloc] initWithTitle:alertTile
+				//NSString *alertTile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+                NSString * xxx = [NSString stringWithFormat:@"请更新到%@版",_checkData.appStoreVersion];
+				UIAlertView *alertUpdate = [[UIAlertView alloc] initWithTitle:xxx
 																	  message:_checkData.appStoreReleaseNotes 
 																	 delegate:self 
 															cancelButtonTitle:NSLocalizedString(@"下次再说", nil)
@@ -80,7 +88,7 @@
 }
 
 - (void)checkAppVersion:(NSString *)appID {
-	[self retain];
+	//[self retain];
 	_checkData.applicationID = appID;
 	_checkData.parentDelegate = self;
 	[_checkData HTTPGetDataWithKind:GETDataKind_Refresh];
@@ -92,7 +100,7 @@
 		[[UIApplication sharedApplication] openURL:url];
 		[url release];
 	}
-	[self release];
+    releaseSomeThing(self);
 }
 
 @end
