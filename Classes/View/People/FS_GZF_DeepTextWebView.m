@@ -189,14 +189,11 @@
         
         //STEP 1.
         NSString *contentTitle = _contentObject.title;
-        //NSLog(@"bodyString1");
         //{{title}}
         NSString *htmlString = [htmlTemplate stringByReplacingOccurrencesOfString:@"{{title}}" withString:toHTMLString(contentTitle)];
         //STEP 2.
-        //NSLog(@"bodyString2");
         NSString *subTitle = _contentObject.subjectTile;
         //{{subtitle}}
-        //NSLog(@"bodyString3");
         if (subTitle == nil) {
             htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{subtitle}}" withString:@""];
         } else {
@@ -204,11 +201,9 @@
         }
         
         
-        NSLog(@"bodyString4");
         
         //STEP 3.
         NSMutableString *bodyString = [[NSMutableString alloc] init];
-        //NSLog(@"bodyString");
         [_picURLs removeAllObjects];
         int tempIndex = 0;
         for (int i = 0; i < [_ChildObjects count]; i++) {
@@ -217,9 +212,10 @@
                 //图片
                 //[_picURLs setObject:childObj.content forKey:childObj.orderIndex];
                 [_picURLs setValue:childObj.content forKey:[NSString stringWithFormat:@"%d",tempIndex]];
-                tempIndex++;
-                NSString *picDivTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_IMAGE_DIV_TAG,  [childObj.orderIndex intValue]- 1];
+                
+                NSString *picDivTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_IMAGE_DIV_TAG, tempIndex];
                 [bodyString appendString:picDivTag];
+                tempIndex++;
                 [picDivTag release];
             } else if ([childObj.flag intValue] == _textFlag) {
                 //文字
@@ -293,7 +289,6 @@
             NSString *comefrom = @"";
             
             NSString *strCommentBlock = [NSString stringWithFormat:str1, nickName, datetime, body, comefrom];
-            NSLog(@"%@",strCommentBlock);
             templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentBlock];
             
 //            if ([o.nickname length]>0) {
@@ -361,13 +356,16 @@
 
 -(void)downloadImages{
     
-    _allPICkey = [_picURLs allKeys];
+    if (!_allPICkey) {
+        _allPICkey = [[_picURLs allKeys] retain];
+    }
+    
     if (_downloaodIndex >= [_allPICkey count]) {
         return;
     }
         
-    NSString *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
-    NSString *picURL = [_picURLs objectForKey:picKey];
+    //NSString *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
+    NSString *picURL = [_picURLs objectForKey:[NSString stringWithFormat:@"%d",_downloaodIndex]];
     
     NSString *loaclFile = getFileNameWithURLString(picURL, getCachesPath());
     if (![[NSFileManager defaultManager] fileExistsAtPath:loaclFile]) {
@@ -379,7 +377,7 @@
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:loaclFile];
         CGSize sizeTmp = scalImageSizeFixWidth(image, self.frame.size.width - FSDEEP_CONTENT_PICTURE_LEFT_RIGHT_SPACE * 2.0f);
         NSString *imgTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_DYNAMIC_IMAGE_TAG, picURL, loaclFile, sizeTmp.width, sizeTmp.height];
-        NSString *jsString = [[NSString alloc] initWithFormat:FSDEE_DYNAMIC_IMAGE_JS, [picKey intValue], imgTag];
+        NSString *jsString = [[NSString alloc] initWithFormat:FSDEE_DYNAMIC_IMAGE_JS, _downloaodIndex, imgTag];
         
         [_webView stringByEvaluatingJavaScriptFromString:jsString];
         [imgTag release];
@@ -395,22 +393,20 @@
 }
 
 -(void)networkDataDownloadDataComplete:(FSNetworkData *)sender isError:(BOOL)isError data:(NSData *)data{
-    _allPICkey = [_picURLs allKeys];
+    //_allPICkey = [_picURLs allKeys];
     //NSNumber *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
     
     if (_downloaodIndex >= [_allPICkey count]) {
         return;
     }
     
-    NSString *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
-    NSString *picURL = [_picURLs objectForKey:picKey];
-
+    //NSString *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
+    NSString *picURL = [_picURLs objectForKey:[NSString stringWithFormat:@"%d",_downloaodIndex]];
     NSString *loaclFile = getFileNameWithURLString(picURL, getCachesPath());
     UIImage *image = [[UIImage alloc] initWithData:data];
     CGSize sizeTmp = scalImageSizeFixWidth(image, self.frame.size.width - FSDEEP_CONTENT_PICTURE_LEFT_RIGHT_SPACE * 2.0f);
     NSString *imgTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_DYNAMIC_IMAGE_TAG, picURL, loaclFile, sizeTmp.width, sizeTmp.height];
     NSString *jsString = [[NSString alloc] initWithFormat:FSDEE_DYNAMIC_IMAGE_JS, _downloaodIndex, imgTag];
-    
     [_webView stringByEvaluatingJavaScriptFromString:jsString];
     [imgTag release];
     [jsString release];
@@ -437,7 +433,6 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSString* urlString = [[request URL] absoluteString];
-    //NSLog(@"urlString:%@",urlString);
     if ([urlString hasPrefix:@"http://"]) {
         [self tapImage:urlString];
         return NO;
