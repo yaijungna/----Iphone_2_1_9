@@ -397,7 +397,14 @@
 -(void)networkDataDownloadDataComplete:(FSNetworkData *)sender isError:(BOOL)isError data:(NSData *)data{
     _allPICkey = [_picURLs allKeys];
     //NSNumber *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
-    NSString *picURL = [_picURLs objectForKey:[NSString stringWithFormat:@"%d",_downloaodIndex]];
+    
+    if (_downloaodIndex >= [_allPICkey count]) {
+        return;
+    }
+    
+    NSString *picKey = [_allPICkey objectAtIndex:_downloaodIndex];
+    NSString *picURL = [_picURLs objectForKey:picKey];
+
     NSString *loaclFile = getFileNameWithURLString(picURL, getCachesPath());
     UIImage *image = [[UIImage alloc] initWithData:data];
     CGSize sizeTmp = scalImageSizeFixWidth(image, self.frame.size.width - FSDEEP_CONTENT_PICTURE_LEFT_RIGHT_SPACE * 2.0f);

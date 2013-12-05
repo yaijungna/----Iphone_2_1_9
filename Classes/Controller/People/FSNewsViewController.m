@@ -102,7 +102,22 @@
     if (_myScroview) {
         return;
     }
-
+    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 5, 44)];
+    imageView.image         = [UIImage imageWithNameString:@"箭头左"];
+    imageView.alpha         = 0.0;
+    [self.view  addSubview:imageView];
+    [imageView release];
+    imageView.tag           = 20000;
+    
+    
+    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, 44)];
+    imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
+    [self.view  addSubview:imageView2];
+    imageView2.tag           = 30000;
+    [imageView2 release];
+    
+    
+    
     _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, 0, 290, 44)];
     _myScroview.showsHorizontalScrollIndicator  = NO;
     _myScroview.tag            = 1000;
@@ -303,7 +318,16 @@
 
     _topRedImageView.frame      = CGRectMake(WIDTHOFNAME*index, 40, WIDTHOFNAME, 4);
     _currentIndex               = index;
-
+//    UIView * view               = [self.view viewWithTag:20000];
+//    UIView * view3               = [self.view viewWithTag:30000];
+//    _currentIndex == 0?(view.alpha = 0.0):(view.alpha = 1);
+//    _currentIndex == _fs_GZF_ChannelListDAO.objectList.count -1?(view3.alpha = 0.1):(view3.alpha = 1);
+    
+    UIView * view               = [self.view viewWithTag:20000];
+    UIView * view3               = [self.view viewWithTag:30000];
+    printf("%f %f %f\n",_myScroview.contentOffset.x,_myScroview.contentSize.width,_myScroview.frame.size.width);
+    _myScroview.contentOffset.x      < 10?(view.alpha = 0.0):(view.alpha = 0.5);
+    _myScroview.contentOffset.x + 10 > (_myScroview.contentSize.width - _myScroview.frame.size.width)?(view3.alpha = 0.1):(view3.alpha = 0.5);
     
     MyNewsLIstView * view2 =  (MyNewsLIstView*)[[self.view viewWithTag:2000] viewWithTag:(100+index)];
     [view2 isNeedRefresh]?[view2 refreshDataSource]:1;

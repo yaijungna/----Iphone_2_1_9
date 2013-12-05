@@ -122,7 +122,6 @@
 		04958A37165B7791002D8D7C /* FS_GZF_BaseGETForOFFlineDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 04958A36165B7791002D8D7C /* FS_GZF_BaseGETForOFFlineDAO.m */; };
 		049603741697FA0D00FC7EC4 /* FSChannelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049603731697FA0C00FC7EC4 /* FSChannelObject.m */; };
 		0496037A1697FBBC00FC7EC4 /* FSBatchNewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049603791697FBB900FC7EC4 /* FSBatchNewsObject.m */; };
-		049603831697FD9600FC7EC4 /* FSNewsDitailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049603821697FD9600FC7EC4 /* FSNewsDitailObject.m */; };
 		049603861697FD9900FC7EC4 /* FSNewsDitailPicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049603851697FD9800FC7EC4 /* FSNewsDitailPicObject.m */; };
 		0496038C1697FD9C00FC7EC4 /* FSCommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0496038B1697FD9B00FC7EC4 /* FSCommentObject.m */; };
 		04AAA83F167B0F22001F800A /* naviOption@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AAA83E167B0F21001F800A /* naviOption@2x.png */; };
@@ -429,8 +428,6 @@
 		5851F12217F11B5C0022659C /* PEOPLE--NEWS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12017F11B5C0022659C /* PEOPLE--NEWS@2x.png */; };
 		5851F12517F1244A0022659C /* 图层-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12317F1244A0022659C /* 图层-3.png */; };
 		5851F12617F1244A0022659C /* 图层-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12417F1244A0022659C /* 图层-3@2x.png */; };
-		5851F12B17F12A570022659C /* 箭头右.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12717F12A570022659C /* 箭头右.png */; };
-		5851F12C17F12A570022659C /* 箭头右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12817F12A570022659C /* 箭头右@2x.png */; };
 		5851F12D17F12A570022659C /* 箭头左.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12917F12A570022659C /* 箭头左.png */; };
 		5851F12E17F12A570022659C /* 箭头左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5851F12A17F12A570022659C /* 箭头左@2x.png */; };
 		5851F13517F13A050022659C /* UIImage+customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851F13417F13A050022659C /* UIImage+customer.m */; };
@@ -456,6 +453,7 @@
 		58847F91180197FE00B10BC6 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 58847F90180197FE00B10BC6 /* ads.png */; };
 		588B051318161719001E2D33 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B051218161719001E2D33 /* Crashlytics.framework */; };
 		589004E817D16F970001AE30 /* MyIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589004E717D16F970001AE30 /* MyIndicatorView.m */; };
+		5890870B18505343009553BA /* FSNewsDitailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890870A18505343009553BA /* FSNewsDitailObject.m */; };
 		5893DB90179FD01C00068319 /* navigatorBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8E179FD01400068319 /* navigatorBar.png */; };
 		5893DB91179FD01C00068319 /* navigatorBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8F179FD01800068319 /* navigatorBar@2x.png */; };
 		5893DB93179FDBCC00068319 /* 翻页.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB92179FDB9300068319 /* 翻页.png */; };
@@ -508,6 +506,7 @@
 		58BD9CAA1806622E001164D9 /* newsDitail_shear_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CA81806622E001164D9 /* newsDitail_shear_1@2x.png */; };
 		58BD9CAD180662E7001164D9 /* newsDitail_shear_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */; };
 		58BD9CAE180662E7001164D9 /* newsDitail_shear_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAC180662E7001164D9 /* newsDitail_shear_2@2x.png */; };
+		58C850BB1850183D00362DCC /* 箭头右.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C850BA1850183D00362DCC /* 箭头右.png */; };
 		58CF71991827DF870046AF67 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF71981827DF870046AF67 /* libWeChatSDK.a */; };
 		58D30E551835B3AC00D19D8C /* ImageDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D30E541835B3AC00D19D8C /* ImageDownLoader.m */; };
 		58D8B0FF17A745EF00816844 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D8B0FD17A745EE00816844 /* 返回.png */; };
@@ -1018,8 +1017,6 @@
 		049603731697FA0C00FC7EC4 /* FSChannelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChannelObject.m; sourceTree = "<group>"; };
 		049603781697FBB800FC7EC4 /* FSBatchNewsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBatchNewsObject.h; sourceTree = "<group>"; };
 		049603791697FBB900FC7EC4 /* FSBatchNewsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBatchNewsObject.m; sourceTree = "<group>"; };
-		049603811697FD9500FC7EC4 /* FSNewsDitailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsDitailObject.h; sourceTree = "<group>"; };
-		049603821697FD9600FC7EC4 /* FSNewsDitailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewsDitailObject.m; sourceTree = "<group>"; };
 		049603841697FD9800FC7EC4 /* FSNewsDitailPicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsDitailPicObject.h; sourceTree = "<group>"; };
 		049603851697FD9800FC7EC4 /* FSNewsDitailPicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewsDitailPicObject.m; sourceTree = "<group>"; };
 		0496038A1697FD9B00FC7EC4 /* FSCommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentObject.h; sourceTree = "<group>"; };
@@ -1443,8 +1440,6 @@
 		5851F12017F11B5C0022659C /* PEOPLE--NEWS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEOPLE--NEWS@2x.png"; sourceTree = "<group>"; };
 		5851F12317F1244A0022659C /* 图层-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图层-3.png"; sourceTree = "<group>"; };
 		5851F12417F1244A0022659C /* 图层-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图层-3@2x.png"; sourceTree = "<group>"; };
-		5851F12717F12A570022659C /* 箭头右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右.png"; sourceTree = "<group>"; };
-		5851F12817F12A570022659C /* 箭头右@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右@2x.png"; sourceTree = "<group>"; };
 		5851F12917F12A570022659C /* 箭头左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左.png"; sourceTree = "<group>"; };
 		5851F12A17F12A570022659C /* 箭头左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左@2x.png"; sourceTree = "<group>"; };
 		5851F13317F13A050022659C /* UIImage+customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+customer.h"; sourceTree = "<group>"; };
@@ -1481,6 +1476,8 @@
 		588B051218161719001E2D33 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		589004E617D16F970001AE30 /* MyIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIndicatorView.h; sourceTree = "<group>"; };
 		589004E717D16F970001AE30 /* MyIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIndicatorView.m; sourceTree = "<group>"; };
+		5890870918505343009553BA /* FSNewsDitailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsDitailObject.h; sourceTree = "<group>"; };
+		5890870A18505343009553BA /* FSNewsDitailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewsDitailObject.m; sourceTree = "<group>"; };
 		5893DB8E179FD01400068319 /* navigatorBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigatorBar.png; sourceTree = "<group>"; };
 		5893DB8F179FD01800068319 /* navigatorBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigatorBar@2x.png"; sourceTree = "<group>"; };
 		5893DB92179FDB9300068319 /* 翻页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "翻页.png"; sourceTree = "<group>"; };
@@ -1575,6 +1572,7 @@
 		58BD9CA81806622E001164D9 /* newsDitail_shear_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsDitail_shear_1@2x.png"; sourceTree = "<group>"; };
 		58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsDitail_shear_2.png; sourceTree = "<group>"; };
 		58BD9CAC180662E7001164D9 /* newsDitail_shear_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsDitail_shear_2@2x.png"; sourceTree = "<group>"; };
+		58C850BA1850183D00362DCC /* 箭头右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右.png"; sourceTree = "<group>"; };
 		58CF71981827DF870046AF67 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		58D30E531835B3AC00D19D8C /* ImageDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownLoader.h; sourceTree = "<group>"; };
 		58D30E541835B3AC00D19D8C /* ImageDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownLoader.m; sourceTree = "<group>"; };
@@ -2845,6 +2843,8 @@
 			isa = PBXGroup;
 			children = (
 				5850C1D2179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld */,
+				5890870918505343009553BA /* FSNewsDitailObject.h */,
+				5890870A18505343009553BA /* FSNewsDitailObject.m */,
 				5805AC23184331CA007D934E /* FSDeepPageObject.h */,
 				5805AC24184331CA007D934E /* FSDeepPageObject.m */,
 				5805AC20183F602C007D934E /* FSDeepContentObject.h */,
@@ -2893,8 +2893,6 @@
 				0496038B1697FD9B00FC7EC4 /* FSCommentObject.m */,
 				049603841697FD9800FC7EC4 /* FSNewsDitailPicObject.h */,
 				049603851697FD9800FC7EC4 /* FSNewsDitailPicObject.m */,
-				049603811697FD9500FC7EC4 /* FSNewsDitailObject.h */,
-				049603821697FD9600FC7EC4 /* FSNewsDitailObject.m */,
 				049603781697FBB800FC7EC4 /* FSBatchNewsObject.h */,
 				049603791697FBB900FC7EC4 /* FSBatchNewsObject.m */,
 				049603721697FA0C00FC7EC4 /* FSChannelObject.h */,
@@ -3064,8 +3062,6 @@
 				5851F12017F11B5C0022659C /* PEOPLE--NEWS@2x.png */,
 				5851F12317F1244A0022659C /* 图层-3.png */,
 				5851F12417F1244A0022659C /* 图层-3@2x.png */,
-				5851F12717F12A570022659C /* 箭头右.png */,
-				5851F12817F12A570022659C /* 箭头右@2x.png */,
 				5851F12917F12A570022659C /* 箭头左.png */,
 				5851F12A17F12A570022659C /* 箭头左@2x.png */,
 				5861AE1417F5556A0067D74D /* 左右滑动切换主题@2x.png */,
@@ -3841,6 +3837,7 @@
 		8212197215C677CF00B713FB /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				58C850BA1850183D00362DCC /* 箭头右.png */,
 				5893DB92179FDB9300068319 /* 翻页.png */,
 				581887F21806691900590FDC /* 跳转.png */,
 				581887F31806691900590FDC /* 跳转@2x.png */,
@@ -4320,7 +4317,6 @@
 				8212194115C6774C00B713FB /* close@2x.png in Resources */,
 				8212194215C6774C00B713FB /* close_btn.png in Resources */,
 				8212194315C6774C00B713FB /* close_btn@2x.png in Resources */,
-				5851F12C17F12A570022659C /* 箭头右@2x.png in Resources */,
 				8212194415C6774C00B713FB /* delete.png in Resources */,
 				8212194515C6774C00B713FB /* delete@2x.png in Resources */,
 				8212194615C6774C00B713FB /* logo.png in Resources */,
@@ -4407,6 +4403,7 @@
 				04449B9B167724ED00A8F31C /* newsDitail_comment_1@2x.png in Resources */,
 				04449B9C167724ED00A8F31C /* newsDitail_comment_2.png in Resources */,
 				04449B9D167724ED00A8F31C /* newsDitail_comment_2@2x.png in Resources */,
+				58C850BB1850183D00362DCC /* 箭头右.png in Resources */,
 				04449B9E167724ED00A8F31C /* newsDitail_down.png in Resources */,
 				04449B9F167724ED00A8F31C /* newsDitail_down@2x.png in Resources */,
 				04449BA0167724ED00A8F31C /* newsDitail_fav_1.png in Resources */,
@@ -4587,7 +4584,6 @@
 				0415EA6416AFF38B00A3B588 /* Bottom_download.png in Resources */,
 				0415EA6516AFF38B00A3B588 /* Bottom_download@2x.png in Resources */,
 				04DF332216B0BB250043FC94 /* xin.png in Resources */,
-				5851F12B17F12A570022659C /* 箭头右.png in Resources */,
 				04DF332316B0BB250043FC94 /* xin@2x.png in Resources */,
 				04DF333316B0C78E0043FC94 /* 150logo.png in Resources */,
 				04DF333416B0C78E0043FC94 /* 150logo@2x.png in Resources */,
@@ -4959,6 +4955,7 @@
 				82E5F893163BADDF00B5A5DC /* FSPageControlView.m in Sources */,
 				82E5F896163BC07E00B5A5DC /* FSPageControlViewController.m in Sources */,
 				270791BB163E14FE002E7D54 /* FS_GZF_ChannelListDAO.m in Sources */,
+				5890870B18505343009553BA /* FSNewsDitailObject.m in Sources */,
 				5851F13517F13A050022659C /* UIImage+customer.m in Sources */,
 				270791C3163E153A002E7D54 /* FSNewsContainerCommentListView.m in Sources */,
 				270791C4163E153A002E7D54 /* FSNewsContainerView.m in Sources */,
@@ -5086,7 +5083,6 @@
 				58A9E609183F5C0900A1D3F4 /* FSDeepLeadObject.m in Sources */,
 				049603741697FA0D00FC7EC4 /* FSChannelObject.m in Sources */,
 				0496037A1697FBBC00FC7EC4 /* FSBatchNewsObject.m in Sources */,
-				049603831697FD9600FC7EC4 /* FSNewsDitailObject.m in Sources */,
 				049603861697FD9900FC7EC4 /* FSNewsDitailPicObject.m in Sources */,
 				0496038C1697FD9C00FC7EC4 /* FSCommentObject.m in Sources */,
 				5805AC22183F602C007D934E /* FSDeepContentObject.m in Sources */,
