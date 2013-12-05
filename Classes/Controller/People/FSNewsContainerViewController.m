@@ -292,7 +292,7 @@ NSString                       *_newsID;
     }
     _fs_GZF_NewsContainerDAO.newsSourceKind = self.newsSourceKind;
     //NSLog(@"doSomethingForViewFirstTimeShowdoSomethingForViewFirstTimeShow");
-    [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+    [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
     [_adsDao HTTPGetDataWithKind:GET_DataKind_Refresh];
     
     if (self.isNewNavigation) {

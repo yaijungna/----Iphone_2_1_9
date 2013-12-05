@@ -2,7 +2,7 @@
 //  FSNewsDitailObject.m
 //  PeopleNewsReaderPhone
 //
-//  Created by ganzf on 13-1-5.
+//  Created by lygn128 on 13-12-5.
 //
 //
 
@@ -15,10 +15,11 @@
 @dynamic content;
 @dynamic source;
 @dynamic title;
-@dynamic date;
 @dynamic pictures;
+@dynamic date;
 @dynamic timestamp;
 @dynamic updata_date;
 @dynamic shortUrl;
+@dynamic timeflag;
 
 @end

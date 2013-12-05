@@ -28,11 +28,11 @@
 #import "FSNewsDitailObject.h"
 
 
-#define NEWSCONTAINER_URL        @"http://mobile.app.people.com.cn:81/news2/news.php?act=onenews&rt=xml&newsid=%@&fromid=full"
+#define NEWSCONTAINER_URL        @"http://mobile.app.people.com.cn:81/news2/news.php?act=onenews&rt=xml&appid=6&newsid=%@&fromid=full&timeflag=%@"
 
-#define NEWSCONTAINER_DIFANG_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=onenews&rt=xml&newsid=%@&fromid=df"
+#define NEWSCONTAINER_DIFANG_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=onenews&rt=xml&appid=6&newsid=%@&fromid=df&timeflag=%@"
 
-#define NEWSCONTAINER_SHIKE_URL  @"http://mobile.app.people.com.cn:81/news2/news.php?act=realtimecontent&newsid=%@"
+#define NEWSCONTAINER_SHIKE_URL  @"http://mobile.app.people.com.cn:81/news2/news.php?act=realtimecontent&appid=6&newsid=%@&timeflag=%@"
                         
 
 
@@ -47,6 +47,7 @@
 #define newscontainer_picture @"picture"
 #define newscontainer_picdesc @"picdesc"
 #define newscontainer_shortUrl @"shortUrl"
+#define newscontainer_timeFlag @"timeflag"
 
 
 
@@ -95,37 +96,40 @@
 
 
 -(NSTimeInterval)bufferDataExpireTimeInterval{
-    return 60*60*2;
+    return 60*60*24;
 }
 
 
 -(NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind{
+    NSString * string = nil;
+    if (self.cobj) {
+        string                   = self.cobj.timeflag;
+    }else
+    {
+        string                   = @"";
+    }
     NSString * tempString = NEWSCONTAINER_URL;
     if (self.isImportNews) {
-        tempString = @"http://mobile.app.people.com.cn:81/news2/news.php?act=realtimecontent&importantid=%@";
+        tempString = @"http://mobile.app.people.com.cn:81/news2/news.php?act=realtimecontent&importantid=%@&timeflag=%@";
     }
     
     if (self.newsSourceKind == NewsSourceKind_ShiKeNews) {
-        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_SHIKE_URL,[self getnewsid]];
-        NSLog(@"NEWSCONTAINER_URL:%@",url);
+        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_SHIKE_URL,[self getnewsid],string];
         return url;
     }
     
     if (self.newsSourceKind == NewsSourceKind_PushNews) {
-        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_URL,[self getnewsid]];
-        NSLog(@"NEWSCONTAINER_URL:%@",url);
+        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_URL,[self getnewsid],string];
         return url;
     }
     
     if (self.newsSourceKind == NewsSourceKind_PuTongNews) {
-        NSString *url = [NSString stringWithFormat:tempString,[self getnewsid]];
-        NSLog(@"NEWSCONTAINER_URL:%@",url);
+        NSString *url = [NSString stringWithFormat:tempString,[self getnewsid],string];
         return url;
     }
     
     if (self.newsSourceKind == NewsSourceKind_DiFangNews) {
-        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_DIFANG_URL,[self getnewsid]];
-        NSLog(@"NEWSCONTAINER_URL:%@",url);
+        NSString *url = [NSString stringWithFormat:NEWSCONTAINER_DIFANG_URL,[self getnewsid],string];
         return url;
     }
     return nil;
@@ -151,6 +155,9 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	self.currentElementName = elementName;
+    if ([self.currentElementName isEqualToString:@"result"]) {
+        return;
+    }
     //NSLog(@"ELementName:%@",elementName);
     if ([self.currentElementName isEqualToString:newscontainer_item]) {
         _cobj = (FSNewsDitailObject *)[self insertNewObjectTomanagedObjectContext:0];
@@ -265,7 +272,12 @@
 		NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
         _cobj.shortUrl = content;
 		[content release];
-	}
+	}else if ([_currentElementName isEqualToString:newscontainer_timeFlag])
+    {
+        NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
+        _cobj.timeflag = content;
+		[content release];
+    }
 }
 
 

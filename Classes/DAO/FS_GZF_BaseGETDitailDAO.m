@@ -7,7 +7,7 @@
 //
 
 #import "FS_GZF_BaseGETDitailDAO.h"
-
+#import "FS_GZF_NewsContainerDAO.h"
 @implementation FS_GZF_BaseGETDitailDAO
 
 
@@ -142,8 +142,28 @@
             NSLog(@"缓存数据");
             [self readDataFromBufferWithQueryDataKind:dataKind];
             [self executeCallBackDelegateWithStatus:FSBaseDAOCallBack_SuccessfulStatus];
+            
+            if (![self isKindOfClass:[FS_GZF_NewsContainerDAO class]]) {
+                return;
+            }else
+            {
+                if (!checkNetworkIsValid()) {
+                    [self performSelectorOnMainThread:@selector(readBuffer_CallBackScreen:) withObject:@"FSBaseDAOCallBack_NetworkErrorStatus" waitUntilDone:[NSThread isMainThread]];
+                    //[self executeCallBackDelegateWithStatus:FSBaseDAOCallBack_NetworkErrorStatus];
+                } else {
+                    
+                    dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
+                    dispatch_async(queue, ^(void) {
+                        //NSLog(@"dispatch_queue_create ditaile");
+                        [self GETdata:GET_DataKind_Refresh];
+                    });
+                    dispatch_release(queue);
+                    
+                }
+
+            }
             //[self performSelectorOnMainThread:@selector(readBuffer_CallBackScreen:) withObject:@"FSBaseDAOCallBack_SuccessfulStatus" waitUntilDone:YES];
-            return;
+            
         }
         else{
             if (!checkNetworkIsValid()) {
