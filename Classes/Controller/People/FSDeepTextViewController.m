@@ -205,6 +205,7 @@
     else if ([sender isEqual:self.getCommentListDao])
     {
        // [self processCommentList];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateCommentList" object:self.getCommentListDao userInfo:nil];
     }
 }
 -(void)processCommentList

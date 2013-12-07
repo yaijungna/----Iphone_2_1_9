@@ -961,55 +961,7 @@ NSString                       *_newsID;
 #pragma mark FSBaseContentViewDelegate
 
 
-//-(void)shearWithMail{
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:"]];    
-//}
 
-//-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
-//    NSLog(@"result:%d",result);
-//    
-//    
-//    if (result == MFMailComposeResultCancelled) {
-//        FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectZero];
-//        informationMessageView.parentDelegate = self;
-//        [informationMessageView showInformationMessageViewInView:self.view
-//                                                     withMessage:@"取消分享"
-//                                                withDelaySeconds:2.0f
-//                                                withPositionKind:PositionKind_Vertical_Horizontal_Center
-//                                                      withOffset:0.0f];
-//        [informationMessageView release];
-//    }else if(result == MFMailComposeResultFailed){
-//        FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectZero];
-//        informationMessageView.parentDelegate = self;
-//        [informationMessageView showInformationMessageViewInView:self.view
-//                                                     withMessage:@"分享邮件发送失败！"
-//                                                withDelaySeconds:2.0f
-//                                                withPositionKind:PositionKind_Vertical_Horizontal_Center
-//                                                      withOffset:0.0f];
-//    }else if(result == MFMailComposeResultSaved){
-//        FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectZero];
-//        informationMessageView.parentDelegate = self;
-//        [informationMessageView showInformationMessageViewInView:self.view
-//                                                     withMessage:@"分享邮件已保存到草稿箱！"
-//                                                withDelaySeconds:2.0f
-//                                                withPositionKind:PositionKind_Vertical_Horizontal_Center
-//                                                      withOffset:0.0f];
-//    }
-//    else if(result == MFMailComposeResultSent){
-//        FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectZero];
-//        informationMessageView.parentDelegate = self;
-//        [informationMessageView showInformationMessageViewInView:self.view
-//                                                     withMessage:@"分享邮件已发送！"
-//                                                withDelaySeconds:2.0f
-//                                                withPositionKind:PositionKind_Vertical_Horizontal_Center
-//                                                      withOffset:0.0f];
-//    }
-//    
-//    
-//    
-//    [controller dismissModalViewControllerAnimated:YES];
-//    
-//}
 
 
 

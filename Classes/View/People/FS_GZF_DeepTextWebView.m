@@ -85,14 +85,22 @@
 -(void)doSomethingAtInit{
     _webView = [[UIWebView alloc] init];
     _webView.delegate = self;
-    _webView.backgroundColor = COLOR_NEWSLIST_TITLE_WHITE;
-    
+    _webView.backgroundColor   = COLOR_NEWSLIST_TITLE_WHITE;
+    _webView.dataDetectorTypes = UIDataDetectorTypeNone;
     _picURLs = [[NSMutableDictionary alloc] init];
     
     [self addSubview:_webView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCommentList:) name:@"updateCommentList" object:nil];
+}
+-(void)updateCommentList:(NSNotification*)sender
+{
+    //return;
+    NSString * commentStr = [self processCommentList:@""];
+    [_webView performSelector:@selector(stringByEvaluatingJavaScriptFromString:) withObject:[NSString stringWithFormat:@"document.getElementById('comment').innerHTML=\"%@\"", commentStr] afterDelay:0.2];
 }
 
 -(void)doSomethingAtDealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     [_webView setDelegate:NULL];
     if ([_webView isLoading]){
         [_webView stopLoading];
@@ -291,15 +299,6 @@
             NSString *strCommentBlock = [NSString stringWithFormat:str1, nickName, datetime, body, comefrom];
             templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentBlock];
             
-//            if ([o.nickname length]>0) {
-//                NSString *admin = o.nickname;
-//                NSDate *REdate = [[NSDate alloc] initWithTimeIntervalSince1970:[o.timestamp doubleValue]];
-//                NSString *REdatetime = timeIntervalStringSinceNow(REdate);
-//                NSString *REbody = o.content;
-//                NSString *strCommentREBlock = [NSString stringWithFormat:str2, admin, REdatetime, REbody, comefrom];
-//                templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentREBlock];
-//            }
-            
         }
         templateString = [NSString stringWithFormat:@"%@%@",templateString,CONTENTWEBVIEW_COMMENT_MORE];
     }
@@ -310,6 +309,7 @@
             NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:[o.timestamp doubleValue]];
             
             NSString *datetime = timeIntervalStringSinceNow(date);
+            datetime =  [NSString stringWithFormat:@"%@ ",datetime];
             [date release];
             
             NSString *body = o.content;
