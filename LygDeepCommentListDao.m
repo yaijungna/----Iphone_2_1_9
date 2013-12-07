@@ -101,6 +101,9 @@
             strUnion = trimString(string);
             _obj.commentid = [NSNumber numberWithDouble:strUnion.doubleValue];
         }
+        if (_obj.commentid.intValue == 0) {
+            [self.managedObjectContext deleteObject:_obj];
+        }
     }
     else if ([_currentElementName isEqualToString:@"DATE"]) {
 		strUnion = stringCat(_obj.date, trimString(string));
@@ -122,7 +125,6 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
-    
     if ([_currentElementName isEqualToString:@"CONTENT"]) {
 		NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
         _obj.content = content;
