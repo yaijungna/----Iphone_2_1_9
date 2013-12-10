@@ -15,8 +15,9 @@
 {
     BOOL _doubleTap;
     UIImageView *_imageView;
-    MJPhotoLoadingView *_photoLoadingView;
+    //MJPhotoLoadingView *_photoLoadingView;
 }
+@property(nonatomic,strong)MJPhotoLoadingView *photoLoadingView;
 @end
 
 @implementation MJPhotoView
@@ -104,6 +105,7 @@
         [_imageView setImageWithURL:_photo.url placeholderImage:_photo.srcImageView.image options:SDWebImageRetryFailed|SDWebImageLowPriority progress:^(NSUInteger receivedSize, long long expectedSize) {
             if (receivedSize > kMinProgress) {
                 loading.progress = (float)receivedSize/expectedSize;
+                printf("******************%f",loading.progress);
             }
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             [photoView photoDidFinishLoadWithImage:image];
