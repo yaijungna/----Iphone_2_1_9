@@ -98,16 +98,13 @@
     _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * frame.size.width, 0);
 }
 
-- (void)setPhotos:(NSMutableArray *)photos
+- (void)setPhotos:(NSArray *)photos
 {
-    if (_photos) {
-        [_photos release];
-    }
     _photos = photos;
-    [_photos retain];
+    
     if (photos.count > 1) {
-        _visiblePhotoViews  = [[NSMutableSet alloc] init];
-        _reusablePhotoViews =[[NSMutableSet alloc] init];
+        _visiblePhotoViews = [NSMutableSet set];
+        _reusablePhotoViews = [NSMutableSet set];
     }
     
     for (int i = 0; i<_photos.count; i++) {

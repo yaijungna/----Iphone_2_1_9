@@ -21,7 +21,7 @@
 #define RELEASE
 #ifdef  RELEASE
 #define NSLog(...)
-#define printf(...)
+//#define printf(...)
 #endif
 
 #ifdef MYDEBUG

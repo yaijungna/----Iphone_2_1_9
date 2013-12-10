@@ -373,9 +373,6 @@
 -(void)sendYiXin:(int)isSendToPYQ
 {
     if (1) {
-        NSString *newsContent;
-        
-        
         PeopleNewsReaderPhoneAppDelegate*appDelegate = (PeopleNewsReaderPhoneAppDelegate *)[UIApplication sharedApplication].delegate;
         NSString * xxxx = nil;
         if (_adsStatus == 1) {
@@ -406,9 +403,6 @@
 
 -(void)sendShareWeiXin:(int)isSendToFriend{
     if (1) {
-        NSString *newsContent;
-        
-
         PeopleNewsReaderPhoneAppDelegate*appDelegate = (PeopleNewsReaderPhoneAppDelegate *)[UIApplication sharedApplication].delegate;
         NSString * xxxx = nil;
         if (_adsStatus == 1) {

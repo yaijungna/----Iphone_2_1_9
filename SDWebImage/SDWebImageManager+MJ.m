@@ -12,9 +12,8 @@
 + (void)downloadWithURL:(NSURL *)url
 {
     // cmp不能为空
-//    [[self sharedManager] downloadWithURL:url options:SDWebImageLowPriority|SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-//        
-//    }];
-    [[self sharedManager] downloadWithURL:url delegate:nil options:SDWebImageLowPriority|SDWebImageRetryFailed success:nil failure:nil];
+    [[self sharedManager] downloadWithURL:url options:SDWebImageLowPriority|SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        
+    }];
 }
 @end
