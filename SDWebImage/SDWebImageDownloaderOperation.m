@@ -41,9 +41,9 @@
     {
         _request = request;
         _options = options;
-        _progressBlock = [progressBlock copy];
-        _completedBlock = [completedBlock copy];
-        _cancelBlock = [cancelBlock copy];
+        self.progressBlock = progressBlock;
+        self.completedBlock = completedBlock;
+        self.cancelBlock    = cancelBlock;
         _executing = NO;
         _finished = NO;
         _expectedSize = 0;
@@ -179,16 +179,21 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    printf("%lld",response.expectedContentLength);
     if (![response respondsToSelector:@selector(statusCode)] || [((NSHTTPURLResponse *)response) statusCode] < 400)
     {
-        NSUInteger expected = response.expectedContentLength > 0 ? (NSUInteger)response.expectedContentLength : 0;
-        self.expectedSize = expected;
+        printf(">>>>>>>>%lld",response.expectedContentLength);
+        
+        NSDictionary *httpResponseHeaderFields = ((NSHTTPURLResponse*)response).allHeaderFields;
+        
+        self.expectedSize = [[httpResponseHeaderFields objectForKey:@"Content-Length"] longLongValue];
+        //self.expectedSize = (response.expectedContentLength > 0 ? response.expectedContentLength : 1111111);
         if (self.progressBlock)
         {
-            self.progressBlock(0, expected);
+            self.progressBlock(0, self.expectedSize);
         }
 
-        self.imageData = [NSMutableData.alloc initWithCapacity:expected];
+        self.imageData = [NSMutableData.alloc initWithCapacity:self.expectedSize];
     }
     else
     {

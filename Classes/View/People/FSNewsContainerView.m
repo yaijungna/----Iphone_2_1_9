@@ -28,6 +28,7 @@
             }
     return self;
 }
+
 -(void)dealloc
 {
     //[FSNewsContainerWebView  ]
@@ -69,7 +70,6 @@
 }
 
 -(void)doSomethingAtInit{
-    
     _isInFaverate = NO;
     
     _isFirstShow = YES;
@@ -84,9 +84,11 @@
     [self addSubview:_fsNewsContainerWebView];
     [_fsNewsContainerWebView release];
     
-    _fsNewsDitailToolBar = [[FSNewsDitailToolBar alloc] init];
+    _fsNewsDitailToolBar = [[FSNewsDitailToolBar alloc] initWithComment:self.comment_content];
+    //_fsNewsDitailToolBar.comment_content = self.comment_content;
     _fsNewsDitailToolBar.clipsToBounds = YES;
     _fsNewsDitailToolBar.parentDelegate = self;
+    
     [self addSubview:_fsNewsDitailToolBar];
     if ([GlobalConfig shareConfig].readContentFullScreen) {
         _fsNewsDitailToolBar.alpha = 0;
@@ -95,6 +97,7 @@
     [_fsNewsDitailToolBar release];
     
     _oldContentOfset = 0;
+    
     
     
 }

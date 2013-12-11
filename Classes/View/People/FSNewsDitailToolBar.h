@@ -70,5 +70,5 @@ typedef  enum _TouchEvenKind{
 
 -(void)fontToolBarCtr;
 -(void)favNoticBar;
-
+-(id)initWithComment:(NSString *)aCommen;
 @end

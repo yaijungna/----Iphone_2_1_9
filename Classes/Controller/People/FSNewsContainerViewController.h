@@ -57,6 +57,7 @@
 @property (nonatomic,copy)    void (^fpChangeTitleClor)(UITableViewCell*);
 @property (nonatomic,assign)  BOOL isImportant;
 @property (nonatomic,retain)  LygAdsDao  *      adsDao;
+@property (nonatomic,retain)  NSString   *      oldComment;
 
 
 -(void)share;

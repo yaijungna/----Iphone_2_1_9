@@ -38,7 +38,14 @@
 -(void)doSomethingAtDealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+-(id)initWithComment:(NSString *)aCommen
+{
+    if (self = [super init]) {
+        self.comment_content = aCommen;
+        _growingText.text   = self.comment_content;
+    }
+    return self;
+}
 
 -(void)doSomethingAtInit{
     //self.backgroundColor = COLOR_NEWSLIST_DESCRIPTION;
@@ -162,6 +169,7 @@
     //textView.animateHeightChange = NO; //turns off animation
     
     [self addSubview:_growingText];
+    _growingText.text   = self.comment_content;
     [_growingText release];
     
     

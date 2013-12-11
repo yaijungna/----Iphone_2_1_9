@@ -154,14 +154,31 @@ NSString                       *_newsID;
     }
     return YES;
 }
+-(void)getComMent:(NSNotification*)sender
+{
+    
+    NSObject * ject = sender.object;
+    if ([ject isKindOfClass:[FSNewsContainerView class]]) {
+        FSNewsContainerView * xxx = (FSNewsContainerView*)sender;
+        xxx.comment_content       = self.oldComment;
+    }
+    if ([ject isKindOfClass:[FSNewsDitailToolBar class]]) {
+        FSNewsDitailToolBar * xxx =  (FSNewsDitailToolBar*)sender;
+        xxx.comment_content       =  self.oldComment;
+    }
+}
 -(void)loadChildView{
     //[[FSNetworkDataManager shareNetworkDataManager] CancelAllOpration];
     //注册通知
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(shareSuccess:)
 												 name:SHARE_SUCCESSFUL_NOTICE object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getComMent:) name:@"getComment" object:nil];
      
     _fsNewsContainerView = [[FSNewsContainerView alloc] init];
+    _fsNewsContainerView.comment_content = self.oldComment;
     _fsNewsContainerView.parentDelegate = self;
     [self.view addSubview:_fsNewsContainerView];
     _fsNewsContainerView.backgroundColor = [UIColor whiteColor];
@@ -230,6 +247,13 @@ NSString                       *_newsID;
     [_fsShareNoticView release];
 }
 
+-(void)clearOldComment
+{
+    [[NSUserDefaults standardUserDefaults]setNilValueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+}
+
 
 
 -(void)initDataModel{
@@ -248,13 +272,18 @@ NSString                       *_newsID;
     _adsDao  = [[LygAdsDao alloc]init];
     _adsDao.placeID  = 47;
     _adsDao.parentDelegate = self;
+    
+    
+    
+    self.oldComment = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+    self.oldComment = @"xxxxxxx";
 }
 
 -(void)doSomethingForViewFirstTimeShow{
     
     if (_obj!=nil) {
         _fs_GZF_NewsContainerDAO.newsid = _obj.newsid;
-        _fs_GZF_CommentListDAO.newsid = _obj.newsid;
+        _fs_GZF_CommentListDAO.newsid   = _obj.newsid;
         _fs_GZF_CommentListDAO.count = @"6";
         if (self.isImportant) {
             _fs_GZF_CommentListDAO.newsid = _obj.secondNewsID;
@@ -499,6 +528,8 @@ NSString                       *_newsID;
             [UIView setAnimationDuration:3.0];
             _fsShareNoticView.alpha = 0.0f;
             [UIView commitAnimations];
+            
+            [self clearOldComment];
         }
         else if (status == FSBaseDAOCallBack_UnknowErrorStatus){
             _fsShareNoticView.data = @"评论失败！";

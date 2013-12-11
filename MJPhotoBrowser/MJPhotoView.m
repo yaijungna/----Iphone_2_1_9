@@ -27,13 +27,15 @@
     if ((self = [super initWithFrame:frame])) {
         self.clipsToBounds = YES;
 		// 图片
-		_imageView = [[UIImageView alloc] init];
+		_imageView = [[UIImageView alloc] initWithFrame:self.bounds];
 		_imageView.contentMode = UIViewContentModeScaleAspectFit;
 		[self addSubview:_imageView];
         
         // 进度条
         _photoLoadingView = [[MJPhotoLoadingView alloc] init];
-		
+		_indictor         = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [self addSubview:_indictor];
+        _indictor.center  = _imageView.center;
 		// 属性
 		self.backgroundColor = [UIColor clearColor];
 		self.delegate = self;
@@ -91,6 +93,7 @@
 #pragma mark 开始加载图片
 - (void)photoStartLoad
 {
+    [_indictor startAnimating];
     if (_photo.image) {
         self.scrollEnabled = YES;
         _imageView.image = _photo.image;
@@ -104,11 +107,13 @@
         __unsafe_unretained MJPhotoLoadingView *loading = _photoLoadingView;
         [_imageView setImageWithURL:_photo.url placeholderImage:_photo.srcImageView.image options:SDWebImageRetryFailed|SDWebImageLowPriority progress:^(NSUInteger receivedSize, long long expectedSize) {
             if (receivedSize > kMinProgress) {
-                loading.progress = (float)receivedSize/expectedSize;
-                printf("******************%f",loading.progress);
+                loading.progress = ((float)receivedSize)/expectedSize;
+                //loading.progress = 0.5;
+            printf("******************%f",loading.progress);
             }
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             [photoView photoDidFinishLoadWithImage:image];
+            printf("******************%f",loading.progress);
         }];
     }
 }
@@ -116,6 +121,7 @@
 #pragma mark 加载完毕
 - (void)photoDidFinishLoadWithImage:(UIImage *)image
 {
+    [_indictor stopAnimating];
     if (image) {
         self.scrollEnabled = YES;
         _photo.image = image;
@@ -156,6 +162,7 @@
 		maxScale = maxScale / [[UIScreen mainScreen] scale];
 	}
 	self.maximumZoomScale = maxScale;
+    self.maximumZoomScale = 2;
 	self.minimumZoomScale = minScale;
 	self.zoomScale = minScale;
     
@@ -184,6 +191,8 @@
     } else {
         _imageView.frame = imageFrame;
     }
+    _imageView.frame = self.bounds;
+    _indictor.center = self.center;
 }
 
 #pragma mark - UIScrollViewDelegate

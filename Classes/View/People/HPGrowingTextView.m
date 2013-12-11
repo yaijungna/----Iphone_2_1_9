@@ -28,7 +28,7 @@
 
 - (void)clearContent
 {
-    self.internalTextView.text = @"";
+   // self.internalTextView.text = @"";
 }
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -51,7 +51,7 @@
 		
 		animateHeightChange = YES;
 		
-		internalTextView.text = @"";
+		//internalTextView.text = @"";
 		
 		[self setMaxNumberOfLines:6];
     }
