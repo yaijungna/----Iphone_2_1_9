@@ -109,6 +109,30 @@
     [_webView release];
     [_picURLs release];
 }
+-(NSString *)returnFontSizeName:(NSInteger)n{
+    NSNumber *m = [[GlobalConfig shareConfig] readFontSize];
+    n = [m integerValue];
+    switch (n) {
+        case 0:
+            return @"font_small";
+            break;
+            
+        case 1:
+            return @"font_normal";
+            break;
+            
+        case 2:
+            return @"font_large";
+            break;
+            
+        case 3:
+            return @"font_largeb";
+            break;
+        default:
+            return @"font_normal";
+            break;
+    }
+}
 
 -(void)doSomethingAtLayoutSubviews{
     
@@ -208,6 +232,8 @@
             htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{subtitle}}" withString:toHTMLString(subTitle)];
         }
         
+        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{fontClass}}" withString:[self returnFontSizeName:0]];
+         //templateString = [self replayString:templateString oldString:@"{{fontClass}}" newString:[self returnFontSizeName:0]];
         
         
         //STEP 3.

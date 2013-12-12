@@ -28,8 +28,8 @@
 #define CONFIG_DOWNLOAD_PICTURE_USEING_2G_3G_VALUE_OFF @"0"
 
 //正文字号
-#define CONFIG_FONTSIZE_KEY @"CONFIG_FONTSIZE_KEY_STRING"
-#define CONFIG_FONTSIZE_DEFAULT_VALUE 0
+#define CONFIG_FONTSIZE_KEY @"CONFIG_FONTSIZE_KEY_STRING_Version2"
+#define CONFIG_FONTSIZE_DEFAULT_VALUE  2
 
 //要闻推送
 #define CONFIG_IMPORTANT_NEWS_PUSH_KEY @"CONFIG_IMPORTANT_NEWS_PUSH_KEY_STRING"
@@ -243,7 +243,7 @@ static GlobalConfig *shareManager = nil;
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	rst = [userDefaults objectForKey:CONFIG_FONTSIZE_KEY];
 	if (rst == nil) {
-		rst = [[[NSNumber alloc] initWithInt:CONFIG_FONTSIZE_DEFAULT_VALUE] autorelease];
+		rst = [[NSNumber alloc] initWithInt:CONFIG_FONTSIZE_DEFAULT_VALUE];
 		[userDefaults setObject:rst forKey:CONFIG_FONTSIZE_KEY];
 		NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:rst, CONFIG_FONTSIZE_KEY, nil];
 		
@@ -251,7 +251,7 @@ static GlobalConfig *shareManager = nil;
 		[userDefaults synchronize];
 	}
 	
-	return rst;
+	return [rst autorelease];
 }
 
 //**************************************************
