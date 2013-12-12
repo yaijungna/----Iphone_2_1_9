@@ -561,7 +561,7 @@
         [PeopleNewsStati  headPicEvent:o.newsid nameOfEVent:_channelName andTitle:o.title];
         if ([o.flag isEqualToString:@"1"]) {
             FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
-            
+            fsNewsContainerViewController.newsID                         = o.newsid;
             fsNewsContainerViewController.obj = nil;
             fsNewsContainerViewController.FCObj = o;
             fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
@@ -622,7 +622,7 @@
             
             _currentObject        = o;
             FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
-            
+            fsNewsContainerViewController.newsID                         = o.newsid;
             fsNewsContainerViewController.obj                            = [_fs_GZF_ForNewsListDAO.objectList objectAtIndex:row-1];
             __block FSOneDayNewsObject * xxx                             = [_fs_GZF_ForNewsListDAO.objectList objectAtIndex:row-1];
             fsNewsContainerViewController.FCObj                          = nil;

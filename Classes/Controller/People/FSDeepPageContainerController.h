@@ -40,5 +40,6 @@
 @property (nonatomic,strong)LygDeepCommentPostDao * postCommentDao;
 @property (nonatomic,strong)LygDeepCommentListDao * getCommentDao;
 @property (nonatomic,strong)FSTopicObject         * oneTopic;
+@property (nonatomic,strong)NSString  * oldComment;
 
 @end

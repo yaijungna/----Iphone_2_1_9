@@ -323,7 +323,7 @@
         FSOneDayNewsObject *o = [_newsListData.objectList objectAtIndex:Obj.sectionBeginIndex+row];
         [PeopleNewsStati newsEvent:o.newsid nameOfEVent:@"头条" andTitle:o.title];
         FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
-        
+        fsNewsContainerViewController.newsID                         =  o.newsid;
         NSLog(@"fsNewsContainerViewController1:%d",[fsNewsContainerViewController retainCount]);
         fsNewsContainerViewController.obj = o;
         fsNewsContainerViewController.FCObj = nil;

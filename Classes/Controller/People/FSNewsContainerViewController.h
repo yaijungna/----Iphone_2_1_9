@@ -51,7 +51,7 @@
 @property (nonatomic, retain) FSOneDayNewsObject *obj;
 @property (nonatomic, retain) FSMyFaverateObject *FavObj;
 @property (nonatomic, retain) FSFocusTopObject   *FCObj;
-@property (nonatomic, retain) NSString           *newsID;
+@property (nonatomic, copy) NSString           *newsID;
 @property (nonatomic,assign)  BOOL                isNewNavigation;
 @property (nonatomic,assign)  NewsSourceKind       newsSourceKind;
 @property (nonatomic,copy)    void (^fpChangeTitleClor)(UITableViewCell*);

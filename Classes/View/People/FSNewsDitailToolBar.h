@@ -66,6 +66,7 @@ typedef  enum _TouchEvenKind{
 
 @property (nonatomic,assign) BOOL isInFaverate;
 @property (nonatomic,assign) BOOL fontToolBarIsShow;
+@property (nonatomic,retain) HPGrowingTextView *growingText;
 
 
 -(void)fontToolBarCtr;

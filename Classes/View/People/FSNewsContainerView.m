@@ -84,7 +84,7 @@
     [self addSubview:_fsNewsContainerWebView];
     [_fsNewsContainerWebView release];
     
-    _fsNewsDitailToolBar = [[FSNewsDitailToolBar alloc] initWithComment:self.comment_content];
+    _fsNewsDitailToolBar = [[FSNewsDitailToolBar alloc] init];
     //_fsNewsDitailToolBar.comment_content = self.comment_content;
     _fsNewsDitailToolBar.clipsToBounds = YES;
     _fsNewsDitailToolBar.parentDelegate = self;

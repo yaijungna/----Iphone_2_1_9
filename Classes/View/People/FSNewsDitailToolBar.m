@@ -168,8 +168,9 @@
     _growingText.backgroundColor = COLOR_CLEAR;
     //textView.animateHeightChange = NO; //turns off animation
     
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"getComment" object:self];
+    _growingText.text = self.comment_content;
     [self addSubview:_growingText];
-    _growingText.text   = self.comment_content;
     [_growingText release];
     
     

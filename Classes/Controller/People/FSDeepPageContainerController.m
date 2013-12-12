@@ -80,19 +80,38 @@
 -(void)loadChildView
 {
     [super loadChildView];
+    self.oldComment  = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"DeepComment%@",self.deepid]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareResult:) name:@"SHARE_SUCCESSFUL_NOTICE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getComMent:) name:@"getComment" object:nil];
     _fsShareIconContainView = [[FSShareIconContainView alloc] initWithFrame:CGRectZero];
     _fsShareIconContainView.parentDelegate = self;
     _newsDitailToolBar      = [[FSNewsDitailToolBar alloc] init];
     _newsDitailToolBar.parentDelegate = self;
     [self.view addSubview:_fsShareIconContainView];
+    _newsDitailToolBar.comment_content = self.oldComment;
+
     [_fsShareIconContainView release];
     [self.view addSubview:_newsDitailToolBar];
     [_newsDitailToolBar release];
 }
 
 
+-(void)getComMent:(NSNotification*)sender
+{
+    
+    NSObject * ject = sender.object;
+    if ([ject isKindOfClass:[FSNewsDitailToolBar class]]) {
+        FSNewsDitailToolBar * xxx =  (FSNewsDitailToolBar*)ject;
+        xxx.comment_content       =  self.oldComment;
+        xxx.growingText.text      =  self.oldComment;
+    }
+}
+
+
 - (void)dealloc {
+    NSString * string = _newsDitailToolBar.growingText.text;
+    [[NSUserDefaults standardUserDefaults]setValue:string forKey:[NSString stringWithFormat:@"DeepComment%@",self.deepid]];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.shareData = nil;
     self.shareImage= nil;
@@ -191,6 +210,7 @@
     NSString * string = nil;
     if ([_postCommentDao.result isEqualToString:@"0"]) {
         string = @"评论成功";
+        _newsDitailToolBar.growingText.text = @"";
     }else
     {
         string = @"请稍后再试";

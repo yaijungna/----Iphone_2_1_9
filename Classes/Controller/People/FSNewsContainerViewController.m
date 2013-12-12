@@ -98,6 +98,9 @@ NSString                       *_newsID;
 
 
 - (void)dealloc {
+    NSString * string = [_fsNewsContainerView.fsNewsDitailToolBar.growingText.text copy];
+    [[NSUserDefaults standardUserDefaults]setValue:string forKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     _fs_GZF_CommentListDAO.parentDelegate = nil;
     [_fs_GZF_CommentListDAO release];
     _fs_GZF_CommentListDAO = nil;
@@ -159,13 +162,33 @@ NSString                       *_newsID;
     
     NSObject * ject = sender.object;
     if ([ject isKindOfClass:[FSNewsContainerView class]]) {
-        FSNewsContainerView * xxx = (FSNewsContainerView*)sender;
+        FSNewsContainerView * xxx = (FSNewsContainerView*)ject;
         xxx.comment_content       = self.oldComment;
     }
     if ([ject isKindOfClass:[FSNewsDitailToolBar class]]) {
-        FSNewsDitailToolBar * xxx =  (FSNewsDitailToolBar*)sender;
+        FSNewsDitailToolBar * xxx =  (FSNewsDitailToolBar*)ject;
         xxx.comment_content       =  self.oldComment;
     }
+}
+
+
+-(void)updateComment:(NSNotification*)sender
+{
+    
+    NSObject * ject = sender.object;
+
+    if ([ject isKindOfClass:[FSNewsDitailToolBar class]]) {
+        FSNewsDitailToolBar * xxx =  (FSNewsDitailToolBar*)ject;
+        self.oldComment       =  xxx.growingText.text;
+    }
+    if (self.oldComment.length > 0) {
+        //[[NSUserDefaults standardUserDefaults]setNilValueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+        [[NSUserDefaults standardUserDefaults]setObject:self.oldComment forKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+    }else
+    {
+        [[NSUserDefaults standardUserDefaults]setNilValueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
+    }
+    
 }
 -(void)loadChildView{
     //[[FSNetworkDataManager shareNetworkDataManager] CancelAllOpration];
@@ -174,8 +197,9 @@ NSString                       *_newsID;
 											 selector:@selector(shareSuccess:)
 												 name:SHARE_SUCCESSFUL_NOTICE object:nil];
     
-    
+    //updateComment
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getComMent:) name:@"getComment" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateComment:) name:@"updateComment" object:nil];
      
     _fsNewsContainerView = [[FSNewsContainerView alloc] init];
     _fsNewsContainerView.comment_content = self.oldComment;
@@ -249,8 +273,7 @@ NSString                       *_newsID;
 
 -(void)clearOldComment
 {
-    [[NSUserDefaults standardUserDefaults]setNilValueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+    _fsNewsContainerView.fsNewsDitailToolBar.growingText.text = @"";
     
 }
 
@@ -276,7 +299,6 @@ NSString                       *_newsID;
     
     
     self.oldComment = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
-    self.oldComment = @"xxxxxxx";
 }
 
 -(void)doSomethingForViewFirstTimeShow{
