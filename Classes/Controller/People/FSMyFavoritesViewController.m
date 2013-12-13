@@ -11,7 +11,7 @@
 #import "FSMyFaverateObject.h"
 #import "FSOneDayNewsObject.h"
 #import "FSNewsContainerViewController.h"
-
+#import "FSDeepPageContainerController.h"
 
 @implementation FSMyFavoritesViewController
 
@@ -118,26 +118,43 @@
     NSInteger row = [indexPath row];
     _array = [[FSBaseDB sharedFSBaseDB] getAllObjectsSortByKey:@"FSMyFaverateObject" key:@"UPDATE_DATE" ascending:NO];
     if ([_array count]>row) {
-        FSMyFaverateObject *o = [_array objectAtIndex:row];
-        
-        FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
-        fsNewsContainerViewController.FavObj = o;
-        fsNewsContainerViewController.FCObj = nil;
-        fsNewsContainerViewController.obj = nil;
-        if ([o.group isEqualToString:SHIKE_NEWS_LIST_KIND]) {
-            fsNewsContainerViewController.newsSourceKind = NewsSourceKind_ShiKeNews;
-        }
-        else if ([o.group isEqualToString:PUTONG_NEWS_LIST_KIND]) {
-            fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
-        }
-        else{
-            fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
-        }
+        FSMyFaverateObject *o = (FSMyFaverateObject*)[_array objectAtIndex:row];
         
         
-        [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
-        //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
-        [fsNewsContainerViewController release];
+        if (o.isDeep== nil) {
+            FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
+            fsNewsContainerViewController.FavObj = o;
+            fsNewsContainerViewController.FCObj = nil;
+            fsNewsContainerViewController.obj = nil;
+            if ([o.group isEqualToString:SHIKE_NEWS_LIST_KIND]) {
+                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_ShiKeNews;
+            }
+            else if ([o.group isEqualToString:PUTONG_NEWS_LIST_KIND]) {
+                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
+            }
+            else{
+                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
+            }
+            
+            
+            [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+            //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
+            [fsNewsContainerViewController release];
+
+        }else
+        {
+            //FSTopicObject *topicObj                          = [_fs_GZF_DeepListDAO.objectList objectAtIndex:index];
+            FSDeepPageContainerController *pageContainerCtrl = [[FSDeepPageContainerController alloc] init];
+            //pageContainerCtrl.deepid                         = topicObj.deepid;
+            pageContainerCtrl.deepid                         = o.deepId;
+            pageContainerCtrl.Deep_title                     = o.deepTitle;
+            pageContainerCtrl.newsAbstract                   = o.deepNews_abstract;
+            //pageContainerCtrl.oneTopic                       = topicObj;
+            [PeopleNewsStati deepStatideepID:pageContainerCtrl.deepid deepTitle:pageContainerCtrl.Deep_title];
+            [self.navigationController pushViewController:pageContainerCtrl animated:YES];
+            [pageContainerCtrl release];
+        }
+        
         
     }
 }

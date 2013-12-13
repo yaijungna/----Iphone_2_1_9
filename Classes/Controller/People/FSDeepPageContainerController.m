@@ -10,7 +10,7 @@
 
 #import "FS_GZF_DeepPageListDAO.h"
 #import "FSDeepPageObject.h"
-
+#import "FSMyFaverateObject.h"
 #import "FSDeepLeadViewController.h"
 #import "FSDeepPictureVeiwController.h"
 #import "FSDeepTextViewController.h"
@@ -94,6 +94,163 @@
     [self.view addSubview:_newsDitailToolBar];
     [_newsDitailToolBar release];
 }
+-(NSObject *)ObjIsInFaverate{
+    
+    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSMyFaverateObject" key:@"deepId" value:self.deepid];
+    if ([array count]>0) {
+        return [array objectAtIndex:0];
+    }
+    else{
+        return nil;
+    }
+}
+-(void)fav{
+    if (self.deepid) {
+        
+        FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
+        if (o!= nil) {
+            [[FSBaseDB sharedFSBaseDB].managedObjectContext deleteObject:o];
+        }
+        else{
+            FSMyFaverateObject *o = (FSMyFaverateObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSMyFaverateObject"];
+            o.isDeep = [NSNumber numberWithInt:1];
+            o.deepId = self.deepid;
+            o.deepNews_abstract = self.newsAbstract;
+            o.deepTitle         = self.Deep_title;
+            
+//            o.news_abstract =_obj.news_abstract;
+//            o.title = _obj.title;
+//            o.group = _obj.group;
+//            o.timestamp = _obj.timestamp;
+//            o.link = _obj.link;
+//            o.picture = _obj.picture;
+//            //o.browserCount = _obj.browserCount;
+//            o.source = _obj.source;
+            NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0f];
+            NSTimeInterval currentTimeInterval = [date timeIntervalSince1970];
+            NSString *string = [NSString stringWithFormat:@"%f",currentTimeInterval];
+            o.UPDATE_DATE = string;
+            [date release];
+        }
+        
+//        @property (nonatomic, retain) NSString *deepid;
+//        @property (nonatomic, retain) NSString *Deep_title;
+//        @property (nonatomic, retain) NSString *newsAbstract;
+//        @property (nonatomic, strong) UIImage  *shareImage;
+//        @property (nonatomic, strong) NSData   *shareData;
+//        @property (nonatomic, strong) NSString *comment_content;
+//        
+//        @property (nonatomic,strong)NSString  * share_img;
+//        @property (nonatomic,strong)NSString  * share_url;
+//        @property (nonatomic,strong)NSString  * share_text;
+    }
+//    else if (_FCObj != nil){
+//        
+//        FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
+//        if (o!= nil) {
+//            [[FSBaseDB sharedFSBaseDB].managedObjectContext deleteObject:o];
+//        }
+//        else{
+//            NSString *newsContent = [_fs_GZF_NewsContainerDAO.cobj.content substringToIndex:80];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"　　" withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@" " withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+//            
+//            FSMyFaverateObject *o = (FSMyFaverateObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSMyFaverateObject"];
+//            o.newsid = _FCObj.newsid;
+//            o.title = _FCObj.title;
+//            o.news_abstract =newsContent;
+//            o.picture = _FCObj.picture;
+//            o.channelid = _FCObj.channelid;
+//            //o.browserCount = _FCObj.browserCount;
+//            o.timestamp = _FCObj.timestamp;
+//            o.link = _FCObj.link;
+//            o.group = _FCObj.group;
+//            o.source = @"";
+//            NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0f];
+//            NSTimeInterval currentTimeInterval = [date timeIntervalSince1970];
+//            NSString *string = [NSString stringWithFormat:@"%f",currentTimeInterval];
+//            o.UPDATE_DATE = string;
+//            [date release];
+//        }
+//    }
+//    else if (_FavObj!=nil){
+//        FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
+//        if (o!= nil) {
+//            [[FSBaseDB sharedFSBaseDB].managedObjectContext deleteObject:o];
+//            [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
+//            if (self.isNewNavigation){
+//                [self dismissModalViewControllerAnimated:YES];
+//                return;
+//            }
+//            
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+//        else{
+//            FSMyFaverateObject *o = (FSMyFaverateObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSMyFaverateObject"];
+//            o.newsid = _FavObj.newsid;
+//            o.news_abstract =_FavObj.news_abstract;
+//            o.title = _FavObj.title;
+//            o.picture = _FavObj.picture;
+//            o.channelid = _FavObj.channelid;
+//            o.browserCount = _FavObj.browserCount;
+//            o.timestamp = _FavObj.timestamp;
+//            o.link = _FavObj.link;
+//            o.group = _FavObj.group;
+//            o.source = _FavObj.source;
+//            NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0f];
+//            NSTimeInterval currentTimeInterval = [date timeIntervalSince1970];
+//            NSString *string = [NSString stringWithFormat:@"%f",currentTimeInterval];
+//            o.UPDATE_DATE = string;
+//            [date release];
+//        }
+//    }
+//    
+//    if (self.newsSourceKind == NewsSourceKind_PushNews) {
+//        FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
+//        if (o!= nil) {
+//            [[FSBaseDB sharedFSBaseDB].managedObjectContext deleteObject:o];
+//            [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
+//            if (self.isNewNavigation){
+//                [self dismissModalViewControllerAnimated:YES];
+//                return;
+//            }
+//            
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+//        else{
+//            FSMyFaverateObject *o = (FSMyFaverateObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSMyFaverateObject"];
+//            o.newsid = self.newsID;
+//            
+//            NSString *newsContent = [_fs_GZF_NewsContainerDAO.cobj.content substringToIndex:80];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"　　" withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@" " withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+//            newsContent = [newsContent stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+//            
+//            o.news_abstract = newsContent;
+//            o.title = _fs_GZF_NewsContainerDAO.cobj.title;
+//            o.group = @"";
+//            
+//            NSNumber *tempNumber = [[NSNumber alloc] initWithInt:[_fs_GZF_NewsContainerDAO.cobj.timestamp intValue]];
+//            o.timestamp = tempNumber;
+//            [tempNumber release];
+//            
+//            NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0f];
+//            NSTimeInterval currentTimeInterval = [date timeIntervalSince1970];
+//            NSString *string = [NSString stringWithFormat:@"%f",currentTimeInterval];
+//            o.UPDATE_DATE = string;
+//            [date release];
+//        }
+//    }
+    
+    [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
+    
+}
+
+
+
 
 
 -(void)getComMent:(NSNotification*)sender
@@ -341,7 +498,7 @@
         //self.touchEvenKind = _newsDitailToolBar.touchEvenKind;
         switch (_newsDitailToolBar.touchEvenKind) {
             case TouchEvenKind_FaverateSelect:
-               // [self sendTouchEvent];
+               [self fav];
                 break;
             case TouchEvenKind_FontSelect:
                 ;

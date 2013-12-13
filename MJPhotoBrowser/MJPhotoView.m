@@ -27,7 +27,8 @@
     if ((self = [super initWithFrame:frame])) {
         self.clipsToBounds = YES;
 		// 图片
-		_imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        UIScreen *tempsceen = [UIScreen mainScreen];
+		_imageView = [[UIImageView alloc] initWithFrame:tempsceen.bounds];
 		_imageView.contentMode = UIViewContentModeScaleAspectFit;
 		[self addSubview:_imageView];
         
@@ -67,6 +68,9 @@
 #pragma mark 显示图片
 - (void)showImage
 {
+    //_imageView.backgroundColor = [UIColor greenColor];
+    //[_indictor startAnimating];
+    _indictor.center = _imageView.center;
     if (_photo.firstShow) { // 首次显示
         _imageView.image = _photo.placeholder; // 占位图片
         _photo.srcImageView.image = nil;
@@ -75,11 +79,14 @@
         if (![_photo.url.absoluteString hasSuffix:@"gif"]) {
             __unsafe_unretained MJPhotoView *photoView = self;
             __unsafe_unretained MJPhoto *photo = _photo;
+            __unsafe_unretained UIActivityIndicatorView * indictor = _indictor;
+            [_indictor startAnimating];
             [_imageView setImageWithURL:_photo.url placeholderImage:_photo.placeholder options:SDWebImageRetryFailed|SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 photo.image = image;
                 
                 // 调整frame参数
                 [photoView adjustFrame];
+                [indictor stopAnimating];
             }];
         }
     } else {
@@ -93,7 +100,7 @@
 #pragma mark 开始加载图片
 - (void)photoStartLoad
 {
-    [_indictor startAnimating];
+    //[_indictor startAnimating];
     if (_photo.image) {
         self.scrollEnabled = YES;
         _imageView.image = _photo.image;
@@ -101,10 +108,11 @@
         self.scrollEnabled = NO;
         // 直接显示进度条
         [_photoLoadingView showLoading];
-        [self addSubview:_photoLoadingView];
+        //[self addSubview:_photoLoadingView];
         
         __unsafe_unretained MJPhotoView *photoView = self;
         __unsafe_unretained MJPhotoLoadingView *loading = _photoLoadingView;
+        __unsafe_unretained UIActivityIndicatorView  *indi = _indictor;
         [_imageView setImageWithURL:_photo.url placeholderImage:_photo.srcImageView.image options:SDWebImageRetryFailed|SDWebImageLowPriority progress:^(NSUInteger receivedSize, long long expectedSize) {
             if (receivedSize > kMinProgress) {
                 loading.progress = ((float)receivedSize)/expectedSize;
@@ -114,6 +122,7 @@
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             [photoView photoDidFinishLoadWithImage:image];
             printf("******************%f",loading.progress);
+            [indi stopAnimating];
         }];
     }
 }
@@ -121,7 +130,7 @@
 #pragma mark 加载完毕
 - (void)photoDidFinishLoadWithImage:(UIImage *)image
 {
-    [_indictor stopAnimating];
+    //[_indictor stopAnimating];
     if (image) {
         self.scrollEnabled = YES;
         _photo.image = image;
@@ -192,7 +201,7 @@
         _imageView.frame = imageFrame;
     }
     _imageView.frame = self.bounds;
-    _indictor.center = self.center;
+    _indictor.center = _imageView.center;
 }
 
 #pragma mark - UIScrollViewDelegate

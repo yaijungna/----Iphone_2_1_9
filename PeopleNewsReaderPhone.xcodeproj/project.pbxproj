@@ -188,7 +188,6 @@
 		04D2A6B016DB32D100782B40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D2A6AF16DB32D100782B40 /* MapKit.framework */; };
 		04D4C0BF16BF3EE9007C9391 /* oneday_east.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D4C0BD16BF3EE9007C9391 /* oneday_east.png */; };
 		04D4C0C016BF3EE9007C9391 /* oneday_east@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D4C0BE16BF3EE9007C9391 /* oneday_east@2x.png */; };
-		04D4C0C416BF4C95007C9391 /* FSMyFaverateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D4C0C316BF4C95007C9391 /* FSMyFaverateObject.m */; };
 		04D6CC4116A790D700C72C30 /* Comment_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D6CC3D16A790D600C72C30 /* Comment_title.png */; };
 		04D6CC4216A790D700C72C30 /* Comment_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D6CC3E16A790D600C72C30 /* Comment_title@2x.png */; };
 		04D6CC4616A797E100C72C30 /* FSNewsCommentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CC4516A797E100C72C30 /* FSNewsCommentListView.m */; };
@@ -436,6 +435,7 @@
 		58126C3618573525006C5D34 /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58126C2A18573525006C5D34 /* MJPhotoProgressView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		58126C3718573525006C5D34 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58126C2C18573525006C5D34 /* MJPhotoToolbar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		58126C3818573525006C5D34 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58126C2E18573525006C5D34 /* MJPhotoView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		58126C3E185AB2BA006C5D34 /* FSMyFaverateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */; };
 		5814919217D5424000CB58D7 /* LygDequeueScroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5814919117D5424000CB58D7 /* LygDequeueScroView.m */; };
 		581503AA18111CC00013675F /* LygNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 581503A918111CBF0013675F /* LygNavigationBar.m */; };
 		581503AD181158AF0013675F /* FSOneDayNewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 581503AC181158AF0013675F /* FSOneDayNewsObject.m */; };
@@ -1108,8 +1108,6 @@
 		04D2A6AF16DB32D100782B40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		04D4C0BD16BF3EE9007C9391 /* oneday_east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oneday_east.png; sourceTree = "<group>"; };
 		04D4C0BE16BF3EE9007C9391 /* oneday_east@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oneday_east@2x.png"; sourceTree = "<group>"; };
-		04D4C0C216BF4C95007C9391 /* FSMyFaverateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyFaverateObject.h; sourceTree = "<group>"; };
-		04D4C0C316BF4C95007C9391 /* FSMyFaverateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyFaverateObject.m; sourceTree = "<group>"; };
 		04D6CC3D16A790D600C72C30 /* Comment_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Comment_title.png; sourceTree = "<group>"; };
 		04D6CC3E16A790D600C72C30 /* Comment_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Comment_title@2x.png"; sourceTree = "<group>"; };
 		04D6CC4416A797E100C72C30 /* FSNewsCommentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsCommentListView.h; sourceTree = "<group>"; };
@@ -1470,6 +1468,8 @@
 		58126C2C18573525006C5D34 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
 		58126C2D18573525006C5D34 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
 		58126C2E18573525006C5D34 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyFaverateObject.h; sourceTree = "<group>"; };
+		58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyFaverateObject.m; sourceTree = "<group>"; };
 		5814919017D5424000CB58D7 /* LygDequeueScroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDequeueScroView.h; sourceTree = "<group>"; };
 		5814919117D5424000CB58D7 /* LygDequeueScroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDequeueScroView.m; sourceTree = "<group>"; };
 		581503A818111CBF0013675F /* LygNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygNavigationBar.h; sourceTree = "<group>"; };
@@ -2812,6 +2812,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */,
+				58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */,
 				0A0108141848D08100FCB106 /* libWeiboSDK.a */,
 				58E2F78018475A9700EF4F08 /* FSDeepCommentObject.h */,
 				58E2F78118475A9700EF4F08 /* FSDeepCommentObject.m */,
@@ -2888,8 +2890,6 @@
 				04CD5F6E17029D9F00DA5697 /* FSFocusTopObject.h */,
 				04CD5F6F17029D9F00DA5697 /* FSFocusTopObject.m */,
 				04EF716B16FADAC800B7469B /* FSWeatherObject.m */,
-				04D4C0C216BF4C95007C9391 /* FSMyFaverateObject.h */,
-				04D4C0C316BF4C95007C9391 /* FSMyFaverateObject.m */,
 				04E94B9F16B6082B00AD38A7 /* FSCityObject.h */,
 				04E94BA016B6082B00AD38A7 /* FSCityObject.m */,
 				04285967169FEB1D0081A48F /* FSDeepPriorFocusObject.h */,
@@ -5085,6 +5085,7 @@
 				04DA818F165C9CE300EB87AA /* FS_GZF_GetNewsDataForOFFlineDAO.m in Sources */,
 				58E2F6811844A94B00EF4F08 /* FSUserSelectObject.m in Sources */,
 				274E96A31665F24A0052EB31 /* FSNewSettingView.m in Sources */,
+				58126C3E185AB2BA006C5D34 /* FSMyFaverateObject.m in Sources */,
 				04E2B05E1667731600B839F4 /* FS_GZF_PageControllView.m in Sources */,
 				04C5565016684C3400E33856 /* FSCommentListViewController.m in Sources */,
 				04E1DF281678083600C64E76 /* FSMyFaverateContainView.m in Sources */,
@@ -5131,7 +5132,6 @@
 				58126BF118571357006C5D34 /* SDWebImagePrefetcher.m in Sources */,
 				04E94BA116B6082B00AD38A7 /* FSCityObject.m in Sources */,
 				0491D88816B8F735009EB459 /* FSOpration.m in Sources */,
-				04D4C0C416BF4C95007C9391 /* FSMyFaverateObject.m in Sources */,
 				04BE2A6516BF613E0093A513 /* FSLocalNewsListCell.m in Sources */,
 				0459FB6316C0EE4800097C2D /* FS_GZF_DeepTextWebView.m in Sources */,
 				04DD970416E42C9F003D8123 /* FS_GZF_StatisticePOSTXMLDAO.m in Sources */,

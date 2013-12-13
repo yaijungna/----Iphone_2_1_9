@@ -139,7 +139,13 @@
     NSString * temp = nil;
     if ([self.data isKindOfClass:[FSMyFaverateObject class]]) {
         FSMyFaverateObject *obj = (FSMyFaverateObject *)self.data;
-        _lab_NewsTitle.text = obj.title;
+        if (obj.isDeep) {
+            _lab_NewsTitle.text = obj.deepTitle;
+        }else
+        {
+            _lab_NewsTitle.text = obj.title;
+        }
+        
 
         
         temp = obj.picture;

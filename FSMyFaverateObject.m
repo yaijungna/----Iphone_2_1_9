@@ -2,7 +2,7 @@
 //  FSMyFaverateObject.m
 //  PeopleNewsReaderPhone
 //
-//  Created by ganzf on 13-2-4.
+//  Created by lygn128 on 13-12-13.
 //
 //
 
@@ -11,21 +11,31 @@
 
 @implementation FSMyFaverateObject
 
-@dynamic browserCount;
-@dynamic channelid;
-@dynamic commentCount;
-@dynamic group;
-@dynamic kind;
-@dynamic link;
-@dynamic news_abstract;
 @dynamic newsid;
-@dynamic order;
-@dynamic picdesc;
-@dynamic picture;
-@dynamic realtimeid;
-@dynamic source;
+@dynamic news_abstract;
+@dynamic channelid;
 @dynamic timestamp;
+@dynamic picture;
+@dynamic link;
+@dynamic picdesc;
+@dynamic source;
 @dynamic title;
+@dynamic order;
+@dynamic group;
+@dynamic browserCount;
+@dynamic commentCount;
+@dynamic realtimeid;
+@dynamic kind;
 @dynamic UPDATE_DATE;
+@dynamic isDeep;
+@dynamic deepId;
+@dynamic deepTitle;
+@dynamic deepPictureLogo;
+@dynamic deepNews_abstract;
+@dynamic deepSort;
+@dynamic deepPictureLink;
+@dynamic deepPubDate;
+@dynamic deepTimestamp;
+@dynamic deepCreatetime;
 
 @end
