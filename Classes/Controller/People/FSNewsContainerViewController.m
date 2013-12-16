@@ -831,8 +831,15 @@ NSString                       *_newsID;
                 break;
             case TouchEvenKind_GoBack:
             {
-                [self.navigationController popViewControllerAnimated:YES];
-                break;
+                if (self.navigationController) {
+                    [self.navigationController popViewControllerAnimated:YES];
+
+                }
+                if (self.presentingViewController) {
+                    [self dismissModalViewControllerAnimated:YES];
+                }
+
+                                break;
             }
             default:
                 break;
