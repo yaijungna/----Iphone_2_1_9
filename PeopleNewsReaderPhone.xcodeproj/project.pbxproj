@@ -488,6 +488,7 @@
 		589D9BFD17E8022E0071686A /* deep_content.css in Resources */ = {isa = PBXBuildFile; fileRef = 589D9BFA17E8022E0071686A /* deep_content.css */; };
 		589D9BFE17E8022E0071686A /* content.css in Resources */ = {isa = PBXBuildFile; fileRef = 589D9BFB17E8022E0071686A /* content.css */; };
 		589D9BFF17E8022E0071686A /* content_comment.css in Resources */ = {isa = PBXBuildFile; fileRef = 589D9BFC17E8022E0071686A /* content_comment.css */; };
+		589F55A1185EF8190068E0FF /* LocalNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589F55A0185EF8190068E0FF /* LocalNewsViewController.m */; };
 		58A9E5AD183C581200A1D3F4 /* yixin-friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A9E5AB183C581200A1D3F4 /* yixin-friend.png */; };
 		58A9E5AE183C581200A1D3F4 /* yixin-pengyq.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A9E5AC183C581200A1D3F4 /* yixin-pengyq.png */; };
 		58A9E5FD183F48DD00A1D3F4 /* FSDeepEndObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9E5FC183F48DD00A1D3F4 /* FSDeepEndObject.m */; };
@@ -1544,6 +1545,8 @@
 		589D9BFA17E8022E0071686A /* deep_content.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = deep_content.css; sourceTree = "<group>"; };
 		589D9BFB17E8022E0071686A /* content.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = content.css; sourceTree = "<group>"; };
 		589D9BFC17E8022E0071686A /* content_comment.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = content_comment.css; sourceTree = "<group>"; };
+		589F559F185EF8190068E0FF /* LocalNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNewsViewController.h; sourceTree = "<group>"; };
+		589F55A0185EF8190068E0FF /* LocalNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNewsViewController.m; sourceTree = "<group>"; };
 		58A9E5AB183C581200A1D3F4 /* yixin-friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-friend.png"; sourceTree = "<group>"; };
 		58A9E5AC183C581200A1D3F4 /* yixin-pengyq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-pengyq.png"; sourceTree = "<group>"; };
 		58A9E5B0183C703600A1D3F4 /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
@@ -2812,6 +2815,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5832A936185EF71D007FA74E /* localNews */,
 				58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */,
 				58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */,
 				0A0108141848D08100FCB106 /* libWeiboSDK.a */,
@@ -3165,6 +3169,15 @@
 				581503B0181167410013675F /* MobClick.h */,
 			);
 			name = "友盟统计";
+			sourceTree = "<group>";
+		};
+		5832A936185EF71D007FA74E /* localNews */ = {
+			isa = PBXGroup;
+			children = (
+				589F559F185EF8190068E0FF /* LocalNewsViewController.h */,
+				589F55A0185EF8190068E0FF /* LocalNewsViewController.m */,
+			);
+			name = localNews;
 			sourceTree = "<group>";
 		};
 		586AA1FA17D72C7D000D356F /* 统计 */ = {
@@ -4844,6 +4857,7 @@
 				820B563215DCC0DA007916E6 /* FSTableView.m in Sources */,
 				820B564915DCC1DB007916E6 /* FSTableContainerView.m in Sources */,
 				820B564E15DCC20E007916E6 /* FSTableViewCell.m in Sources */,
+				589F55A1185EF8190068E0FF /* LocalNewsViewController.m in Sources */,
 				58126C3818573525006C5D34 /* MJPhotoView.m in Sources */,
 				820B570815DCD661007916E6 /* FSSettingView.m in Sources */,
 				820B574A15DCDCB5007916E6 /* FSSettingCell.m in Sources */,

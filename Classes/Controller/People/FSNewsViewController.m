@@ -32,7 +32,7 @@
 #define KIND_USERCHANNEL_SELECTED  @"YAOWENCHANNEL"
 #define WIDTHOFNAME 53
 @implementation FSNewsViewController
-
+#define HeightOfChannel 30
 
 - (id)init {
 	self = [super init];
@@ -53,7 +53,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    //self.fpChangeTitleColor = nil;
+    
 }
 -(void)myDidReceiveMemoryWarning
 {
@@ -78,7 +78,22 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.myNaviBar removeFromSuperview];
+    //[self.myNaviBar removeFromSuperview];
+    
+    self.myNaviBar.topItem.leftBarButtonItem = nil;
+    //UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain target:self action:@selector(showLocalNews)];
+     NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
+    UIBarButtonItem   * barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"本地" style:UIBarButtonItemStylePlain target:self action:@selector(showLocalNews)];
+    barButtonItem.tintColor           = [UIColor whiteColor];
+    self.myNaviBar.topItem.rightBarButtonItem = barButtonItem;
+    [barButtonItem release];
+    
+    
+    [barButtonItem setTitleTextAttributes:dict2 forState:UIControlStateNormal];
+}
+-(void)showLocalNews
+{
+    
 }
 -(void)xxxxxx
 {
@@ -102,15 +117,15 @@
     if (_myScroview) {
         return;
     }
-    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 5, 44)];
+    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 5, HeightOfChannel)];
     imageView.image         = [UIImage imageWithNameString:@"箭头左"];
     imageView.alpha         = 0.0;
     [self.view  addSubview:imageView];
     [imageView release];
-    imageView.tag           = 20000;
+    imageView.tag           =  20000;
     
     
-    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, 44)];
+    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, HeightOfChannel)];
     imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
     [self.view  addSubview:imageView2];
     imageView2.tag           = 30000;
@@ -118,12 +133,13 @@
     
     
     
-    _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, 0, 290, 44)];
+    //_myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, 44, 290, HeightOfChannel)];
+    _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, 320, HeightOfChannel)];
     _myScroview.showsHorizontalScrollIndicator  = NO;
     _myScroview.tag            = 1000;
     [_myScroview addObserver:self forKeyPath:@"contentoffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     //_myScroview.delegate       = self;
-    _myScroview.contentSize    = CGSizeMake(WIDTHOFNAME*[_fs_GZF_ChannelListDAO.objectList count], 44);
+    _myScroview.contentSize    = CGSizeMake(WIDTHOFNAME*[_fs_GZF_ChannelListDAO.objectList count], HeightOfChannel);
     _myScroview.delegate       = self;
     
     int KK = 0;
@@ -132,20 +148,18 @@
         FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:i];
         UIButton * button        = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag               = i;
-        button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME, 44);
+        button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME, HeightOfChannel);
         
-        UILabel * label          = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTHOFNAME, 44)];
+        UILabel * label          = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTHOFNAME, HeightOfChannel)];
         label.tag                = 100;
         label.textAlignment      = UITextAlignmentCenter;
         label.text               = CObject.channelname;
 
         if ([CObject.channelname isEqualToString:@"三中全"]) {
-            button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, 44);
-            label.frame              =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, 44);
+            button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, HeightOfChannel);
+            label.frame              =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, HeightOfChannel);
             label.text               =  @"三中全会";
         }
-        
-        
         
         
         [button addSubview:label];
@@ -162,7 +176,7 @@
     
     [self.view addSubview:_myScroview];
     [_myScroview release];
-    _topRedImageView            = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, WIDTHOFNAME, 4)];
+    _topRedImageView            = [[UIImageView alloc]initWithFrame:CGRectMake(0, HeightOfChannel -4, WIDTHOFNAME, 4)];
     _topRedImageView.image      = [UIImage imageNamed:@"topSelected.png"];
     [_myScroview addSubview:_topRedImageView];
     [_topRedImageView release];
@@ -170,7 +184,7 @@
     
     
     [self addNewsScrollView];
-    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, 42, 320, 2)];
+    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44, 320, 1)];
     lineView.backgroundColor    = [UIColor redColor];
     [self.view addSubview:lineView];
     [lineView release];
@@ -251,8 +265,10 @@
 -(void)addNewsScrollView
 {
     
-    float xx = (ISIPHONE5?576:480)-44-49-20;
-    float offset = (_canBeHaveNaviBar?44:0);
+    
+    int heightOfChannel  = 30;
+    float xx = (ISIPHONE5?576:480)-44-49-20 - heightOfChannel;
+    float offset = (_canBeHaveNaviBar?44 + heightOfChannel :0);
     UIScrollView * scroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, offset, 320, xx)];
     scroview.contentSize    = CGSizeMake(320*_fs_GZF_ChannelListDAO.objectList.count, xx);
     scroview.delegate       = self;
@@ -316,7 +332,7 @@
     Label.textColor             = [UIColor redColor];
 
 
-    _topRedImageView.frame      = CGRectMake(WIDTHOFNAME*index, 40, WIDTHOFNAME, 4);
+    _topRedImageView.frame      = CGRectMake(WIDTHOFNAME*index, HeightOfChannel - 4, WIDTHOFNAME, 4);
     _currentIndex               = index;
 //    UIView * view               = [self.view viewWithTag:20000];
 //    UIView * view3               = [self.view viewWithTag:30000];
@@ -471,47 +487,6 @@
         }
         return;
     }
-    
-//    if ([sender isEqual:_fs_GZF_GetWeatherMessageDAO]) {
-//        if (status == FSBaseDAOCallBack_SuccessfulStatus || status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
-//            if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-//                //FSLog(@"_fs_GZF_ForNewsListDAO Refresh");
-//                //[self getUserChannelSelectedObject];
-//                if ([_fs_GZF_GetWeatherMessageDAO.objectList count]>0) {
-////                    FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
-////                    NSArray * arry = [[FSBaseDB sharedFSBaseDB]getObjectsByKeyWithName:@"FSUserSelectObject" key:nil value:nil];
-////                    [[FSBaseDB sharedFSBaseDB] deleteObjectByObjectS:arry];
-////                    FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
-////                    
-////                    sobj.kind = @"YAOWENCHANNEL";
-////                    sobj.keyValue1 = CObject.channelname;
-////                    sobj.keyValue2 = CObject.channelid;
-////                    [FSBaseDB saveDB];
-//                }
-////                FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
-////                
-////                FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
-////                
-////                sobj.kind = KIND_USERCHANNEL_SELECTED;
-////                sobj.keyValue1 = CObject.channelname;
-////                sobj.keyValue2 = CObject.channelid;
-////                sobj.keyValue3 = nil;
-////                [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
-////                [self addKindsScrollView];
-////                if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-////                    
-////                    [_fs_GZF_ChannelListDAO operateOldBufferData];
-////                }
-//            }
-//        }else if(status ==FSBaseDAOCallBack_NetworkErrorStatus){
-//            //[self getUserChannelSelectedObject];
-//            
-//            //[_fs_GZF_ForOnedayNewsFocusTopDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
-//        }
-//
-//    }
-    
-
 }
 -(void)didReceiveMemoryWarning
 {
