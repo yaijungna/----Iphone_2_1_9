@@ -569,7 +569,7 @@ NSString * getCityName()
 
 	
 	_slideViewController.rootViewController = _rootViewController;
-       self.window.rootViewController = navi;
+    self.window.rootViewController = navi;
     [navi release];
     [self DidRecivePushMessage:pushInof];
     

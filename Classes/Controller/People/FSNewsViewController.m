@@ -29,8 +29,9 @@
 #import "MyNewsLIstView.h"
 #import "LygDequeueScroView.h"
 #import "PeopleNewsReaderPhoneAppDelegate.h"
+#import "LocalNewsViewController.h"
 #define KIND_USERCHANNEL_SELECTED  @"YAOWENCHANNEL"
-#define WIDTHOFNAME 53
+#define WIDTHOFNAME 57
 @implementation FSNewsViewController
 #define HeightOfChannel 30
 
@@ -93,6 +94,18 @@
 }
 -(void)showLocalNews
 {
+    LocalNewsViewController * local = [[LocalNewsViewController alloc]init];
+    local.canBeHaveNaviBar          = YES;
+    //local
+
+    [self.parentNavigationController pushViewController:local animated:YES];
+    [local release];
+    
+//    FSBasePeopleViewController * people = [[FSBasePeopleViewController alloc] init];
+//    people.canBeHaveNaviBar             = YES;
+//    
+//    [self.parentNavigationController pushViewController:people animated:YES];
+
     
 }
 -(void)xxxxxx
@@ -118,7 +131,7 @@
         return;
     }
     UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 5, HeightOfChannel)];
-    imageView.image         = [UIImage imageWithNameString:@"箭头左"];
+    //imageView.image         = [UIImage imageWithNameString:@"箭头左"];
     imageView.alpha         = 0.0;
     [self.view  addSubview:imageView];
     [imageView release];
@@ -126,7 +139,7 @@
     
     
     UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, HeightOfChannel)];
-    imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
+    //imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
     [self.view  addSubview:imageView2];
     imageView2.tag           = 30000;
     [imageView2 release];

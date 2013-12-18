@@ -22,11 +22,24 @@
     }
     return self;
 }
+-(void)showLoadingView{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    _titleLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+    _titleLabel.textColor       = [UIColor redColor];
+    _titleLabel.textAlignment   = UITextAlignmentCenter;
+    _titleLabel.text            = @"本地新闻";
+    //_titleLabel.font            = [UIFont systemFontOfSize:25];
+    //_titleLabel.font            = [UIFont fontWithName:<#(NSString *)#> size:25];
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    self.myNaviBar.frame = CGRectMake(0, 20, 320, 44);
+    self.myNaviBar.topItem.title = @"本地新闻";
+    self.myNaviBar.topItem.titleView = nil;
+    self.myNaviBar.topItem.titleView = _titleLabel;
+    [_titleLabel release];
 }
 
 - (void)didReceiveMemoryWarning

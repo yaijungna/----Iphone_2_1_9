@@ -52,6 +52,8 @@
     
     //注册键盘事件
     
+    //self.isInFaverate = [self ]
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "FSBasePeopleViewController.h"
 @interface LocalNewsViewController : FSBasePeopleViewController
-
+@property(nonatomic,strong)UILabel * titleLabel;
 @end

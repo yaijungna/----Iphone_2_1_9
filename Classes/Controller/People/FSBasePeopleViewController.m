@@ -74,26 +74,6 @@
 	[settingBarItem release];
 	[btnNaviOption release];
     
-    
-    
-    
-//    UIButton *btnNaviOption = [[UIButton alloc] initWithFrame:CGRectZero];
-//	UIImage *imageBG = [UIImage imageNamed:@"返回1.png"];
-//	[btnNaviOption setBackgroundImage:imageBG forState:UIControlStateNormal];
-//	[btnNaviOption setBackgroundImage:imageBG forState:UIControlStateHighlighted];
-//    btnNaviOption.highlighted = YES;
-//    
-//	[btnNaviOption addTarget:self action:@selector(showLoadingView) forControlEvents:UIControlEventTouchUpInside];
-    //[btnNaviOption addTarget:self action:@selector(settingActionLock:) forControlEvents:UIControlEventTouchDown];
-    
-    
-    
-//    UIBarButtonItem *settingBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回1.png"] style:UIBarButtonItemStyleDone target:self action:@selector(showLoadingView)];
-//    NSLog(@"%f",settingBarItem.imageInsets.left);
-//    settingBarItem.tintColor = [UIColor whiteColor];
-//	[settingBarItem release];
-//	//[btnNaviOption release];
-
 }
 -(void)addRightButtonItem
 {
