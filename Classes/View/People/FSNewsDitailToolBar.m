@@ -9,6 +9,7 @@
 #import "FSNewsDitailToolBar.h"
 #import "FSNewsContainerView.h"
 #import "FSInformationMessageView.h"
+#import "FSBaseDB.h"
 @implementation FSNewsDitailToolBar
 
 @synthesize touchEvenKind = _touchEvenKind;
@@ -214,6 +215,16 @@
     }
     
 }
+-(void)setIsInFaverate:(BOOL)isInFaverate
+{
+    _isInFaverate = isInFaverate;
+    if (_isInFaverate) {
+        [_bt_faverate setBackgroundImage:[UIImage imageNamed:@"newsDitail_fav_2.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [_bt_faverate setBackgroundImage:[UIImage imageNamed:@"newsDitail_fav_1.png"] forState:UIControlStateNormal];
+    }
+}
 
 -(void)onGoBackButtonClicked
 {
@@ -221,13 +232,18 @@
     if ([self.parentDelegate respondsToSelector:@selector(fsBaseContainerViewTouchEvent:)]) {
         [self.parentDelegate fsBaseContainerViewTouchEvent:self];
     }
-//    UIViewController * temp = (UIViewController *)(((FSNewsContainerView*)(self.parentDelegate)).parentDelegate);
-//    if (temp.navigationController) {
-//        [temp.navigationController popViewControllerAnimated:YES];
-//    }else if (temp.presentingViewController)
-//    {
-//        [temp dismissModalViewControllerAnimated:YES];
-//    }
+}
+-(NSObject *)ObjIsInFaverate{
+    if (!self.newsOrDeepid) {
+        return NO;
+    }
+    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSMyFaverateObject" key:@"deepId" value:self.newsOrDeepid];
+    if ([array count]>0) {
+        return [array objectAtIndex:0];
+    }
+    else{
+        return nil;
+    }
 }
 
 -(void)faverate:(id)sender{

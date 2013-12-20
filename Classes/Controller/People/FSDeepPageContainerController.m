@@ -63,9 +63,22 @@
     return self;
 }
 
+-(BOOL)isDeepidInFav:(NSString*)deepid
+{
+    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSMyFaverateObject" key:@"deepId" value:deepid];
+    if (array.count > 0) {
+        return YES;
+    }else
+    {
+        return NO;
+    }
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _newsDitailToolBar.isInFaverate = [self  isDeepidInFav:self.deepid];
 }
 
 - (void)didReceiveMemoryWarning
@@ -278,8 +291,11 @@
     _newsDitailToolBar.parentDelegate = nil;
     
     _postCommentDao.parentDelegate = nil;
-    [_postCommentDao release];
-    _postCommentDao = nil;
+    self.postCommentDao            = nil;
+
+    
+    _getCommentDao.parentDelegate = nil;
+    self.getCommentDao            = nil;
     
     [super dealloc];
 }

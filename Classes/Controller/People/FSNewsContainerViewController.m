@@ -95,7 +95,7 @@ NSString                       *_newsID;
     _isImportant = isImportant;
     _fs_GZF_NewsContainerDAO.isImportNews = isImportant;
 }
-
+    
 
 - (void)dealloc {
     NSString * string = [_fsNewsContainerView.fsNewsDitailToolBar.growingText.text copy];
@@ -202,6 +202,10 @@ NSString                       *_newsID;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateComment:) name:@"updateComment" object:nil];
      
     _fsNewsContainerView = [[FSNewsContainerView alloc] init];
+    FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
+    if (o!= nil) {
+        _fsNewsContainerView.isInFaverate = YES;
+    }
     _fsNewsContainerView.comment_content = self.oldComment;
     _fsNewsContainerView.parentDelegate = self;
     [self.view addSubview:_fsNewsContainerView];
@@ -337,10 +341,7 @@ NSString                       *_newsID;
 
     }
     
-    FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
-    if (o!= nil) {
-        _fsNewsContainerView.isInFaverate = YES;
-    }
+    
     _fs_GZF_NewsContainerDAO.newsSourceKind = self.newsSourceKind;
     //NSLog(@"doSomethingForViewFirstTimeShowdoSomethingForViewFirstTimeShow");
     [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
@@ -487,7 +488,9 @@ NSString                       *_newsID;
     if ([sender isEqual:_fs_GZF_NewsContainerDAO]) {
         if (status == FSBaseDAOCallBack_SuccessfulStatus ||
 			status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
-             NSMutableDictionary *array = [[NSMutableDictionary alloc] init];
+            
+            
+            NSMutableDictionary *array = [[NSMutableDictionary alloc] init];
             if (_fs_GZF_NewsContainerDAO.cobj!=nil) {
                 //NSLog(@"_fs_GZF_NewsContainerDAO.cobj:%@",_fs_GZF_NewsContainerDAO.cobj);
                 [array setValue:_fs_GZF_NewsContainerDAO.cobj forKey:@"NewsContainerDAO"];

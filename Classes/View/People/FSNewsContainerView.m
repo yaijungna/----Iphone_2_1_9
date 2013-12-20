@@ -85,6 +85,7 @@
     [_fsNewsContainerWebView release];
     
     _fsNewsDitailToolBar = [[FSNewsDitailToolBar alloc] init];
+    _fsNewsDitailToolBar.isInFaverate = self.isInFaverate;
     //_fsNewsDitailToolBar.comment_content = self.comment_content;
     _fsNewsDitailToolBar.clipsToBounds = YES;
     _fsNewsDitailToolBar.parentDelegate = self;

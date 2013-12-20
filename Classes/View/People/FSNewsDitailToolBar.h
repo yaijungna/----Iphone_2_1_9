@@ -67,6 +67,7 @@ typedef  enum _TouchEvenKind{
 @property (nonatomic,assign) BOOL isInFaverate;
 @property (nonatomic,assign) BOOL fontToolBarIsShow;
 @property (nonatomic,retain) HPGrowingTextView *growingText;
+@property (nonatomic,assign) NSString * newsOrDeepid;
 
 
 -(void)fontToolBarCtr;
