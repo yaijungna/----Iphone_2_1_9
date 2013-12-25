@@ -36,16 +36,17 @@
     
     if (self.isnavTopBar) {
         
-         _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
+         //_navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
+        _navTopBar  = [[LygNavigationBar alloc]init];
         _navTopBar.tintColor = [UIColor whiteColor];
-         #ifdef __IPHONE_5_0
-         [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-         #endif
          UINavigationItem *topItem = [[UINavigationItem alloc] init];
         
         
         UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnBack:)];
         backButton.tintColor = [UIColor whiteColor];
+        if (ISIOS7) {
+            backButton.tintColor = [UIColor darkGrayColor];
+        }
         _navTopBar.backItem.leftBarButtonItem  = backButton;
         
         UINavigationItem *leftItem = [[UINavigationItem alloc] init];

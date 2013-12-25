@@ -71,6 +71,8 @@
     //_image_Onright.imageCuttingKind = ImageCuttingKind_fixrect;
     _image_Onright.contentMode = UIViewContentModeScaleAspectFill;
     _image_Onright.clipsToBounds = YES;
+//    _image_Onright.layer.borderColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
+//    _image_Onright.layer.borderWidth =  1;
     //_image_newsimage.contentMode = UIViewContentModeScaleAspectFill;
     [_myContentView addSubview:_lab_NewsTitle];
     [_myContentView addSubview:_lab_NewsType];
@@ -128,7 +130,7 @@
         }else
         {
             _lab_NewsTitle.text = obj.title;
-            NSString * string   = obj.news_abstract;
+            //NSString * string   = obj.news_abstract;
             //_lab_NewsType.text  = obj.news_abstract;
             temp                = obj.picture;
         }
@@ -158,7 +160,7 @@
         if ([temp length]>0 && [self isDownloadPic]) {
             _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 30, 57, 57);
             
-            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage.png"]];
+            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
             _image_Onright.alpha = 1.0f;
             //_lab_NewsType.frame = CGRectMake(self.frame.size.width-50,4, 40, 22);
             

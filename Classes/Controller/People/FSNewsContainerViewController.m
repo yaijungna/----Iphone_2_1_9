@@ -347,14 +347,8 @@ NSString                       *_newsID;
     [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
     [_adsDao HTTPGetDataWithKind:GET_DataKind_Refresh];
     
-    if (self.isNewNavigation) {
-        //_fsNewsContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        _fsNewsContainerView.frame = self.view.frame;
-    }
-    else{
-        _fsNewsContainerView.frame = self.view.frame;
-
-    }
+    
+    _fsNewsContainerView.frame = self.view.frame;
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
 }
 

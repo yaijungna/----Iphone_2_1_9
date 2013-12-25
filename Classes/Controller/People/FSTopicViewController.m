@@ -49,6 +49,13 @@
 
 - (void)ownerPicture {
     //有图模式
+
+    float naviBarHeight = 64;
+    if (!ISIOS7) {
+        naviBarHeight = 44;
+    }
+    _scrollPageView = [[FSScrollPageView alloc] initWithFrame:CGRectMake(FSLEFT_RIGHT_SPACE, 20.0f + naviBarHeight, self.view.frame.size.width - FSLEFT_RIGHT_SPACE * 2.0f, self.view.frame.size.height-40)];
+
     _scrollPageView = [[FSScrollPageView alloc]init];
     _scrollPageView.tag = 1000;
     if (ISIPHONE5) {
@@ -82,6 +89,12 @@
     {
         _deepFloattingTitleView = nil;
     }
+
+    
+    _myDeepListView = [[LygDeepListView alloc]initWithDeepListDao:_fs_GZF_DeepListDAO initDelegate:self];
+    //float xxxx      = ISIPHONE5?(548 - 44 - 44):(460 - 44 - 44);
+    _myDeepListView.frame = CGRectMake(0, naviBarHeight, 320, xxxx);
+
     [self.view addSubview:_myDeepListView];
 }
 
@@ -252,14 +265,15 @@
 
     
     if (ISIPHONE5) {
-         _scrollPageView.frame = CGRectMake(FSLEFT_RIGHT_SPACE, 25.0f + 44 , rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f , (rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f)/2*3-18);
+         _scrollPageView.frame = CGRectMake(FSLEFT_RIGHT_SPACE, 25.0f + NAVIBARHEIGHT , rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f , (rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f)/2*3-18);
     }
     else{
-         _scrollPageView.frame = CGRectMake(FSLEFT_RIGHT_SPACE, 10.0f + 44, rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f , (rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f)/2*3-18);
+         _scrollPageView.frame = CGRectMake(FSLEFT_RIGHT_SPACE, 10.0f + NAVIBARHEIGHT, rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f , (rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f)/2*3-18);
     }
-    float xxxx      = ISIPHONE5?(548 - 44 - 49):(460 - 44 - 49);
-    _myDeepListView.frame = CGRectMake(0, 44, 320, xxxx);
-    _deepFloattingTitleView.frame= CGRectMake(FSLEFT_RIGHT_SPACE+12, 18.0f + _scrollPageView.frame.size.height, rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f -24,rect.size.height- 18.0f - _scrollPageView.frame.size.height);
+    float barHeight = ((ISIOS7)?64:44);
+    float xxxx      = self.view.frame.size.height - barHeight;
+    _myDeepListView.frame = CGRectMake(0, barHeight, 320, xxxx);
+    _deepFloattingTitleView.frame= CGRectMake(FSLEFT_RIGHT_SPACE+12, 18.0f + _scrollPageView.frame.size.height + NAVIBARHEIGHT -44, rect.size.width - FSLEFT_RIGHT_SPACE * 2.0f -24,rect.size.height- 18.0f - _scrollPageView.frame.size.height);
 }
 - (void)dataAccessObjectSync:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status{
 	NSLog(@"%u",status);

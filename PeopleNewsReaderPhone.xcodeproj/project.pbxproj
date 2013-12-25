@@ -479,6 +479,9 @@
 		58847F91180197FE00B10BC6 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 58847F90180197FE00B10BC6 /* ads.png */; };
 		588B051318161719001E2D33 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B051218161719001E2D33 /* Crashlytics.framework */; };
 		589004E817D16F970001AE30 /* MyIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589004E717D16F970001AE30 /* MyIndicatorView.m */; };
+		5890805F1863DC7600E3B923 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890805E1863DC7600E3B923 /* Appirater.m */; };
+		589080641868436E00E3B923 /* navigatorBar_S@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 589080621868436E00E3B923 /* navigatorBar_S@2x.png */; };
+		589080651868436E00E3B923 /* navigatorBar_S.png in Resources */ = {isa = PBXBuildFile; fileRef = 589080631868436E00E3B923 /* navigatorBar_S.png */; };
 		5890870B18505343009553BA /* FSNewsDitailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890870A18505343009553BA /* FSNewsDitailObject.m */; };
 		5893DB90179FD01C00068319 /* navigatorBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8E179FD01400068319 /* navigatorBar.png */; };
 		5893DB91179FD01C00068319 /* navigatorBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8F179FD01800068319 /* navigatorBar@2x.png */; };
@@ -1534,6 +1537,10 @@
 		588B051218161719001E2D33 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		589004E617D16F970001AE30 /* MyIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIndicatorView.h; sourceTree = "<group>"; };
 		589004E717D16F970001AE30 /* MyIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIndicatorView.m; sourceTree = "<group>"; };
+		5890805D1863DC7600E3B923 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		5890805E1863DC7600E3B923 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		589080621868436E00E3B923 /* navigatorBar_S@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigatorBar_S@2x.png"; sourceTree = "<group>"; };
+		589080631868436E00E3B923 /* navigatorBar_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigatorBar_S.png; sourceTree = "<group>"; };
 		5890870918505343009553BA /* FSNewsDitailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsDitailObject.h; sourceTree = "<group>"; };
 		5890870A18505343009553BA /* FSNewsDitailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewsDitailObject.m; sourceTree = "<group>"; };
 		5893DB8E179FD01400068319 /* navigatorBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigatorBar.png; sourceTree = "<group>"; };
@@ -2815,6 +2822,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5890805C1863DC5200E3B923 /* 评论提示 */,
 				5832A936185EF71D007FA74E /* localNews */,
 				58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */,
 				58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */,
@@ -3225,6 +3233,15 @@
 			name = "深度";
 			sourceTree = "<group>";
 		};
+		5890805C1863DC5200E3B923 /* 评论提示 */ = {
+			isa = PBXGroup;
+			children = (
+				5890805D1863DC7600E3B923 /* Appirater.h */,
+				5890805E1863DC7600E3B923 /* Appirater.m */,
+			);
+			name = "评论提示";
+			sourceTree = "<group>";
+		};
 		58AE68A317AF7F480007203C /* Tencent */ = {
 			isa = PBXGroup;
 			children = (
@@ -3500,6 +3517,8 @@
 		820C79D7160C378B00E6A4CD /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
+				589080621868436E00E3B923 /* navigatorBar_S@2x.png */,
+				589080631868436E00E3B923 /* navigatorBar_S.png */,
 				58FA002517A8B20A00841355 /* topSelected.png */,
 				58FA002617A8B20A00841355 /* topSelected@2x.png */,
 				58FA002117A88D2300841355 /* shouqi.png */,
@@ -4363,6 +4382,7 @@
 				A6A22E1E15D8988100E48EB8 /* Default@2x.png in Resources */,
 				581887F51806691900590FDC /* 跳转@2x.png in Resources */,
 				A647061F15D8D8AB00C19AD1 /* blackArrow.png in Resources */,
+				589080651868436E00E3B923 /* navigatorBar_S.png in Resources */,
 				A69ABB3715D9CC450064B51B /* pulltorefresh_arraw.png in Resources */,
 				A69ABB3815D9CC450064B51B /* pulltorefresh_arraw@2x.png in Resources */,
 				A69ABB3915D9CC450064B51B /* pulltorefresh_background.png in Resources */,
@@ -4592,6 +4612,7 @@
 				042B050516AD0C65001920C7 /* Deep_TextTitle@2x.png in Resources */,
 				042B050816AD11F3001920C7 /* deep_textline.png in Resources */,
 				042B050916AD11F3001920C7 /* deep_textline@2x.png in Resources */,
+				589080641868436E00E3B923 /* navigatorBar_S@2x.png in Resources */,
 				042B050C16AD16B3001920C7 /* Deep_picBottom.png in Resources */,
 				042B050D16AD16B3001920C7 /* Deep_picBottom@2x.png in Resources */,
 				042B050F16AD16C4001920C7 /* Deep_Leadmask.png in Resources */,
@@ -5129,6 +5150,7 @@
 				049603741697FA0D00FC7EC4 /* FSChannelObject.m in Sources */,
 				0496037A1697FBBC00FC7EC4 /* FSBatchNewsObject.m in Sources */,
 				049603861697FD9900FC7EC4 /* FSNewsDitailPicObject.m in Sources */,
+				5890805F1863DC7600E3B923 /* Appirater.m in Sources */,
 				0496038C1697FD9C00FC7EC4 /* FSCommentObject.m in Sources */,
 				5805AC22183F602C007D934E /* FSDeepContentObject.m in Sources */,
 				04D9F39E1699422200C9DF6A /* FSDeepContent_ChildObject.m in Sources */,
@@ -5241,7 +5263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bo Du (483V26PX5Y)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5275,7 +5297,7 @@
 				PRODUCT_NAME = PeopleNewsReaderPhone;
 				PROVISIONING_PROFILE = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5284,7 +5306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5316,7 +5338,7 @@
 				PRODUCT_NAME = PeopleNewsReaderPhone;
 				PROVISIONING_PROFILE = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5336,7 +5358,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "84895731-6ACA-400E-9B7D-E417DBD92370";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84895731-6ACA-400E-9B7D-E417DBD92370";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = AdHoc;
 		};
@@ -5344,7 +5366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5377,7 +5399,7 @@
 				PRODUCT_NAME = PeopleNewsReaderPhone;
 				PROVISIONING_PROFILE = "84895731-6ACA-400E-9B7D-E417DBD92370";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84895731-6ACA-400E-9B7D-E417DBD92370";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5398,7 +5420,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "75B50535-9B69-461A-A0F9-2D1B21507825";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "75B50535-9B69-461A-A0F9-2D1B21507825";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -5416,7 +5438,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

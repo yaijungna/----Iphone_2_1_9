@@ -62,7 +62,7 @@
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
     _fsAboutContaierView.backgroundColor = [UIColor whiteColor];
-    _fsAboutContaierView.frame = CGRectMake(0, 44, rect.size.width, rect.size.height -FSSETTING_VIEW_NAVBAR_HEIGHT);
+    _fsAboutContaierView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, rect.size.height - NAVIBARHEIGHT);
 }
 - (void)viewDidUnload
 {

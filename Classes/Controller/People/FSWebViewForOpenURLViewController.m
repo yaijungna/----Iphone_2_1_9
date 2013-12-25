@@ -75,13 +75,9 @@
 	_webView.scalesPageToFit = YES;
 	[self.view addSubview:_webView];
 	
-	_navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, TOOL_BROWSER_HEIGHT)];
+    _navTopBar = [[LygNavigationBar alloc]init];
     _navTopBar.alpha = 0.0;
-#ifdef __IPHONE_5_0
-    [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-#endif
-
-	if (!_withOutToolbar) {
+    if (!_withOutToolbar) {
         _navTopBar.alpha = 1.0;
         [self.view addSubview:_navTopBar];
     }

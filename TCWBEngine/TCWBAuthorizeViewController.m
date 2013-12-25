@@ -40,7 +40,7 @@
     
 
 
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 44, 320, self.view.frame.size.height - _navTopBar.frame.size.height)];
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NAVIBARHEIGHT, 320, self.view.frame.size.height - NAVIBARHEIGHT)];
     [webView setDelegate:self];
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:requestURLString]
                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData

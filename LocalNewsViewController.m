@@ -35,7 +35,9 @@
     //_titleLabel.font            = [UIFont systemFontOfSize:25];
     //_titleLabel.font            = [UIFont fontWithName:<#(NSString *)#> size:25];
     _titleLabel.backgroundColor = [UIColor clearColor];
-    self.myNaviBar.frame = CGRectMake(0, 20, 320, 44);
+    
+    float xx = (ISIOS7?64:44);
+    self.myNaviBar.frame = CGRectMake(0, 0, 320, xx);
     self.myNaviBar.topItem.title = @"本地新闻";
     self.myNaviBar.topItem.titleView = nil;
     self.myNaviBar.topItem.titleView = _titleLabel;

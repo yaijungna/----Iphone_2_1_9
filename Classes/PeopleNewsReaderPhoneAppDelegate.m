@@ -43,7 +43,7 @@
 #import "MobClick.h"
 #import "YXApi.h"
 #import "YXApiObject.h"
-
+#import "Appirater.h"
 NSString * getCityName()
 {
     PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
@@ -152,7 +152,7 @@ NSString * getCityName()
     [_fs_GZF_localGetWeatherMessageDAO2 HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
 
     
-   
+    [Appirater  appLaunched:YES];
     return YES;
 }
 -(void)xxxxx
@@ -302,6 +302,7 @@ NSString * getCityName()
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [Appirater appEnteredForeground:YES];
     [PeopleNewsStati sharedStati].timeOfAppOpen = time(NULL);
     [self performSelectorInBackground:@selector(xxxxx) withObject:nil];
     /*

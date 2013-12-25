@@ -47,7 +47,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  Place your Apple generated software id here.
  */
-#define APPIRATER_APP_ID				301377083
+#define APPIRATER_APP_ID				@"424180337"
 
 /*
  Your app's name.
@@ -59,29 +59,30 @@ extern NSString *const kAppiraterReminderRequestDate;
  threshold.
  */
 #define APPIRATER_LOCALIZED_MESSAGE     NSLocalizedString(@"If you enjoy using %@, would you mind taking a moment to rate it? It won't take more than a minute. Thanks for your support!", nil)
-#define APPIRATER_MESSAGE				[NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE, APPIRATER_APP_NAME]
-
+//#define APPIRATER_MESSAGE				[NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE, APPIRATER_APP_NAME]
+#define APPIRATER_MESSAGE				@"五星点评赢话费，先评先得!"
 /*
  This is the title of the message alert that users will see.
  */
-#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedString(@"Rate %@", nil)
+#define APPIRATER_LOCALIZED_MESSAGE_TITLE   NSLocalizedString(@"%@", nil)
 #define APPIRATER_MESSAGE_TITLE             [NSString stringWithFormat:APPIRATER_LOCALIZED_MESSAGE_TITLE, APPIRATER_APP_NAME]
 
 /*
  The text of the button that rejects reviewing the app.
  */
-#define APPIRATER_CANCEL_BUTTON			NSLocalizedString(@"No, Thanks", nil)
+#define APPIRATER_CANCEL_BUTTON			NSLocalizedString(@"不了,谢谢", nil)
 
 /*
  Text of button that will send user to app review page.
  */
-#define APPIRATER_LOCALIZED_RATE_BUTTON NSLocalizedString(@"Rate %@", nil)
-#define APPIRATER_RATE_BUTTON			[NSString stringWithFormat:APPIRATER_LOCALIZED_RATE_BUTTON, APPIRATER_APP_NAME]
+#define APPIRATER_LOCALIZED_RATE_BUTTON NSLocalizedString(@"%@", nil)
+//#define APPIRATER_RATE_BUTTON			[NSString stringWithFormat:APPIRATER_LOCALIZED_RATE_BUTTON, @"现在去评分"]];
+#define APPIRATER_RATE_BUTTON			@"现在去评分"
 
 /*
  Text for button to remind the user to review later.
  */
-#define APPIRATER_RATE_LATER			NSLocalizedString(@"Remind me later", nil)
+#define APPIRATER_RATE_LATER			NSLocalizedString(@"稍后再说", nil)
 
 /*
  Users will need to have the same version of your app installed for this many
@@ -99,7 +100,7 @@ extern NSString *const kAppiraterReminderRequestDate;
  Users need to 'use' the same version of the app this many times before
  before they will be prompted to rate it.
  */
-#define APPIRATER_USES_UNTIL_PROMPT		20		// integer
+#define APPIRATER_USES_UNTIL_PROMPT		3		// integer
 
 /*
  A significant event can be anything you want to be in your app. In a

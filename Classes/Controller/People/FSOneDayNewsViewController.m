@@ -124,7 +124,8 @@
 - (void)loadChildView {
 	[super loadChildView];
 	self.view.backgroundColor = COLOR_NEWSLIST_TITLE_WHITE;
-    _fsOneDayNewsListContainerView = [[FSOneDayNewsListContainerView alloc] initWithFrame:CGRectMake(0.0f, self.canBeHaveNaviBar?44:0, self.view.frame.size.width, self.view.frame.size.height - (self.canBeHaveNaviBar?44:0))];
+    float xx = ((ISIOS7)?64:44);
+    _fsOneDayNewsListContainerView = [[FSOneDayNewsListContainerView alloc] initWithFrame:CGRectMake(0.0f, self.canBeHaveNaviBar?xx:0, self.view.frame.size.width, self.view.frame.size.height - (self.canBeHaveNaviBar?xx:0))];
     _fsOneDayNewsListContainerView.backgroundColor = [UIColor redColor];
     _fsOneDayNewsListContainerView.parentDelegate = self;
     [self.view addSubview:_fsOneDayNewsListContainerView];
@@ -162,7 +163,8 @@
 
 - (void)layoutControllerViewWithRect:(CGRect)rect {
     //self.myNaviBar.backgroundColor = [UIColor redColor];
-    _fsOneDayNewsListContainerView.frame = CGRectMake(0.0f, self.canBeHaveNaviBar?44:0, rect.size.width, rect.size.height - (self.canBeHaveNaviBar?44:0));
+    float xxx = (ISIOS7?64:44);
+    _fsOneDayNewsListContainerView.frame = CGRectMake(0.0f, self.canBeHaveNaviBar?xxx:0, rect.size.width, rect.size.height - (self.canBeHaveNaviBar?xxx:0));
     
 }
 

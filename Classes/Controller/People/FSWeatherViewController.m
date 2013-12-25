@@ -65,11 +65,8 @@
     _titleView.toBottom = NO;
     _titleView.parentDelegate = self;
     
-    _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
-        [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-    }
-        [_navTopBar addSubview:_titleView];
+    _navTopBar = [[LygNavigationBar alloc]init];
+    [_navTopBar addSubview:_titleView];
     //[_titleView reSetFrame];
     
 	[self.view addSubview:_navTopBar];

@@ -41,13 +41,22 @@ CGFloat getCurrentWidth(UIInterfaceOrientation orientation)
 
 CGFloat getCurrentHeight(UIInterfaceOrientation orientation, UIViewController *controller) {
 	int direction = getDirection(orientation);	
-	CGFloat totalHeight = getStatusBarHeight() + getTotalControllerBarHeight(controller);
+	float xxx = getStatusBarHeight();
+    if (ISIOS7) {
+        xxx = 0;
+    }
+	CGFloat totalHeight = xxx + getTotalControllerBarHeight(controller);
 	return (direction == HORIZONTAL_DIRECTION ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height) - totalHeight;
 }
 
 CGRect getCurrentViewFrame(UIInterfaceOrientation orientation, UIViewController *controller) {
 	CGFloat ctrlHeight = getTotalControllerBarHeight(controller);
-	return CGRectMake(0.0f, (ctrlHeight > 0 ? 0.0f : getStatusBarHeight()), getCurrentWidth(orientation), getCurrentHeight(orientation, controller));
+    float xxxx = getStatusBarHeight();
+    if (ISIOS7) {
+        xxxx = 0;
+    }
+    printf("%f",getStatusBarHeight());
+	return CGRectMake(0.0f, (ctrlHeight > 0 ? 0.0f : xxxx), getCurrentWidth(orientation), getCurrentHeight(orientation, controller));
 }
 
 
@@ -60,6 +69,7 @@ CGFloat getTotalControllerBarHeight(UIViewController *controller) {
 	if (controller.navigationController != nil && !controller.navigationController.navigationBar.hidden) {
 		rst += controller.navigationController.navigationBar.frame.size.height;
 	}
+    float xxx = rst;
 
 	return rst;
 }

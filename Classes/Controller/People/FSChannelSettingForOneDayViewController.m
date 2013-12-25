@@ -78,11 +78,8 @@
     
     //if (self.isReSetting) {
         
-         _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 44.0f)];
+         _navTopBar = [[LygNavigationBar alloc]init];
          _navTopBar.tintColor = [UIColor whiteColor];
-         #ifdef __IPHONE_5_0
-         [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-         #endif
          NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:18], UITextAttributeFont,[UIColor blackColor],UITextAttributeTextColor,nil];
          _navTopBar.titleTextAttributes = dict;
          UINavigationItem *topItem = [[UINavigationItem alloc] init];
@@ -106,6 +103,10 @@
         UIBarButtonItem *returnButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnBack:)];
         returnButton.tintColor       = [UIColor whiteColor];
         _navTopBar.topItem.leftBarButtonItem = returnButton;
+    
+        if (ISIOS7) {
+            returnButton.tintColor = [UIColor darkGrayColor];
+        }
         _navTopBar.tintColor         = [UIColor whiteColor];
         UIBarButtonItem * buttonxxxx = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(popFinished)];
         buttonxxxx.tintColor = [UIColor whiteColor];
@@ -142,6 +143,7 @@
         [self.view addSubview:_fsNewbieGuideView];
         [_fsNewbieGuideView release];
     }
+    [self layoutControllerViewWithRect:self.view.frame];
     
     
     
@@ -231,18 +233,19 @@
 
 
 - (void)layoutControllerViewWithRect:(CGRect)rect {
+    float xxx = (ISIOS7?64:44);
     if (self.isReSetting){
-        _fsChannelSettingForOneDayView.frame = CGRectMake(0.0f, 44.0f, rect.size.width, rect.size.height-44.0f);
+        _fsChannelSettingForOneDayView.frame = CGRectMake(0.0f, xxx, rect.size.width, rect.size.height-xxx);
     }
     else{
         _fsChannelSettingForOneDayView.layoutWithLocalData = YES;
         _fsChannelSettingForOneDayView.data = @"11";
-        _fsChannelSettingForOneDayView.frame = CGRectMake(0.0f, 44.0f, rect.size.width, rect.size.height-44.0f);
+        _fsChannelSettingForOneDayView.frame = CGRectMake(0.0f, xxx, rect.size.width, rect.size.height-xxx);
     }
     
     
     if (!self.isReSetting) {
-        _fsNewbieGuideView.frame = CGRectMake(0, 0, rect.size.width, rect.size.height+44);
+        _fsNewbieGuideView.frame = CGRectMake(0, 0, rect.size.width, rect.size.height+xxx);
         _fsNewbieGuideView.alpha = 1.0f;
         [self.view bringSubviewToFront:_fsNewbieGuideView];
         [_fsNewbieGuideView doSomethingAtLayoutSubviews];

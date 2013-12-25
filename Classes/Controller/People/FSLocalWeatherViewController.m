@@ -78,17 +78,22 @@
     _titleView.hidRefreshBt = YES;
     _titleView.toBottom = NO;
     _titleView.parentDelegate = self;
-    [self.myNaviBar addSubview:_titleView];
+    //[self.myNaviBar addSubview:_titleView];
+    [self.myNaviBar.topItem setTitleView:_titleView];
     //self.myNaviBar.topItem.titleView = _titleView;
     [_titleView release];
     UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
     self.myNaviBar.topItem.leftBarButtonItem = backButton;
     backButton.tintColor = [UIColor whiteColor];
+    if (ISIOS7) {
+        backButton.tintColor = [UIColor darkGrayColor];
+    }
     [backButton release];
 }
 -(void)setWeatherView
 {
-    _fsLocalWeatherMessageView = [[FSLocalWeatherMessageView alloc] initWithFrame:CGRectMake(0.0, self.canBeHaveNaviBar?44:0, self.view.frame.size.width, self.view.frame.size.height)];
+    float xxx = (ISIOS7?64:44);
+    _fsLocalWeatherMessageView = [[FSLocalWeatherMessageView alloc] initWithFrame:CGRectMake(0.0, self.canBeHaveNaviBar?xxx:0, self.view.frame.size.width, self.view.frame.size.height)];
     _fsLocalWeatherMessageView.group = getCityName();
     _fsLocalWeatherMessageView.parentDelegate = self;
     [self.view addSubview:_fsLocalWeatherMessageView];

@@ -42,12 +42,7 @@
 
 
 -(void)loadChildView{
-    
-    _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
-#ifdef __IPHONE_5_0
-    [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-#endif
-    
+    _navTopBar = [[LygNavigationBar alloc]init];
     [self.view addSubview:_navTopBar];
     
     UIButton *returnBT = [[UIButton alloc] init];

@@ -31,7 +31,8 @@
 #import "PeopleNewsReaderPhoneAppDelegate.h"
 #import "LocalNewsViewController.h"
 #define KIND_USERCHANNEL_SELECTED  @"YAOWENCHANNEL"
-#define WIDTHOFNAME 57
+#define WIDTHOFNAME 10
+#define BORDER      10
 @implementation FSNewsViewController
 #define HeightOfChannel 30
 
@@ -130,51 +131,57 @@
     if (_myScroview) {
         return;
     }
-    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 5, HeightOfChannel)];
-    //imageView.image         = [UIImage imageWithNameString:@"箭头左"];
-    imageView.alpha         = 0.0;
-    [self.view  addSubview:imageView];
-    [imageView release];
-    imageView.tag           =  20000;
+    float xxx = 0;
+    ISIOS7?xxx = 20:1;
+//    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 15 + xxx, 8, HeightOfChannel)];
+//    imageView.image         = [UIImage imageWithNameString:@"箭头左"];
+//    imageView.alpha         = 0.0;
+//    [self.view  addSubview:imageView];
+//    [imageView release];
+//    imageView.tag           =  20000;
+//    
+//    
+//    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, HeightOfChannel)];
+//    //imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
+//    [self.view  addSubview:imageView2];
+//    imageView2.tag           = 30000;
+//    [imageView2 release];
     
     
-    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, HeightOfChannel)];
-    //imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
-    [self.view  addSubview:imageView2];
-    imageView2.tag           = 30000;
-    [imageView2 release];
     
-    
-    
-    //_myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, 44, 290, HeightOfChannel)];
-    _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, 320, HeightOfChannel)];
+    //_myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, xxx, 290, HeightOfChannel)];
+    _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44 + xxx, 320, HeightOfChannel)];
     _myScroview.showsHorizontalScrollIndicator  = NO;
     _myScroview.tag            = 1000;
     [_myScroview addObserver:self forKeyPath:@"contentoffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     //_myScroview.delegate       = self;
-    _myScroview.contentSize    = CGSizeMake(WIDTHOFNAME*[_fs_GZF_ChannelListDAO.objectList count], HeightOfChannel);
-    _myScroview.delegate       = self;
     
+    _myScroview.delegate       = self;
+    //NSString * string          = @"";
     int KK = 0;
+    float lastOriginX = 0;
     for (int i = 0; i<[_fs_GZF_ChannelListDAO.objectList count]; i++) {
         KK = i;
         FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:i];
         UIButton * button        = [UIButton buttonWithType:UIButtonTypeCustom];
+        //button.backgroundColor   = [UIColor redColor];
         button.tag               = i;
-        button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME, HeightOfChannel);
+        //button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME, HeightOfChannel);
         
         UILabel * label          = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTHOFNAME, HeightOfChannel)];
+        label.backgroundColor    = [UIColor clearColor];
         label.tag                = 100;
         label.textAlignment      = UITextAlignmentCenter;
+        //string                   = [NSString stringWithFormat:@"%@%@",string,@"-"];
         label.text               = CObject.channelname;
-
-        if ([CObject.channelname isEqualToString:@"三中全"]) {
-            button.frame             =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, HeightOfChannel);
-            label.frame              =  CGRectMake(i*WIDTHOFNAME, 0, WIDTHOFNAME * 2, HeightOfChannel);
-            label.text               =  @"三中全会";
-        }
+        //label.text               = string;
+        label.userInteractionEnabled = NO;
+        //label.autoresizingMask   = UIViewAutoresizingFlexibleWidth;
+        [label sizeToFit];
+        button.frame             = CGRectMake(lastOriginX, 0, label.frame.size.width + BORDER * 2, HeightOfChannel);
         
-        
+        label.frame              = CGRectMake(BORDER, (HeightOfChannel - label.frame.size.height)/2, label.frame.size.width, label.frame.size.height);
+        lastOriginX              += button.frame.size.width;
         [button addSubview:label];
         [label release];
         [button addTarget:self action:@selector(buttonCliCked:) forControlEvents:UIControlEventTouchUpInside];
@@ -186,10 +193,12 @@
             label.textColor      = [UIColor lightGrayColor];
         }
     }
+    UIView * view = [_myScroview viewWithTag:0];
+    _myScroview.contentSize    = CGSizeMake(lastOriginX, HeightOfChannel);
     
     [self.view addSubview:_myScroview];
     [_myScroview release];
-    _topRedImageView            = [[UIImageView alloc]initWithFrame:CGRectMake(0, HeightOfChannel -4, WIDTHOFNAME, 4)];
+    _topRedImageView            = [[UIImageView alloc]initWithFrame:CGRectMake(0, HeightOfChannel -4, view.frame.size.width, 4)];
     _topRedImageView.image      = [UIImage imageNamed:@"topSelected.png"];
     [_myScroview addSubview:_topRedImageView];
     [_topRedImageView release];
@@ -197,7 +206,8 @@
     
     
     [self addNewsScrollView];
-    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44, 320, 1)];
+    
+    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44 + xxx, 320, 1)];
     lineView.backgroundColor    = [UIColor redColor];
     [self.view addSubview:lineView];
     [lineView release];
@@ -278,10 +288,11 @@
 -(void)addNewsScrollView
 {
     
-    
-    int heightOfChannel  = 30;
-    float xx = (ISIPHONE5?576:480)-44-49-20 - heightOfChannel;
-    float offset = (_canBeHaveNaviBar?44 + heightOfChannel :0);
+    float xxxx = 0;
+    ISIOS7?xxxx = 20:1;
+    float offset = 44 + xxxx;
+    offset = (_canBeHaveNaviBar?offset + HeightOfChannel:0);
+    float xx = (ISIPHONE5?576:480) - 49 - offset;
     UIScrollView * scroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, offset, 320, xx)];
     scroview.contentSize    = CGSizeMake(320*_fs_GZF_ChannelListDAO.objectList.count, xx);
     scroview.delegate       = self;
@@ -331,6 +342,7 @@
 -(void)changeButtonColor:(int)index
 {
     FSChannelObject *aObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:index];
+    CGRect           rect    = [_myScroview viewWithTag:index].frame;
     [self performSelectorInBackground:@selector(addStatic:) withObject:aObject.channelname];
     [UIView beginAnimations:@"sdfsadfsafsa" context:nil];
     [UIView setAnimationDuration:0.1];
@@ -344,8 +356,8 @@
     Label                       = (UILabel*)[[[self.view viewWithTag:1000] viewWithTag:index] viewWithTag:100];
     Label.textColor             = [UIColor redColor];
 
-
-    _topRedImageView.frame      = CGRectMake(WIDTHOFNAME*index, HeightOfChannel - 4, WIDTHOFNAME, 4);
+    
+    _topRedImageView.frame      = CGRectMake(rect.origin.x, HeightOfChannel - 4, rect.size.width, 4);
     _currentIndex               = index;
 //    UIView * view               = [self.view viewWithTag:20000];
 //    UIView * view3               = [self.view viewWithTag:30000];
@@ -430,8 +442,8 @@
         UIView * view = [_myScroview viewWithTag:x];
         int index = view.frame.origin.x;
         int yyy   = _myScroview.contentOffset.x;
-        if (index - yyy > 290 - WIDTHOFNAME) {
-            _myScroview.contentOffset = CGPointMake(index - 290+ WIDTHOFNAME, 0);
+        if (index + view.frame.size.width - yyy > 320) {
+            _myScroview.contentOffset = CGPointMake(index - 320 + view.frame.size.width, 0);
         }else if(yyy > index)
         {
             _myScroview.contentOffset = CGPointMake(index, 0);

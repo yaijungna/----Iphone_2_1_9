@@ -98,7 +98,8 @@
 }
 
 -(NSString *)getShareContent{
-    return [[_tvContent.text componentsSeparatedByString:@"&"] objectAtIndex:0];
+    return _tvContent.text;
+    //return [[_tvContent.text componentsSeparatedByString:@"&"] objectAtIndex:0];
 }
 
 -(void)resignalTvContent{
