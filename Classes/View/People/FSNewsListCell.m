@@ -14,6 +14,8 @@
 #import "FSMyFaverateObject.h"
 #import "UIImageView+UIImageViewCache.h"
 #import "UIImageView+WebCache.h"
+#define HEIGHTOFIMG      57
+#define WIDTHOFNEWHASPIC 218
 @implementation MyContetView
 -(void)drawRect:(CGRect)rect
 {
@@ -21,7 +23,7 @@
     if ([self.delegateCell.data isKindOfClass:[FSOneDayNewsObject class]]) {
         FSOneDayNewsObject * obj = (FSOneDayNewsObject*)self.delegateCell.data;
         if ([obj.picture length]>0 && [self.delegateCell isDownloadPic]) {
-            tempRect = CGRectMake(11, 30, self.frame.size.width- 72 - 10, self.frame.size.height - 25);
+            tempRect = CGRectMake(11, 30, WIDTHOFNEWHASPIC, self.frame.size.height - 25);
         }
         else{
             tempRect = CGRectMake(11, 30, self.frame.size.width-20, self.frame.size.height - 25);
@@ -137,9 +139,9 @@
         _lab_NewsTitle.frame = CGRectMake(10, (self.frame.size.height - 25)/2, 310, 25);
         
         if ([temp length]>0 && [self isDownloadPic]) {
-            _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 5, 57, 57);
+            _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 5, HEIGHTOFIMG, HEIGHTOFIMG);
             
-            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage.png"]];
+            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
             _image_Onright.alpha = 1.0f;
             //_lab_NewsType.frame = CGRectMake(self.frame.size.width-50,4, 40, 22);
             
@@ -158,7 +160,7 @@
         _lab_NewsTitle.frame = CGRectMake(10, 4, 310, 25);
         
         if ([temp length]>0 && [self isDownloadPic]) {
-            _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 30, 57, 57);
+            _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 30, HEIGHTOFIMG, HEIGHTOFIMG);
             
             [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
             _image_Onright.alpha = 1.0f;
@@ -217,9 +219,9 @@
         FSOneDayNewsObject *o = (FSOneDayNewsObject *)cellData;
         if (o!=nil) {
             if ([o.picture length]>0) {
-                CGSize size = [o.news_abstract sizeWithFont:[UIFont systemFontOfSize:TODAYNEWSLIST_DESCRIPTION_FONT] constrainedToSize:CGSizeMake(218, 200) lineBreakMode:0];
+                CGSize size = [o.news_abstract sizeWithFont:[UIFont systemFontOfSize:TODAYNEWSLIST_DESCRIPTION_FONT] constrainedToSize:CGSizeMake(WIDTHOFNEWHASPIC, 200) lineBreakMode:0];
                 
-                return (size.height > 52?size.height:52) + 40;
+                return (size.height > HEIGHTOFIMG?size.height:HEIGHTOFIMG) + 40;
             }
             else{
                 CGSize size = [o.news_abstract sizeWithFont:[UIFont systemFontOfSize:TODAYNEWSLIST_DESCRIPTION_FONT] constrainedToSize:CGSizeMake(300, 200) lineBreakMode:0];
