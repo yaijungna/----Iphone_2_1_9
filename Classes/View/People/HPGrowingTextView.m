@@ -120,9 +120,11 @@
 
 -(CGSize)getContentHeight
 {
+#ifdef __IPHONE_7_0
     CGRect rect =  [self.internalTextView.text boundingRectWithSize:CGSizeMake(self.internalTextView.frame.size.width, 100) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:internalTextView.font,NSFontAttributeName, nil] context:nil];
     rect.size.height += 10;
     return rect.size;
+#endif
 }
 - (void)textViewDidChange:(UITextView *)textView
 {

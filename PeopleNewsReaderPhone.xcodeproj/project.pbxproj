@@ -444,6 +444,7 @@
 		581546DD17C1E77D00EFEF20 /* 右抽屉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 581546DB17C1E77D00EFEF20 /* 右抽屉@2x.png */; };
 		581887F41806691900590FDC /* 跳转.png in Resources */ = {isa = PBXBuildFile; fileRef = 581887F21806691900590FDC /* 跳转.png */; };
 		581887F51806691900590FDC /* 跳转@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 581887F31806691900590FDC /* 跳转@2x.png */; };
+		581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */ = {isa = PBXBuildFile; fileRef = 581E0CA9186C1E6E00BA5C07 /* refresh2.png */; };
 		582DE4EE183A26B9004AF13F /* MemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DE4ED183A26B9004AF13F /* MemCache.m */; };
 		58350A1217D0209700738DCC /* 刷新.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1017D0209700738DCC /* 刷新.png */; };
 		58350A1317D0209700738DCC /* 刷新@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1117D0209700738DCC /* 刷新@2x.png */; };
@@ -1486,6 +1487,7 @@
 		581546DB17C1E77D00EFEF20 /* 右抽屉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右抽屉@2x.png"; sourceTree = "<group>"; };
 		581887F21806691900590FDC /* 跳转.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "跳转.png"; sourceTree = "<group>"; };
 		581887F31806691900590FDC /* 跳转@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "跳转@2x.png"; sourceTree = "<group>"; };
+		581E0CA9186C1E6E00BA5C07 /* refresh2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh2.png; sourceTree = "<group>"; };
 		582DE4EC183A26B9004AF13F /* MemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemCache.h; sourceTree = "<group>"; };
 		582DE4ED183A26B9004AF13F /* MemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemCache.m; sourceTree = "<group>"; };
 		58350A1017D0209700738DCC /* 刷新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新.png"; sourceTree = "<group>"; };
@@ -2822,6 +2824,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				581E0CA8186C1B5D00BA5C07 /* tmp */,
 				5890805C1863DC5200E3B923 /* 评论提示 */,
 				5832A936185EF71D007FA74E /* localNews */,
 				58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */,
@@ -3177,6 +3180,14 @@
 				581503B0181167410013675F /* MobClick.h */,
 			);
 			name = "友盟统计";
+			sourceTree = "<group>";
+		};
+		581E0CA8186C1B5D00BA5C07 /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+				581E0CA9186C1E6E00BA5C07 /* refresh2.png */,
+			);
+			name = tmp;
 			sourceTree = "<group>";
 		};
 		5832A936185EF71D007FA74E /* localNews */ = {
@@ -4579,6 +4590,7 @@
 				04E00CA716A63144004ADEDE /* deep_pageM.png in Resources */,
 				04E00CA816A63144004ADEDE /* deep_pageM@2x.png in Resources */,
 				04E00CA916A63144004ADEDE /* deep_pageR.png in Resources */,
+				581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */,
 				04E00CAA16A63144004ADEDE /* deep_pageR@2x.png in Resources */,
 				04D6CC4116A790D700C72C30 /* Comment_title.png in Resources */,
 				04D6CC4216A790D700C72C30 /* Comment_title@2x.png in Resources */,
