@@ -633,6 +633,7 @@
             __block FSNewsViewController * tempViewController = (FSNewsViewController*)self.aViewController;
             tempViewController.fpChangeTitleColor              = ^()
             {
+                NSLog(@"%@",xxx.newsid);
                 if (xxx  &&  ![xxx.isReaded isEqualToNumber:[NSNumber numberWithBool:YES]]) {
                     return;
                 }

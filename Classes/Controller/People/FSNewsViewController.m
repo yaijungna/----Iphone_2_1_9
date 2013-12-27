@@ -45,8 +45,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     if (self.fpChangeTitleColor) {
-        [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.3];
+        [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
     }
     if (_fs_GZF_ChannelListDAO.objectList.count > 0) {
         [self addKindsScrollView];
@@ -54,6 +55,11 @@
 
 }
 -(void)viewWillDisappear:(BOOL)animated
+{
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated
 {
     
 }
@@ -120,7 +126,9 @@
 
 - (void)dealloc {
     self.fpChangeTitleColor = nil;
+    _fs_GZF_ChannelListDAO.parentDelegate = nil;
     [_fs_GZF_ChannelListDAO release];
+    _fs_GZF_ChannelListDAO                = nil;
     [_reFreshDate release];
     //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSNOTIF_NEWSCHANNEL_SELECTED object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -154,7 +162,6 @@
     _myScroview.showsHorizontalScrollIndicator  = NO;
     _myScroview.tag            = 1000;
     [_myScroview addObserver:self forKeyPath:@"contentoffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
-    //_myScroview.delegate       = self;
     
     _myScroview.delegate       = self;
     //NSString * string          = @"";
@@ -305,7 +312,7 @@
     
     for (int i = 0; i< _fs_GZF_ChannelListDAO.objectList.count; i++) {
         MyNewsLIstView * view1 = [[MyNewsLIstView alloc]initWithChanel:_fs_GZF_ChannelListDAO currentIndex:i parentViewController:self];
-        view1.parentNavigationController = self.parentNavigationController;
+        view1.parentNavigationController = self.navigationController;
         view1.frame            = CGRectMake(i*320, 0, 320, xx);
         view1.tag              = 100 + i;
         view1.parentDelegate   = view1;

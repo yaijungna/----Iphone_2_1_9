@@ -75,6 +75,7 @@ NSString                       *_newsID;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     self.navigationController.navigationBarHidden = YES;
     //[super viewWillAppear:NO];
     if (self.isNewNavigation) {
@@ -86,7 +87,7 @@ NSString                       *_newsID;
         
     }
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
@@ -98,6 +99,7 @@ NSString                       *_newsID;
     
 
 - (void)dealloc {
+    
     NSString * string = [_fsNewsContainerView.fsNewsDitailToolBar.growingText.text copy];
     [[NSUserDefaults standardUserDefaults]setValue:string forKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
     [[NSUserDefaults standardUserDefaults]synchronize];
@@ -200,7 +202,12 @@ NSString                       *_newsID;
     //updateComment
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getComMent:) name:@"getComment" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateComment:) name:@"updateComment" object:nil];
-     
+    
+    
+    
+    
+   // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showTabBar:) name:@"showTabBar" object:nil];
+    
     _fsNewsContainerView = [[FSNewsContainerView alloc] init];
     FSMyFaverateObject *o = (FSMyFaverateObject *)[self ObjIsInFaverate];
     if (o!= nil) {
@@ -351,10 +358,13 @@ NSString                       *_newsID;
     _fsNewsContainerView.frame = self.view.frame;
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];   
-    NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
+    //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
 }
 
 

@@ -273,7 +273,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-    [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.3];
+    [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
 }
 -(void)xxxxxx
 {
@@ -358,7 +358,8 @@
         NSLog(@"fsNewsContainerViewController2:%d",[fsNewsContainerViewController retainCount]);
         
         //[self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
-        [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
+        //[self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
+        [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
         [fsNewsContainerViewController release];
         [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
     }
