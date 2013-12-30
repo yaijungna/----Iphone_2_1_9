@@ -49,6 +49,52 @@
     self.currentNewsId       = @"";
     return self;
 }
+-(void)initLocalDataModel
+{
+    _fs_GZF_ForOnedayNewsFocusTopDAO = [[FS_GZF_ForOnedayNewsFocusTopDAO alloc] init];
+    _fs_GZF_ForOnedayNewsFocusTopDAO.group          = PUTONG_NEWS_LIST_KIND;
+    _fs_GZF_ForOnedayNewsFocusTopDAO.type           = @"news";
+    _fs_GZF_ForOnedayNewsFocusTopDAO.channelid      = @"";
+    _fs_GZF_ForOnedayNewsFocusTopDAO.count          = 3;
+    _fs_GZF_ForOnedayNewsFocusTopDAO.parentDelegate = self;
+    _fs_GZF_ForOnedayNewsFocusTopDAO.isGettingList  = YES;
+    
+    
+    
+    _fs_GZF_ForNewsListDAO                          = [[FS_GZF_ForNewsListDAO alloc] init];
+    _fs_GZF_ForNewsListDAO.channelid                = [NSString stringWithFormat:@"%d",self.areaID];
+    _fs_GZF_ForNewsListDAO.parentDelegate           = self;
+    _fs_GZF_ForNewsListDAO.newsType                 = areaNews;
+    _fs_GZF_ForNewsListDAO.isGettingList            = YES;
+    
+    
+    
+    
+    _lygAdsDao                                      = [[LygAdsDao alloc]init];
+    _lygAdsDao.parentDelegate                       = self;
+    _lygAdsDao.isGettingList                        = NO;
+    _refreshTimer                                   = 0;
+
+}
+-(id)initWithZoneId:(int)areaId
+{
+    self.isLocal  = YES;
+    if (self = [super init]) {
+        self.areaID            = areaId;
+        _tvList.parentDelegate = self;
+        _tvList.delegate     = self;
+        _tvList.dataSource   = self;
+        _oldCount            = 0;
+        _isfirstShow         = YES;
+        _tvList.assistantViewFlag = FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW | FSTABLEVIEW_ASSISTANT_TOP_VIEW | FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW;
+        [self initLocalDataModel];
+        //self.aChannelListDAO = aDao;
+        //self.aViewController = aController;
+    }
+    self.currentNewsId       = @"";
+    return self;
+
+}
 -(void)setCurrentIndex:(int)currentIndex
 {
     NSLog(@"%d",[self.aChannelListDAO.objectList count]);

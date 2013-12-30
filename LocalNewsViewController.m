@@ -43,6 +43,34 @@
     self.myNaviBar.topItem.titleView = nil;
     self.myNaviBar.topItem.titleView = _titleLabel;
     [_titleLabel release];
+    
+    //[self initMyListView];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self initMyListView];
+}
+
+-(void)initMyListView
+{
+    
+    CGRect xx = self.view.frame;
+    //float xxx = self.view.frame.size.height;
+    if (ISIOS7) {
+        xx.size.height -= 64;
+    }else
+    {
+        xx.size.height -= 44;
+    }
+    //_myNewsListView = [[MyNewsLIstView alloc] initWithChanel:nil currentIndex:nil parentViewController:self];
+    _myNewsListView = [[MyNewsLIstView alloc] initWithZoneId:2];
+    _myNewsListView.parentDelegate = _myNewsListView;
+    _myNewsListView.frame = CGRectMake(0, self.view.frame.size.height - xx.size.height, 320, xx.size.height);
+    [self.view addSubview:_myNewsListView];
+    _myNewsListView.backgroundColor = [UIColor redColor];
+    
+    //[_myNewsListView refreshDataSource];
+    [_myNewsListView release];
 }
 
 - (void)didReceiveMemoryWarning

@@ -475,6 +475,8 @@
 		5870279117F3B599003B3BEB /* icon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278E17F3B599003B3BEB /* icon29x29.png */; };
 		5870279217F3B599003B3BEB /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278F17F3B599003B3BEB /* icon58x58.png */; };
 		5870279317F3B599003B3BEB /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870279017F3B599003B3BEB /* icon80x80.png */; };
+		587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */; };
+		587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6E318716CCF00664C4D /* LygAreaObject.m */; };
 		5882B5E417CC4EDD00B77388 /* LygDeepListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E317CC4EDD00B77388 /* LygDeepListView.m */; };
 		5882B5E717CC8EBB00B77388 /* LygDeepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E617CC8EBB00B77388 /* LygDeepTableViewCell.m */; };
 		58847F91180197FE00B10BC6 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 58847F90180197FE00B10BC6 /* ads.png */; };
@@ -1531,6 +1533,10 @@
 		5870278E17F3B599003B3BEB /* icon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29x29.png; sourceTree = "<group>"; };
 		5870278F17F3B599003B3BEB /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
 		5870279017F3B599003B3BEB /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
+		587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygListOfProvincesHaveAreaNewsDao.h; sourceTree = "<group>"; };
+		587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygListOfProvincesHaveAreaNewsDao.m; sourceTree = "<group>"; };
+		587EC6E218716CCF00664C4D /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
+		587EC6E318716CCF00664C4D /* LygAreaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygAreaObject.m; sourceTree = "<group>"; };
 		5882B5E217CC4EDD00B77388 /* LygDeepListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepListView.h; sourceTree = "<group>"; };
 		5882B5E317CC4EDD00B77388 /* LygDeepListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDeepListView.m; sourceTree = "<group>"; };
 		5882B5E517CC8EBB00B77388 /* LygDeepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepTableViewCell.h; sourceTree = "<group>"; };
@@ -2875,6 +2881,8 @@
 			isa = PBXGroup;
 			children = (
 				5850C1D2179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld */,
+				587EC6E218716CCF00664C4D /* LygAreaObject.h */,
+				587EC6E318716CCF00664C4D /* LygAreaObject.m */,
 				5890870918505343009553BA /* FSNewsDitailObject.h */,
 				5890870A18505343009553BA /* FSNewsDitailObject.m */,
 				5805AC23184331CA007D934E /* FSDeepPageObject.h */,
@@ -3195,6 +3203,8 @@
 			children = (
 				589F559F185EF8190068E0FF /* LocalNewsViewController.h */,
 				589F55A0185EF8190068E0FF /* LocalNewsViewController.m */,
+				587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */,
+				587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */,
 			);
 			name = localNews;
 			sourceTree = "<group>";
@@ -4983,6 +4993,7 @@
 				82F8FBF5162F9CB700552B42 /* FSTopicListDAO.m in Sources */,
 				82F8FBF8162F9D9D00552B42 /* FSTopicListTimestampDAO.m in Sources */,
 				82F8FBFB162FDB0600552B42 /* FSGetDAO.m in Sources */,
+				587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */,
 				82F8FBFE162FED8000552B42 /* FSDataTimestampObject.m in Sources */,
 				5805AC671843627B007D934E /* MicroBlogOauth.m in Sources */,
 				82D4DEED1630D67E0044354A /* FSXMLParserStoreObject.m in Sources */,
@@ -5079,6 +5090,7 @@
 				5805AC25184331CA007D934E /* FSDeepPageObject.m in Sources */,
 				4CC14F7E16461E2A0007143D /* FSDeepContent_PicObject.m in Sources */,
 				27B2975C16474BA8005AFD50 /* FSLocalNewsListObject.m in Sources */,
+				587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */,
 				5805AC691843627B007D934E /* MicroBlogRequest.m in Sources */,
 				27B2976516474C2C005AFD50 /* FS_GZF_ForLocalNewsListDAO.m in Sources */,
 				27B2976616474C2C005AFD50 /* FS_GZF_ForNewsListDAO.m in Sources */,
