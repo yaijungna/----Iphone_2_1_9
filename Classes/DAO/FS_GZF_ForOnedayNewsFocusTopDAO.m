@@ -13,7 +13,7 @@
 #define FSFOUCS_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=focuspicture&rt=xml"
 
 #define FSFOUCS_WITH_TYPE_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=focuspicture&type=%@&channelid=%@&count=%d&rt=xml"
-
+#define URLOFAREAFOUCUSNEWS   @"http://mobile.app.people.com.cn:81/news2/news.php?act=focuspicture&type=dfnews&channelid=%@&count=%d&rt=xml"
 
 
 /*
@@ -84,9 +84,15 @@
 
 -(NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind{
     //return FSFOUCS_URL;
+    if (self.memNewsType == areaNews) {
+        NSString * tempString  = [NSString stringWithFormat:URLOFAREAFOUCUSNEWS,self.channelid,3];
+        return [NSString stringWithFormat:URLOFAREAFOUCUSNEWS,self.channelid,3];
+    }else
+    {
+        NSString *urlString = [NSString stringWithFormat:FSFOUCS_WITH_TYPE_URL,self.type,self.channelid,self.count];
+        return urlString;
+    }
     
-    NSString *urlString = [NSString stringWithFormat:FSFOUCS_WITH_TYPE_URL,self.type,self.channelid,self.count];
-    return urlString;
 }
 
 

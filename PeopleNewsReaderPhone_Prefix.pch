@@ -20,7 +20,7 @@
 
 #define RELEASE
 #ifdef  RELEASE
-#define NSLog(...)
+//#define NSLog(...)
 #define printf(...)
 #endif
 
@@ -60,4 +60,11 @@
 #define YIXINAPPKEY    @"yx59d91672f0784a05bf488fb69ca241a1"
 
 #define YOUEMENKEY2    @"361bcf569ed3991df0a74850a1f84d6f"
+
+typedef enum _newTye
+{
+    puTong        = 0,
+    importantNews = 1,
+    areaNews      = 2
+}NewsType;
 

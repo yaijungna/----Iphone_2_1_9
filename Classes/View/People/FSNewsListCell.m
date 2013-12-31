@@ -15,7 +15,7 @@
 #import "UIImageView+UIImageViewCache.h"
 #import "UIImageView+WebCache.h"
 #define HEIGHTOFIMG      57
-#define WIDTHOFNEWHASPIC 218
+#define WIDTHOFNEWHASPIC 238
 @implementation MyContetView
 -(void)drawRect:(CGRect)rect
 {

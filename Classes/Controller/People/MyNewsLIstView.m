@@ -49,47 +49,55 @@
     self.currentNewsId       = @"";
     return self;
 }
--(void)initLocalDataModel
-{
-    _fs_GZF_ForOnedayNewsFocusTopDAO = [[FS_GZF_ForOnedayNewsFocusTopDAO alloc] init];
-    _fs_GZF_ForOnedayNewsFocusTopDAO.group          = PUTONG_NEWS_LIST_KIND;
-    _fs_GZF_ForOnedayNewsFocusTopDAO.type           = @"news";
-    _fs_GZF_ForOnedayNewsFocusTopDAO.channelid      = @"";
-    _fs_GZF_ForOnedayNewsFocusTopDAO.count          = 3;
-    _fs_GZF_ForOnedayNewsFocusTopDAO.parentDelegate = self;
-    _fs_GZF_ForOnedayNewsFocusTopDAO.isGettingList  = YES;
-    
-    
-    
-    _fs_GZF_ForNewsListDAO                          = [[FS_GZF_ForNewsListDAO alloc] init];
-    _fs_GZF_ForNewsListDAO.channelid                = [NSString stringWithFormat:@"%d",self.areaID];
-    _fs_GZF_ForNewsListDAO.parentDelegate           = self;
-    _fs_GZF_ForNewsListDAO.newsType                 = areaNews;
-    _fs_GZF_ForNewsListDAO.isGettingList            = YES;
-    
-    
-    
-    
-    _lygAdsDao                                      = [[LygAdsDao alloc]init];
-    _lygAdsDao.parentDelegate                       = self;
-    _lygAdsDao.isGettingList                        = NO;
-    _refreshTimer                                   = 0;
 
+-(void)setAreaID:(int)areaID
+{
+    if (areaID == self.areaID) {
+        return;
+    }else
+    {
+        _areaID = areaID;
+        _fs_GZF_ForOnedayNewsFocusTopDAO.parentDelegate = nil;
+        self.fs_GZF_ForOnedayNewsFocusTopDAO = [[[FS_GZF_ForOnedayNewsFocusTopDAO alloc] init] autorelease];
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.group          = PUTONG_NEWS_LIST_KIND;
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.memNewsType    = areaNews;
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.type           = @"dfnews";
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.channelid      = [NSString stringWithFormat:@"%d",areaID];
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.count          = 3;
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.parentDelegate = self;
+        self.fs_GZF_ForOnedayNewsFocusTopDAO.isGettingList  = YES;
+        
+        
+        self.fs_GZF_ForNewsListDAO.parentDelegate           = nil;
+        self.fs_GZF_ForNewsListDAO                          = [[[FS_GZF_ForNewsListDAO alloc] init] autorelease];
+        self.fs_GZF_ForNewsListDAO.channelid                = [NSString stringWithFormat:@"%d",areaID];
+        self.fs_GZF_ForNewsListDAO.parentDelegate           = self;
+        self.fs_GZF_ForNewsListDAO.newsType                 = areaNews;
+        self.fs_GZF_ForNewsListDAO.isGettingList            = YES;
+        
+        
+        
+        _lygAdsDao.parentDelegate                           = nil;
+        self.lygAdsDao                                      = [[[LygAdsDao alloc]init] autorelease];
+        self.lygAdsDao.parentDelegate                           = self;
+        self.lygAdsDao.isGettingList                        = NO;
+        _refreshTimer                                       = 0;
+        
+    }
 }
 -(id)initWithZoneId:(int)areaId
 {
-    self.isLocal  = YES;
+    
     if (self = [super init]) {
-        self.areaID            = areaId;
+        self.isLocal  = YES;
+        _areaID       = -1;
         _tvList.parentDelegate = self;
         _tvList.delegate     = self;
         _tvList.dataSource   = self;
         _oldCount            = 0;
         _isfirstShow         = YES;
         _tvList.assistantViewFlag = FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW | FSTABLEVIEW_ASSISTANT_TOP_VIEW | FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW;
-        [self initLocalDataModel];
-        //self.aChannelListDAO = aDao;
-        //self.aViewController = aController;
+        self.areaID            = areaId;
     }
     self.currentNewsId       = @"";
     return self;

@@ -18,6 +18,8 @@
 #import "FSCheckAppStoreVersionObject.h"
 //#import "MobClick.h"
 NSString * getCityName();
+NSString * getProvinceName();
+
 @class FSTabBarViewCotnroller;
 @class FSSlideViewController;
 @class FSChannelSettingForOneDayViewController;
@@ -46,6 +48,7 @@ NSString * getCityName();
 @property (nonatomic, retain, readonly) NSManagedObjectModel   *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, copy)             NSString               * cityName;
+@property (nonatomic, strong)           NSString               * provinceName;
 @property (nonatomic, retain)           FS_GZF_GetWeatherMessageDAO * fs_GZF_localGetWeatherMessageDAO;
 @property (nonatomic, retain)           FS_GZF_GetWeatherMessageDAO * fs_GZF_localGetWeatherMessageDAO2;
 @property (nonatomic,retain)            FSCheckAppStoreVersionObject* checkVersionObject;

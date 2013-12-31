@@ -15,4 +15,5 @@
 @dynamic areaName;
 @dynamic bufferFlag;
 
+
 @end

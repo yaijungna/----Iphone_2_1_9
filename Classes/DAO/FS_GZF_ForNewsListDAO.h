@@ -8,16 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FS_GZF_ForOneDayNewsListDAO.h"
-typedef enum _newTye
-{
-    puTong        = 0,
-    importantNews = 1,
-    areaNews      = 2
-}NewsType;
-typedef enum _ASIAuthenticationType {
-	ASIStandardAuthenticationType = 0,
-    ASIProxyAuthenticationType = 1
-} ASIAuthenticationType;
+ 
+
 
 
 @interface FS_GZF_ForNewsListDAO : FS_GZF_ForOneDayNewsListDAO{

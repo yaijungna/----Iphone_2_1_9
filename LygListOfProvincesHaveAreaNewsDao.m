@@ -43,7 +43,7 @@
 
 
 -(NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind{
-    NSLog(@"FSCITYLIST_URL:%@",FSCITYLIST_URL);
+    //NSLog(@"FSCITYLIST_URL:%@",FSCITYLIST_URL);
     return URLOFGETAREAS;
 }
 
@@ -51,14 +51,14 @@
 
 -(NSString *)predicateStringWithQueryDataKind:(Query_DataKind)dataKind{
     
-    return @"bufferFlag!='3'";
+    return @"bufferFlag!=3";
     
 }
 
 
 
 - (void)initializeSortDescriptions:(NSMutableArray *)descriptions {
-	[self addSortDescription:descriptions withSortFieldName:@"id" withAscending:YES];
+	[self addSortDescription:descriptions withSortFieldName:@"areaId" withAscending:YES];
 }
 
 #pragma mark -
@@ -69,7 +69,7 @@
     _currentElementName = elementName;
 	if ([_currentElementName isEqualToString:area_item]) {
         _obj = (LygAreaObject *)[self insertNewObjectTomanagedObjectContext];
-        _obj.bufferFlag = 1;
+        _obj.bufferFlag = [NSNumber numberWithInt:1];
     }
 }
 
@@ -83,19 +83,20 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	//NSLog(@"foundCharacters:%@",string);
-    
-    /*
-     NSString *strUnion = nil;
-     if ([self.currentElementName isEqualToString:NEWS_COMMENT_CREATE_TIME]) {
-     strUnion = [CommonFuncs strCat:_obj.create_time TwoStr:[CommonFuncs trimString:string]];
-     _obj.create_time = strUnion;
-     }else if([self.currentElementName isEqualToString:NEWS_COMMENT_CREATE_TIMEINSECONDS]){
-     strUnion = [CommonFuncs strCat:_obj.time_inSeconds TwoStr:[CommonFuncs trimString:string]];
-     _obj.time_inSeconds = strUnion;
-     }
-     [strUnion release];
-     */
+    if ([string hasPrefix:@"\n"] || [string hasPrefix:@" "]) {
+        return;
+    }
+    if ([_currentElementName isEqualToString:area_id]) {
+		//NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
+		NSString *temp = trimString(string);
+        _obj.areaId  = [NSNumber numberWithInt:temp.intValue];
+		//[content release];
+	} else if ([_currentElementName isEqualToString:area_name]) {
+		//NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
+		_obj.areaName = trimString(string);
+		//[content release];
+	}
+
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
@@ -110,29 +111,24 @@
 		_obj.areaName = trimString(content);
 		[content release];
 	}
-//    else if ([_currentElementName isEqualToString:city_cityName]) {
-//		NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
-//		_obj.cityName = trimString(content);
-//		[content release];
-//        //NSLog(@"city_cityName:%@",_obj.cityName);
-//	}
-//    else if ([_currentElementName isEqualToString:city_provinceId]) {
-//		NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
-//		_obj.provinceId = trimString(content);
-//		[content release];
-//	}
-//    else if ([_currentElementName isEqualToString:city_provinceName]) {
-//		NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
-//		_obj.provinceName = trimString(content);
-//		[content release];
-//	}
+
 }
 
 
 
 - (void)executeFetchRequest:(NSFetchRequest *)request {
 	NSError *error = nil;
-	NSArray *resultSet = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *resultSet = nil;
+    request.fetchLimit =  32;
+    @try {
+        resultSet = [self.managedObjectContext executeFetchRequest:request error:&error];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@  %@",exception.name,exception.reason);
+    }
+    @finally {
+    }
+	
 	if (!error) {
         
 		if ([resultSet count]>0) {
@@ -146,13 +142,13 @@
 
 -(void)setBufferFlag{
     
-    NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:area_id ascending:YES];
+    NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:@"areaId" ascending:YES];
     
     
     if (self.currentGetDataKind == GET_DataKind_Next){
         for (LygAreaObject *o in array) {
-            if ([o.bufferFlag isEqualToNumber:1]) {
-                o.bufferFlag = 2;
+            if (o.bufferFlag.intValue == 1) {
+                o.bufferFlag = [NSNumber numberWithInt:2];
             }
         }
         [self saveCoreDataContext];
@@ -160,21 +156,31 @@
     }
     
     for (LygAreaObject *o in array) {
-        if (_isRefreshToDeleteOldData == YES && [o.bufferFlag isEqualToNumber:2]) {
-            ;//o.bufferFlag = @"3";
-        }else if (_isRefreshToDeleteOldData == YES && [o.bufferFlag isEqualToNumber:1]){
-            o.bufferFlag = 2;
+        @try {
+            if (_isRefreshToDeleteOldData == YES && o.bufferFlag.intValue == 2) {
+                ;//o.bufferFlag = @"3";
+            }else if (_isRefreshToDeleteOldData == YES && o.bufferFlag.intValue == 1){
+                o.bufferFlag = [NSNumber numberWithInt:2];
+            }
         }
+        @catch (NSException *exception) {
+            NSLog(@"%@ %@",exception.name,exception.reason);
+        }
+        @finally {
+            ;
+        }
+        
     }
 }
 
 
 -(void)setBufferFlag3{
-    NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:area_id ascending:YES];
+    NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:@"areaId" ascending:YES];
     
     for (LygAreaObject *o in array) {
-        if (_isRefreshToDeleteOldData == YES && [o.bufferFlag isEqualToNumber:2]) {
-            o.bufferFlag = 3;
+        NSLog(@"%@",o.bufferFlag);
+        if (_isRefreshToDeleteOldData == YES && o.bufferFlag.intValue == 2) {
+            o.bufferFlag = [NSNumber numberWithInt:3];
         }
     }
 }
@@ -184,9 +190,9 @@
     if (self.currentGetDataKind == GET_DataKind_Refresh) {
 		
         if (_isRefreshToDeleteOldData == YES) {
-            NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:area_id ascending:YES];
+            NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getAllObjectsSortByKey:[self entityName] key:@"areaId" ascending:YES];
             for (LygAreaObject *o in array) {
-                if ([o.bufferFlag isEqualToNumber:3]) {
+                if (o.bufferFlag.intValue == 3) {
                     [self.managedObjectContext deleteObject:o];
                 }
             }

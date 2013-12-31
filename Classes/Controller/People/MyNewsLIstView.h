@@ -29,6 +29,10 @@
 @property(nonatomic,assign)UINavigationController * parentNavigationController;
 @property(nonatomic,assign)BOOL                     isHaveLoad;
 @property(nonatomic,assign)BOOL                     isLocal;
+@property(nonatomic,strong)FS_GZF_ForOnedayNewsFocusTopDAO *fs_GZF_ForOnedayNewsFocusTopDAO;
+@property(nonatomic,strong)LygAdsDao                       *lygAdsDao;
+@property(nonatomic,strong)FS_GZF_ForNewsListDAO           *fs_GZF_ForNewsListDAO;
+
 -(id)initWithChanel:(FS_GZF_ChannelListDAO*)aDao currentIndex:(int)index parentViewController:(UIViewController*)aController;
 -(id)initWithZoneId:(int)areaId;
 -(BOOL)isNeedRefresh;
