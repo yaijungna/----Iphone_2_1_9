@@ -44,6 +44,8 @@
 #import "YXApi.h"
 #import "YXApiObject.h"
 #import "Appirater.h"
+#import "MyPageViewController.h"
+#define PAGE
 NSString * getCityName()
 {
     PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
@@ -539,6 +541,7 @@ NSString * getProvinceName()
 		[oneDayNewsCtrl release];
 		
 		//2.
+#ifndef PAGE
 		FSNewsViewController *newsCtrl = [[FSNewsViewController alloc] init];
         newsCtrl.canBeHaveNaviBar      = YES;
         newsCtrl.parentNavigationController  = navi;
@@ -547,6 +550,19 @@ NSString * getProvinceName()
 		[fsViewCtrls addObject:navNewsCtrl];
 		[navNewsCtrl release];
 		[newsCtrl release];
+#else
+        MyPageViewController * newsCtrl = [[MyPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        FSUINavigationController *navNewsCtrl = [[FSUINavigationController alloc] initWithRootViewController:newsCtrl];
+        navNewsCtrl.navigationBarHidden = YES;
+		[fsViewCtrls addObject:navNewsCtrl];
+		[navNewsCtrl release];
+		[newsCtrl release];
+#endif
+
+        
+        
+       
+
 		
 		//3.
 		FSTopicViewController *topicCtrl = [[FSTopicViewController alloc] init];

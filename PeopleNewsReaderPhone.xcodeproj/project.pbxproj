@@ -337,6 +337,8 @@
 		04FB294C1675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FB29461675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png */; };
 		0A0108151848D08100FCB106 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0108141848D08100FCB106 /* libWeiboSDK.a */; };
 		0A0108171848D0BD00FCB106 /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0108161848D0BD00FCB106 /* libYixinSDK.a */; };
+		0A329E6E18743F84004B622C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E6D18743F84004B622C /* MyPageViewController.m */; };
+		0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E70187441B0004B622C /* LygNewsViewController.m */; };
 		0AE0769A17BB9A6A006B6358 /* MyNewsLIstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -1298,6 +1300,10 @@
 		04FB29461675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weathercell_tianqibeijing@2x.png"; sourceTree = "<group>"; };
 		0A0108141848D08100FCB106 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = WeChatSDK/libWeiboSDK.a; sourceTree = "<group>"; };
 		0A0108161848D0BD00FCB106 /* libYixinSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYixinSDK.a; sourceTree = "<group>"; };
+		0A329E6C18743F84004B622C /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
+		0A329E6D18743F84004B622C /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
+		0A329E6F187441B0004B622C /* LygNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygNewsViewController.h; sourceTree = "<group>"; };
+		0A329E70187441B0004B622C /* LygNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygNewsViewController.m; sourceTree = "<group>"; };
 		0AE0769817BB9A69006B6358 /* MyNewsLIstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewsLIstView.h; sourceTree = "<group>"; };
 		0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNewsLIstView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2667,6 +2673,17 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0A329E6B18743F57004B622C /* pageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A329E6C18743F84004B622C /* MyPageViewController.h */,
+				0A329E6D18743F84004B622C /* MyPageViewController.m */,
+				0A329E6F187441B0004B622C /* LygNewsViewController.h */,
+				0A329E70187441B0004B622C /* LygNewsViewController.m */,
+			);
+			name = pageViewController;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2830,6 +2847,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0A329E6B18743F57004B622C /* pageViewController */,
 				581E0CA8186C1B5D00BA5C07 /* tmp */,
 				5890805C1863DC5200E3B923 /* 评论提示 */,
 				5832A936185EF71D007FA74E /* localNews */,
@@ -4974,6 +4992,7 @@
 				5805AC1F183F5FA9007D934E /* FSDeepOuterObject.m in Sources */,
 				A69427A016096CE80076E9A5 /* FSChannelSettingtTOPCellTextFloatView.m in Sources */,
 				8206EA98160AAD08007D5B43 /* FSOneDayNewsListDAO.m in Sources */,
+				0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */,
 				8206EA9B160AAD2D007D5B43 /* FSFocusTopDAO.m in Sources */,
 				A656088D160AE34A0001454D /* FSForChannelSettingFocusTopDAO.m in Sources */,
 				58126BEF18571357006C5D34 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -5010,6 +5029,7 @@
 				82F8EDEC1634C4B60040B897 /* FSNetworkDAO.m in Sources */,
 				27870054163519E8002C00DA /* FS_GZF_CityListDAO.m in Sources */,
 				27870055163519E8002C00DA /* FSCityListDAO.m in Sources */,
+				0A329E6E18743F84004B622C /* MyPageViewController.m in Sources */,
 				2787006316351A09002C00DA /* FS_GZF_BaseGETXMLDAO.m in Sources */,
 				2787006416351A09002C00DA /* FS_GZF_BaseGETXMLDataListDAO.m in Sources */,
 				2787006516351A09002C00DA /* FS_GZF_BaseNetworkDAO.m in Sources */,
@@ -5288,7 +5308,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bo Du (483V26PX5Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5319,7 +5339,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5331,7 +5351,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5360,7 +5380,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5391,7 +5411,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5421,7 +5441,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "84895731-6ACA-400E-9B7D-E417DBD92370";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84895731-6ACA-400E-9B7D-E417DBD92370";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;

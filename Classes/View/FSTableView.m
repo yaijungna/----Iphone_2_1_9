@@ -315,7 +315,7 @@
 }
 
 - (void)refreshDataSource_Inner {
-	if ([_parentDelegate respondsToSelector:@selector(tableViewRefreshDataSource:)]) {
+    if ([_parentDelegate respondsToSelector:@selector(tableViewRefreshDataSource:)]) {
         _isRefreshing = YES;
 		[_parentDelegate tableViewRefreshDataSource:self];
 	}

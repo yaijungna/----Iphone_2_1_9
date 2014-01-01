@@ -451,6 +451,7 @@
 	[_tvList bottomScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 }
 -(void)dealloc{
+    self.parentDelegate = nil;
     [self clearBeforeDealloc];
     [super dealloc];
 }
