@@ -15,4 +15,5 @@
 @property(nonatomic,strong)UILabel                           * titleLabel;
 @property(nonatomic,strong)LygListOfProvincesHaveAreaNewsDao * memGetProvincesDao;
 @property(nonatomic,strong)LygAreaObject                     * currentAreaObject;
+@property(nonatomic,copy)void (^fpChangeTitleColor)(void);
 @end

@@ -87,7 +87,6 @@ NSString                       *_newsID;
         
     }
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
@@ -280,6 +279,15 @@ NSString                       *_newsID;
     _fsShareNoticView.alpha = 0.0f;
     [self.view addSubview:_fsShareNoticView];
     [_fsShareNoticView release];
+    
+    if (ISIOS7) {
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        [self.view addSubview:view];
+        view.backgroundColor   = [UIColor whiteColor];
+        [view release];
+        
+        [self.view bringSubviewToFront:view];
+    }
 }
 
 -(void)clearOldComment
@@ -358,10 +366,10 @@ NSString                       *_newsID;
     _fsNewsContainerView.frame = self.view.frame;
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
-}
+//-(void)viewWillDisappear:(BOOL)animated
+//{
+//   // [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+//}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];   
     //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);

@@ -55,7 +55,7 @@ NSString * getCityName()
 NSString * getProvinceName()
 {
     PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
-    return xxx.provinceName?xxx.provinceName:@"";
+    return xxx.provinceName?xxx.provinceName:@"北京";
 }
 @interface PeopleNewsReaderPhoneAppDelegate(PrivateMethod)
 - (void)showLoadingView:(UIView *)aview;
@@ -142,7 +142,15 @@ NSString * getProvinceName()
     _locManager = [[CLLocationManager alloc] init];
     [_locManager setDelegate:self];
     [_locManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
-    [_locManager startMonitoringSignificantLocationChanges];
+    
+    
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+        [_locManager startMonitoringSignificantLocationChanges];
+    }else
+    {
+        [_locManager startUpdatingLocation];
+    }
+    
     
     
     
@@ -507,7 +515,8 @@ NSString * getProvinceName()
     //FSLoadingImageView *loadingView = [[FSLoadingImageView alloc] initWithFrame:CGRectMake(0, 0, 320, xxx)];
     FSLoadingImageView *loadingView = [[FSLoadingImageView alloc] initWithFrame:CGRectMake(0, 0, 320, xxx) andISNeedAutoClose:YES];
     loadingView.isNeedAutoClose     = YES;
-    loadingView.tag                 =  333;
+    //loadingView.tag                 =  333;
+    loadingView.tag                 = 3000;
     loadingView.userInteractionEnabled = YES;
     //loadingView.parentDelegate = self;
     [self.window addSubview:loadingView];
@@ -956,7 +965,15 @@ NSString * getProvinceName()
 //        [reverseGeocoder start];
     }
     
-    [manager stopMonitoringSignificantLocationChanges];
+    
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+        [manager stopMonitoringSignificantLocationChanges];
+    }else
+    {
+        [manager stopUpdatingLocation];
+    }
+    
+    
     
 }
 - (void)locationManager:(CLLocationManager *)manager
@@ -1037,7 +1054,12 @@ NSString * getProvinceName()
         //        [reverseGeocoder start];
     }
     
-    [manager stopMonitoringSignificantLocationChanges];
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+        [manager stopMonitoringSignificantLocationChanges];
+    }else
+    {
+        [manager stopUpdatingLocation];
+    }
 
 }
 

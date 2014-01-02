@@ -32,7 +32,7 @@
     }
     return self;
 }
--(id)initWithChanel:(FS_GZF_ChannelListDAO*)aDao currentIndex:(int)index parentViewController:(UIViewController*)aController
+-(id)initWithChanel:(FS_GZF_ChannelListDAO*)aDao currentIndex:(int)index parentViewController:(UINavigationController*)aController
 {
     if (self = [super init]) {
         _tvList.parentDelegate = self;
@@ -42,8 +42,9 @@
         _isfirstShow         = YES;
         _tvList.assistantViewFlag = FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW | FSTABLEVIEW_ASSISTANT_TOP_VIEW | FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW;
         [self initDataModel];
+        self.parentNavigationController = aController;
         self.aChannelListDAO = aDao;
-        self.aViewController = aController;
+        self.aViewController = aController.topViewController;
     }
     self.currentIndex        = index;
     self.currentNewsId       = @"";
@@ -85,11 +86,13 @@
         
     }
 }
--(id)initWithZoneId:(int)areaId
+-(id)initWithZoneId:(int)areaId  parentViewController:(UINavigationController*)aController
 {
     
     if (self = [super init]) {
         self.isLocal  = YES;
+        self.parentNavigationController   = aController;
+        self.aViewController              = aController.topViewController;
         _areaID       = -1;
         _tvList.parentDelegate = self;
         _tvList.delegate     = self;
@@ -619,7 +622,10 @@
             fsNewsContainerViewController.newsID                         = o.newsid;
             fsNewsContainerViewController.obj = nil;
             fsNewsContainerViewController.FCObj = o;
-            fsNewsContainerViewController.newsSourceKind = NewsSourceKind_PuTongNews;
+            fsNewsContainerViewController.newsSourceKind     = NewsSourceKind_PuTongNews;
+            if (self.isLocal) {
+                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_DiFangNews;
+            }
             
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
@@ -682,6 +688,9 @@
             __block FSOneDayNewsObject * xxx                             = [_fs_GZF_ForNewsListDAO.objectList objectAtIndex:row-1];
             fsNewsContainerViewController.FCObj                          = nil;
             fsNewsContainerViewController.newsSourceKind                 = NewsSourceKind_PuTongNews;
+            if (self.isLocal) {
+                fsNewsContainerViewController.newsSourceKind             = NewsSourceKind_DiFangNews;
+            }
             fsNewsContainerViewController.isImportant                    = _fs_GZF_ForNewsListDAO.isImportNews;
             self.currentNewsId                                           = o.newsid;
             __block FSNewsListCell * blockCell = (FSNewsListCell*)[sender.tvList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]];
@@ -708,6 +717,9 @@
             fsNewsContainerViewController.obj                            = o;
             fsNewsContainerViewController.FCObj                          = nil;
             fsNewsContainerViewController.newsSourceKind                 = NewsSourceKind_PuTongNews;
+            if (self.isLocal) {
+                fsNewsContainerViewController.newsSourceKind             = NewsSourceKind_DiFangNews;
+            }
             [UIView commitAnimations];
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];

@@ -23,12 +23,12 @@
     return self;
 }
 
--(id)initWithChannelIndex:(int)index andChannel:(FS_GZF_ChannelListDAO*)listDao
+-(id)initWithChannelIndex:(int)index andChannel:(FS_GZF_ChannelListDAO*)listDao andNaviGationController:(UINavigationController*)aNavi
 {
     if (self = [super init]) {
         self.changeList = listDao;
         self.channelIndex= index;
-        _memNewsLIstView = [[MyNewsLIstView alloc] initWithChanel:listDao currentIndex:index parentViewController:nil];
+        _memNewsLIstView = [[MyNewsLIstView alloc] initWithChanel:listDao currentIndex:index parentViewController:aNavi];
         _memNewsLIstView.parentDelegate = _memNewsLIstView;
         
     }
@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    float xxx = (ISIOS7?64 + 30:44+ 30);
+    float xxx = (ISIOS7?64 + HeightOfChannel:44+ HeightOfChannel);
     self.memNewsLIstView.frame = CGRectMake(0, xxx, 320, self.view.frame.size.height - xxx - 49);
     [self.view addSubview:_memNewsLIstView];
     

@@ -10,7 +10,7 @@
 #import "FSBasePeopleViewController.h"
 #import "FSNetworkDataManager.h"
 #define FSTABBAR_HEIGHT 49.0f
-
+#import "MyPageViewController.h"
 @interface FSTabBarViewCotnroller(PrivateMethod)
 - (void)inner_releaseFSViewControllers;
 - (void)inner_initializeFSViewControllers;
@@ -36,13 +36,21 @@
 //{
 //    _fsTabBar.fsSelectedIndex = 0;
 //}
+
+
+
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+}
 -(void)viewDidLoad
 {
     //[self fsTabBarDidSelected:_fsTabBar withFsTabIndex:0];
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObject:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     [super dealloc];
 }
 
@@ -200,7 +208,19 @@
 		for (UIViewController *childViewController in arrCtrls) {
 			[self inner_initializeController:childViewController withFSTabBarItem:fsItem];
 		}
-	}
+	}else if ([controller isKindOfClass:[MyPageViewController class]]){
+        MyPageViewController * fsViewController = (MyPageViewController *)controller;
+        fsViewController.fsTabBarItem = fsItem;
+		if ([fsViewController conformsToProtocol:@protocol(FSTabBarItemDelegate)]) {
+			id<FSTabBarItemDelegate> itemDelegate = (id<FSTabBarItemDelegate>)fsViewController;
+			UIImage *normalImage = [itemDelegate tabBarItemNormalImage];
+			UIImage *selectedImage = [itemDelegate tabBarItemSelectedImage];
+			NSString *text = [itemDelegate tabBarItemText];
+			[fsItem setTabBarItemWithNormalImage:normalImage withSelectedImage:selectedImage withText:text];
+		}
+
+    }
+    
 }
 
 - (void)setHideTabBar:(BOOL)hide withAnimation:(BOOL)animation {

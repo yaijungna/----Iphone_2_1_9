@@ -16,6 +16,7 @@
 @property (nonatomic,assign)FS_GZF_ChannelListDAO * changeList;
 
 
--(id)initWithChannelIndex:(int)index andChannel:(FS_GZF_ChannelListDAO*)listDao;
+//-(id)initWithChannelIndex:(int)index andChannel:(FS_GZF_ChannelListDAO*)listDao;
+-(id)initWithChannelIndex:(int)index andChannel:(FS_GZF_ChannelListDAO*)listDao andNaviGationController:(UINavigationController*)aNavi;
 
 @end

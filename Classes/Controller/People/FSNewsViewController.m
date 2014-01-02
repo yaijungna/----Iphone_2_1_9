@@ -141,23 +141,7 @@
     }
     float xxx = 0;
     ISIOS7?xxx = 20:1;
-//    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 15 + xxx, 8, HeightOfChannel)];
-//    imageView.image         = [UIImage imageWithNameString:@"箭头左"];
-//    imageView.alpha         = 0.0;
-//    [self.view  addSubview:imageView];
-//    [imageView release];
-//    imageView.tag           =  20000;
-//    
-//    
-//    UIImageView * imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(307, 0, 5, HeightOfChannel)];
-//    //imageView2.image         = [UIImage imageWithNameString:@"箭头右"];
-//    [self.view  addSubview:imageView2];
-//    imageView2.tag           = 30000;
-//    [imageView2 release];
-    
-    
-    
-    //_myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(15, xxx, 290, HeightOfChannel)];
+
     _myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44 + xxx, 320, HeightOfChannel)];
     _myScroview.showsHorizontalScrollIndicator  = NO;
     _myScroview.tag            = 1000;
@@ -227,6 +211,7 @@
 }
 -(void)userGuideView
 {
+    UIWindow * window       = [UIApplication sharedApplication].windows[0];
     NSString * isHaveGuided = [[NSUserDefaults standardUserDefaults]objectForKey:@"userGuideView"];
     if (isHaveGuided) {
         return;
@@ -237,14 +222,14 @@
     button.backgroundColor = [UIColor blackColor];
     button.alpha           = 0.5;
     
-    UIView * view = [[UIApplication sharedApplication].keyWindow viewWithTag:333];
+    UIView * view = [window viewWithTag:333];
     if (view) {
-        [[UIApplication sharedApplication].keyWindow insertSubview:button belowSubview:view];
+        [window insertSubview:button belowSubview:view];
     }else
     {
-        [[UIApplication sharedApplication].keyWindow addSubview:button];
+        [window addSubview:button];
     }
-    [[UIApplication sharedApplication].keyWindow insertSubview:button belowSubview:view];
+    [window insertSubview:button belowSubview:view];
     
     UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake((320-192)/2, 30, 192, 140)];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"左右滑动切换主题" ofType:@"png"];

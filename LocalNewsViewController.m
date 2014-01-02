@@ -69,7 +69,23 @@
 {
     
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.fpChangeTitleColor) {
+        [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
+    }
 
+}
+-(void)xxxxxx
+{
+    if (self.fpChangeTitleColor)
+    {
+        self.fpChangeTitleColor();
+        self.fpChangeTitleColor = nil;
+    }
+}
 
 
 
@@ -138,7 +154,7 @@
         xx.size.height -= 44;
     }
     //_myNewsListView = [[MyNewsLIstView alloc] initWithChanel:nil currentIndex:nil parentViewController:self];
-    _myNewsListView = [[MyNewsLIstView alloc] initWithZoneId:-1];
+    _myNewsListView = [[MyNewsLIstView alloc] initWithZoneId:-1 parentViewController:self.navigationController];
     _myNewsListView.parentDelegate = _myNewsListView;
     
     
