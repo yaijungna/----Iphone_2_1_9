@@ -54,6 +54,10 @@
     self.myNaviBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem * leftbutton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnBack:)];
     leftbutton.tintColor         = [UIColor whiteColor];
+    if (ISIOS7) {
+        leftbutton.tintColor = [UIColor darkGrayColor];
+    }
+
     NSLog(@"%@",self.myNaviBar.topItem);
 	self.myNaviBar.topItem.leftBarButtonItem = leftbutton;
     [leftbutton release];
@@ -90,7 +94,7 @@
 
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
-    _localNewsCityListView.frame = CGRectMake(0, (self.canBeHaveNaviBar?44:0), rect.size.width, rect.size.height-(self.canBeHaveNaviBar?44:0));
+    _localNewsCityListView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, rect.size.height-NAVIBARHEIGHT);
     [_fsCityListData HTTPGetDataWithKind:GET_DataKind_Unlimited];
 }
 

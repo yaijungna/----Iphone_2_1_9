@@ -59,12 +59,11 @@
 
 - (void)loadChildView {
     if (_canBeHaveNaviBar) {
-        _myNaviBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        _myNaviBar.tintColor = [UIColor whiteColor];
+        _myNaviBar = [[LygNavigationBar alloc] init];
+        //_myNaviBar.tintColor = [UIColor whiteColor];
         [_myNaviBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         _myNaviBar.userInteractionEnabled = YES;
         UINavigationItem *navItem = [[UINavigationItem alloc] init];
-        [_myNaviBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
         NSLog(@"%@",_myNaviBar.tintColor);
         _myNaviBar.tintColor = [UIColor redColor];
         NSLog(@"%@",_myNaviBar.tintColor);
@@ -79,7 +78,13 @@
 
 - (void)loadView {
     [super loadView];
-	UIView *contentView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    UIView * contentView = nil;
+    if (ISIOS7) {
+        contentView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    }else
+    {
+        contentView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    }
 	self.view = contentView;
 	[contentView release];
 	

@@ -64,8 +64,9 @@
 
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
-    
-    _fsMyFaverateContainView.frame = CGRectMake(0, 44, 320, self.view.frame.size.height - 44);
+    float xxx = (ISIOS7?20:0);
+    float offSet = xxx + 44;
+    _fsMyFaverateContainView.frame = CGRectMake(0, offSet, 320, self.view.frame.size.height - offSet);
     
      
 }

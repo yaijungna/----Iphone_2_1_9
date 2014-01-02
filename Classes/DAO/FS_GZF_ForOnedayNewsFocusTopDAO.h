@@ -26,5 +26,6 @@
 @property (nonatomic,retain) NSString *type;
 @property (nonatomic,retain) NSString *channelid;
 @property (nonatomic,assign) NSInteger count;
+@property (nonatomic,assign) NewsType  memNewsType;
 
 @end

@@ -72,16 +72,15 @@
 }
 
 - (void)dealloc {
-//#ifdef MYDEBUG
-//	NSLog(@"%@.dealloc", self);
-//#endif
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-	
-	[_urlString release];
-	[_localStoreFileName release];
-	[_defaultFileName release];
-	[_imageID release];
+	self.urlString          = nil;
+    self.localStoreFileName = nil;
+    self.defaultFileName    = nil;
+    
+	self.imageID            = nil;
 	[_imageView release];
+    _imageView              = nil;
+    self.borderColor        = nil;
     [super dealloc];
 }
 -(void)drawRect:(CGRect)rect
@@ -270,11 +269,7 @@
 }
 
 - (void)endDownloadingComplete:(NSNotification *)notification {
-#ifdef MYDEBUG
-    //NSLog(@"endDownloadingComplete");
-#endif
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self retain];
         NSDictionary *userInfo = [notification userInfo];
         NSString *urlStr = [userInfo objectForKey:FSNETWORKDATA_MANAGER_URLSTRING_KEY];
@@ -305,35 +300,7 @@
                     });
                     [self release];
                 });
-                
-                //            CGRect rect = [self inner_computRectWithImage:imageOri withRect:self.frame];
-                //            UIImage *image = [self inner_drawImageWithImage:imageOri withRect:rect];
-                //            _imageView.image = image;
-                //            _imageView.frame = rect;
-                //            CATransition *animation = [CATransition animation];
-                //            [animation setDelegate:self];
-                //            [animation setType:kCATransitionFade];
-                //            [animation setSubtype:kCATransitionFromLeft];
-                //            animation.fillMode = kCAFillModeRemoved;
-                
-                
-                //            CABasicAnimation *theAnimation;
-                //
-                //            theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
-                //
-                //            theAnimation.duration=0.1;
-                //
-                //            //theAnimation.beginTime = beginTime;
-                //
-                //            theAnimation.repeatCount=0;
-                //
-                //            theAnimation.autoreverses=NO;
-                //
-                //            theAnimation.fromValue=[NSNumber numberWithFloat:0];
-                //
-                //            theAnimation.toValue=[NSNumber numberWithFloat:1];
-                //            [self.layer addAnimation:theAnimation forKey:nil];
-                
+
             }
             
             

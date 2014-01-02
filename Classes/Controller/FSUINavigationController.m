@@ -33,7 +33,7 @@
 
     if (self) {
 #ifdef __IPHONE_5_0
-        [self.navigationBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed: NAVIGITOEPIC] forBarMetrics:UIBarMetricsDefault];
 #endif
     }
     return self;

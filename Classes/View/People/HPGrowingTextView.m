@@ -91,6 +91,7 @@
 		newText = [newText stringByAppendingString:@"\n|W|"];
 	internalTextView.text = newText;
 	maxHeight = internalTextView.contentSize.height + TEXT_TOP_INSET + 1;
+    maxHeight = 94;
 	//NSLog(@"maxHeight:%d",maxHeight);
 	internalTextView.text = saveText;
 	internalTextView.hidden = NO;
@@ -117,11 +118,20 @@
 	minNumberOfLines = m;
 }
 
-
+-(CGSize)getContentHeight
+{
+#ifdef __IPHONE_7_0
+    CGRect rect =  [self.internalTextView.text boundingRectWithSize:CGSizeMake(self.internalTextView.frame.size.width, 100) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:internalTextView.font,NSFontAttributeName, nil] context:nil];
+    rect.size.height += 10;
+    return rect.size;
+#endif
+}
 - (void)textViewDidChange:(UITextView *)textView
 {
-	//size of content, so we can set the frame of self
 	NSInteger newSizeH = internalTextView.contentSize.height - 6;
+        if (ISIOS7) {
+              newSizeH       = [self getContentHeight].height;
+        }
 	//NSLog(@"newSizeH[%d],minHeight[%d],maxHeight[%d]",newSizeH,minHeight,maxHeight);
 	if(newSizeH < minHeight || !internalTextView.hasText) newSizeH = minHeight; //not smalles than minHeight
 	

@@ -85,7 +85,7 @@
         NSLog(@"%@",_sinaWBEngine.authorize.LoginwebView);
         if (self.isnavTopBar) {
             
-            _sinaWBEngine.authorize.LoginwebView.frame = CGRectMake(0, 44, rect.size.width, self.view.frame.size.width);
+            _sinaWBEngine.authorize.LoginwebView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, self.view.frame.size.height - NAVIBARHEIGHT);
             [self.view addSubview:_navTopBar];
         }
         else{

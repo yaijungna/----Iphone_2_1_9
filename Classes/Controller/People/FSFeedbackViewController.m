@@ -93,7 +93,7 @@
 }
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
-   _fsFeedbackContainerView.frame = CGRectMake(0, FSSETTING_VIEW_NAVBAR_HEIGHT, rect.size.width, rect.size.height - FSSETTING_VIEW_NAVBAR_HEIGHT); 
+   _fsFeedbackContainerView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, rect.size.height - NAVIBARHEIGHT);
 }
 
 

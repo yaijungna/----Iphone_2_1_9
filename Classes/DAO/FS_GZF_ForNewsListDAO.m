@@ -13,6 +13,8 @@
 
 
 #define FS_NEWS_URL        @"http://mobile.app.people.com.cn:81/news2/news.php?act=channelnewslist&rt=xml&channelid=%@&count=%d&maxid=%@"
+
+#define FS_AREA_NEWS_URL   @"http://mobile.app.people.com.cn:81/news2/news.php?act=dfchannelnewslist&rt=xml&channelid=%@&count=%d&maxid=%@"
 #define FS_NEWS_URL_IMPORT @"http://mobile.app.people.com.cn:81/news2/news.php?act=importantlist&count=%d&maxid=%@"
 
 #define FS_NEWS_PAGECOUNT 20
@@ -39,6 +41,19 @@
 }
   
 - (NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind {
+    if (self.newsType == areaNews) {
+        if (getDataKind == GET_DataKind_Refresh) {
+            _count = 1;
+            //NSLog(@"%@",[NSString stringWithFormat:FS_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""]);
+            return [NSString stringWithFormat:FS_AREA_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""];
+        } else {
+            _count =_count +1;
+            
+            return [NSString stringWithFormat:FS_AREA_NEWS_URL,  self.channelid, FS_NEWS_PAGECOUNT,self.lastid];
+        }
+    }
+    
+    
     if (!_isImportNews) {
         if (getDataKind == GET_DataKind_Refresh) {
             _count = 1;
@@ -50,8 +65,8 @@
             return [NSString stringWithFormat:FS_NEWS_URL,  self.channelid, FS_NEWS_PAGECOUNT,self.lastid];
         }
         
-
     }
+    
 	if (getDataKind == GET_DataKind_Refresh) {
         _count = 1;
         //NSLog(@"%@",[NSString stringWithFormat:FS_NEWS_URL_IMPORT,FS_NEWS_PAGECOUNT,@""]);

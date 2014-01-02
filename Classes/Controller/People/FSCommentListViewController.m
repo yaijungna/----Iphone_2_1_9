@@ -133,8 +133,9 @@
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
 //    _fsNewsContainerCommentListView.frame = CGRectMake(0, 44.0f, rect.size.width, rect.size.height-44.0f);
+    float  temp = (ISIOS7?64:44);
     if (_isnavTopBar) {
-        _fsNewsCommentListView.frame = CGRectMake(0, 44.0f, rect.size.width, rect.size.height-44.0f);
+        _fsNewsCommentListView.frame = CGRectMake(0, temp, rect.size.width, rect.size.height - temp);
     }
     else{
         _fsNewsCommentListView.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);

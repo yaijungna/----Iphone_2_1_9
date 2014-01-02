@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FS_GZF_ForOneDayNewsListDAO.h"
+ 
 
 
 
@@ -16,7 +17,7 @@
     NSString *_channelid;
 }
 
-
+@property (nonatomic,assign) NewsType  newsType;
 @property (nonatomic,retain) NSString *channelid;
 @property (nonatomic,assign) BOOL     isImportNews;
 

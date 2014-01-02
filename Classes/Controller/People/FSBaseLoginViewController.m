@@ -76,9 +76,7 @@
 	
     
     if (self.isnavTopBar) {
-        
-        _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
-        [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
+        _navTopBar = [[LygNavigationBar alloc]init];
         UINavigationItem *topItem = [[UINavigationItem alloc] init];
         _navTopBar.tintColor = [UIColor whiteColor];
         NSArray *items = [[NSArray alloc] initWithObjects:topItem, nil];
@@ -93,6 +91,10 @@
 
         UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goBackToParent:)];
         backButton.tintColor         = [UIColor whiteColor];
+        if (ISIOS7) {
+            backButton.tintColor = [UIColor darkGrayColor];
+        }
+
         topItem.leftBarButtonItem       = backButton;
         [backButton release];
     }
@@ -233,7 +235,7 @@
 	}
     CGFloat beginy=0.0f;
     if (self.isnavTopBar) {
-        beginy = FSSETTING_VIEW_NAVBAR_HEIGHT;
+        beginy = NAVIBARHEIGHT;
     }
     
 	_keyboardSize = keyboardSize;
@@ -249,6 +251,7 @@
 	
 	//STEP 3.计算行间距
 	CGFloat top = TOP_BOTTOM_SAPCE + beginy;// + _ivDescription.image.size.height + TOP_BOTTOM_SAPCE;
+    ISIOS7?top+=20:1;
 	CGFloat left = LEFT_RIGHT_SPACE;
 	CGFloat rowSpace = ROW_SPACE;
 	

@@ -43,12 +43,19 @@
 #import "MobClick.h"
 #import "YXApi.h"
 #import "YXApiObject.h"
-
+#import "Appirater.h"
+#import "MyPageViewController.h"
+#define PAGE
 NSString * getCityName()
 {
     PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
     return xxx.cityName?xxx.cityName:@"北京";
-    //return xxx.cityName;
+}
+
+NSString * getProvinceName()
+{
+    PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    return xxx.provinceName?xxx.provinceName:@"";
 }
 @interface PeopleNewsReaderPhoneAppDelegate(PrivateMethod)
 - (void)showLoadingView:(UIView *)aview;
@@ -152,7 +159,7 @@ NSString * getCityName()
     [_fs_GZF_localGetWeatherMessageDAO2 HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
 
     
-   
+    [Appirater  appLaunched:YES];
     return YES;
 }
 -(void)xxxxx
@@ -302,6 +309,7 @@ NSString * getCityName()
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [Appirater appEnteredForeground:YES];
     [PeopleNewsStati sharedStati].timeOfAppOpen = time(NULL);
     [self performSelectorInBackground:@selector(xxxxx) withObject:nil];
     /*
@@ -533,6 +541,7 @@ NSString * getCityName()
 		[oneDayNewsCtrl release];
 		
 		//2.
+#ifndef PAGE
 		FSNewsViewController *newsCtrl = [[FSNewsViewController alloc] init];
         newsCtrl.canBeHaveNaviBar      = YES;
         newsCtrl.parentNavigationController  = navi;
@@ -541,6 +550,19 @@ NSString * getCityName()
 		[fsViewCtrls addObject:navNewsCtrl];
 		[navNewsCtrl release];
 		[newsCtrl release];
+#else
+        MyPageViewController * newsCtrl = [[MyPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        FSUINavigationController *navNewsCtrl = [[FSUINavigationController alloc] initWithRootViewController:newsCtrl];
+        navNewsCtrl.navigationBarHidden = YES;
+		[fsViewCtrls addObject:navNewsCtrl];
+		[navNewsCtrl release];
+		[newsCtrl release];
+#endif
+
+        
+        
+       
+
 		
 		//3.
 		FSTopicViewController *topicCtrl = [[FSTopicViewController alloc] init];
@@ -862,7 +884,6 @@ NSString * getCityName()
 #pragma dingwei 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     
-//    CLLocationCoordinate2D loc = [newLocation coordinate];
     NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
     NSInteger v = [systemVersion integerValue];
     
@@ -937,6 +958,87 @@ NSString * getCityName()
     
     [manager stopMonitoringSignificantLocationChanges];
     
+}
+- (void)locationManager:(CLLocationManager *)manager
+	 didUpdateLocations:(NSArray *)locations __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_6_0)
+{
+    
+    NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+    NSInteger v = [systemVersion integerValue];
+    
+    if (v>5) {
+        //获取所在地城市名
+        CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+        [geocoder reverseGeocodeLocation:[locations lastObject] completionHandler:^(NSArray *placemarks,NSError *error)
+         {
+             for(CLPlacemark *placemark in placemarks)
+             {
+                 //NSString *currentCity=[[placemark.addressDictionary objectForKey:@"City"] substringToIndex:2];
+                 NSDictionary *addressDictionary = placemark.addressDictionary;
+                 //NSLog(@"addressDictionary%@",placemark.addressDictionary);
+                 
+                 //北京、上海、重庆、天津
+                 //                 NSString *State = [addressDictionary objectForKey:@"State"];
+                 //
+                 //                 NSString *SubLocality = [addressDictionary objectForKey:@"SubLocality"];
+                 //
+                 //                 NSString *shi = [State substringFromIndex:[State length]-1];
+                 NSString * string     = [addressDictionary objectForKey:@"City"];
+                 NSString * provinName = [addressDictionary objectForKey:@"State"];
+                 self.provinceName     = [provinName substringToIndex:provinName.length - 1];
+                 if (string) {
+                     self.cityName     = [string substringToIndex:string.length - 1];
+                 }else
+                 {
+                     NSString * string2 = [addressDictionary objectForKey:@"State"];
+                     self.cityName     = [string2 substringToIndex:string2.length - 1];
+                 }
+                 _fs_GZF_localGetWeatherMessageDAO.group = self.cityName;
+                 [_fs_GZF_localGetWeatherMessageDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
+                 NSLog(@"%@",_cityName);
+                 //                 NSLog(@"%@   %@   %@   ",State,SubLocality,shi);
+                 //                 if ([shi isEqualToString:@"市"]) {
+                 //                     //NSLog(@"111111");
+                 //
+                 //                     if ([_cityName isEqualToString:[State substringToIndex:[State length]-1]]) {
+                 //                         self.localCity = _cityName;
+                 //                         //return;
+                 //                     }
+                 //                     self.localCity = [State substringToIndex:[State length]-1];
+                 //                     _fs_GZF_localGetWeatherMessageDAO.group = [State substringToIndex:[State length]-1];
+                 //                     [_fs_GZF_localGetWeatherMessageDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+                 //                 }
+                 //                 else{
+                 //                     //NSLog(@"222222");
+                 //                     NSString *shi = [SubLocality substringFromIndex:[SubLocality length]-1];
+                 //                     if ([shi isEqualToString:@"市"]) {
+                 //                         if ([_cityName isEqualToString:[SubLocality substringToIndex:[SubLocality length]-1]]) {
+                 //                             self.localCity = _cityName;
+                 //                             return;
+                 //                         }
+                 //                         self.localCity = [State substringToIndex:[State length]-1];
+                 //                         _fs_GZF_localGetWeatherMessageDAO.group = [SubLocality substringToIndex:[SubLocality length]-1];
+                 //                         [_fs_GZF_localGetWeatherMessageDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+                 //                     }
+                 //                     else{
+                 //                         return;
+                 //                         [_fs_GZF_localGetWeatherMessageDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+                 //                     }
+                 //                 }
+                 
+             }
+         }];
+        [geocoder release];
+        
+    }
+    else{
+        //        MKReverseGeocoder *reverseGeocoder =[[[MKReverseGeocoder alloc] initWithCoordinate:loc] autorelease];
+        //        reverseGeocoder.delegate = self;
+        //        [reverseGeocoder start];
+    }
+    
+    [manager stopMonitoringSignificantLocationChanges];
+
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

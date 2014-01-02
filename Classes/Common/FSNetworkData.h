@@ -24,7 +24,7 @@
 	id _parentDelegate;
    
 }
-
+@property (nonatomic, assign) id               parentDelegate;
 @property (nonatomic, retain) NSURLConnection *URLConnection;
 @property (nonatomic, retain) NSPort *URLConnectionPort;
 @property (nonatomic, retain) NSRunLoop *URLConnectionRunLoop;

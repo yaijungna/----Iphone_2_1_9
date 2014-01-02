@@ -44,10 +44,10 @@
 }
 -(void)addNavView
 {
-    _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT)];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
-        [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-    }
+    _navTopBar = [[LygNavigationBar alloc]init];
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
+//       // [_navTopBar setBackgroundImage:[UIImage imageNamed: NAVIGITOEPIC] forBarMetrics:UIBarMetricsDefault];
+//    }
 	UINavigationItem *topItem = [[UINavigationItem alloc] init];
 	NSArray *items = [[NSArray alloc] initWithObjects:topItem, nil];
 	_navTopBar.items = items;
@@ -65,7 +65,8 @@
 
     [self addNavView];
     //the setting view
-    _settingView = [[FSNewSettingView alloc]initWithFrame:CGRectMake(0.0f, FSSETTING_VIEW_NAVBAR_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - FSSETTING_VIEW_NAVBAR_HEIGHT)];
+    float xxx = (ISIOS7?64:44);
+    _settingView = [[FSNewSettingView alloc]initWithFrame:CGRectMake(44.0f, xxx, self.view.frame.size.width, self.view.frame.size.height - xxx)];
     _settingView.delegate = self;
     [self.view addSubview:_settingView];
     
@@ -235,8 +236,8 @@
 
 
 - (void)layoutControllerViewWithRect:(CGRect)rect {
-	_navTopBar.frame = CGRectMake(0.0f, 0.0f, rect.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT);
-	_settingView.frame = CGRectMake(0.0f, FSSETTING_VIEW_NAVBAR_HEIGHT, rect.size.width, rect.size.height - FSSETTING_VIEW_NAVBAR_HEIGHT);
+	//_navTopBar.frame = CGRectMake(0.0f, 0.0f, rect.size.width, FSSETTING_VIEW_NAVBAR_HEIGHT);
+	_settingView.frame = CGRectMake(0.0f, NAVIBARHEIGHT, rect.size.width, rect.size.height - NAVIBARHEIGHT);
 }
 
 

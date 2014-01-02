@@ -20,22 +20,29 @@
 
 #define RELEASE
 #ifdef  RELEASE
-#define NSLog(...)
-//#define printf(...)
+//#define NSLog(...)
+#define printf(...)
 #endif
 
 #ifdef MYDEBUG
 #define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 //#define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define FSLog(...)
+#define FSLog(...)g
 #endif
 
 #define ISIPHONE5   ([UIScreen mainScreen].bounds.size.height - 480 > 10?1:0)
-#define ISIOS7      ([UIDevice currentDevice].systemVersion.floatValue >6.5?1:0)
+
+#ifdef  __IPHONE_7_0
+#define ISIOS7   ([UIDevice currentDevice].systemVersion.floatValue >6.5?1:0)
+#else
+#define ISIOS7   (0)
+#endif
+//#define ISIOS7      ([UIDevice currentDevice].systemVersion.floatValue >6.5?1:0)
 #define GETVERSION  ([UIDevice currentDevice].systemVersion.floatValue)
-
-
+#define NAVIGITOEPIC ((ISIOS7)?@"navigatorBar":@"navigatorBar_S")
+#define NAVIBARHEIGHT ((ISIOS7)?64:44)
+#define GETBORDER  (ISIOS7?20:0)
 #define QQAPPKEY  @"801359590"
 //#define QQAPPKEY  @"801327874"
 #define QQSECRET  @"b1d02cc7dddba7ef9864063c627c4b29"
@@ -51,4 +58,13 @@
 #define YOUMENGKEY     @"52612f2e56240b87bc0193eb"
 #define YOUMENGKEY2    @"4ed5f5da527015150700001b"
 #define YIXINAPPKEY    @"yx59d91672f0784a05bf488fb69ca241a1"
+
+#define YOUEMENKEY2    @"361bcf569ed3991df0a74850a1f84d6f"
+
+typedef enum _newTye
+{
+    puTong        = 0,
+    importantNews = 1,
+    areaNews      = 2
+}NewsType;
 

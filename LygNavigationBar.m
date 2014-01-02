@@ -28,6 +28,13 @@
     return self;
 }
 
+-(void)drawRect:(CGRect)rect
+{
+    UIImage * image = [UIImage imageWithNameString:NAVIGITOEPIC];
+    [image drawInRect:rect];
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

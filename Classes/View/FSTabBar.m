@@ -37,7 +37,18 @@
         self.layer.shadowOpacity = 0.45f;
         self.layer.shadowColor = [UIColor colorWithRed:45.0f / 255.0f green:45.0f / 255.0f blue:45.0f / 255.0f alpha:1.0].CGColor;
     }
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showTabBar:) name:@"showTabBar" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideTabBar:) name:@"hideTabBar" object:nil];
+
     return self;
+}
+-(void)showTabBar:(NSNotification*)sender
+{
+    self.hidden = NO;
+}
+-(void)hideTabBar:(NSNotification*)sender
+{
+    self.hidden = YES;
 }
 
 - (void)dealloc {

@@ -104,9 +104,10 @@
 }
 
 - (void)layoutControllerViewWithRect:(CGRect)rect {
-    rect.origin.y = self.canBeHaveNaviBar?44:0;
-    rect.size.height -= (self.canBeHaveNaviBar?44:0);
-    _fsMoreContainerView.frame = rect;
+    
+//    rect.origin.y = self.canBeHaveNaviBar?44:0;
+//    rect.size.height -= (self.canBeHaveNaviBar?44:0);
+    _fsMoreContainerView.frame = CGRectMake(0, NAVIBARHEIGHT, 320, self.view.frame.size.height - NAVIBARHEIGHT);
 }
 -(void)viewWillAppear:(BOOL)animated
 {

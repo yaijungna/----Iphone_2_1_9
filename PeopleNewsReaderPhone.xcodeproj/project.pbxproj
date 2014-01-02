@@ -337,6 +337,8 @@
 		04FB294C1675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FB29461675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png */; };
 		0A0108151848D08100FCB106 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0108141848D08100FCB106 /* libWeiboSDK.a */; };
 		0A0108171848D0BD00FCB106 /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0108161848D0BD00FCB106 /* libYixinSDK.a */; };
+		0A329E6E18743F84004B622C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E6D18743F84004B622C /* MyPageViewController.m */; };
+		0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E70187441B0004B622C /* LygNewsViewController.m */; };
 		0AE0769A17BB9A6A006B6358 /* MyNewsLIstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -444,6 +446,7 @@
 		581546DD17C1E77D00EFEF20 /* 右抽屉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 581546DB17C1E77D00EFEF20 /* 右抽屉@2x.png */; };
 		581887F41806691900590FDC /* 跳转.png in Resources */ = {isa = PBXBuildFile; fileRef = 581887F21806691900590FDC /* 跳转.png */; };
 		581887F51806691900590FDC /* 跳转@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 581887F31806691900590FDC /* 跳转@2x.png */; };
+		581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */ = {isa = PBXBuildFile; fileRef = 581E0CA9186C1E6E00BA5C07 /* refresh2.png */; };
 		582DE4EE183A26B9004AF13F /* MemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DE4ED183A26B9004AF13F /* MemCache.m */; };
 		58350A1217D0209700738DCC /* 刷新.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1017D0209700738DCC /* 刷新.png */; };
 		58350A1317D0209700738DCC /* 刷新@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1117D0209700738DCC /* 刷新@2x.png */; };
@@ -474,11 +477,16 @@
 		5870279117F3B599003B3BEB /* icon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278E17F3B599003B3BEB /* icon29x29.png */; };
 		5870279217F3B599003B3BEB /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278F17F3B599003B3BEB /* icon58x58.png */; };
 		5870279317F3B599003B3BEB /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870279017F3B599003B3BEB /* icon80x80.png */; };
+		587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */; };
+		587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6E318716CCF00664C4D /* LygAreaObject.m */; };
 		5882B5E417CC4EDD00B77388 /* LygDeepListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E317CC4EDD00B77388 /* LygDeepListView.m */; };
 		5882B5E717CC8EBB00B77388 /* LygDeepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E617CC8EBB00B77388 /* LygDeepTableViewCell.m */; };
 		58847F91180197FE00B10BC6 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 58847F90180197FE00B10BC6 /* ads.png */; };
 		588B051318161719001E2D33 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B051218161719001E2D33 /* Crashlytics.framework */; };
 		589004E817D16F970001AE30 /* MyIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589004E717D16F970001AE30 /* MyIndicatorView.m */; };
+		5890805F1863DC7600E3B923 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890805E1863DC7600E3B923 /* Appirater.m */; };
+		589080641868436E00E3B923 /* navigatorBar_S@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 589080621868436E00E3B923 /* navigatorBar_S@2x.png */; };
+		589080651868436E00E3B923 /* navigatorBar_S.png in Resources */ = {isa = PBXBuildFile; fileRef = 589080631868436E00E3B923 /* navigatorBar_S.png */; };
 		5890870B18505343009553BA /* FSNewsDitailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890870A18505343009553BA /* FSNewsDitailObject.m */; };
 		5893DB90179FD01C00068319 /* navigatorBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8E179FD01400068319 /* navigatorBar.png */; };
 		5893DB91179FD01C00068319 /* navigatorBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5893DB8F179FD01800068319 /* navigatorBar@2x.png */; };
@@ -1292,6 +1300,10 @@
 		04FB29461675B6D400F6BBFE /* weathercell_tianqibeijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weathercell_tianqibeijing@2x.png"; sourceTree = "<group>"; };
 		0A0108141848D08100FCB106 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = WeChatSDK/libWeiboSDK.a; sourceTree = "<group>"; };
 		0A0108161848D0BD00FCB106 /* libYixinSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYixinSDK.a; sourceTree = "<group>"; };
+		0A329E6C18743F84004B622C /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
+		0A329E6D18743F84004B622C /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
+		0A329E6F187441B0004B622C /* LygNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygNewsViewController.h; sourceTree = "<group>"; };
+		0A329E70187441B0004B622C /* LygNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygNewsViewController.m; sourceTree = "<group>"; };
 		0AE0769817BB9A69006B6358 /* MyNewsLIstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewsLIstView.h; sourceTree = "<group>"; };
 		0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNewsLIstView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1483,6 +1495,7 @@
 		581546DB17C1E77D00EFEF20 /* 右抽屉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右抽屉@2x.png"; sourceTree = "<group>"; };
 		581887F21806691900590FDC /* 跳转.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "跳转.png"; sourceTree = "<group>"; };
 		581887F31806691900590FDC /* 跳转@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "跳转@2x.png"; sourceTree = "<group>"; };
+		581E0CA9186C1E6E00BA5C07 /* refresh2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh2.png; sourceTree = "<group>"; };
 		582DE4EC183A26B9004AF13F /* MemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemCache.h; sourceTree = "<group>"; };
 		582DE4ED183A26B9004AF13F /* MemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemCache.m; sourceTree = "<group>"; };
 		58350A1017D0209700738DCC /* 刷新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新.png"; sourceTree = "<group>"; };
@@ -1526,6 +1539,10 @@
 		5870278E17F3B599003B3BEB /* icon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29x29.png; sourceTree = "<group>"; };
 		5870278F17F3B599003B3BEB /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
 		5870279017F3B599003B3BEB /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
+		587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygListOfProvincesHaveAreaNewsDao.h; sourceTree = "<group>"; };
+		587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygListOfProvincesHaveAreaNewsDao.m; sourceTree = "<group>"; };
+		587EC6E218716CCF00664C4D /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
+		587EC6E318716CCF00664C4D /* LygAreaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygAreaObject.m; sourceTree = "<group>"; };
 		5882B5E217CC4EDD00B77388 /* LygDeepListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepListView.h; sourceTree = "<group>"; };
 		5882B5E317CC4EDD00B77388 /* LygDeepListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDeepListView.m; sourceTree = "<group>"; };
 		5882B5E517CC8EBB00B77388 /* LygDeepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepTableViewCell.h; sourceTree = "<group>"; };
@@ -1534,6 +1551,10 @@
 		588B051218161719001E2D33 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		589004E617D16F970001AE30 /* MyIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIndicatorView.h; sourceTree = "<group>"; };
 		589004E717D16F970001AE30 /* MyIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIndicatorView.m; sourceTree = "<group>"; };
+		5890805D1863DC7600E3B923 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		5890805E1863DC7600E3B923 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		589080621868436E00E3B923 /* navigatorBar_S@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigatorBar_S@2x.png"; sourceTree = "<group>"; };
+		589080631868436E00E3B923 /* navigatorBar_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigatorBar_S.png; sourceTree = "<group>"; };
 		5890870918505343009553BA /* FSNewsDitailObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewsDitailObject.h; sourceTree = "<group>"; };
 		5890870A18505343009553BA /* FSNewsDitailObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewsDitailObject.m; sourceTree = "<group>"; };
 		5893DB8E179FD01400068319 /* navigatorBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigatorBar.png; sourceTree = "<group>"; };
@@ -2652,6 +2673,17 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0A329E6B18743F57004B622C /* pageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A329E6C18743F84004B622C /* MyPageViewController.h */,
+				0A329E6D18743F84004B622C /* MyPageViewController.m */,
+				0A329E6F187441B0004B622C /* LygNewsViewController.h */,
+				0A329E70187441B0004B622C /* LygNewsViewController.m */,
+			);
+			name = pageViewController;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2815,6 +2847,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0A329E6B18743F57004B622C /* pageViewController */,
+				581E0CA8186C1B5D00BA5C07 /* tmp */,
+				5890805C1863DC5200E3B923 /* 评论提示 */,
 				5832A936185EF71D007FA74E /* localNews */,
 				58126C3C185AB2B9006C5D34 /* FSMyFaverateObject.h */,
 				58126C3D185AB2B9006C5D34 /* FSMyFaverateObject.m */,
@@ -2864,6 +2899,8 @@
 			isa = PBXGroup;
 			children = (
 				5850C1D2179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld */,
+				587EC6E218716CCF00664C4D /* LygAreaObject.h */,
+				587EC6E318716CCF00664C4D /* LygAreaObject.m */,
 				5890870918505343009553BA /* FSNewsDitailObject.h */,
 				5890870A18505343009553BA /* FSNewsDitailObject.m */,
 				5805AC23184331CA007D934E /* FSDeepPageObject.h */,
@@ -3171,11 +3208,21 @@
 			name = "友盟统计";
 			sourceTree = "<group>";
 		};
+		581E0CA8186C1B5D00BA5C07 /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+				581E0CA9186C1E6E00BA5C07 /* refresh2.png */,
+			);
+			name = tmp;
+			sourceTree = "<group>";
+		};
 		5832A936185EF71D007FA74E /* localNews */ = {
 			isa = PBXGroup;
 			children = (
 				589F559F185EF8190068E0FF /* LocalNewsViewController.h */,
 				589F55A0185EF8190068E0FF /* LocalNewsViewController.m */,
+				587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */,
+				587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */,
 			);
 			name = localNews;
 			sourceTree = "<group>";
@@ -3223,6 +3270,15 @@
 				58E2F77B1847296500EF4F08 /* LygDeepCommentListDao.m */,
 			);
 			name = "深度";
+			sourceTree = "<group>";
+		};
+		5890805C1863DC5200E3B923 /* 评论提示 */ = {
+			isa = PBXGroup;
+			children = (
+				5890805D1863DC7600E3B923 /* Appirater.h */,
+				5890805E1863DC7600E3B923 /* Appirater.m */,
+			);
+			name = "评论提示";
 			sourceTree = "<group>";
 		};
 		58AE68A317AF7F480007203C /* Tencent */ = {
@@ -3500,6 +3556,8 @@
 		820C79D7160C378B00E6A4CD /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
+				589080621868436E00E3B923 /* navigatorBar_S@2x.png */,
+				589080631868436E00E3B923 /* navigatorBar_S.png */,
 				58FA002517A8B20A00841355 /* topSelected.png */,
 				58FA002617A8B20A00841355 /* topSelected@2x.png */,
 				58FA002117A88D2300841355 /* shouqi.png */,
@@ -4363,6 +4421,7 @@
 				A6A22E1E15D8988100E48EB8 /* Default@2x.png in Resources */,
 				581887F51806691900590FDC /* 跳转@2x.png in Resources */,
 				A647061F15D8D8AB00C19AD1 /* blackArrow.png in Resources */,
+				589080651868436E00E3B923 /* navigatorBar_S.png in Resources */,
 				A69ABB3715D9CC450064B51B /* pulltorefresh_arraw.png in Resources */,
 				A69ABB3815D9CC450064B51B /* pulltorefresh_arraw@2x.png in Resources */,
 				A69ABB3915D9CC450064B51B /* pulltorefresh_background.png in Resources */,
@@ -4559,6 +4618,7 @@
 				04E00CA716A63144004ADEDE /* deep_pageM.png in Resources */,
 				04E00CA816A63144004ADEDE /* deep_pageM@2x.png in Resources */,
 				04E00CA916A63144004ADEDE /* deep_pageR.png in Resources */,
+				581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */,
 				04E00CAA16A63144004ADEDE /* deep_pageR@2x.png in Resources */,
 				04D6CC4116A790D700C72C30 /* Comment_title.png in Resources */,
 				04D6CC4216A790D700C72C30 /* Comment_title@2x.png in Resources */,
@@ -4592,6 +4652,7 @@
 				042B050516AD0C65001920C7 /* Deep_TextTitle@2x.png in Resources */,
 				042B050816AD11F3001920C7 /* deep_textline.png in Resources */,
 				042B050916AD11F3001920C7 /* deep_textline@2x.png in Resources */,
+				589080641868436E00E3B923 /* navigatorBar_S@2x.png in Resources */,
 				042B050C16AD16B3001920C7 /* Deep_picBottom.png in Resources */,
 				042B050D16AD16B3001920C7 /* Deep_picBottom@2x.png in Resources */,
 				042B050F16AD16C4001920C7 /* Deep_Leadmask.png in Resources */,
@@ -4931,6 +4992,7 @@
 				5805AC1F183F5FA9007D934E /* FSDeepOuterObject.m in Sources */,
 				A69427A016096CE80076E9A5 /* FSChannelSettingtTOPCellTextFloatView.m in Sources */,
 				8206EA98160AAD08007D5B43 /* FSOneDayNewsListDAO.m in Sources */,
+				0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */,
 				8206EA9B160AAD2D007D5B43 /* FSFocusTopDAO.m in Sources */,
 				A656088D160AE34A0001454D /* FSForChannelSettingFocusTopDAO.m in Sources */,
 				58126BEF18571357006C5D34 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -4950,6 +5012,7 @@
 				82F8FBF5162F9CB700552B42 /* FSTopicListDAO.m in Sources */,
 				82F8FBF8162F9D9D00552B42 /* FSTopicListTimestampDAO.m in Sources */,
 				82F8FBFB162FDB0600552B42 /* FSGetDAO.m in Sources */,
+				587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */,
 				82F8FBFE162FED8000552B42 /* FSDataTimestampObject.m in Sources */,
 				5805AC671843627B007D934E /* MicroBlogOauth.m in Sources */,
 				82D4DEED1630D67E0044354A /* FSXMLParserStoreObject.m in Sources */,
@@ -4966,6 +5029,7 @@
 				82F8EDEC1634C4B60040B897 /* FSNetworkDAO.m in Sources */,
 				27870054163519E8002C00DA /* FS_GZF_CityListDAO.m in Sources */,
 				27870055163519E8002C00DA /* FSCityListDAO.m in Sources */,
+				0A329E6E18743F84004B622C /* MyPageViewController.m in Sources */,
 				2787006316351A09002C00DA /* FS_GZF_BaseGETXMLDAO.m in Sources */,
 				2787006416351A09002C00DA /* FS_GZF_BaseGETXMLDataListDAO.m in Sources */,
 				2787006516351A09002C00DA /* FS_GZF_BaseNetworkDAO.m in Sources */,
@@ -5046,6 +5110,7 @@
 				5805AC25184331CA007D934E /* FSDeepPageObject.m in Sources */,
 				4CC14F7E16461E2A0007143D /* FSDeepContent_PicObject.m in Sources */,
 				27B2975C16474BA8005AFD50 /* FSLocalNewsListObject.m in Sources */,
+				587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */,
 				5805AC691843627B007D934E /* MicroBlogRequest.m in Sources */,
 				27B2976516474C2C005AFD50 /* FS_GZF_ForLocalNewsListDAO.m in Sources */,
 				27B2976616474C2C005AFD50 /* FS_GZF_ForNewsListDAO.m in Sources */,
@@ -5129,6 +5194,7 @@
 				049603741697FA0D00FC7EC4 /* FSChannelObject.m in Sources */,
 				0496037A1697FBBC00FC7EC4 /* FSBatchNewsObject.m in Sources */,
 				049603861697FD9900FC7EC4 /* FSNewsDitailPicObject.m in Sources */,
+				5890805F1863DC7600E3B923 /* Appirater.m in Sources */,
 				0496038C1697FD9C00FC7EC4 /* FSCommentObject.m in Sources */,
 				5805AC22183F602C007D934E /* FSDeepContentObject.m in Sources */,
 				04D9F39E1699422200C9DF6A /* FSDeepContent_ChildObject.m in Sources */,
@@ -5241,8 +5307,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bo Du (483V26PX5Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5273,9 +5339,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9C6DAA0-0CC6-4118-BD82-49F192640911";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5284,8 +5350,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5314,9 +5380,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5336,7 +5402,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "84895731-6ACA-400E-9B7D-E417DBD92370";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84895731-6ACA-400E-9B7D-E417DBD92370";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = AdHoc;
 		};
@@ -5344,8 +5410,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5375,9 +5441,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "84895731-6ACA-400E-9B7D-E417DBD92370";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84895731-6ACA-400E-9B7D-E417DBD92370";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5398,7 +5464,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "75B50535-9B69-461A-A0F9-2D1B21507825";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "75B50535-9B69-461A-A0F9-2D1B21507825";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -5416,7 +5482,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PROVISIONING_PROFILE = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727EB47-FA40-4A2F-8C16-B440859EEEE5";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

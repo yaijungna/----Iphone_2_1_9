@@ -10,6 +10,7 @@
 #import "FSNewsContainerView.h"
 #import "FSInformationMessageView.h"
 #import "FSBaseDB.h"
+#define  GROWINGTEXTFIELDHEIGHT    44
 @implementation FSNewsDitailToolBar
 
 @synthesize touchEvenKind = _touchEvenKind;
@@ -162,7 +163,7 @@
     
     
     //可变高度文本框
-    _growingText = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(11, 14, 230, 4)];
+    _growingText = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(11, 14, 230, GROWINGTEXTFIELDHEIGHT)];
     _growingText.minNumberOfLines = 1;
     _growingText.maxNumberOfLines = 5;
     [_growingText setDataDetectorTypes:UIDataDetectorTypeNone];
@@ -367,6 +368,7 @@
     
     
     CGRect rr = [UIScreen mainScreen].applicationFrame;
+    rr.size.height += GETBORDER;
     
     self.frame = CGRectMake(0.0f, 0, rr.size.width, rr.size.height - keyboardSize.height + 44);
     _backgroundBT.frame = self.frame;
@@ -399,9 +401,10 @@
     _sendBT.alpha = 0.0f;
     
     
-    CGRect rr = [UIScreen mainScreen].applicationFrame;
+    CGRect    rr = [UIScreen mainScreen].bounds;
+    float offset = (!ISIOS7?20:0);
     
-    self.frame = CGRectMake(0.0f, rr.size.height - 44, rr.size.width, 44);
+    self.frame = CGRectMake(0.0f, rr.size.height - 44 - offset, rr.size.width, 44);
     
     
 }

@@ -238,7 +238,7 @@
 }
 -(void)doSomethingAtLayoutSubviews{
     
-    _scrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - FUTV_height -44);
+    _scrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - FUTV_height -NAVIBARHEIGHT);
     //_scrollView.backgroundColor = COLOR_RED;
     
     CGFloat orY = 6.0f;
@@ -386,11 +386,11 @@
     orY = orY + 16;
     
     _scrollView.contentSize = CGSizeMake(self.frame.size.width, orY);
-    _line.frame = CGRectMake(10, self.frame.size.height - FUTV_height+3 - 44, self.frame.size.width - 20, 1);
-    _lineBACK.frame = CGRectMake(10, self.frame.size.height - FUTV_height+3.8 - 44, self.frame.size.width - 20, 1);
-    _NextDayWeatherMessageView1.frame = CGRectMake(10, self.frame.size.height - FUTV_height+10 - 44,(self.frame.size.width-20)/3 , FUTV_height-20);
-    _NextDayWeatherMessageView2.frame = CGRectMake(10+(self.frame.size.width-20)/3 , self.frame.size.height - FUTV_height+10 -44,(self.frame.size.width-20)/3 , FUTV_height-20);
-    _NextDayWeatherMessageView3.frame = CGRectMake(10+(self.frame.size.width-20)/3*2 , self.frame.size.height - FUTV_height+10 - 44,(self.frame.size.width-20)/3 , FUTV_height-20);
+    _line.frame = CGRectMake(10, self.frame.size.height - FUTV_height+3 - NAVIBARHEIGHT, self.frame.size.width - 20, 1);
+    _lineBACK.frame = CGRectMake(10, self.frame.size.height - FUTV_height+3.8 - NAVIBARHEIGHT, self.frame.size.width - 20, 1);
+    _NextDayWeatherMessageView1.frame = CGRectMake(10, self.frame.size.height - FUTV_height+10 - NAVIBARHEIGHT,(self.frame.size.width-20)/3 , FUTV_height-20);
+    _NextDayWeatherMessageView2.frame = CGRectMake(10+(self.frame.size.width-20)/3 , self.frame.size.height - FUTV_height+10 -NAVIBARHEIGHT,(self.frame.size.width-20)/3 , FUTV_height-20);
+    _NextDayWeatherMessageView3.frame = CGRectMake(10+(self.frame.size.width-20)/3*2 , self.frame.size.height - FUTV_height+10 - NAVIBARHEIGHT,(self.frame.size.width-20)/3 , FUTV_height-20);
     
     if ([array count]>1) {
         _NextDayWeatherMessageView1.data = [array objectAtIndex:1];
@@ -398,14 +398,14 @@
     
     if ([array count]>2) {
         _NextDayWeatherMessageView2.data = [array objectAtIndex:2];
-        _rightView1.frame = CGRectMake(10+(self.frame.size.width-20)/3, self.frame.size.height - FUTV_height+10 - 44 , 1, FUTV_height-20);
-        _rightView1BACK.frame = CGRectMake(10+(self.frame.size.width-20)/3+0.8, self.frame.size.height - FUTV_height+10 - 44, 1, FUTV_height-20);
+        _rightView1.frame = CGRectMake(10+(self.frame.size.width-20)/3, self.frame.size.height - FUTV_height+10 - NAVIBARHEIGHT , 1, FUTV_height-20);
+        _rightView1BACK.frame = CGRectMake(10+(self.frame.size.width-20)/3+0.8, self.frame.size.height - FUTV_height+10 - NAVIBARHEIGHT, 1, FUTV_height-20);
     }
     
     if ([array count]>3) {
         _NextDayWeatherMessageView3.data = [array objectAtIndex:3];
-        _rightView2.frame = CGRectMake(10+(self.frame.size.width-20)/3*2, self.frame.size.height - FUTV_height+10 -44, 1, FUTV_height-20);
-        _rightView2BACK.frame = CGRectMake(10+(self.frame.size.width-20)/3*2+0.8, self.frame.size.height - FUTV_height+10 -44, 1, FUTV_height-20);
+        _rightView2.frame = CGRectMake(10+(self.frame.size.width-20)/3*2, self.frame.size.height - FUTV_height+10 -NAVIBARHEIGHT, 1, FUTV_height-20);
+        _rightView2BACK.frame = CGRectMake(10+(self.frame.size.width-20)/3*2+0.8, self.frame.size.height - FUTV_height+10 -NAVIBARHEIGHT, 1, FUTV_height-20);
     }
     
     

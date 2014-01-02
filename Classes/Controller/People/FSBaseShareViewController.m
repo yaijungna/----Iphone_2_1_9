@@ -52,11 +52,8 @@
 
 -(void)loadChildView{
     
-    _navTopBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 44.0f)];
+    _navTopBar = [[LygNavigationBar alloc] init];
     _navTopBar.tintColor = [UIColor whiteColor];
-#ifdef __IPHONE_5_0
-    [_navTopBar setBackgroundImage:[UIImage imageNamed: @"navigatorBar.png"] forBarMetrics:UIBarMetricsDefault];
-#endif
     if (_withnavTopBar) {
         
         UINavigationItem * item      = [[UINavigationItem alloc]init];
@@ -64,6 +61,10 @@
         
         UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnBack:)];
         backButton.tintColor         = [UIColor whiteColor];
+        if (ISIOS7) {
+            backButton.tintColor = [UIColor darkGrayColor];
+        }
+
         item.leftBarButtonItem       = backButton;
         [backButton release];
         
@@ -146,7 +147,7 @@
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
     if (self.withnavTopBar) {
-        _fsBlogShareContentView.frame = CGRectMake(0, 44.0f, rect.size.width, rect.size.height-44.0f);
+        _fsBlogShareContentView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, rect.size.height-NAVIBARHEIGHT);
     }
     else{
         _fsBlogShareContentView.frame = CGRectMake(0, 0.0f, rect.size.width, rect.size.height);

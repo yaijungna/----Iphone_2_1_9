@@ -37,19 +37,21 @@
 }
 
 - (void)dealloc {
-#ifdef MYDEBUG
-	//NSLog(@"FSNetworkData.dealloc:[%@]{urlString:%@}", self, _urlString);
-#endif
-	[_urlString release];
+    [_urlString release];
+    _urlString  = nil;
 	[_localStoreFileName release];
+    _localStoreFileName = nil;
 	[_bufferData release];
+    _bufferData = nil;
 
 	[_URLConnectionPort release];
+    _URLConnection  = nil;
 	[_URLConnectionRunLoop release];
+    _URLConnectionRunLoop = nil;
 	[_URLConnection release];
-	
+	_URLConnection = nil;
 	[_parentDelegate release];
-
+    _parentDelegate = nil;
 	[super dealloc];
 }
 
@@ -62,16 +64,11 @@
 	} else {
 		dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
 		dispatch_async(queue, ^(void) {
-#ifdef MYDEBUG
-            //NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-			//NSLog(@"FSNetworkData networkDataWithURLString --begin:%f :%@",[date timeIntervalSince1970],URLString);
-#endif
 			FSNetworkData *networkData = [[FSNetworkData alloc] init];
             networkData.threadPriority = 1.0f;
 			[networkData inner_DownloadWithURLString:URLString withLocalStoreFileName:localStoreFileName withDelegate:delegate];
 			[networkData release];
-			
-		});
+        });
 		dispatch_release(queue);
     
 		return nil;
@@ -85,10 +82,6 @@
     if (URLString == nil) {
         return nil;
     }
-#ifdef MYDEBUG
-            //NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-			//NSLog(@"FSNetworkData networkDataWithURLString --begin:%f :%@",[date timeIntervalSince1970],localStoreFileName);
-#endif
         FSNetworkData *networkData = [[FSNetworkData alloc] init];
        
         [networkData oprationNetWorkDataBegin:URLString withLocalStoreFileName:localStoreFileName withDelegate:delegate];
