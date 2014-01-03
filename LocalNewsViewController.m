@@ -111,7 +111,10 @@
 }
 -(void)dosomeThing
 {
+    self.myNewsListView.areaID  =  0;
     
+    NSString * tempString       = @"未知地区";
+    self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
 }
 -(void)afterGetLocation
 {

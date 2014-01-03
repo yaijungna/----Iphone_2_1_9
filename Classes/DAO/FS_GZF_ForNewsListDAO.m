@@ -46,7 +46,15 @@
             _count = 1;
             //NSLog(@"%@",[NSString stringWithFormat:FS_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""]);
             return [NSString stringWithFormat:FS_AREA_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""];
-        } else {
+        }else if([self.channelid isEqualToString:@"0"])
+        {
+            _count = 1;
+            int temp = self.objectList.count + FS_NEWS_PAGECOUNT;
+            
+            NSString * string = [NSString stringWithFormat:FS_AREA_NEWS_URL,  @"", temp,@""];
+            return [NSString stringWithFormat:FS_AREA_NEWS_URL,  self.channelid, temp,@""];
+        }
+        else {
             _count =_count +1;
             
             return [NSString stringWithFormat:FS_AREA_NEWS_URL,  self.channelid, FS_NEWS_PAGECOUNT,self.lastid];

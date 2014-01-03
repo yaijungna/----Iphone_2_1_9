@@ -55,7 +55,7 @@ NSString * getCityName()
 NSString * getProvinceName()
 {
     PeopleNewsReaderPhoneAppDelegate * xxx = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
-    return xxx.provinceName?xxx.provinceName:@"北京";
+    return xxx.provinceName?xxx.provinceName:@"";
 }
 @interface PeopleNewsReaderPhoneAppDelegate(PrivateMethod)
 - (void)showLoadingView:(UIView *)aview;
@@ -141,8 +141,9 @@ NSString * getProvinceName()
 
     _locManager = [[CLLocationManager alloc] init];
     [_locManager setDelegate:self];
-    [_locManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
+    //[_locManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
     
+    [_locManager setPausesLocationUpdatesAutomatically:YES];
     
     if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
         [_locManager startMonitoringSignificantLocationChanges];
