@@ -8,6 +8,7 @@
 
 #import "LocalNewsViewController.h"
 #import "PeopleNewsReaderPhoneAppDelegate.h"
+#import "LocalProvinceNewsViewControllers.h"
 @interface LocalNewsViewController ()
 
 @end
@@ -67,6 +68,21 @@
 }
 -(void)changeArea
 {
+    LocalProvinceNewsViewControllers * localCityListController = [[LocalProvinceNewsViewControllers alloc] init];
+    localCityListController.canBeHaveNaviBar = YES;
+    localCityListController.cityName = @"北京";
+    localCityListController.localCity = @"北京";
+    if (self.memGetProvincesDao.objectList > 0) {
+        localCityListController.provincesListDao = self.memGetProvincesDao;
+    }
+    if (self.navigationController) {
+        [self.navigationController pushViewController:localCityListController animated:YES];
+    }else
+    {
+        [self presentViewController:localCityListController animated:YES completion:nil];
+    }
+    
+    [localCityListController release];
     
 }
 -(void)viewDidAppear:(BOOL)animated

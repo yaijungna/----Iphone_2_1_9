@@ -1,25 +1,19 @@
 //
-//  FSLocalNewsCityListController.m
+//  LocalProvinceNewsViewControllers.m
 //  PeopleNewsReaderPhone
 //
-//  Created by yuan lei on 12-8-14.
-//  Copyright (c) 2012年 people. All rights reserved.
+//  Created by lygn128 on 14-1-6.
+//
 //
 
-#import "FSLocalNewsCityListController.h"
-#import "FSCityObject.h"
+#import "LocalProvinceNewsViewControllers.h"
+#import "LygAreaObject.h"
+#import "NSString+Additions.h"
+@interface LocalProvinceNewsViewControllers ()
 
-#import "FSUserSelectObject.h"
-#import "FSBaseDB.h"
+@end
 
-
-#define FSSETTING_VIEW_NAVBAR_HEIGHT 44.0f
-#define KIND_CITY_SELECTED @"KIND_CITY_SELECTED"
-
-@implementation FSLocalNewsCityListController
-
-@synthesize cityName  = _cityName;
-@synthesize localCity = _localCity;
+@implementation LocalProvinceNewsViewControllers
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +21,7 @@
     if (self) {
         // Custom initialization
     }
-    return self;   
+    return self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,52 +36,19 @@
 
 
 -(void)dealloc{
-    [_fsCityListData release];
-    [_sectionArrary removeAllObjects];
-    [_sectionArrary release];
-    [_sectionNumberArrary removeAllObjects];
-    [_sectionNumberArrary release];
     [super dealloc];
 }
--(void)addLeftButtonItem
-{
-    self.myNaviBar.tintColor = [UIColor whiteColor];
-    UIBarButtonItem * leftbutton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnBack:)];
-    leftbutton.tintColor         = [UIColor whiteColor];
-    if (ISIOS7) {
-        leftbutton.tintColor = [UIColor darkGrayColor];
-    }
 
-    NSLog(@"%@",self.myNaviBar.topItem);
-	self.myNaviBar.topItem.leftBarButtonItem = leftbutton;
-    [leftbutton release];
-}
 
--(void)loadChildView{
-    [super loadChildView];
-    _titleView = [[FSTitleView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    _titleView.hidRefreshBt   = YES;
-    _titleView.toBottom       = YES;
-    _titleView.parentDelegate = self;
-    self.myNaviBar.topItem.titleView =  _titleView;
-    [_titleView release];
-    [_titleView reSetFrame];
-    
 
-    [self addLeftButtonItem];
-    
-    _titleView.data = self.cityName;
-
-    
-    _localNewsCityListView = [[FSLocalNewsCityListView alloc] init];
-    _localNewsCityListView.parentDelegate = self;
-    [self.view addSubview:_localNewsCityListView];
-    [_localNewsCityListView release];
-}
 
 -(void)initDataModel{
-    _fsCityListData = [[FS_GZF_CityListDAO alloc] init];
-    _fsCityListData.parentDelegate = self;
+    
+    
+//    _fsCityListData = [[FS_GZF_CityListDAO alloc] init];
+//    _fsCityListData.parentDelegate = self;
+    
+    
     _sectionArrary = [[NSMutableArray alloc] init];
     _sectionNumberArrary = [[NSMutableArray alloc] init];
 }
@@ -95,32 +56,29 @@
 
 -(void)layoutControllerViewWithRect:(CGRect)rect{
     _localNewsCityListView.frame = CGRectMake(0, NAVIBARHEIGHT, rect.size.width, rect.size.height-NAVIBARHEIGHT);
-    [_fsCityListData HTTPGetDataWithKind:GET_DataKind_Unlimited];
+//    [_fsCityListData HTTPGetDataWithKind:GET_DataKind_Unlimited];
+    
+    
+    [self getSectionsTitle];
+    //NSLog(@"12112");
+    [_localNewsCityListView loadData];
 }
 
--(void)returnBack:(id)sender{
-    if (self.navigationController) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }else
-    {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-    
-}
+
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-//    NSInteger k = [self retainCount];
-//    for (NSInteger i=0; i<k-1; i++) {
-//        [self release];
-//    }
+    //    NSInteger k = [self retainCount];
+    //    for (NSInteger i=0; i<k-1; i++) {
+    //        [self release];
+    //    }
     NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
 }
 
 
 
 
-#pragma mark - 
+#pragma mark -
 #pragma FSTableContainerViewDelegate mark
 
 
@@ -169,8 +127,9 @@
         index = index+[[_sectionNumberArrary objectAtIndex:i] integerValue];
     }
     index = index + row;
-    FSCityObject *o = [_fsCityListData.objectList objectAtIndex:index];
-    return o.cityName;
+    
+    LygAreaObject * obj = [self.provincesListDao.objectList objectAtIndex:index];
+    return obj.areaName;
 }
 
 
@@ -199,7 +158,7 @@
     FSCityObject *o = [_fsCityListData.objectList objectAtIndex:index];
     
     NSMutableDictionary *obj = [[NSMutableDictionary alloc] init];
-    [obj setObject:o.cityName forKey:NSNOTIF_LOCALNEWSLIST_CITYSELECTED_KEY];
+   // [obj setObject:o.cityName forKey:NSNOTIF_LOCALNEWSLIST_CITYSELECTED_KEY];
     [[NSNotificationCenter defaultCenter] postNotificationName:NSNOTIF_LOCALNEWSLIST_CITYSELECTED object:nil userInfo:obj];
     [obj release];
     
@@ -230,53 +189,55 @@
 
 
 
-
--(FSUserSelectObject *)insertCityselectedObject:(FSCityObject *)obj{
-    
-    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSUserSelectObject" key:@"kind" value:KIND_CITY_SELECTED];
-    
-    if ([array count]>0) {
-        FSUserSelectObject *sobj = [array objectAtIndex:0];
-        
-        if (obj == nil) {
-            return sobj;
-        }
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
-        NSString *nsstringdate = dateToString_YMD(date);
-        sobj.keyValue1 = obj.cityName;
-        sobj.keyValue2 = obj.cityId;
-        sobj.keyValue3 = obj.provinceId;
-        sobj.keyValue4 = nsstringdate;
-        [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
-        return sobj;
-    }
-    else{
-        if (obj == nil) {
-            return nil;
-        }
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
-        NSString *nsstringdate = dateToString_YMD(date);
-        FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
-        sobj.kind = KIND_CITY_SELECTED;
-        sobj.keyValue1 = obj.cityName;
-        sobj.keyValue2 = obj.cityId;
-        sobj.keyValue3 = obj.provinceId;
-        sobj.keyValue4 = nsstringdate;
-        [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
-        return sobj;
-    }
-    
-}
+//
+//-(FSUserSelectObject *)insertCityselectedObject:(FSCityObject *)obj{
+//    
+//    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSUserSelectObject" key:@"kind" value:KIND_CITY_SELECTED];
+//    
+//    if ([array count]>0) {
+//        FSUserSelectObject *sobj = [array objectAtIndex:0];
+//        
+//        if (obj == nil) {
+//            return sobj;
+//        }
+//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
+//        NSString *nsstringdate = dateToString_YMD(date);
+//        sobj.keyValue1 = obj.cityName;
+//        sobj.keyValue2 = obj.cityId;
+//        sobj.keyValue3 = obj.provinceId;
+//        sobj.keyValue4 = nsstringdate;
+//        [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
+//        return sobj;
+//    }
+//    else{
+//        if (obj == nil) {
+//            return nil;
+//        }
+//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
+//        NSString *nsstringdate = dateToString_YMD(date);
+//        FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
+//        sobj.kind = KIND_CITY_SELECTED;
+//        sobj.keyValue1 = obj.cityName;
+//        sobj.keyValue2 = obj.cityId;
+//        sobj.keyValue3 = obj.provinceId;
+//        sobj.keyValue4 = nsstringdate;
+//        [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
+//        return sobj;
+//    }
+//    
+//}
 
 
 
 -(void)getSectionsTitle{
     [_sectionArrary removeAllObjects];
-    
+
     NSString *kind = @"";
     NSInteger number = 0;
-    for (FSCityObject *o in  _fsCityListData.objectList) {
-        NSString *temp = [o.kind substringToIndex:1];
+    for (LygAreaObject *o in  _provincesListDao.objectList) {
+        //NSString *temp = [o.areaName substringToIndex:1];
+        char c   =  pinyinFirstLetter([o.areaName characterAtIndex:0]);
+        NSString * temp  = [NSString stringWithFormat:@"%c",c];
         if (![kind isEqualToString:temp]) {
             [_sectionArrary addObject:temp];
             kind = temp;

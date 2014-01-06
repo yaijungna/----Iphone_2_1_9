@@ -542,6 +542,7 @@
 		58BD9CAD180662E7001164D9 /* newsDitail_shear_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */; };
 		58BD9CAE180662E7001164D9 /* newsDitail_shear_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAC180662E7001164D9 /* newsDitail_shear_2@2x.png */; };
 		58C850BB1850183D00362DCC /* 箭头右.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C850BA1850183D00362DCC /* 箭头右.png */; };
+		58CA5439187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CA5438187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m */; };
 		58CF71991827DF870046AF67 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF71981827DF870046AF67 /* libWeChatSDK.a */; };
 		58D30E551835B3AC00D19D8C /* ImageDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D30E541835B3AC00D19D8C /* ImageDownLoader.m */; };
 		58D8B0FF17A745EF00816844 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D8B0FD17A745EE00816844 /* 返回.png */; };
@@ -1654,6 +1655,8 @@
 		58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsDitail_shear_2.png; sourceTree = "<group>"; };
 		58BD9CAC180662E7001164D9 /* newsDitail_shear_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsDitail_shear_2@2x.png"; sourceTree = "<group>"; };
 		58C850BA1850183D00362DCC /* 箭头右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右.png"; sourceTree = "<group>"; };
+		58CA5437187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalProvinceNewsViewControllers.h; sourceTree = "<group>"; };
+		58CA5438187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalProvinceNewsViewControllers.m; sourceTree = "<group>"; };
 		58CF71981827DF870046AF67 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		58D30E531835B3AC00D19D8C /* ImageDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownLoader.h; sourceTree = "<group>"; };
 		58D30E541835B3AC00D19D8C /* ImageDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownLoader.m; sourceTree = "<group>"; };
@@ -3223,6 +3226,8 @@
 				589F55A0185EF8190068E0FF /* LocalNewsViewController.m */,
 				587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */,
 				587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */,
+				58CA5437187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.h */,
+				58CA5438187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m */,
 			);
 			name = localNews;
 			sourceTree = "<group>";
@@ -5094,6 +5099,7 @@
 				82F2CA2F1643482700C9C56A /* FSDeepPageListDAO.m in Sources */,
 				27B484CA16436568008EF467 /* FSNewsCommentListCell.m in Sources */,
 				82DBD4E81643A3310004AA4A /* FSDeepPriorViewController.m in Sources */,
+				58CA5439187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m in Sources */,
 				58A9E5FD183F48DD00A1D3F4 /* FSDeepEndObject.m in Sources */,
 				58126C3118573525006C5D34 /* MBProgressHUD.m in Sources */,
 				82079C291643B1D500B2FBF6 /* FSDeepLeadDAO.m in Sources */,

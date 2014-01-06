@@ -37,5 +37,6 @@
 -(void)getSectionsTitle;
 
 -(FSUserSelectObject *)insertCityselectedObject:(FSCityObject *)obj;
+-(void)returnBack:(id)sender;
 
 @end
