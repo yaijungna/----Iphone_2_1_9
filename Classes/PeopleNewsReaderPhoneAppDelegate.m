@@ -562,8 +562,9 @@ NSString * getProvinceName()
 		[newsCtrl release];
 #else
         MyPageViewController * newsCtrl = [[MyPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-        FSUINavigationController *navNewsCtrl = [[FSUINavigationController alloc] initWithRootViewController:newsCtrl];
+        FSUINavigationController *navNewsCtrl  = [[FSUINavigationController alloc] initWithRootViewController:newsCtrl];
         navNewsCtrl.navigationBarHidden = YES;
+        newsCtrl.navigationController.delegate = newsCtrl;
 		[fsViewCtrls addObject:navNewsCtrl];
 		[navNewsCtrl release];
 		[newsCtrl release];

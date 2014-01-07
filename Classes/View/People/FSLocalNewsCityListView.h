@@ -16,7 +16,7 @@
     FSSectionListForTouch *_fsSectionListForTouch;
    
 }
-
+@property(nonatomic,strong)NSArray * sectionTitleArry;
 -(void)setRightList:(NSArray *)array;
 
 @end

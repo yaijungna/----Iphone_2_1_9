@@ -12,7 +12,7 @@
 #import "FSWeatherView.h"
 
 
-@interface FSBasePeopleViewController : FSBaseDataViewController <FSTabBarItemDelegate> {
+@interface FSBasePeopleViewController : FSBaseDataViewController <FSTabBarItemDelegate,UINavigationControllerDelegate> {
 @protected 
     FSWeatherView *_fsWeatherView;
     

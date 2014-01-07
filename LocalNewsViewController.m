@@ -70,8 +70,8 @@
 {
     LocalProvinceNewsViewControllers * localCityListController = [[LocalProvinceNewsViewControllers alloc] init];
     localCityListController.canBeHaveNaviBar = YES;
-    localCityListController.cityName = @"北京";
-    localCityListController.localCity = @"北京";
+    localCityListController.cityName = self.currentAreaObject.areaName;
+    localCityListController.localCity = self.currentAreaObject.areaName;
     if (self.memGetProvincesDao.objectList > 0) {
         localCityListController.provincesListDao = self.memGetProvincesDao;
     }
@@ -123,7 +123,21 @@
     self.memGetProvincesDao.parentDelegate    = self;
     self.memGetProvincesDao.isGettingList     = YES;
     [self.memGetProvincesDao HTTPGetDataWithKind:GET_DataKind_Refresh];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(haveChangedArea:) name:LOCALPROVINCESELECTED object:nil];
  
+}
+
+-(void)haveChangedArea:(NSNotification*)sender
+{
+    LygAreaObject * obj                             = sender.object;
+    self.myNaviBar.topItem.rightBarButtonItem.title = obj.areaName;
+    self.self.myNewsListView.areaID                 = obj.areaId.intValue;
+    
+    
+    
 }
 -(void)dosomeThing
 {

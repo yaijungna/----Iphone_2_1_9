@@ -32,10 +32,7 @@
 	}
 	return self;
 }
-//-(void)changeTheTabBarIndex
-//{
-//    _fsTabBar.fsSelectedIndex = 0;
-//}
+
 
 
 
@@ -68,6 +65,8 @@
     
 
 }
+
+//+(void)
 
 
 - (void)setFsViewControllers:(NSMutableArray *)value {

@@ -39,7 +39,10 @@
 }
 
 #pragma mark - View lifecycle
-
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    self.myNaviBar.topItem.title = @"xxxxx";
+//}
 
 -(void)dealloc{
     [_fsCityListData release];
@@ -65,18 +68,13 @@
 
 -(void)loadChildView{
     [super loadChildView];
-    _titleView = [[FSTitleView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    _titleView.hidRefreshBt   = YES;
-    _titleView.toBottom       = YES;
-    _titleView.parentDelegate = self;
-    self.myNaviBar.topItem.titleView =  _titleView;
-    [_titleView release];
-    [_titleView reSetFrame];
+    
+    //self.myNaviBar.topItem.titleView =  _titleView;
+
+    
     
 
     [self addLeftButtonItem];
-    
-    _titleView.data = self.cityName;
 
     
     _localNewsCityListView = [[FSLocalNewsCityListView alloc] init];
@@ -144,8 +142,8 @@
     if (section == 0) {
         return  @"您当前的位置可能是";
     }
-    if (section-1<[_sectionArrary count]) {
-        NSString *kind = [_sectionArrary objectAtIndex:section-1];
+    if (section<[_sectionArrary count]) {
+        NSString *kind = [_sectionArrary objectAtIndex:section];
         return kind;
     }
     return @"";
@@ -220,6 +218,7 @@
             
             [self getSectionsTitle];
             //NSLog(@"12112");
+            _localNewsCityListView.sectionTitleArry = _sectionArrary;
             [_localNewsCityListView loadData];
             if (status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
                 [_fsCityListData operateOldBufferData];
@@ -272,7 +271,7 @@
 
 -(void)getSectionsTitle{
     [_sectionArrary removeAllObjects];
-    
+    [_sectionArrary addObject:@"#"];
     NSString *kind = @"";
     NSInteger number = 0;
     for (FSCityObject *o in  _fsCityListData.objectList) {
@@ -296,6 +295,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     //[_localNewsCityListView loadData];
+    self.myNaviBar.topItem.title = self.cityName;
 }
 
 - (void)viewDidUnload
@@ -310,6 +310,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 
 #pragma mark -

@@ -20,7 +20,7 @@
 
 #define RELEASE
 #ifdef  RELEASE
-#define NSLog(...)
+//#define NSLog(...)
 #define printf(...)
 #endif
 

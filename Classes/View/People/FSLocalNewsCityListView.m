@@ -22,10 +22,18 @@
         _fsSectionListForTouch.parentDelegate = self;
         //_fsSectionListForTouch.layer.borderWidth = 8.0f;
         //_fsSectionListForTouch.layer.borderColor = COLOR_BLACK_8.CGColor;
-        [self addSubview:_fsSectionListForTouch];
+        //[self addSubview:_fsSectionListForTouch];
     }
     return self;
 }
+
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    
+    return self.sectionTitleArry;
+}
+
 
 
 

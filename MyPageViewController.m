@@ -213,7 +213,7 @@
 {
     [super viewWillAppear:animated];
     [self showBar];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+    
 }
 
 -(void)xxxxxx
@@ -290,19 +290,24 @@
         _fs_GZF_ChannelListDAO.isGettingList = YES;
         [_fs_GZF_ChannelListDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
     }
-    
-    self.navigationController.delegate = self;
+    NSLog(@"%@",self.navigationController);
+    //self.navigationController.delegate = self;
     return self;
 }
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    int i = 0;
-    int b = i;
+    if (viewController == self) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
+
+    }
+
 }
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    int b = 1;
-    int c = b;
+    
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController

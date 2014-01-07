@@ -9,6 +9,7 @@
 #import "LocalProvinceNewsViewControllers.h"
 #import "LygAreaObject.h"
 #import "NSString+Additions.h"
+#import "LygAreaObject.h"
 @interface LocalProvinceNewsViewControllers ()
 
 @end
@@ -61,6 +62,7 @@
     
     [self getSectionsTitle];
     //NSLog(@"12112");
+    _localNewsCityListView.sectionTitleArry = _sectionArrary;
     [_localNewsCityListView loadData];
 }
 
@@ -102,8 +104,8 @@
     if (section == 0) {
         return  @"您当前的位置可能是";
     }
-    if (section-1<[_sectionArrary count]) {
-        NSString *kind = [_sectionArrary objectAtIndex:section-1];
+    if (section<[_sectionArrary count]) {
+        NSString *kind = [_sectionArrary objectAtIndex:section];
         return kind;
     }
     return @"";
@@ -138,14 +140,8 @@
     NSInteger row = [indexPath row];
     
     if (section ==0) {
-        NSMutableDictionary *obj = [[NSMutableDictionary alloc] init];
-        [obj setObject:self.localCity forKey:NSNOTIF_LOCALNEWSLIST_CITYSELECTED_KEY];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NSNOTIF_LOCALNEWSLIST_CITYSELECTED object:nil userInfo:obj];
-        [obj release];
         
-        //NSLog(@"dismissModalViewControllerAnimated 11112222");
-        
-        [self dismissModalViewControllerAnimated:YES];
+        [self returnBack:nil];
         return;
     }
     
@@ -155,14 +151,12 @@
         index = index+[[_sectionNumberArrary objectAtIndex:i] integerValue];
     }
     index = index + row;
-    FSCityObject *o = [_fsCityListData.objectList objectAtIndex:index];
+    LygAreaObject   *o = [self.provincesListDao.objectList objectAtIndex:index];
     
-    NSMutableDictionary *obj = [[NSMutableDictionary alloc] init];
-   // [obj setObject:o.cityName forKey:NSNOTIF_LOCALNEWSLIST_CITYSELECTED_KEY];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NSNOTIF_LOCALNEWSLIST_CITYSELECTED object:nil userInfo:obj];
-    [obj release];
-    
-    [self dismissModalViewControllerAnimated:YES];
+   
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOCALPROVINCESELECTED object:o userInfo:nil];
+    //[self dismissModalViewControllerAnimated:YES];
+    [self returnBack:nil];
 }
 
 
@@ -231,12 +225,15 @@
 
 -(void)getSectionsTitle{
     [_sectionArrary removeAllObjects];
-
+    [_sectionArrary addObject:@"#"];
     NSString *kind = @"";
     NSInteger number = 0;
     for (LygAreaObject *o in  _provincesListDao.objectList) {
         //NSString *temp = [o.areaName substringToIndex:1];
         char c   =  pinyinFirstLetter([o.areaName characterAtIndex:0]);
+        if (islower(c)) {
+            c =  toupper(c);
+        }
         NSString * temp  = [NSString stringWithFormat:@"%c",c];
         if (![kind isEqualToString:temp]) {
             [_sectionArrary addObject:temp];
@@ -271,13 +268,4 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-#pragma mark -
-#pragma FSTitleViewDelegate mark
-
--(void)FSTitleViewTouchEvent:(FSTitleView *)titleView{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 @end
