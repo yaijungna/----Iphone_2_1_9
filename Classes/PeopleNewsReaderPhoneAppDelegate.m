@@ -143,7 +143,7 @@ NSString * getProvinceName()
     [_locManager setDelegate:self];
     //[_locManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
     
-    [_locManager setPausesLocationUpdatesAutomatically:YES];
+    //[_locManager setPausesLocationUpdatesAutomatically:YES];
     
     if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
         [_locManager startMonitoringSignificantLocationChanges];
@@ -549,6 +549,7 @@ NSString * getProvinceName()
 		[fsViewCtrls addObject:navOneDayNewsCtrl];
 		[navOneDayNewsCtrl release];
 		[oneDayNewsCtrl release];
+        navOneDayNewsCtrl.delegate                 = oneDayNewsCtrl;
 		
 		//2.
 #ifndef PAGE
@@ -584,6 +585,9 @@ NSString * getProvinceName()
 		[fsViewCtrls addObject:navTopicCtrl];
 		[navTopicCtrl release];
 		[topicCtrl release];
+        
+        
+        //navTopicCtrl.delegate                  = topicCtrl;
 		
 		//4.
 		FSMoreViewController *moreCtrl = [[FSMoreViewController alloc] init];

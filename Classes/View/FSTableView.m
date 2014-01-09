@@ -69,6 +69,7 @@
 */
 
 - (void)dealloc {
+    self.parentDelegate = nil;
 	[_topLayer release];
 	[_bottomLayer release];
 	
@@ -315,6 +316,9 @@
 }
 
 - (void)refreshDataSource_Inner {
+    if (!_parentDelegate) {
+        return;
+    }
     if ([_parentDelegate respondsToSelector:@selector(tableViewRefreshDataSource:)]) {
         _isRefreshing = YES;
 		[_parentDelegate tableViewRefreshDataSource:self];

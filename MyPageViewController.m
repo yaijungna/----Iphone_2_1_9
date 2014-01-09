@@ -12,6 +12,7 @@
 #import "LygNewsViewController.h"
 #import "LygNavigationBar.h"
 #import "LocalNewsViewController.h"
+#import "UIViewController+changeContent.h"
 #define KIND_USERCHANNEL_SELECTED  @"YAOWENCHANNEL"
 #define WIDTHOFNAME 10
 #define BORDER      10
@@ -84,8 +85,9 @@
         return;
     }
     float xxx = 0;
-    ISIOS7?xxx = 20:1;
-    UIScrollView * myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44 + xxx, 320, HeightOfChannel)];
+    //ISIOS7?xxx = 20:1;
+    UIScrollView * myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, 320, HeightOfChannel)];
+    //myScroview.backgroundColor= [UIColor redColor];
     myScroview.showsHorizontalScrollIndicator  = NO;
     myScroview.tag            = TAGOFSCROW;
     [myScroview addObserver:self forKeyPath:@"contentoffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
@@ -144,8 +146,11 @@
     
     
     //[self addNewsScrollView];
-    
-    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44 + xxx, 320, 1)];
+    float tempSet = 0;
+    if (!ISIOS7) {
+        tempSet = 20;
+    }
+    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44 + xxx - tempSet, 320, 1)];
     lineView.backgroundColor    = [UIColor redColor];
     [self.view addSubview:lineView];
     [lineView release];
@@ -160,7 +165,12 @@
     UIWindow * window       = [UIApplication sharedApplication].windows[0];
     LygNavigationBar * bar  = [[LygNavigationBar alloc] init];
     
+    CGRect rect             = bar.frame;
     
+    if (!ISIOS7) {
+        rect.origin.y       = 20;
+        bar.frame           = rect;
+    }
     
     bar.tag                 = TAGOFNAV;
     bar.tintColor = [UIColor whiteColor];
@@ -305,10 +315,46 @@
     }
 
 }
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    NSArray * arry = previousViewControllers;
+    
+    LygNewsViewController * news = [previousViewControllers objectAtIndex:0];
+    int   x = news.channelIndex;
+    
+    if (completed) {
+        //[self changeTitleColorBlock(5)];
+        //[self changeTitleColorBlock];
+        if (self.changeTitleColorBlock) {
+             self.changeTitleColorBlock(0);
+        }
+       
+    }
+    self.changeTitleColorBlock = nil;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers
+{
+    NSArray * arry = pendingViewControllers;
+    
+    LygNewsViewController * news = [pendingViewControllers objectAtIndex:0];
+    int   x = news.channelIndex;
+    
+    NSLog(@"%d",x);
+    
+    
+    self.changeTitleColorBlock = ^(int index){
+        [self changeButtonColor:x];
+        [self moveTheTitleScroview:x];
+    };
+}
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     
 }
+
+
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
@@ -480,17 +526,15 @@
     //[self manuseletctbutton:sender.tag];
     [self changeButtonColor:sender.tag];
     _currentIndex = sender.tag;
-//    UIScrollView * view = (UIScrollView *)[self.view viewWithTag:2000];
-//    
-//    //*******
-//    view.contentOffset  = CGPointMake(sender.tag*320, 0);
-    
+    [self changTheContent];
 }
 -(void)manuseletctbutton:(int)x
 {
     [self changeButtonColor:x];
     _currentIndex = x;
+    
 }
+
 -(void)addStatic:(NSString*)channelName
 {
     NSLog(@"%@",channelName);
@@ -529,19 +573,30 @@
     
     [self getTopRedImageView].frame      = CGRectMake(rect.origin.x, HeightOfChannel - 4, rect.size.width, 4);
     _currentIndex               = index;
-    //    UIView * view               = [self.view viewWithTag:20000];
-    //    UIView * view3               = [self.view viewWithTag:30000];
-    //    _currentIndex == 0?(view.alpha = 0.0):(view.alpha = 1);
-    //    _currentIndex == _fs_GZF_ChannelListDAO.objectList.count -1?(view3.alpha = 0.1):(view3.alpha = 1);
+}
+-(void)changTheContent
+{
+    UIViewController * controller = [self.viewControllers objectAtIndex:0];
+    //[controller changeContent:_currentIndex];
     
-    UIView * view               = [self.view viewWithTag:20000];
-    UIView * view3               = [self.view viewWithTag:30000];
-    printf("%f %f %f\n",_myScroview.contentOffset.x,_myScroview.contentSize.width,_myScroview.frame.size.width);
-//    _myScroview.contentOffset.x      < 10?(view.alpha = 0.0):(view.alpha = 0.5);
-//    _myScroview.contentOffset.x + 10 > (_myScroview.contentSize.width - _myScroview.frame.size.width)?(view3.alpha = 0.1):(view3.alpha = 0.5);
     
-//    MyNewsLIstView * view2 =  (MyNewsLIstView*)[[self.view viewWithTag:2000] viewWithTag:(100+index)];
-//    [view2 isNeedRefresh]?[view2 refreshDataSource]:1;
+    
+    
+    NSMutableArray * controllers = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 1; i++) {
+        //        UIViewController * xxx = [[UIViewController alloc]init];
+        //        xxx.view.backgroundColor     = [UIColor clearColor];
+        //        [controllers addObject:xxx];
+        
+        
+        
+        LygNewsViewController * xxx = [[LygNewsViewController alloc] initWithChannelIndex:_currentIndex andChannel:self.fs_GZF_ChannelListDAO andNaviGationController:self.navigationController];
+        [controllers addObject:xxx];
+        [xxx release];
+    }
+    
+    
+    [self setViewControllers:controllers direction:nil animated:nil completion:nil];
 }
 
 
@@ -562,6 +617,24 @@
 
 - (UIImage *)tabBarItemSelectedImage {
 	return [UIImage imageNamed:@"news_sel.png"];
+}
+
+
+-(void)moveTheTitleScroview:(int)index2
+{
+    UIWindow * window        = [UIApplication sharedApplication].windows[0];
+    UIScrollView * scroView  = (UIScrollView*)[window viewWithTag:TAGOFSCROW];
+
+        int x = scroView.contentOffset.x/320;
+        UIView * view = [scroView viewWithTag:index2];
+        int index = view.frame.origin.x;
+        int yyy   = scroView.contentOffset.x;
+        if (index + view.frame.size.width - yyy > 320) {
+            scroView.contentOffset = CGPointMake(index - 320 + view.frame.size.width, 0);
+        }else if(yyy > index)
+        {
+            scroView.contentOffset = CGPointMake(index, 0);
+        }
 }
 
 #pragma mark -----左右滑动

@@ -14,4 +14,5 @@
 @property(nonatomic,assign)int                     currentIndex;
 @property(nonatomic,copy)void (^fpChangeTitleColor)(void);
 @property (nonatomic, retain) FSTabBarItem *fsTabBarItem;
+@property(nonatomic,copy)void (^changeTitleColorBlock)(int index);
 @end

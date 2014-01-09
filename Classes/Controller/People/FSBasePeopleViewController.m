@@ -158,6 +158,17 @@
 	return nil;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
+        
+    }
+}
+
 -(void)updataWeatherMessage{
     if (!_fsWeatherView) {
         return;
