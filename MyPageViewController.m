@@ -131,10 +131,20 @@
     }
     UIView * view = [myScroview viewWithTag:0];
     myScroview.contentSize    = CGSizeMake(lastOriginX, HeightOfChannel);
+    //myScroview.hidden         = YES;
     
     [window addSubview:myScroview];
     [window bringSubviewToFront:myScroview];
     [myScroview release];
+    
+    UIView * view3          = [window viewWithTag:3000];
+    if (view3) {
+        [window insertSubview:myScroview belowSubview:view3];
+    }else
+    {
+        [window bringSubviewToFront:myScroview];
+    }
+
     
     
     UIImageView *   topRedImageView          = [[UIImageView alloc]initWithFrame:CGRectMake(0, HeightOfChannel -4, view.frame.size.width, 4)];
@@ -150,9 +160,9 @@
     if (!ISIOS7) {
         tempSet = 20;
     }
-    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1 + 44 + xxx - tempSet, 320, 1)];
+    UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1, 320*40, 1)];
     lineView.backgroundColor    = [UIColor redColor];
-    [self.view addSubview:lineView];
+    [myScroview addSubview:lineView];
     [lineView release];
     
     //[self userGuideView];
@@ -358,6 +368,9 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    if (ISIOS5) {
+        return nil;
+    }
     LygNewsViewController * temp = (LygNewsViewController*)viewController;
     if (temp.channelIndex == self.fs_GZF_ChannelListDAO.objectList.count -1) {
         return nil;
@@ -368,6 +381,9 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    if (ISIOS5) {
+        return nil;
+    }
     LygNewsViewController * temp = (LygNewsViewController*)viewController;
     if (temp.channelIndex == 0) {
         return nil;
@@ -397,6 +413,7 @@
 //                    [FSBaseDB saveDB];
                     
                       [self initChannelViewController];
+                      [self addKindsScrollView];
                 }
 //                FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
 //                
@@ -508,7 +525,7 @@
     [super viewDidLoad];
     self.view.backgroundColor  = [UIColor whiteColor];
     [self initNaviBar];
-    [self addKindsScrollView];
+    //[self addKindsScrollView];
 	
     
 }

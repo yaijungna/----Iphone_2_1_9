@@ -76,8 +76,9 @@ NSString                       *_newsID;
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.navigationController.navigationBarHidden = YES;
+    //self.navigationController.navigationBarHidden = YES;
     //[super viewWillAppear:NO];
+    [super viewWillAppear:animated];
     if (self.isNewNavigation) {
         //_fsNewsContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         _fsNewsContainerView.frame = self.view.frame;
@@ -370,6 +371,7 @@ NSString                       *_newsID;
 //{
 //   // [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
 //}
+
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];   
     //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);

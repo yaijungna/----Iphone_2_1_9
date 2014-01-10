@@ -83,7 +83,7 @@
         self.lygAdsDao.parentDelegate                           = self;
         self.lygAdsDao.isGettingList                        = NO;
         _refreshTimer                                       = 0;
-        //[self refreshDataSource];
+        [self refreshDataSource];
         
     }
 }
@@ -192,8 +192,12 @@
 }
 -(void)refreshDataSource
 {
-    [super refreshDataSource];
-    _refreshTimer = time(NULL);
+    @synchronized (self)
+    {
+        [super refreshDataSource];
+        _refreshTimer = time(NULL);
+    }
+    
 }
 
 -(void)initDataModel{

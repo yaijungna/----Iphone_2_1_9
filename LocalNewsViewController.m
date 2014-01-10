@@ -48,6 +48,7 @@
     
     
     UIBarButtonItem * itme = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(changeArea)];
+    itme.tintColor         =  [UIColor whiteColor];
     NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
     [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
     
@@ -88,7 +89,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     if (self.fpChangeTitleColor) {
         [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
     }
@@ -108,12 +109,16 @@
 
 - (void)viewDidLoad
 {
-    
+    [super viewDidLoad];
     [self initTitleLabel];
     [self initMyListView];
     
     [self initAreaLabel];
     [self initMyDataModel];
+    
+    CGRect rect = self.myNaviBar.frame;
+    rect.origin.y = 0;
+    self.myNaviBar.frame = rect;
 }
 
 
@@ -134,7 +139,7 @@
 {
     LygAreaObject * obj                             = sender.object;
     self.myNaviBar.topItem.rightBarButtonItem.title = obj.areaName;
-    self.self.myNewsListView.areaID                 = obj.areaId.intValue;
+    self.myNewsListView.areaID                      = obj.areaId.intValue;
     
     
     
@@ -174,6 +179,17 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    CGRect xx = self.view.frame;
+    if (ISIOS7) {
+        xx.size.height -= 64;
+    }else
+    {
+        xx.size.height -= 44;
+    }
+    _myNewsListView.frame = CGRectMake(0, self.view.frame.size.height - xx.size.height, 320, xx.size.height);
+}
 
 -(void)initMyListView
 {
@@ -191,7 +207,7 @@
     _myNewsListView.parentDelegate = _myNewsListView;
     
     
-    [_myNewsListView addObserver:self forKeyPath:@"areaID" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionInitial  context:nil];
+    //[_myNewsListView addObserver:self forKeyPath:@"areaID" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionInitial  context:nil];
     
     _myNewsListView.frame = CGRectMake(0, self.view.frame.size.height - xx.size.height, 320, xx.size.height);
     [self.view addSubview:_myNewsListView];

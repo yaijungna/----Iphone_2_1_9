@@ -56,9 +56,11 @@
 
 
 - (void)dealloc {
+    _tvList.parentDelegate = nil;
 	_tvList.delegate = nil;
     _tvList.dataSource = nil;
 	[_tvList release];
+    _tvList = nil;
     [super dealloc];
 }
 

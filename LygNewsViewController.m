@@ -52,13 +52,42 @@
     [self.view addSubview:_memNewsLIstView];
     float xxxxx = 0;
     if (!ISIOS7) {
-        //xxxxx = 20;
+        xxxxx = 20;
     }
-    self.memNewsLIstView.frame = CGRectMake(0, xxx - xxxxx, 320, self.view.frame.size.height - bbb - 49);
+    if (ISIOS5) {
+        xxxxx = 0;
+    }
+    self.memNewsLIstView.frame = CGRectMake(0, xxx - xxxxx, 320, self.view.frame.size.height - (xxx - xxxxx) - 49 );
 
     [_memNewsLIstView refreshDataSource];
     [_memNewsLIstView release];
 	// Do any additional setup after loading the view.
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    float xxx = (ISIOS7?64 + HeightOfChannel:44+ HeightOfChannel);
+    
+    
+    float bbb = xxx;
+    if (!ISIOS7) {
+        bbb += 20;
+    }
+    float xxxxx = 0;
+    if (!ISIOS7) {
+        xxxxx = 20;
+    }
+    if (ISIOS5) {
+        xxxxx = 0;
+        if (self.view.frame.origin.y > 10) {
+            xxxxx = 20;
+        }
+    }
+    
+    self.memNewsLIstView.frame = CGRectMake(0, xxx - xxxxx, 320, self.view.frame.size.height - (xxx - xxxxx) - 49);
+    
+
+
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
