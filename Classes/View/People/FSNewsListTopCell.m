@@ -70,6 +70,7 @@
     _fsNewsListTopCellTextFloatView = [[FSNewsListTopCellTextFloatView alloc] init];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.clipsToBounds  = YES;
 }
 
 -(void)setContent{

@@ -58,6 +58,9 @@
     }else
     {
         _areaID = areaID;
+        _tvList.parentDelegate = nil;
+        _tvList.delegate       = nil;
+        _tvList.dataSource     = nil;
         _fs_GZF_ForOnedayNewsFocusTopDAO.parentDelegate = nil;
         self.fs_GZF_ForOnedayNewsFocusTopDAO = [[[FS_GZF_ForOnedayNewsFocusTopDAO alloc] init] autorelease];
         self.fs_GZF_ForOnedayNewsFocusTopDAO.group          = PUTONG_NEWS_LIST_KIND;
@@ -83,6 +86,12 @@
         self.lygAdsDao.parentDelegate                           = self;
         self.lygAdsDao.isGettingList                        = NO;
         _refreshTimer                                       = 0;
+        _tvList.parentDelegate = self;
+        _tvList.delegate     = self;
+        _tvList.dataSource   = self;
+        _oldCount            = 0;
+        _isfirstShow         = YES;
+        //_tvList.assistantViewFlag = FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW | FSTABLEVIEW_ASSISTANT_TOP_VIEW | FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW;
         [self refreshDataSource];
         
     }
@@ -402,7 +411,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([indexPath row] == 0) {
-        return ROUTINE_NEWS_LIST_TOP_HEIGHT;
+        if (![self cellDataObjectWithIndexPath:indexPath]) {
+            return 0;
+        }else
+        {
+            return ROUTINE_NEWS_LIST_TOP_HEIGHT;
+        }
     }
     else{
         _tvList.separatorStyle = YES;
@@ -726,6 +740,20 @@
                 fsNewsContainerViewController.newsSourceKind             = NewsSourceKind_DiFangNews;
             }
             [UIView commitAnimations];
+            __block FSOneDayNewsObject * xxx                             = [_fs_GZF_ForNewsListDAO.objectList objectAtIndex:row-1];
+            self.currentNewsId                                           = o.newsid;
+            __block FSNewsListCell * blockCell = (FSNewsListCell*)[sender.tvList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]];
+            __block FSNewsViewController * tempViewController = (FSNewsViewController*)self.aViewController;
+            tempViewController.fpChangeTitleColor              = ^()
+            {
+                NSLog(@"%@",xxx.newsid);
+                if (xxx  &&  ![xxx.isReaded isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                    return;
+                }
+                blockCell.lab_NewsTitle.textColor  = [UIColor lightGrayColor];
+                //tempViewController.fpChangeTitleColor = nil;
+            };
+
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];
             [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
@@ -809,7 +837,7 @@
     }
     else{
         if (row==0) {
-            return _fs_GZF_ForOnedayNewsFocusTopDAO.objectList;
+            return nil;
         }
         else{
             if (row <= [_fs_GZF_ForNewsListDAO.objectList count]) {

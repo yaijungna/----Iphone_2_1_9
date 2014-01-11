@@ -373,7 +373,7 @@ NSString                       *_newsID;
 //}
 
 -(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];   
+    //[super viewDidDisappear:animated];
     //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
 }
 

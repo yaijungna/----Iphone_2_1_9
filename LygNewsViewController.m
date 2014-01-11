@@ -38,56 +38,84 @@
 {
     [super dealloc];
 }
-
+-(void)changMainViewSize
+{
+//    if (!ISIOS7) {
+//        if (ISIPHONE5) {
+//            self.view.frame = CGRectMake(0, 20, 320, 548);
+//        }else
+//        {
+//            self.view.frame = CGRectMake(0, 20, 320, 460);
+//        }
+//    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    float xxx = (ISIOS7?64 + HeightOfChannel:44+ HeightOfChannel);
-    
-    
-    float bbb = xxx;
-    if (!ISIOS7) {
-        bbb += 20;
-    }
     [self.view addSubview:_memNewsLIstView];
-    float xxxxx = 0;
-    if (!ISIOS7) {
-        xxxxx = 20;
-    }
-    if (ISIOS5) {
-        xxxxx = 0;
-    }
-    self.memNewsLIstView.frame = CGRectMake(0, xxx - xxxxx, 320, self.view.frame.size.height - (xxx - xxxxx) - 49 );
-
+   
     [_memNewsLIstView refreshDataSource];
+    
     [_memNewsLIstView release];
+    [self chageSize1];
 	// Do any additional setup after loading the view.
 }
+
+-(void)chageSize1
+{
+    float offset = 0;
+    float height = self.view.frame.size.height;
+    float xxxx = 0;
+    if (ISIPHONE5) {
+        xxxx = 548 - 44 - HeightOfChannel;
+        offset = height - 548;
+    }else
+    {
+        xxxx = 460 - 44 - HeightOfChannel;
+        offset = height - 460;
+    }
+    if (!ISIOS7) {
+        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset, 320, xxxx - 49);
+    }else
+    {
+        self.memNewsLIstView.frame = CGRectMake(0, 64 + HeightOfChannel, 320, xxxx - 49);
+    }
+    
+}
+-(void)chageSize2
+{
+     NSLog(@"%@",self.view.superclass);
+    float offset = 0;
+    float height = self.view.frame.size.height;
+    float xxxx = 0;
+    if (ISIPHONE5) {
+        xxxx = 548 - 44 - HeightOfChannel;
+        offset = height - 548;
+    }else
+    {
+        xxxx = 460 - 44 - HeightOfChannel;
+        offset = height - 460;
+    }
+    if (!ISIOS7) {
+        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset, 320, xxxx - 49);
+    }else
+    {
+        self.memNewsLIstView.frame = CGRectMake(0, 64 + HeightOfChannel, 320, xxxx - 49);
+    }
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    //[super viewWillAppear:animated];
+    [self changMainViewSize];
+    [self chageSize1];
+    
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
-    float xxx = (ISIOS7?64 + HeightOfChannel:44+ HeightOfChannel);
-    
-    
-    float bbb = xxx;
-    if (!ISIOS7) {
-        bbb += 20;
-    }
-    float xxxxx = 0;
-    if (!ISIOS7) {
-        xxxxx = 20;
-    }
-    if (ISIOS5) {
-        xxxxx = 0;
-        if (self.view.frame.origin.y > 10) {
-            xxxxx = 20;
-        }
-    }
-    
-    self.memNewsLIstView.frame = CGRectMake(0, xxx - xxxxx, 320, self.view.frame.size.height - (xxx - xxxxx) - 49);
-    
-
-
-    [super viewDidAppear:animated];
+    //[super viewDidAppear:animated];
+    [self changMainViewSize];
+    [self chageSize2];
 }
 
 - (void)didReceiveMemoryWarning

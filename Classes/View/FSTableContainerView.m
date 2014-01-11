@@ -110,14 +110,19 @@
     @synchronized(self)
     {
         [_tvList loaddingComplete];
-        [_tvList reloadData];
+        [self loadDataWithOutCompelet];
     }
   
 	
 }
 
+
 -(void)loadDataWithOutCompelet{
-    [_tvList reloadData];
+    @synchronized(self)
+    {
+        [_tvList reloadData];
+    }
+    
 }
 
 - (void)layoutSubviews {
@@ -128,7 +133,7 @@
 	if (!CGSizeEqualToSize(_tvSize, _tvList.frame.size)) {
 		_tvSize = _tvList.frame.size;
 		//防止不重新装载数据
-		[_tvList reloadData];
+		[self loadDataWithOutCompelet];
 	}
 }
 
