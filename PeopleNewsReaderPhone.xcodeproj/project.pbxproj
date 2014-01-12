@@ -478,6 +478,7 @@
 		5870279117F3B599003B3BEB /* icon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278E17F3B599003B3BEB /* icon29x29.png */; };
 		5870279217F3B599003B3BEB /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278F17F3B599003B3BEB /* icon58x58.png */; };
 		5870279317F3B599003B3BEB /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870279017F3B599003B3BEB /* icon80x80.png */; };
+		587154111882981C00B0804B /* dingwei.png in Resources */ = {isa = PBXBuildFile; fileRef = 587154101882981C00B0804B /* dingwei.png */; };
 		587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */; };
 		587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6E318716CCF00664C4D /* LygAreaObject.m */; };
 		5882B5E417CC4EDD00B77388 /* LygDeepListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E317CC4EDD00B77388 /* LygDeepListView.m */; };
@@ -1543,6 +1544,7 @@
 		5870278E17F3B599003B3BEB /* icon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29x29.png; sourceTree = "<group>"; };
 		5870278F17F3B599003B3BEB /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
 		5870279017F3B599003B3BEB /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
+		587154101882981C00B0804B /* dingwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingwei.png; sourceTree = "<group>"; };
 		587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygListOfProvincesHaveAreaNewsDao.h; sourceTree = "<group>"; };
 		587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygListOfProvincesHaveAreaNewsDao.m; sourceTree = "<group>"; };
 		587EC6E218716CCF00664C4D /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
@@ -3228,6 +3230,7 @@
 			isa = PBXGroup;
 			children = (
 				589F559F185EF8190068E0FF /* LocalNewsViewController.h */,
+				587154101882981C00B0804B /* dingwei.png */,
 				589F55A0185EF8190068E0FF /* LocalNewsViewController.m */,
 				587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */,
 				587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */,
@@ -4639,6 +4642,7 @@
 				042D745816A9203F003AB075 /* oneday_timeline.png in Resources */,
 				042D745916A9203F003AB075 /* oneday_timeline@2x.png in Resources */,
 				5851F12517F1244A0022659C /* 图层-3.png in Resources */,
+				587154111882981C00B0804B /* dingwei.png in Resources */,
 				042D746016A9305D003AB075 /* newscard_01.png in Resources */,
 				042D746116A9305D003AB075 /* newscard_01@2x.png in Resources */,
 				042D746216A9305D003AB075 /* newscard_02.png in Resources */,

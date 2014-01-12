@@ -48,11 +48,16 @@
     
     
     UIBarButtonItem * itme = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(changeArea)];
-    itme.tintColor         =  [UIColor whiteColor];
+        itme.tintColor         =  [UIColor whiteColor];
     NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
     [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
     
     self.myNaviBar.topItem.rightBarButtonItem  = itme;
+    float xx = (ISIOS7?35:15);
+    UIImageView  * view = [[UIImageView alloc]initWithFrame:CGRectMake(265, xx, 10, 15)];
+    view.image          = [UIImage imageNamed:@"dingwei.png"];
+    [self.myNaviBar addSubview:view];
+
     [itme release];
 }
 
@@ -156,7 +161,7 @@
     self.myNewsListView.areaID  = self.currentAreaObject.areaId.intValue;
     
     
-    NSString * tempString       = [NSString stringWithFormat:@"%@▼",self.currentAreaObject.areaName];
+    NSString * tempString       = [NSString stringWithFormat:@"%@",self.currentAreaObject.areaName];
     self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
 }
 
