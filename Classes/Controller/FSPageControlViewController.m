@@ -115,8 +115,8 @@ typedef enum PageControllerSlide {
     [_pageControlView release];
     
     _pageNumber = -1;
-    
-    _svContainer = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
+    float xxx = (ISIOS7?20:0);
+    _svContainer = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, xxx, self.view.frame.size.width, self.view.frame.size.height)];
     _svContainer.delegate = self;
     _svContainer.pagingEnabled = YES;
     [_svContainer setShowsHorizontalScrollIndicator:NO];
@@ -208,8 +208,10 @@ typedef enum PageControllerSlide {
 
 - (void)layoutControllerViewWithRect:(CGRect)rect {
     _pageControlView.frame = CGRectMake(0.0f, rect.size.height - FSPAGECONTROL_VIEW_HEIGHT, rect.size.width, FSPAGECONTROL_VIEW_HEIGHT);
-    _svContainer.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);
+    float xx = (ISIOS7?20:0);
+    _svContainer.frame = CGRectMake(0.0f, xx, rect.size.width, rect.size.height);
     _svContainer.contentSize = CGSizeMake(_pageCount * _svContainer.frame.size.width, _svContainer.frame.size.height);
+    _svContainer.contentOffset = CGPointMake(_pageCount * _svContainer.frame.size.width, 0);
     NSArray *pageKeys = [_buffers allKeys];
     for (NSNumber *pageKey in pageKeys) {
         UIViewController *viewCtrl = [_buffers objectForKey:pageKey];
@@ -234,7 +236,7 @@ typedef enum PageControllerSlide {
     _pageCount = value;
     _pageControlView.pageCount = _pageCount;
     _svContainer.contentSize = CGSizeMake(_pageCount * _svContainer.frame.size.width, _svContainer.frame.size.height);
-    
+    _svContainer.contentOffset = CGPointMake(0, 0);
     _pageNumber = -1;
     NSLog(@"setPageControllerCount:%d",value);
     if (value > 0 ) {
