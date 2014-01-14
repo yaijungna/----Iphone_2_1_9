@@ -213,12 +213,8 @@
 		04DB7EB21680424A006240AB /* FSSectionListForTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB7EB11680424A006240AB /* FSSectionListForTouch.m */; };
 		04DBA04B167DAB750068C10E /* FSShareNoticView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DBA04A167DAB740068C10E /* FSShareNoticView.m */; };
 		04DD029716795D3A00E23B3D /* FSShareIconContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DD029616795D3A00E23B3D /* FSShareIconContainView.m */; };
-		04DD02A116797D6A00E23B3D /* 163.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029A16797D6A00E23B3D /* 163.png */; };
 		04DD02A216797D6A00E23B3D /* beijingtiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029B16797D6A00E23B3D /* beijingtiao.png */; };
 		04DD02A316797D6A00E23B3D /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029C16797D6A00E23B3D /* mail.png */; };
-		04DD02A416797D6A00E23B3D /* renmin.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029D16797D6A00E23B3D /* renmin.png */; };
-		04DD02A516797D6A00E23B3D /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029E16797D6A00E23B3D /* weibo.png */; };
-		04DD02A616797D6A00E23B3D /* weixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD029F16797D6A00E23B3D /* weixin.png */; };
 		04DD02A716797D6A00E23B3D /* 短信.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DD02A016797D6A00E23B3D /* 短信.png */; };
 		04DD970416E42C9F003D8123 /* FS_GZF_StatisticePOSTXMLDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DD970316E42C9F003D8123 /* FS_GZF_StatisticePOSTXMLDAO.m */; };
 		04DE0164167EC5D600085C30 /* BT_fanhui.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE0160167EC5D500085C30 /* BT_fanhui.png */; };
@@ -479,6 +475,14 @@
 		5870279217F3B599003B3BEB /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278F17F3B599003B3BEB /* icon58x58.png */; };
 		5870279317F3B599003B3BEB /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870279017F3B599003B3BEB /* icon80x80.png */; };
 		587154111882981C00B0804B /* dingwei.png in Resources */ = {isa = PBXBuildFile; fileRef = 587154101882981C00B0804B /* dingwei.png */; };
+		587B28971884BE59009B0B78 /* 163.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B288F1884BE59009B0B78 /* 163.png */; };
+		587B28981884BE59009B0B78 /* 朋友圈.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28901884BE59009B0B78 /* 朋友圈.png */; };
+		587B28991884BE59009B0B78 /* 腾讯微博.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28911884BE59009B0B78 /* 腾讯微博.png */; };
+		587B289A1884BE59009B0B78 /* renmin.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28921884BE59009B0B78 /* renmin.png */; };
+		587B289B1884BE59009B0B78 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28931884BE59009B0B78 /* weibo.png */; };
+		587B289C1884BE59009B0B78 /* weixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28941884BE59009B0B78 /* weixin.png */; };
+		587B289D1884BE59009B0B78 /* yixin-friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28951884BE59009B0B78 /* yixin-friend.png */; };
+		587B289E1884BE59009B0B78 /* yixin-pengyq.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28961884BE59009B0B78 /* yixin-pengyq.png */; };
 		587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */; };
 		587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6E318716CCF00664C4D /* LygAreaObject.m */; };
 		5882B5E417CC4EDD00B77388 /* LygDeepListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E317CC4EDD00B77388 /* LygDeepListView.m */; };
@@ -499,13 +503,9 @@
 		589D9BFE17E8022E0071686A /* content.css in Resources */ = {isa = PBXBuildFile; fileRef = 589D9BFB17E8022E0071686A /* content.css */; };
 		589D9BFF17E8022E0071686A /* content_comment.css in Resources */ = {isa = PBXBuildFile; fileRef = 589D9BFC17E8022E0071686A /* content_comment.css */; };
 		589F55A1185EF8190068E0FF /* LocalNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589F55A0185EF8190068E0FF /* LocalNewsViewController.m */; };
-		58A9E5AD183C581200A1D3F4 /* yixin-friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A9E5AB183C581200A1D3F4 /* yixin-friend.png */; };
-		58A9E5AE183C581200A1D3F4 /* yixin-pengyq.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A9E5AC183C581200A1D3F4 /* yixin-pengyq.png */; };
 		58A9E5FD183F48DD00A1D3F4 /* FSDeepEndObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9E5FC183F48DD00A1D3F4 /* FSDeepEndObject.m */; };
 		58A9E609183F5C0900A1D3F4 /* FSDeepLeadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9E608183F5C0900A1D3F4 /* FSDeepLeadObject.m */; };
 		58A9E60B183F5CC500A1D3F4 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A9E60A183F5CC500A1D3F4 /* libMobClickLibrary.a */; };
-		58AE689A17ABD06C0007203C /* 朋友圈.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AE689817ABD06C0007203C /* 朋友圈.png */; };
-		58AE689B17ABD06C0007203C /* 朋友圈@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AE689917ABD06C0007203C /* 朋友圈@2x.png */; };
 		58AE689E17ABD7820007203C /* shareCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AE689C17ABD7820007203C /* shareCancel.png */; };
 		58AE689F17ABD7820007203C /* shareCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AE689D17ABD7820007203C /* shareCancel@2x.png */; };
 		58AE68A217AF4B5D0007203C /* LygTencentShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AE68A117AF4B5D0007203C /* LygTencentShareViewController.m */; };
@@ -592,8 +592,6 @@
 		58FA002817A8B20A00841355 /* topSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA002617A8B20A00841355 /* topSelected@2x.png */; };
 		58FA002F17A9E59F00841355 /* goBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA002D17A9E59E00841355 /* goBack.png */; };
 		58FA003017A9E59F00841355 /* goBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA002E17A9E59E00841355 /* goBack@2x.png */; };
-		58FA006217ABAF8000841355 /* 腾讯微博.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA006017ABAF8000841355 /* 腾讯微博.png */; };
-		58FA006317ABAF8000841355 /* 腾讯微博@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA006117ABAF8000841355 /* 腾讯微博@2x.png */; };
 		58FAFFEF17A7AE0200841355 /* bianxuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAFFEB17A7AE0200841355 /* bianxuan@2x.png */; };
 		58FAFFF017A7AE0200841355 /* bianxuanH@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAFFEC17A7AE0200841355 /* bianxuanH@2x.png */; };
 		58FAFFFC17A7CDCD00841355 /* bianxuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FAFFF317A7CDCD00841355 /* bianxuan.png */; };
@@ -1163,12 +1161,8 @@
 		04DBA04A167DAB740068C10E /* FSShareNoticView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShareNoticView.m; sourceTree = "<group>"; };
 		04DD029516795D3A00E23B3D /* FSShareIconContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShareIconContainView.h; sourceTree = "<group>"; };
 		04DD029616795D3A00E23B3D /* FSShareIconContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShareIconContainView.m; sourceTree = "<group>"; };
-		04DD029A16797D6A00E23B3D /* 163.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 163.png; sourceTree = "<group>"; };
 		04DD029B16797D6A00E23B3D /* beijingtiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beijingtiao.png; sourceTree = "<group>"; };
 		04DD029C16797D6A00E23B3D /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
-		04DD029D16797D6A00E23B3D /* renmin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renmin.png; sourceTree = "<group>"; };
-		04DD029E16797D6A00E23B3D /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
-		04DD029F16797D6A00E23B3D /* weixin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixin.png; sourceTree = "<group>"; };
 		04DD02A016797D6A00E23B3D /* 短信.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "短信.png"; sourceTree = "<group>"; };
 		04DD970216E42C9F003D8123 /* FS_GZF_StatisticePOSTXMLDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FS_GZF_StatisticePOSTXMLDAO.h; sourceTree = "<group>"; };
 		04DD970316E42C9F003D8123 /* FS_GZF_StatisticePOSTXMLDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FS_GZF_StatisticePOSTXMLDAO.m; sourceTree = "<group>"; };
@@ -1545,6 +1539,14 @@
 		5870278F17F3B599003B3BEB /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
 		5870279017F3B599003B3BEB /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
 		587154101882981C00B0804B /* dingwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingwei.png; sourceTree = "<group>"; };
+		587B288F1884BE59009B0B78 /* 163.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 163.png; sourceTree = "<group>"; };
+		587B28901884BE59009B0B78 /* 朋友圈.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朋友圈.png"; sourceTree = "<group>"; };
+		587B28911884BE59009B0B78 /* 腾讯微博.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "腾讯微博.png"; sourceTree = "<group>"; };
+		587B28921884BE59009B0B78 /* renmin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renmin.png; sourceTree = "<group>"; };
+		587B28931884BE59009B0B78 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
+		587B28941884BE59009B0B78 /* weixin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixin.png; sourceTree = "<group>"; };
+		587B28951884BE59009B0B78 /* yixin-friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-friend.png"; sourceTree = "<group>"; };
+		587B28961884BE59009B0B78 /* yixin-pengyq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-pengyq.png"; sourceTree = "<group>"; };
 		587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygListOfProvincesHaveAreaNewsDao.h; sourceTree = "<group>"; };
 		587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygListOfProvincesHaveAreaNewsDao.m; sourceTree = "<group>"; };
 		587EC6E218716CCF00664C4D /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
@@ -1574,8 +1576,6 @@
 		589D9BFC17E8022E0071686A /* content_comment.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = content_comment.css; sourceTree = "<group>"; };
 		589F559F185EF8190068E0FF /* LocalNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNewsViewController.h; sourceTree = "<group>"; };
 		589F55A0185EF8190068E0FF /* LocalNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNewsViewController.m; sourceTree = "<group>"; };
-		58A9E5AB183C581200A1D3F4 /* yixin-friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-friend.png"; sourceTree = "<group>"; };
-		58A9E5AC183C581200A1D3F4 /* yixin-pengyq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-pengyq.png"; sourceTree = "<group>"; };
 		58A9E5B0183C703600A1D3F4 /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
 		58A9E5B1183C703600A1D3F4 /* YXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApiObject.h; sourceTree = "<group>"; };
 		58A9E5FB183F48DD00A1D3F4 /* FSDeepEndObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDeepEndObject.h; sourceTree = "<group>"; };
@@ -1583,8 +1583,6 @@
 		58A9E607183F5C0900A1D3F4 /* FSDeepLeadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDeepLeadObject.h; sourceTree = "<group>"; };
 		58A9E608183F5C0900A1D3F4 /* FSDeepLeadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDeepLeadObject.m; sourceTree = "<group>"; };
 		58A9E60A183F5CC500A1D3F4 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		58AE689817ABD06C0007203C /* 朋友圈.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朋友圈.png"; sourceTree = "<group>"; };
-		58AE689917ABD06C0007203C /* 朋友圈@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朋友圈@2x.png"; sourceTree = "<group>"; };
 		58AE689C17ABD7820007203C /* shareCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareCancel.png; sourceTree = "<group>"; };
 		58AE689D17ABD7820007203C /* shareCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareCancel@2x.png"; sourceTree = "<group>"; };
 		58AE68A017AF4B5D0007203C /* LygTencentShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygTencentShareViewController.h; sourceTree = "<group>"; };
@@ -1727,8 +1725,6 @@
 		58FA002617A8B20A00841355 /* topSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topSelected@2x.png"; sourceTree = "<group>"; };
 		58FA002D17A9E59E00841355 /* goBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goBack.png; sourceTree = "<group>"; };
 		58FA002E17A9E59E00841355 /* goBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goBack@2x.png"; sourceTree = "<group>"; };
-		58FA006017ABAF8000841355 /* 腾讯微博.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "腾讯微博.png"; sourceTree = "<group>"; };
-		58FA006117ABAF8000841355 /* 腾讯微博@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "腾讯微博@2x.png"; sourceTree = "<group>"; };
 		58FAFFEB17A7AE0200841355 /* bianxuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bianxuan@2x.png"; sourceTree = "<group>"; };
 		58FAFFEC17A7AE0200841355 /* bianxuanH@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bianxuanH@2x.png"; sourceTree = "<group>"; };
 		58FAFFF317A7CDCD00841355 /* bianxuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bianxuan.png; sourceTree = "<group>"; };
@@ -2401,9 +2397,15 @@
 		04DD029916797D3400E23B3D /* ShareIcon */ = {
 			isa = PBXGroup;
 			children = (
+				587B288F1884BE59009B0B78 /* 163.png */,
+				587B28901884BE59009B0B78 /* 朋友圈.png */,
+				587B28911884BE59009B0B78 /* 腾讯微博.png */,
+				587B28921884BE59009B0B78 /* renmin.png */,
+				587B28931884BE59009B0B78 /* weibo.png */,
+				587B28941884BE59009B0B78 /* weixin.png */,
+				587B28951884BE59009B0B78 /* yixin-friend.png */,
+				587B28961884BE59009B0B78 /* yixin-pengyq.png */,
 				04B0C4C91683FA7C0062BF5E /* login_denglu.png */,
-				58A9E5AB183C581200A1D3F4 /* yixin-friend.png */,
-				58A9E5AC183C581200A1D3F4 /* yixin-pengyq.png */,
 				04B0C4CA1683FA7C0062BF5E /* login_denglu@2x.png */,
 				04B0C4CB1683FA7C0062BF5E /* netease_beijing.png */,
 				04B0C4CC1683FA7C0062BF5E /* netease_beijing@2x.png */,
@@ -2419,17 +2421,9 @@
 				04AAA849167B2142001F800A /* fasong@2x.png */,
 				04AAA84A167B2142001F800A /* quxiao.png */,
 				04AAA84B167B2142001F800A /* quxiao@2x.png */,
-				04DD029A16797D6A00E23B3D /* 163.png */,
 				04DD029B16797D6A00E23B3D /* beijingtiao.png */,
 				04DD029C16797D6A00E23B3D /* mail.png */,
-				04DD029D16797D6A00E23B3D /* renmin.png */,
-				04DD029E16797D6A00E23B3D /* weibo.png */,
-				04DD029F16797D6A00E23B3D /* weixin.png */,
 				04DD02A016797D6A00E23B3D /* 短信.png */,
-				58FA006017ABAF8000841355 /* 腾讯微博.png */,
-				58FA006117ABAF8000841355 /* 腾讯微博@2x.png */,
-				58AE689817ABD06C0007203C /* 朋友圈.png */,
-				58AE689917ABD06C0007203C /* 朋友圈@2x.png */,
 				58AE689C17ABD7820007203C /* shareCancel.png */,
 				58AE689D17ABD7820007203C /* shareCancel@2x.png */,
 			);
@@ -4447,7 +4441,6 @@
 				A694279316095ED90076E9A5 /* ChannelSettingNoticBGR.png in Resources */,
 				A694279416095ED90076E9A5 /* ChannelSettingNoticBGR@2x.png in Resources */,
 				A69427B21609AAE40076E9A5 /* ChannelSettingFinish@2x.png in Resources */,
-				58A9E5AD183C581200A1D3F4 /* yixin-friend.png in Resources */,
 				A69427BB1609AC640076E9A5 /* ChannelSettingFinish.png in Resources */,
 				820C79DE160C37AB00E6A4CD /* peopleLogo.png in Resources */,
 				820C79DF160C37AB00E6A4CD /* peopleLogo@2x.png in Resources */,
@@ -4464,12 +4457,14 @@
 				A697E8BA1611890500D91521 /* newstopbottom@2x.png in Resources */,
 				820544FD16143E0F00CC7BB7 /* content_tool_bg.png in Resources */,
 				820544FE16143E0F00CC7BB7 /* content_tool_bg@2x.png in Resources */,
+				587B28991884BE59009B0B78 /* 腾讯微博.png in Resources */,
 				820544FF16143E0F00CC7BB7 /* content_tool_font@2x.png in Resources */,
 				8205450016143E0F00CC7BB7 /* content_tool_pop_favorited@2x.png in Resources */,
 				8205450116143E0F00CC7BB7 /* content_tool_pop_font@2x.png in Resources */,
 				8205450216143E0F00CC7BB7 /* content_tool_share@2x.png in Resources */,
 				8205450316143E0F00CC7BB7 /* content_tool_unfavorite@2x.png in Resources */,
 				8205450416143E0F00CC7BB7 /* content_tool_writecomment@2x.png in Resources */,
+				587B289E1884BE59009B0B78 /* yixin-pengyq.png in Resources */,
 				A68C5740161585E60043FCCE /* feedbackBGR1.png in Resources */,
 				A68C5741161585E60043FCCE /* feedbackBGR1@2x.png in Resources */,
 				5805AC7F1843627B007D934E /* WeiboPublishViewController.xib in Resources */,
@@ -4538,12 +4533,8 @@
 				5805AC7B1843627B007D934E /* icon_sohu.png in Resources */,
 				04449BBE16772F3800A8F31C /* newsDitail_up1@2x.png in Resources */,
 				27DCD7321678163C00879913 /* CellBackground.png in Resources */,
-				04DD02A116797D6A00E23B3D /* 163.png in Resources */,
 				04DD02A216797D6A00E23B3D /* beijingtiao.png in Resources */,
 				04DD02A316797D6A00E23B3D /* mail.png in Resources */,
-				04DD02A416797D6A00E23B3D /* renmin.png in Resources */,
-				04DD02A516797D6A00E23B3D /* weibo.png in Resources */,
-				04DD02A616797D6A00E23B3D /* weixin.png in Resources */,
 				04DD02A716797D6A00E23B3D /* 短信.png in Resources */,
 				278803B51679AAE10023B0E2 /* CellBackgroundMark.png in Resources */,
 				278803BB1679AD060023B0E2 /* moreCellBGR2.png in Resources */,
@@ -4613,6 +4604,7 @@
 				04BFCFEA169E655600D4289E /* refresh.png in Resources */,
 				04BFCFEB169E655600D4289E /* refresh@2x.png in Resources */,
 				04263999169EB11600C53E11 /* bai.png in Resources */,
+				587B289D1884BE59009B0B78 /* yixin-friend.png in Resources */,
 				0426399A169EB11600C53E11 /* bai@2x.png in Resources */,
 				0426399B169EB11600C53E11 /* baihei.png in Resources */,
 				0426399C169EB11600C53E11 /* baihei@2x.png in Resources */,
@@ -4629,6 +4621,7 @@
 				04E00CA516A63144004ADEDE /* deep_pageL.png in Resources */,
 				04E00CA616A63144004ADEDE /* deep_pageL@2x.png in Resources */,
 				04E00CA716A63144004ADEDE /* deep_pageM.png in Resources */,
+				587B289A1884BE59009B0B78 /* renmin.png in Resources */,
 				04E00CA816A63144004ADEDE /* deep_pageM@2x.png in Resources */,
 				04E00CA916A63144004ADEDE /* deep_pageR.png in Resources */,
 				581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */,
@@ -4648,8 +4641,8 @@
 				042D746216A9305D003AB075 /* newscard_02.png in Resources */,
 				58BD9CAA1806622E001164D9 /* newsDitail_shear_1@2x.png in Resources */,
 				042D746316A9305D003AB075 /* newscard_02@2x.png in Resources */,
-				58A9E5AE183C581200A1D3F4 /* yixin-pengyq.png in Resources */,
 				042D746416A9305D003AB075 /* newscard_03.png in Resources */,
+				587B289C1884BE59009B0B78 /* weixin.png in Resources */,
 				042D746516A9305D003AB075 /* newscard_03@2x.png in Resources */,
 				042B04EF16ACE167001920C7 /* Deep_coverline.png in Resources */,
 				5805AC7C1843627B007D934E /* share_imagebg.png in Resources */,
@@ -4659,6 +4652,7 @@
 				042B04F816ACE4C8001920C7 /* open_mark.png in Resources */,
 				042B04F916ACE4C8001920C7 /* open_mark@2x.png in Resources */,
 				042B050216AD0C65001920C7 /* Deep_EndTitle.png in Resources */,
+				587B28971884BE59009B0B78 /* 163.png in Resources */,
 				5870279117F3B599003B3BEB /* icon29x29.png in Resources */,
 				042B050316AD0C65001920C7 /* Deep_EndTitle@2x.png in Resources */,
 				042B050416AD0C65001920C7 /* Deep_TextTitle.png in Resources */,
@@ -4735,6 +4729,7 @@
 				04E3011416E08F4D009019EC /* 军事_s.png in Resources */,
 				04E3011516E08F4D009019EC /* 历史_s.png in Resources */,
 				5851F12D17F12A570022659C /* 箭头左.png in Resources */,
+				587B289B1884BE59009B0B78 /* weibo.png in Resources */,
 				04E3011616E08F4D009019EC /* 国际_s.png in Resources */,
 				04E3011716E08F4D009019EC /* 头条_s.png in Resources */,
 				04E3011816E08F4D009019EC /* 娱乐_s.png in Resources */,
@@ -4778,6 +4773,7 @@
 				58FAFFFF17A7CDCD00841355 /* clearh.png in Resources */,
 				58FA000017A7CDCD00841355 /* clearh@2x.png in Resources */,
 				58FA000117A7CDCD00841355 /* collect.png in Resources */,
+				587B28981884BE59009B0B78 /* 朋友圈.png in Resources */,
 				58FA000217A7CDCD00841355 /* collect@2x.png in Resources */,
 				5870278D17F3B3FF003B3BEB /* icon3.png in Resources */,
 				58FA000317A7CDCD00841355 /* collecth.png in Resources */,
@@ -4802,11 +4798,7 @@
 				58FA002817A8B20A00841355 /* topSelected@2x.png in Resources */,
 				58FA002F17A9E59F00841355 /* goBack.png in Resources */,
 				58FA003017A9E59F00841355 /* goBack@2x.png in Resources */,
-				58FA006217ABAF8000841355 /* 腾讯微博.png in Resources */,
 				5805AC771843627B007D934E /* icon_kaixin.png in Resources */,
-				58FA006317ABAF8000841355 /* 腾讯微博@2x.png in Resources */,
-				58AE689A17ABD06C0007203C /* 朋友圈.png in Resources */,
-				58AE689B17ABD06C0007203C /* 朋友圈@2x.png in Resources */,
 				58AE689E17ABD7820007203C /* shareCancel.png in Resources */,
 				58AE689F17ABD7820007203C /* shareCancel@2x.png in Resources */,
 				581546DC17C1E77D00EFEF20 /* 右抽屉.png in Resources */,
