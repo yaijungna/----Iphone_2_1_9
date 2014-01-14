@@ -92,8 +92,8 @@
 
 
 - (void)doSomethingInSaveCoreDataContextError:(NSError *)error {
-    //	[self.managedObjectContext undo];
-    //	[self.managedObjectContext rollback];
+    	[self.managedObjectContext undo];
+    	[self.managedObjectContext rollback];
 }
 
 

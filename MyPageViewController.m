@@ -398,8 +398,7 @@
     if ([sender isEqual:_fs_GZF_ChannelListDAO]) {
         NSLog(@"%d",[_fs_GZF_ChannelListDAO.objectList count]);
         if (status == FSBaseDAOCallBack_SuccessfulStatus || status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
-            if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-                //FSLog(@"_fs_GZF_ForNewsListDAO Refresh");
+                            //FSLog(@"_fs_GZF_ForNewsListDAO Refresh");
                 //[self getUserChannelSelectedObject];
                 if ([_fs_GZF_ChannelListDAO.objectList count]>0) {
 //                    FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
@@ -432,7 +431,6 @@
                 
                 
                 [self initChannelViewController];
-            }
         }else if(status ==FSBaseDAOCallBack_NetworkErrorStatus){
             //[self getUserChannelSelectedObject];
             
