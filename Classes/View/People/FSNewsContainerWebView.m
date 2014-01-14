@@ -489,8 +489,8 @@
 	
 	NSString *realPath = getFileNameWithURLString(url, getCachesPath());//图片存放位置
 	
-	NSString * xxx = [NSString stringWithFormat:@"<div class='plus'></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
-    return [NSString stringWithFormat:@"<div class='plus'></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
+	NSString * xxx = [NSString stringWithFormat:@"<div class='plus' align='center></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
+    return [NSString stringWithFormat:@"<div class='plus' ></div><a class='photo_box' align='center' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
 	
 }
 
