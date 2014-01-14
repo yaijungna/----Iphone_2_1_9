@@ -82,8 +82,8 @@ NSString * getProvinceName()
         [self performSelectorInBackground:@selector(xxxxx) withObject:nil];
     }
     NSFileManager * mange = [[NSFileManager alloc]init];
-    if ([mange fileExistsAtPath:[getCachesPath()  stringByAppendingPathComponent:@"PeopleNewsReaderPhone2140.sqlite"]]) {
-        [mange removeItemAtPath:[getCachesPath()  stringByAppendingPathComponent:@"PeopleNewsReaderPhone2140.sqlite"] error:nil];
+    if ([mange fileExistsAtPath:[getCachesPath()  stringByAppendingPathComponent:@"PeopleNewsReaderPhone2160.sqlite"]]) {
+        [mange removeItemAtPath:[getCachesPath()  stringByAppendingPathComponent:@"PeopleNewsReaderPhone2160.sqlite"] error:nil];
         
     }
 //    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
@@ -413,7 +413,7 @@ NSString * getProvinceName()
         return persistentStoreCoordinator_;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"PeopleNewsReaderPhone2180.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"PeopleNewsReaderPhone2190.sqlite"];
     //NSLog(@"stroeURL:%@", [storeURL absoluteURL]);
     NSError *error = nil;
     persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

@@ -461,15 +461,17 @@
 }
 
 -(NSString *) generateImageHTML:(UIImage *)image url:(NSString *)url{
-    
+    NSLog(@"%f %f",image.size.width,image.size.height);
     float rule = 90;
 	float height = image.size.height;
 	float width = image.size.width;
     
-    if ([_imageList count]>1) {
+
+    if (1) {
         if (width>height) {
-            width = width/height*rule;
-            height = rule;
+            float tempWidth = 300<(width/2)?300:(width/2);
+            height /= (width/tempWidth);
+            width  = tempWidth;
         }else {
             height = height/width*rule;
             width = rule;
@@ -487,8 +489,8 @@
 	
 	NSString *realPath = getFileNameWithURLString(url, getCachesPath());//图片存放位置
 	
-	
-    return [NSString stringWithFormat:@"<div class='plus'></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
+	NSString * xxx = [NSString stringWithFormat:@"<div class='plus' align='center></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
+    return [NSString stringWithFormat:@"<div class='plus' ></div><a class='photo_box' align='center' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
 	
 }
 

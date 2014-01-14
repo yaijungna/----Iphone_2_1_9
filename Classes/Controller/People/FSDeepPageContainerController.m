@@ -351,7 +351,7 @@
         }
         FSDeepPageObject *pageObj = [_fs_GZF_DeepPageListDAO.objectList objectAtIndex:0];
         if (pageObj.share_img == nil || pageObj.share_img.length == 0) {
-            NSString * string = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"png"];
+            NSString * string = [[NSBundle mainBundle]pathForResource:@"icon@2x" ofType:@"png"];
             self.shareData = [NSData dataWithContentsOfFile:string];
         }else
         {
