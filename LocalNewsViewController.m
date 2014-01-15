@@ -53,10 +53,10 @@
     [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
     
     self.myNaviBar.topItem.rightBarButtonItem  = itme;
-    float xx = (ISIOS7?35:15);
-    UIImageView  * view = [[UIImageView alloc]initWithFrame:CGRectMake(265, xx, 10, 15)];
-    view.image          = [UIImage imageNamed:@"dingwei.png"];
-    [self.myNaviBar addSubview:view];
+ //   float xx = (ISIOS7?35:15);
+//    UIImageView  * view = [[UIImageView alloc]initWithFrame:CGRectMake(265, xx, 10, 15)];
+//    view.image          = [UIImage imageNamed:@"dingwei.png"];
+//    [self.myNaviBar addSubview:view];
 
     [itme release];
 }
