@@ -31,7 +31,7 @@
     _titleLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
     _titleLabel.textColor       = [UIColor redColor];
     _titleLabel.textAlignment   = UITextAlignmentCenter;
-    _titleLabel.text            = @"本地新闻";
+    _titleLabel.text            = @"";
     _titleLabel.font            = [UIFont systemFontOfSize:22];
     _titleLabel.backgroundColor = [UIColor clearColor];
     
@@ -145,9 +145,7 @@
     LygAreaObject * obj                             = sender.object;
     self.myNaviBar.topItem.rightBarButtonItem.title = obj.areaName;
     self.myNewsListView.areaID                      = obj.areaId.intValue;
-    
-    
-    
+    _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",obj.areaName];
 }
 -(void)dosomeThing
 {
@@ -163,6 +161,7 @@
     
     NSString * tempString       = [NSString stringWithFormat:@"%@",self.currentAreaObject.areaName];
     self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",tempString];
 }
 
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status
