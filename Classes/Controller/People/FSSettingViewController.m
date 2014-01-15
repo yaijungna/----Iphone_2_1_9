@@ -194,7 +194,7 @@
     FSCheckAppStoreVersionObject *checkAppStoreVersionObject = [[FSCheckAppStoreVersionObject alloc] init];
     checkAppStoreVersionObject.isManual = YES;
 	[checkAppStoreVersionObject checkAppVersion:MYAPPLICATIONID_IN_APPSTORE];
-	[checkAppStoreVersionObject release];
+	//[checkAppStoreVersionObject release];
 
 }
 -(void)xxxxxxx:(NSString *)message

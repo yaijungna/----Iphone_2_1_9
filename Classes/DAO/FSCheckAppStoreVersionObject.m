@@ -34,7 +34,9 @@ static void releaseSomeThing(id a)
 #ifdef MYDEBUG
 	NSLog(@"%@.dealloc.FSCheckAppStoreVersionObject", self);
 #endif
+    _checkData.parentDelegate = nil;
 	[_checkData release];
+    _checkData  = nil;
 	[super dealloc];
 }
 
@@ -63,7 +65,7 @@ static void releaseSomeThing(id a)
                     [alertUpdate release];
                 }
 			}
-            //[self release];
+            [self release];
 		} else {
 			if (status != FSBaseDAOCallBack_WorkingStatus) {
                 if (self.isManual) {
@@ -76,7 +78,7 @@ static void releaseSomeThing(id a)
                     [alertUpdate show];
                     [alertUpdate release];
                 }
-				//[self release];
+				[self release];
 			}
 		}
 	}
