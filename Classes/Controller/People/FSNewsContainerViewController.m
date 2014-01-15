@@ -372,10 +372,13 @@ NSString                       *_newsID;
 //   // [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
 //}
 
--(void)viewDidDisappear:(BOOL)animated{
-    //[super viewDidDisappear:animated];
-    //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:NO];
+    _fsNewsContainerView.frame = self.view.frame;
 }
+
+
 
 
 -(void)returnBack:(id)sender{
