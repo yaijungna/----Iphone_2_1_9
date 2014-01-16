@@ -38,7 +38,7 @@
 }
 
 -(void)dealloc{
-    [_fs_GZF_PeopleBlogLoginPOSTXMLDAO release];
+    self.fs_GZF_PeopleBlogLoginPOSTXMLDAO = nil;
     
     [super dealloc];
 }
@@ -58,7 +58,9 @@
 
 
 -(void)loginServer:(FSBaseLoginViewController *)sender{
-    _fs_GZF_PeopleBlogLoginPOSTXMLDAO = [[FS_GZF_PeopleBlogLoginPOSTXMLDAO alloc] init];
+    
+    
+    self.fs_GZF_PeopleBlogLoginPOSTXMLDAO = [[[FS_GZF_PeopleBlogLoginPOSTXMLDAO alloc] init] autorelease];
     _fs_GZF_PeopleBlogLoginPOSTXMLDAO.parentDelegate = self;
     if ([_tfUser.text length] == 0) {
         
@@ -102,7 +104,7 @@
     if ([sender isEqual:_fs_GZF_PeopleBlogLoginPOSTXMLDAO]) {
         if (status == FSBaseDAOCallBack_SuccessfulStatus) {
             if ([self.parentDelegate respondsToSelector:@selector(loginSuccesss:)]) {
-                [self.parentDelegate loginSuccesss:YES];
+                //[self.parentDelegate loginSuccesss:YES];
             }
             
             /*
@@ -124,7 +126,7 @@
         }
         else if(status == FSBaseDAOCallBack_UnknowErrorStatus){
             if ([self.parentDelegate respondsToSelector:@selector(loginSuccesss:)]) {
-                [self.parentDelegate loginSuccesss:NO];
+                //[self.parentDelegate loginSuccesss:NO];
             }
             FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
             informationMessageView.parentDelegate = self;
