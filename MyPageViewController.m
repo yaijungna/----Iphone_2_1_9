@@ -614,6 +614,7 @@
     
     
     [self setViewControllers:controllers direction:nil animated:nil completion:nil];
+    [controller release];
 }
 
 
