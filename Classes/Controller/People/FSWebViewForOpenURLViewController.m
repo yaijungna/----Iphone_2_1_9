@@ -95,7 +95,10 @@
     backBtn.titleLabel.font = [UIFont systemFontOfSize:12];
 	//_backBrowserButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(browserBack:)];
     _backBrowserButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    //NSString
     _navTopBar.topItem.leftBarButtonItem    = _backBrowserButton;
+    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:18], UITextAttributeFont,[UIColor blackColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
+    [_navTopBar setTitleTextAttributes:dict];
 //	image = [UIImage imageNamed:@"go-next.png"];
 //	UIButton *goBtn = [[UIButton alloc] initWithFrame:CGRectZero];
 //	goBtn.frame = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
@@ -244,6 +247,8 @@
     
     
     _navTopBar.topItem.title = [webView stringByEvaluatingJavaScriptFromString:js];
+    [_navTopBar.topItem.titleView sizeToFit];
+    
 }
 
 
