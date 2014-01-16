@@ -22,7 +22,7 @@
 @synthesize URLConnectionRunLoop = _URLConnectionRunLoop;
 @synthesize URLConnectionString = _URLConnectionString;
 @synthesize parentDelegate = _parentDelegate;
-@synthesize webDataBuffer = _webDataBuffer;
+@synthesize webDataBuffer  = _webDataBuffer;
 
 - (id)init {
 	self = [super init];
@@ -35,7 +35,7 @@
 
 
 - (void)dealloc {
-	FSLog(@"FSHTTPWebData.dealloc:%@:%@", self,_parentDelegate);
+    self.parentDelegate = nil;
     if (self.URLConnection!=nil) {
         [self.URLConnection cancel];
     }
@@ -49,7 +49,7 @@
 	
 	[_webDataBuffer release];
     
-	[_parentDelegate release];
+	
 	[super dealloc];
 }
 
