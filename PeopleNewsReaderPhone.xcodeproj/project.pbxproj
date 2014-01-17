@@ -545,6 +545,8 @@
 		58BD9CAE180662E7001164D9 /* newsDitail_shear_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAC180662E7001164D9 /* newsDitail_shear_2@2x.png */; };
 		58C850BB1850183D00362DCC /* 箭头右.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C850BA1850183D00362DCC /* 箭头右.png */; };
 		58CA5439187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CA5438187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m */; };
+		58CBF1211888BE48003A9FC9 /* normal in Resources */ = {isa = PBXBuildFile; fileRef = 58CBF11F1888BE48003A9FC9 /* normal */; };
+		58CBF1221888BE48003A9FC9 /* selected in Resources */ = {isa = PBXBuildFile; fileRef = 58CBF1201888BE48003A9FC9 /* selected */; };
 		58CF71991827DF870046AF67 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF71981827DF870046AF67 /* libWeChatSDK.a */; };
 		58D30E551835B3AC00D19D8C /* ImageDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D30E541835B3AC00D19D8C /* ImageDownLoader.m */; };
 		58D8B0FF17A745EF00816844 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D8B0FD17A745EE00816844 /* 返回.png */; };
@@ -1660,6 +1662,8 @@
 		58C850BA1850183D00362DCC /* 箭头右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右.png"; sourceTree = "<group>"; };
 		58CA5437187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalProvinceNewsViewControllers.h; sourceTree = "<group>"; };
 		58CA5438187A4CF500FBC6FB /* LocalProvinceNewsViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalProvinceNewsViewControllers.m; sourceTree = "<group>"; };
+		58CBF11F1888BE48003A9FC9 /* normal */ = {isa = PBXFileReference; lastKnownFileType = folder; path = normal; sourceTree = "<group>"; };
+		58CBF1201888BE48003A9FC9 /* selected */ = {isa = PBXFileReference; lastKnownFileType = folder; path = selected; sourceTree = "<group>"; };
 		58CF71981827DF870046AF67 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		58D30E531835B3AC00D19D8C /* ImageDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownLoader.h; sourceTree = "<group>"; };
 		58D30E541835B3AC00D19D8C /* ImageDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownLoader.m; sourceTree = "<group>"; };
@@ -2851,6 +2855,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				58CBF11F1888BE48003A9FC9 /* normal */,
+				58CBF1201888BE48003A9FC9 /* selected */,
+				58CBF0B21888B6C2003A9FC9 /* 订阅图片 */,
 				0A329E6B18743F57004B622C /* pageViewController */,
 				581E0CA8186C1B5D00BA5C07 /* tmp */,
 				5890805C1863DC5200E3B923 /* 评论提示 */,
@@ -3431,6 +3438,13 @@
 				58AF706617D7F1AD0028832E /* UIImage+KIAdditions.m */,
 			);
 			path = CropImage;
+			sourceTree = "<group>";
+		};
+		58CBF0B21888B6C2003A9FC9 /* 订阅图片 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "订阅图片";
 			sourceTree = "<group>";
 		};
 		58E2F6821844BA6900EF4F08 /* 图片浏览 */ = {
@@ -4608,6 +4622,7 @@
 				0426399A169EB11600C53E11 /* bai@2x.png in Resources */,
 				0426399B169EB11600C53E11 /* baihei.png in Resources */,
 				0426399C169EB11600C53E11 /* baihei@2x.png in Resources */,
+				58CBF1221888BE48003A9FC9 /* selected in Resources */,
 				0426399D169EB11600C53E11 /* hei.png in Resources */,
 				0426399E169EB11600C53E11 /* hei@2x.png in Resources */,
 				0426399F169EB11600C53E11 /* heibai.png in Resources */,
@@ -4754,6 +4769,7 @@
 				04C64FBD170BD4FF00473578 /* next_btn@2x.png in Resources */,
 				04C64FBE170BD4FF00473578 /* read_btn.png in Resources */,
 				04C64FBF170BD4FF00473578 /* read_btn@2x.png in Resources */,
+				58CBF1211888BE48003A9FC9 /* normal in Resources */,
 				04C64FC0170BD4FF00473578 /* shendu.png in Resources */,
 				04C64FC1170BD4FF00473578 /* shendu@2x.png in Resources */,
 				04C64FC2170BD4FF00473578 /* toutiao.png in Resources */,
