@@ -25,8 +25,24 @@
 	}
 	return self;
 }
+-(void)setOneData:(FSHTTPPostWebData *)oneData
+{
+    @synchronized (self)
+    {
+        if (oneData) {
+            [oneData retain];
+        }
+        if (_oneData) {
+            _oneData.parentDelegate = nil;
+            [_oneData release];
+        }
+        _oneData = oneData;
+    }
+   
+}
 
 - (void)dealloc {
+    self.oneData = nil;
 	[_errorMessage release];
 	[_entitiesForUpdate release];
 	[super dealloc];
@@ -58,7 +74,7 @@
 				NSMutableArray *postParameters = [[NSMutableArray alloc] init];
 				[self HTTPBuildPostItems:postParameters withPostKind:httpPostKind];
 				
-				[FSHTTPPostWebData HTTPPOSTDataWithURLString:URLString withDelegate:self withParameters:postParameters withStringEncoding:_stringEncoding withHTTPPOSTDataKind:httpPostKind];
+				self.oneData = [FSHTTPPostWebData HTTPPOSTDataWithURLString:URLString withDelegate:self withParameters:postParameters withStringEncoding:_stringEncoding withHTTPPOSTDataKind:httpPostKind];
 				
 				[postParameters release];
                 [pool release];

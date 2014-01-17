@@ -26,19 +26,42 @@
 ///////////////////////////////////////////////////////////////////////////////////
 //	POST数据
 ///////////////////////////////////////////////////////////////////////////////////
-+ (void)HTTPPOSTDataWithURLString:(NSString *)URLString withDelegate:(id)delegate withParameters:(NSArray *)parameters withStringEncoding:(NSStringEncoding)stringEncoding withHTTPPOSTDataKind:(HTTPPOSTDataKind)postDataKind {
++ (FSHTTPPostWebData*)HTTPPOSTDataWithURLString:(NSString *)URLString withDelegate:(id)delegate withParameters:(NSArray *)parameters withStringEncoding:(NSStringEncoding)stringEncoding withHTTPPOSTDataKind:(HTTPPOSTDataKind)postDataKind {
 	FSHTTPPostWebData *httpPostData = [[FSHTTPPostWebData alloc] init];
 	httpPostData.parentDelegate = delegate;
 	[httpPostData inner_HTTPPOSTDataWithURLString:URLString withParameters:parameters withStringEncoding:stringEncoding withHTTPPOSTDataKind:postDataKind];
-	[httpPostData release];
+    return [httpPostData autorelease];
 }
+//- (void)inner_HTTPGETDataWithURLString:(NSString *)URLString {
+//	[self retain];
+//    FSLog(@"%@[urlString:%@]", self, URLString);
+//    if (URLString==nil) {
+//        if ([_parentDelegate respondsToSelector:@selector(fsHTTPWebDataDidFail:withError:)]) {
+//            [_parentDelegate fsHTTPWebDataDidFail:self withError:nil];
+//        }
+//        return;
+//    }
+//    
+//    //FSLog(@"%@[self.URLConnectionString:%@]", self, self.URLConnectionString);
+//    self.URLConnectionString = URLString;
+//    if (self.URLConnection!=nil) {
+//        [self.URLConnection cancel];
+//    }
+//	NSThread *httpGetThread = [[NSThread alloc] initWithTarget:self selector:@selector(URLConnectionThreadWithURLString:) object:URLString];
+//	[httpGetThread start];
+//	[httpGetThread release];
+//}
+
 
 - (void)inner_HTTPPOSTDataWithURLString:(NSString *)URLString withParameters:(NSArray *)parameters withStringEncoding:(NSStringEncoding)stringEncoding withHTTPPOSTDataKind:(HTTPPOSTDataKind)postDataKind {
 	[self retain];
     self.URLConnectionString = URLString;
-	dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
-	dispatch_async(queue, ^(void) {
-		NSString *contentType;
+    if (self.URLConnection!=nil) {
+        [self.URLConnection cancel];
+    }
+
+	//dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
+    NSString *contentType;
 		
 		if (postDataKind == HTTPPOSTDataKind_MultiPart) {
 			//带附件的
@@ -135,9 +158,10 @@
 			[dataBody release];
 		}
 		
-	});
-	dispatch_release(queue);
 }
+
+
+
 
 - (void)URLConnectionThreadWithParameters:(NSMutableDictionary *)dicParameters {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

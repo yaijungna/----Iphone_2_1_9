@@ -152,7 +152,8 @@
     if (row == 0) {
         NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSLoginObject" key:@"userKind" value:LOGIN_USER_KIND_PEOPLE_BLOG];
         if ([array count]>0) {
-            [[FSBaseDB sharedFSBaseDB] deleteObjectByKey:@"FSLoginObject" key:@"userKind" value:LOGIN_USER_KIND_PEOPLE_BLOG];
+            //[[FSBaseDB sharedFSBaseDB] deleteObjectByKey:@"FSLoginObject" key:@"userKind" value:LOGIN_USER_KIND_PEOPLE_BLOG];
+            [[FSBaseDB sharedFSBaseDB] deleteObjectByObjectS:array];
             [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
             [_fsALLSettingContainerView loadData];
         }

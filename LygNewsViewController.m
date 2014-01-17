@@ -52,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self chageSize1];
     [self.view addSubview:_memNewsLIstView];
    
     [_memNewsLIstView refreshDataSource];

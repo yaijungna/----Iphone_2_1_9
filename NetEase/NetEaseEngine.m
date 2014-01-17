@@ -628,16 +628,11 @@ static NSData *HMAC_SHA1(NSString *data, NSString *key) {
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request{
-    NSError *error = [request error];
-	NSLog(@"Error: %@", error);
 }
 
 
 
 -(void)requestFinished:(ASIHTTPRequest *)request{
-    
-    NSString *responseString = [request responseString];
-    NSLog(@"requestFinished:%@",responseString);
 }
 
 //- (NSMutableURLRequest *)requestPostWithFile:(NSDictionary *)files url:(NSString *)aUrl queryString:(NSString *)aQueryString 

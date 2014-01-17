@@ -25,6 +25,7 @@
 @property (nonatomic) NSInteger errorCode;
 @property (nonatomic, retain) NSString *errorMessage;
 @property (nonatomic, retain) NSString *currentElementName;
+@property (nonatomic, strong)  FSHTTPPostWebData * oneData;
 
 //************************************************************
 //	提交数据的url

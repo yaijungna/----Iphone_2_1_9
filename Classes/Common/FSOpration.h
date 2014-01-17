@@ -14,7 +14,8 @@
     NSString *_localFile;
     id _delegate;
 }
-
+@property(nonatomic,assign)id delegate;
+@property(nonatomic,strong)FSNetworkData * netWorkData;
 -(id)initWithURL:(NSString *)URLString withLocalFilePath:(NSString *)localFilePath withDelegate:(id)delegate;
 
 

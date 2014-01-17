@@ -30,6 +30,7 @@
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 		[self addSubview:_imageView];
+        [_imageView release];
         _layoutLocalImage = NO;
         _defaultFileName = @"AsyncImage.png";
         _firstImageCompelet = YES;
@@ -45,15 +46,11 @@
 }
 
 -(void)dealloc{
-    [_imageView release];
     [_normalURLString release];
     [_heighlightURLString release];
     [_selectedURLString release];
     [_channelID release];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:FSNETWORKDATA_MANAGER_END_DOWNLOADING_ERROR_NOTIFICATION object:nil];
-//	[[NSNotificationCenter defaultCenter] removeObserver:self name:FSNETWORKDATA_MANAGER_END_DOWNLOADING_COMPLETE_NOTIFICATION object:nil];
-//	[[NSNotificationCenter defaultCenter] removeObserver:self name:FSNETWORKDATA_MANAGER_BEGIN_DOWNLOADING_NOTIFICATION object:nil];
      _indicator = nil;
 
     [super dealloc];
