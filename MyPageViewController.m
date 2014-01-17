@@ -219,7 +219,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:NO];
     //[self  showBar];
     
     
@@ -229,7 +229,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewWillAppear:NO];
     [self showBar];
     if (_fs_GZF_ChannelListDAO.objectList == nil || _fs_GZF_ChannelListDAO.objectList.count == 0) {
         [_fs_GZF_ChannelListDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
