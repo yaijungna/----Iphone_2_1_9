@@ -37,6 +37,7 @@
 }
 
 - (void)dealloc {
+    self.parentDelegate = nil;
     [_urlString release];
     _urlString  = nil;
 	[_localStoreFileName release];
@@ -50,8 +51,8 @@
     _URLConnectionRunLoop = nil;
 	[_URLConnection release];
 	_URLConnection = nil;
-	[_parentDelegate release];
-    _parentDelegate = nil;
+//	[_parentDelegate release];
+//    _parentDelegate = nil;
 	[super dealloc];
 }
 
@@ -78,24 +79,26 @@
 
 //***********************************************
 
-+ (NSData *)oprationNetworkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate{
++ (FSNetworkData*)oprationNetworkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate{
     if (URLString == nil) {
         return nil;
     }
         FSNetworkData *networkData = [[FSNetworkData alloc] init];
        
         [networkData oprationNetWorkDataBegin:URLString withLocalStoreFileName:localStoreFileName withDelegate:delegate];
-        [networkData release];
+        //[networkData release];
 			
-        return nil;
+        return [networkData autorelease];
 }
 
 -(void)oprationNetWorkDataBegin:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate{
     
-    if (_parentDelegate != nil) {
-		[_parentDelegate release];
-	}
-	_parentDelegate = [delegate retain];
+//    if (_parentDelegate != nil) {
+//		[_parentDelegate release];
+//	}
+//	_parentDelegate = [delegate retain];
+    
+    self.parentDelegate = delegate;
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:localStoreFileName]) {
         if ([_parentDelegate respondsToSelector:@selector(networkDataDownloadDataComplete:isError:data:)]) {

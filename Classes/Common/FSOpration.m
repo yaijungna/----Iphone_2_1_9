@@ -26,8 +26,18 @@
     }
     return self;
 }
+-(void)setNetWorkData:(FSNetworkData *)netWorkData
+{
+    if (netWorkData) {
+        [netWorkData retain];
+    }
+    _netWorkData.parentDelegate = nil;
+    _netWorkData = netWorkData;
+}
 
 -(void)dealloc{
+    self.netWorkData = nil;
+    self.delegate = nil;
     [_urlString release];
     [_localFile release];
     [super dealloc];
@@ -42,7 +52,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:FSNETWORKDATA_MANAGER_BEGIN_DOWNLOADING_NOTIFICATION object:self userInfo:userInfo];
         [userInfo release];
         //NSLog(@"FSOpration  start:%@ [%f]",_urlString,[[NSDate date] timeIntervalSince1970]);
-        [FSNetworkData oprationNetworkDataWithURLString:_urlString withLocalStoreFileName:_localFile withDelegate:self];
+        self.netWorkData = [FSNetworkData oprationNetworkDataWithURLString:_urlString withLocalStoreFileName:_localFile withDelegate:self];
         //NSLog(@"FSOpration  end:%@ [%f]",_localFile,[[NSDate date] timeIntervalSince1970]);
         
     dispatch_async(dispatch_get_main_queue(), ^(void) {

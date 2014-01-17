@@ -46,14 +46,14 @@
             _count = 1;
             //NSLog(@"%@",[NSString stringWithFormat:FS_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""]);
             return [NSString stringWithFormat:FS_AREA_NEWS_URL, self.channelid, FS_NEWS_PAGECOUNT,@""];
-        }else if([self.channelid isEqualToString:@"0"])
+        }/*else if([self.channelid isEqualToString:@"0"])
         {
             _count = 1;
             int temp = self.objectList.count + FS_NEWS_PAGECOUNT;
             
             NSString * string = [NSString stringWithFormat:FS_AREA_NEWS_URL,  @"", temp,@""];
             return [NSString stringWithFormat:FS_AREA_NEWS_URL,  self.channelid, temp,@""];
-        }
+        }*/
         else {
             _count =_count +1;
             
@@ -136,7 +136,44 @@
 	;//[self addSortDescription:descriptions withSortFieldName:@"timestamp" withAscending:NO];
 }
 
+- (void)executeFetchRequest:(NSFetchRequest *)request {
+    if (self.newsType == areaNews) {
+        NSError *error = nil;
+        NSArray *resultSet = [self.managedObjectContext executeFetchRequest:request error:&error];
 
+        [self.managedObjectContext save:nil];
+        
+        if (!error) {
+            
+            if ([resultSet count]>0) {
+                NSMutableArray * arry = [[NSMutableArray alloc]init];
+                NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
+                
+                
+                for (FSOneDayNewsObject* obj in resultSet) {
+                    NSString * tempString = [dict objectForKey:obj.newsid];
+                    if (!tempString) {
+                        [arry addObject:obj];
+                        [dict setValue:@" dgsd" forKey:obj.newsid];
+                    }
+                }
+
+                
+               
+                self.objectList = arry;
+                [arry release];
+                self.isRecordListTail = [self.objectList count] < [self.fetchRequest fetchLimit];
+                [self setBufferFlag];
+                [dict release];
+            }
+            
+        }
+
+    }else
+    {
+        [super executeFetchRequest:request];
+    }
+}
 
 //******************************************************************************************
 
