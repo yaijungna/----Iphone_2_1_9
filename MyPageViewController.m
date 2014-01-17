@@ -84,8 +84,6 @@
     if ([self isHaveKindsScrollView]) {
         return;
     }
-    float xxx = 0;
-    //ISIOS7?xxx = 20:1;
     UIScrollView * myScroview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, 320, HeightOfChannel)];
     //myScroview.backgroundColor= [UIColor redColor];
     myScroview.showsHorizontalScrollIndicator  = NO;
@@ -233,6 +231,9 @@
 {
     [super viewWillAppear:animated];
     [self showBar];
+    if (_fs_GZF_ChannelListDAO.objectList == nil || _fs_GZF_ChannelListDAO.objectList.count == 0) {
+        [_fs_GZF_ChannelListDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
+    }
     
 }
 
@@ -308,7 +309,7 @@
         _fs_GZF_ChannelListDAO.parentDelegate = self;
         _fs_GZF_ChannelListDAO.type = @"news";
         _fs_GZF_ChannelListDAO.isGettingList = YES;
-        [_fs_GZF_ChannelListDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
+        //[_fs_GZF_ChannelListDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
     }
     NSLog(@"%@",self.navigationController);
     //self.navigationController.delegate = self;
@@ -328,10 +329,10 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    NSArray * arry = previousViewControllers;
-    
-    LygNewsViewController * news = [previousViewControllers objectAtIndex:0];
-    int   x = news.channelIndex;
+//    NSArray * arry = previousViewControllers;
+//    
+//    LygNewsViewController * news = [previousViewControllers objectAtIndex:0];
+//    int   x = news.channelIndex;
     
     if (completed) {
         //[self changeTitleColorBlock(5)];
@@ -346,8 +347,7 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
-    NSArray * arry = pendingViewControllers;
-    
+
     LygNewsViewController * news = [pendingViewControllers objectAtIndex:0];
     int   x = news.channelIndex;
     
@@ -398,39 +398,10 @@
     if ([sender isEqual:_fs_GZF_ChannelListDAO]) {
         NSLog(@"%d",[_fs_GZF_ChannelListDAO.objectList count]);
         if (status == FSBaseDAOCallBack_SuccessfulStatus || status == FSBaseDAOCallBack_BufferSuccessfulStatus) {
-            if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-                //FSLog(@"_fs_GZF_ForNewsListDAO Refresh");
-                //[self getUserChannelSelectedObject];
-                if ([_fs_GZF_ChannelListDAO.objectList count]>0) {
-//                    FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
-//                    NSArray * arry = [[FSBaseDB sharedFSBaseDB]getObjectsByKeyWithName:@"FSUserSelectObject" key:nil value:nil];
-//                    [[FSBaseDB sharedFSBaseDB] deleteObjectByObjectS:arry];
-//                    FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
-//                    
-//                    sobj.kind = @"YAOWENCHANNEL";
-//                    sobj.keyValue1 = CObject.channelname;
-//                    sobj.keyValue2 = CObject.channelid;
-//                    [FSBaseDB saveDB];
-                    
-                      [self initChannelViewController];
-                      [self addKindsScrollView];
-                }
-//                FSChannelObject *CObject = [_fs_GZF_ChannelListDAO.objectList objectAtIndex:0];
-//                
-//                FSUserSelectObject *sobj = (FSUserSelectObject *)[[FSBaseDB sharedFSBaseDB] insertObject:@"FSUserSelectObject"];
-//                
-//                sobj.kind = KIND_USERCHANNEL_SELECTED;
-//                sobj.keyValue1 = CObject.channelname;
-//                sobj.keyValue2 = CObject.channelid;
-//                sobj.keyValue3 = nil;
-//                [[FSBaseDB sharedFSBaseDB].managedObjectContext save:nil];
-//                //[self addKindsScrollView];
-//                if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-//                    
-//                    [_fs_GZF_ChannelListDAO operateOldBufferData];
-//                }
+            if ([_fs_GZF_ChannelListDAO.objectList count]>0) {
+
                 
-                
+                [self addKindsScrollView];
                 [self initChannelViewController];
             }
         }else if(status ==FSBaseDAOCallBack_NetworkErrorStatus){
@@ -593,7 +564,7 @@
 }
 -(void)changTheContent
 {
-    UIViewController * controller = [self.viewControllers objectAtIndex:0];
+    //UIViewController * controller = [self.viewControllers objectAtIndex:0];
     //[controller changeContent:_currentIndex];
     
     
@@ -642,16 +613,15 @@
     UIWindow * window        = [UIApplication sharedApplication].windows[0];
     UIScrollView * scroView  = (UIScrollView*)[window viewWithTag:TAGOFSCROW];
 
-        int x = scroView.contentOffset.x/320;
-        UIView * view = [scroView viewWithTag:index2];
-        int index = view.frame.origin.x;
-        int yyy   = scroView.contentOffset.x;
-        if (index + view.frame.size.width - yyy > 320) {
-            scroView.contentOffset = CGPointMake(index - 320 + view.frame.size.width, 0);
-        }else if(yyy > index)
-        {
-            scroView.contentOffset = CGPointMake(index, 0);
-        }
+    UIView * view = [scroView viewWithTag:index2];
+    int index = view.frame.origin.x;
+    int yyy   = scroView.contentOffset.x;
+    if (index + view.frame.size.width - yyy > 320) {
+        scroView.contentOffset = CGPointMake(index - 320 + view.frame.size.width, 0);
+    }else if(yyy > index)
+    {
+        scroView.contentOffset = CGPointMake(index, 0);
+    }
 }
 
 #pragma mark -----左右滑动
