@@ -69,7 +69,7 @@ CGFloat getTotalControllerBarHeight(UIViewController *controller) {
 	if (controller.navigationController != nil && !controller.navigationController.navigationBar.hidden) {
 		rst += controller.navigationController.navigationBar.frame.size.height;
 	}
-    float xxx = rst;
+    //float xxx = rst;
 
 	return rst;
 }

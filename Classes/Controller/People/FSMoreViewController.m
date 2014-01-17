@@ -52,7 +52,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObject:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     [_fs_GZF_AppRecommendDAO release];
     [_peopleAPPS removeAllObjects];
     [_peopleAPPS release];

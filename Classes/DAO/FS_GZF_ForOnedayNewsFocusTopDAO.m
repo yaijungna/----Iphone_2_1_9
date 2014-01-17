@@ -85,7 +85,6 @@
 -(NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind{
     //return FSFOUCS_URL;
     if (self.memNewsType == areaNews) {
-        NSString * tempString  = [NSString stringWithFormat:URLOFAREAFOUCUSNEWS,self.channelid,3];
         return [NSString stringWithFormat:URLOFAREAFOUCUSNEWS,self.channelid,3];
     }else
     {

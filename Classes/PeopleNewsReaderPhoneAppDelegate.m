@@ -71,6 +71,54 @@ NSString * getProvinceName()
 
 #pragma mark -
 #pragma mark Application lifecycle
+-(void)CopyOrderPictures:(NSString*)bundeleName
+{
+    NSFileManager * manger = [[NSFileManager alloc]init];
+    
+    NSBundle  *bune        = [NSBundle mainBundle];
+    
+    
+    
+    NSString * string      =  [NSString stringWithFormat:@"%@/%@",[bune bundlePath],bundeleName];
+    NSBundle *  bundle     = [NSBundle bundleWithPath:string];
+    
+    
+
+    NSArray * arry        =  [bundle pathsForResourcesOfType:@"png" inDirectory:nil];
+    
+
+
+    [bundle load];
+    
+    NSString * dest       = getCachesPath();
+    NSString * destPath   = [NSString stringWithFormat:@"%@/mobile.app.people.com.cn/news2/images/channel/%@",dest,bundeleName];
+
+    
+    
+    
+    [manger createDirectoryAtPath:destPath withIntermediateDirectories:YES attributes:nil  error:nil];
+    
+    for (NSString * tempstr  in arry) {
+        NSString * picname = [[tempstr componentsSeparatedByString:@"/"] lastObject];
+        NSString * string = [NSString stringWithFormat:@"%@/%@",destPath,picname];
+        NSData * image = [NSData dataWithContentsOfFile:tempstr];
+        if (![manger fileExistsAtPath:string]) {
+            [manger createFileAtPath:string contents:image attributes:nil];
+
+        }
+    }
+    //[manger copyItemAtPath:ssdss toPath:destPath error:nil];
+}
+-(void)copyImages
+{
+    NSString * string = [[NSUserDefaults standardUserDefaults] objectForKey:@"hasCopyOrderPictures"];
+    if (!string) {
+        [self CopyOrderPictures:@"normal"];
+        [self CopyOrderPictures:@"selected"];
+        [[NSUserDefaults standardUserDefaults]setObject:@"hasCopyOrderPictures" forKey:@"hasCopyOrderPictures"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
@@ -86,13 +134,7 @@ NSString * getProvinceName()
         [mange removeItemAtPath:[getCachesPath()  stringByAppendingPathComponent:@"PeopleNewsReaderPhone2160.sqlite"] error:nil];
         
     }
-//    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-//    statTracker.enableExceptionLog = YES; // 是否允许截获并发送崩溃信息，请设置YES或者NO
-//    statTracker.channelId = @"AppStore";//设置您的app的发布渠道
-//    statTracker.logStrategy = BaiduMobStatLogStrategyCustom;//根据开发者设定的时间间隔接口发送 也可以使用启动时发送策略
-//    statTracker.logSendInterval = 1;  //为1时表示发送日志的时间间隔为1小时
-//    statTracker.logSendWifiOnly = NO; //是否仅在WIfi情况下发送日志数据
-//    statTracker.sessionResumeInterval = 60;//设置应用进入后台再回到前台为同一次session的间隔时间[0~600s],超过600s则设为600s，默认为30s
+    [self performSelectorInBackground:@selector(copyImages) withObject:nil];
     
     
     [MobClick startWithAppkey:YOUMENGKEY2 reportPolicy:SEND_INTERVAL channelId:nil];
@@ -102,7 +144,7 @@ NSString * getProvinceName()
     //statTracker.shortAppVersion  =]; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
 //    [statTracker startWithAppId:BAIDUAPPKEY];//设置您在mtj网站上添加的app的appkey
 
-    BOOL registerYx = [YXApi registerApp:YIXINAPPKEY];
+    [YXApi registerApp:YIXINAPPKEY];
     if([[GlobalConfig shareConfig] readImportantNewsPush] == YES){
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }else{
