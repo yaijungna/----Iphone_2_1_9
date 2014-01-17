@@ -50,8 +50,6 @@
         {
             _count = 1;
             int temp = self.objectList.count + FS_NEWS_PAGECOUNT;
-            
-            NSString * string = [NSString stringWithFormat:FS_AREA_NEWS_URL,  @"", temp,@""];
             return [NSString stringWithFormat:FS_AREA_NEWS_URL,  self.channelid, temp,@""];
         }
         else {
