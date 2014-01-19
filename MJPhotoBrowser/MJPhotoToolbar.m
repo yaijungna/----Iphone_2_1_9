@@ -84,7 +84,8 @@
     
     MJPhoto *photo = _photos[_currentPhotoIndex];
     // 按钮
-    _saveImageBtn.enabled = photo.image != nil && !photo.save;
+    //_saveImageBtn.enabled = photo.image != nil && !photo.save;
+    _saveImageBtn.enabled =  !photo.save;
 }
 
 @end
