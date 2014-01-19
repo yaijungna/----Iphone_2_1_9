@@ -24,7 +24,7 @@
 @interface MyPageViewController ()
 
 @end
-
+static int isFirst = 0;
 @implementation MyPageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -226,6 +226,13 @@
     if (self.fpChangeTitleColor) {
         [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
     }
+    
+    if (isFirst == 0) {
+        UIViewController * controller = [self.viewControllers objectAtIndex:0];
+        NSArray * arry  = [NSArray arrayWithObject:controller];
+       [self setViewControllers:arry direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        isFirst = 1;
+    }
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -247,13 +254,13 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillDisappear:NO];
     [self hideBar];
     //[[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewDidDisappear:NO];
     //[self  hideBar];
 }
 
@@ -296,7 +303,10 @@
     }
     
     
-    [self setViewControllers:controllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self setViewControllers:controllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    
+
 }
 
 -(id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation options:(NSDictionary *)options
