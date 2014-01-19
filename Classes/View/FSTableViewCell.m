@@ -61,7 +61,7 @@
 		[_data release];
 		_data = [value retain];
 		_clientSize = CGSizeZero;
-		[self setNeedsLayout];
+		//[self setNeedsLayout];
 	}
 }
 

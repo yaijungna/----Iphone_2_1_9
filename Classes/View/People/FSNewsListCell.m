@@ -16,6 +16,7 @@
 #import "UIImageView+WebCache.h"
 #define HEIGHTOFIMG      57
 #define WIDTHOFNEWHASPIC 238
+
 @implementation MyContetView
 -(void)drawRect:(CGRect)rect
 {
@@ -70,6 +71,7 @@
     _lab_NewsTitle = [[UILabel alloc] init];
     
     _image_Onright = [[UIImageView alloc] init];
+    _image_Onright.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     //_image_Onright.imageCuttingKind = ImageCuttingKind_fixrect;
     _image_Onright.contentMode = UIViewContentModeScaleAspectFill;
     _image_Onright.clipsToBounds = YES;
@@ -141,8 +143,9 @@
         if ([temp length]>0 && [self isDownloadPic]) {
             _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 5, HEIGHTOFIMG, HEIGHTOFIMG);
             
-            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
+            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageNamed:@"AsyncImage.png"]];
             _image_Onright.alpha = 1.0f;
+            //_image_Onright.image = nil;
             //_lab_NewsType.frame = CGRectMake(self.frame.size.width-50,4, 40, 22);
             
         }
@@ -161,8 +164,8 @@
         
         if ([temp length]>0 && [self isDownloadPic]) {
             _image_Onright.frame = CGRectMake(self.frame.size.width - 65, 30, HEIGHTOFIMG, HEIGHTOFIMG);
-            
-            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
+            //_image_Onright.image = nil;
+            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageNamed:@"AsyncImage.png"]];
             _image_Onright.alpha = 1.0f;
             //_lab_NewsType.frame = CGRectMake(self.frame.size.width-50,4, 40, 22);
             
@@ -174,6 +177,40 @@
     }
     
     
+    
+
+}
+-(void)updateImageViewCell
+{
+    NSString * temp = nil;
+    if ([self.data isKindOfClass:[FSMyFaverateObject class]]) {
+        FSMyFaverateObject *obj = (FSMyFaverateObject *)self.data;
+        
+        if ([temp length]>0 && [self isDownloadPic]) {
+            //[_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
+            //[_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:nil];
+            [_image_Onright setImageWithURL:[NSURL URLWithString:temp]];
+
+            
+        }
+        else{
+        }
+        
+    }
+    else{
+        FSOneDayNewsObject *obj   = (FSOneDayNewsObject *)self.data;
+        _lab_NewsTitle.text       = obj.title;
+        
+        temp   = obj.picture;
+        _lab_NewsTitle.frame = CGRectMake(10, 4, 310, 25);
+        
+        if ([temp length]>0 && [self isDownloadPic]) {
+//            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:[UIImage imageWithNameString:@"AsyncImage"]];
+            [_image_Onright  setImageWithURL:[NSURL URLWithString:temp] placeholderImage:nil];
+        }
+        else{
+        }
+    }
     
 
 }
@@ -266,3 +303,6 @@
 }
 
 @end
+
+
+

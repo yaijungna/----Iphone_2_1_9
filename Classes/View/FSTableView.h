@@ -23,7 +23,7 @@
 #define FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW (1 << 1)
 #define FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW (1 << 2)
 
-@interface FSTableView : UITableView {
+@interface FSTableView : UITableView<UIScrollViewDelegate> {
 @protected
 	BOOL                    _dragging;
 	CGSize                  _oldSize;

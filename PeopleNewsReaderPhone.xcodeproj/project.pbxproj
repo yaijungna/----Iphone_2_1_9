@@ -335,6 +335,7 @@
 		0A0108171848D0BD00FCB106 /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0108161848D0BD00FCB106 /* libYixinSDK.a */; };
 		0A329E6E18743F84004B622C /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E6D18743F84004B622C /* MyPageViewController.m */; };
 		0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A329E70187441B0004B622C /* LygNewsViewController.m */; };
+		0A3BD28218896E760011E89C /* UITableViewCell+updateImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BD28118896E760011E89C /* UITableViewCell+updateImageView.m */; };
 		0AE0769A17BB9A6A006B6358 /* MyNewsLIstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -1303,6 +1304,8 @@
 		0A329E6D18743F84004B622C /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
 		0A329E6F187441B0004B622C /* LygNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygNewsViewController.h; sourceTree = "<group>"; };
 		0A329E70187441B0004B622C /* LygNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygNewsViewController.m; sourceTree = "<group>"; };
+		0A3BD28018896E760011E89C /* UITableViewCell+updateImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+updateImageView.h"; sourceTree = "<group>"; };
+		0A3BD28118896E760011E89C /* UITableViewCell+updateImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+updateImageView.m"; sourceTree = "<group>"; };
 		0AE0769817BB9A69006B6358 /* MyNewsLIstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewsLIstView.h; sourceTree = "<group>"; };
 		0AE0769917BB9A69006B6358 /* MyNewsLIstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNewsLIstView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2855,6 +2858,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0A3BD28018896E760011E89C /* UITableViewCell+updateImageView.h */,
+				0A3BD28118896E760011E89C /* UITableViewCell+updateImageView.m */,
 				58CBF11F1888BE48003A9FC9 /* normal */,
 				58CBF1201888BE48003A9FC9 /* selected */,
 				58CBF0B21888B6C2003A9FC9 /* 订阅图片 */,
@@ -5014,6 +5019,7 @@
 				5805AC1F183F5FA9007D934E /* FSDeepOuterObject.m in Sources */,
 				A69427A016096CE80076E9A5 /* FSChannelSettingtTOPCellTextFloatView.m in Sources */,
 				8206EA98160AAD08007D5B43 /* FSOneDayNewsListDAO.m in Sources */,
+				0A3BD28218896E760011E89C /* UITableViewCell+updateImageView.m in Sources */,
 				0A329E71187441B0004B622C /* LygNewsViewController.m in Sources */,
 				8206EA9B160AAD2D007D5B43 /* FSFocusTopDAO.m in Sources */,
 				A656088D160AE34A0001454D /* FSForChannelSettingFocusTopDAO.m in Sources */,
@@ -5331,8 +5337,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5363,8 +5369,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "BBB182E1-3E53-4CB7-B142-0F706E37B8DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BBB182E1-3E53-4CB7-B142-0F706E37B8DA";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -5375,7 +5381,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5404,8 +5410,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -5424,8 +5430,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "F9110A34-C56C-4487-977D-E92E1155A291";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9110A34-C56C-4487-977D-E92E1155A291";
 				SDKROOT = iphoneos;
 			};
 			name = AdHoc;
@@ -5435,7 +5441,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5465,8 +5471,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "F9110A34-C56C-4487-977D-E92E1155A291";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9110A34-C56C-4487-977D-E92E1155A291";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -5486,8 +5492,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lz";
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "BBB182E1-3E53-4CB7-B142-0F706E37B8DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BBB182E1-3E53-4CB7-B142-0F706E37B8DA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5504,8 +5510,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
-				PROVISIONING_PROFILE = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96E83AC5-C498-4EA1-A5DC-1220D4C642EB";
+				PROVISIONING_PROFILE = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

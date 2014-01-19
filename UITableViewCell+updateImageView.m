@@ -9,5 +9,8 @@
 #import "UITableViewCell+updateImageView.h"
 
 @implementation UITableViewCell (updateImageView)
-
+-(void)updateImageViewCell
+{
+    
+}
 @end

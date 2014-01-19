@@ -21,14 +21,14 @@
 #define RELEASE
 #ifdef  RELEASE
 #define NSLog(...)
-#define printf(...)
+//#define printf(...)
 #endif
 
 #ifdef MYDEBUG
 #define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 //#define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define FSLog(...)g
+#define FSLog(...)
 #endif
 
 #define ISIPHONE5   ([UIScreen mainScreen].bounds.size.height - 480 > 10?1:0)

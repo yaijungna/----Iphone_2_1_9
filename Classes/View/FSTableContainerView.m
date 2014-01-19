@@ -14,6 +14,7 @@
 
 #import "FSTableContainerView.h"
 #import "FSWithSwitchButtonCell.h"
+#import "FSNewsListCell.h"
 #define BOUNCE_TOP_FLAG (1)
 #define BOUNCE_BOTTOM_FLAG (1 << 2)
 
@@ -211,7 +212,7 @@
         if ([fsCell isKindOfClass:[FSWithSwitchButtonCell class]]) {
             [fsCell  doSomethingAtLayoutSubviews];
         }
-        //[fsCell doSomethingAtLayoutSubviews];
+    //[fsCell doSomethingAtLayoutSubviews];
 	} else {
 		[self initializeCell:cell withData:[self cellDataObjectWithIndexPath:indexPath] withIndexPath:indexPath];
 	}
@@ -336,6 +337,12 @@
 
 - (void)loaddingComplete {
 	[_tvList loaddingComplete];
+    [self updateImages];
+
+}
+-(void)updateImages
+{
+    
 }
 
 ////////////////////////////////////////////////////

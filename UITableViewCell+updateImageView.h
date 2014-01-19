@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UITableViewCell (updateImageView)
-
+-(void)updateImageViewCell;
 @end

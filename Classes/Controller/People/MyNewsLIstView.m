@@ -20,6 +20,7 @@
 #import "LygAdsDao.h"
 #import "LygAdsLoadingImageObject.h"
 #import "FSNewsViewController.h"
+#import "UITableViewCell+updateImageView.h"
 @implementation MyNewsLIstView
 - (id)initWithFrame:(CGRect)frame
 {
@@ -440,6 +441,8 @@
 //	[_tvList bottomScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 //}
 
+#pragma mark --------scroewViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[_tvList bottomScrollViewDidScroll:scrollView];
     
@@ -469,9 +472,54 @@
     
 }
 
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	[_tvList bottomScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if (decelerate == NO) {
+        [self updateImages];
+    }
+
 }
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    //[self performSelector:@selector(updateImages) withObject:nil afterDelay:0.05];
+    //[self  updateImages];
+    
+//    CADisplayLink * display = [CADisplayLink displayLinkWithTarget:self selector:@selector(MyTask:)];
+//    
+//    //display.frameInterval = 2;
+//    
+//    [display addToRunLoop: [NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+//    [self updateImages];
+}
+
+
+-(void)MyTask:(CADisplayLink*)sender
+{
+    [self updateImages];
+    //[sender invalidate];
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self  updateImages];
+}
+
+-(void)updateImages
+{
+    return;
+    //dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray * arry = [self.tvList visibleCells];
+        
+        for (UITableViewCell * cell in arry) {
+            [cell  updateImageViewCell];
+        }
+    //});
+    printf("-------\n");
+    
+}
+
+
+#pragma mark --------
 -(void)dealloc{
     self.parentDelegate = nil;
     [self clearBeforeDealloc];
@@ -511,6 +559,7 @@
             if (status == FSBaseDAOCallBack_SuccessfulStatus) {
                 [self reSetAssistantViewFlag:[_fs_GZF_ForNewsListDAO.objectList count]];
                 [self loadData];
+                [self updateImages];
                 [_fs_GZF_ForNewsListDAO operateOldBufferData];
             }else{
                 //[self loadData];
@@ -780,12 +829,10 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    int x = indexPath.row;
+	NSString *cellIdentifierString =  (x == 0?@"RoutineNewsListTopCell":@"RoutineNewsListCell");
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierString];
     
-	NSString *cellIdentifierString = [self cellIdentifierStringWithIndexPath:indexPath];
-	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierString];
-    
-    //cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"CellBackground"]];
     BOOL isNeedAutoRelease = NO;
 	if (cell == nil) {
 		cell = (UITableViewCell *)[[[self cellClassWithIndexPath:indexPath] alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifierString];
@@ -801,7 +848,6 @@
 		[fsCell setCellShouldWidth:tableView.frame.size.width];
 		[fsCell setData:[self cellDataObjectWithIndexPath:indexPath]];
         [fsCell setSelectionStyle:[self cellSelectionStyl:indexPath]];
-        [fsCell doSomethingAtLayoutSubviews];
 	} else {
 		[self initializeCell:cell withData:[self cellDataObjectWithIndexPath:indexPath] withIndexPath:indexPath];
 	} 
@@ -813,7 +859,11 @@
         xxcell.lab_NewsTitle.textColor       = (num?[UIColor lightGrayColor]:[UIColor blackColor]);
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setNeedsDisplay];
+    //[cell setNeedsDisplay];
+//    if ([cell isKindOfClass:[FSNewsListCell  class]]) {
+//        FSNewsListCell * xxcell = (FSNewsListCell*)cell;
+//        xxcell.image_Onright.image = [UIImage imageNamed:@"AsyncImage.png"];
+//    }
     return (isNeedAutoRelease?[cell autorelease]:cell);
 }
 -(NSObject *)tableViewCellData:(FSTableContainerView *)sender withIndexPath:(NSIndexPath *)indexPath{
