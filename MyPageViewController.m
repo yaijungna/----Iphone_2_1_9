@@ -228,6 +228,10 @@ static int isFirst = 0;
     }
     
     if (isFirst == 0) {
+        if (!self.viewControllers || self.viewControllers.count == 0) {
+            isFirst = 1;
+            return;
+        }
         UIViewController * controller = [self.viewControllers objectAtIndex:0];
         NSArray * arry  = [NSArray arrayWithObject:controller];
        [self setViewControllers:arry direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
