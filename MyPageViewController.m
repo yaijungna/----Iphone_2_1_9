@@ -40,10 +40,10 @@ static int isFirst = 0;
     UIWindow * window       = [UIApplication sharedApplication].windows[0];
     UIView * view           = [window viewWithTag:TAGOFSCROW];
     
-    [window sendSubviewToBack:view];
-    UIView * view2          = [window viewWithTag:TAGOFNAV];
     
+    UIView * view2          = [window viewWithTag:TAGOFNAV];
     [window sendSubviewToBack:view2];
+    [window sendSubviewToBack:view];
 }
 
 
@@ -171,6 +171,10 @@ static int isFirst = 0;
 -(void)initNaviBar
 {
     UIWindow * window       = [UIApplication sharedApplication].windows[0];
+    UIView * view           = [window viewWithTag:TAGOFNAV];
+    if (view) {
+        return;
+    }
     LygNavigationBar * bar  = [[LygNavigationBar alloc] init];
     
     CGRect rect             = bar.frame;

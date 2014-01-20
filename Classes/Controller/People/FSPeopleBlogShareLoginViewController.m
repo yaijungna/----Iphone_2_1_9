@@ -107,6 +107,8 @@
                 //[self.parentDelegate loginSuccesss:YES];
             }
             
+            //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updatePeopleLoginStatus) name:@"updatePeopleLoginStatus" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePeopleLoginStatus" object:nil];
             /*
             FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
             informationMessageView.parentDelegate = self;
@@ -128,17 +130,31 @@
             if ([self.parentDelegate respondsToSelector:@selector(loginSuccesss:)]) {
                 //[self.parentDelegate loginSuccesss:NO];
             }
-            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
-            informationMessageView.parentDelegate = self;
-            [informationMessageView showInformationMessageViewInView:self.view
-                                                         withMessage:@"登陆失败"
-                                                    withDelaySeconds:1.2
-                                                    withPositionKind:PositionKind_Horizontal_Center
-                                                          withOffset:40.0f];
-            [informationMessageView release];
+//            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
+//            informationMessageView.parentDelegate = self;
+//            [informationMessageView showInformationMessageViewInView:self.view
+//                                                         withMessage:@"登陆失败"
+//                                                    withDelaySeconds:1.2
+//                                                    withPositionKind:PositionKind_Horizontal_Center
+//                                                          withOffset:40.0f];
+//            [informationMessageView release];
             
             //[self performSelector:@selector(returnToParentView) withObject:nil afterDelay:1.5];
             //登陆失败
+        }else if(status == FSBaseDAOCallBack_WorkingStatus)
+        {
+//            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
+//            informationMessageView.parentDelegate = self;
+//            [informationMessageView showInformationMessageViewInView:self.view
+//                                                         withMessage:@"登陆失败"
+//                                                    withDelaySeconds:1.2
+//                                                    withPositionKind:PositionKind_Horizontal_Center
+//                                                          withOffset:40.0f];
+//            [informationMessageView release];
+            FSIndicatorMessageView * info = [[FSIndicatorMessageView alloc]initWithFrame:CGRectMake(70, 70, 70, 70)];
+            [info showIndicatorMessageViewInView:self.view withMessage:@"正在登录人民微博"];
+            [info release];
+
         }
     }
 }
