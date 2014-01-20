@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSObject *data;
 
 @property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic,strong)FSRecommendSectView * recomentSection;
 
 -(void)tableCellselect:(NSIndexPath *)indexPath;
 -(void)reloadTableData;

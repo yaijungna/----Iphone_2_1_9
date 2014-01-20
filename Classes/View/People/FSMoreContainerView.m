@@ -14,7 +14,7 @@
 
 #import "FSWithSwitchButtonCell.h"
 #import "FSAuthorizationTableListCell.h"
-
+#import "FSRecommendSectView.h"
 
 
 @implementation FSMoreContainerView
@@ -239,15 +239,15 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        
-        FSRecommendSectView *sectionView = [[FSRecommendSectView alloc] init];
-        sectionView.parentDelegate = self;
-        sectionView.frame = CGRectMake(0, 0, 320, MORE_LIST_PEOPLEAPP_CELL_HEIGHT);
-        if (section == 0 && self.data!=nil) {
-            sectionView.data = self.data;
+        if (!self.recomentSection) {
+            self.recomentSection = [[FSRecommendSectView alloc] init];
+            self.recomentSection.parentDelegate = self;
+            self.recomentSection.frame = CGRectMake(0, 0, 320, MORE_LIST_PEOPLEAPP_CELL_HEIGHT);
         }
-        
-        return [sectionView autorelease];
+        if (section == 0 && self.data!=nil) {
+            self.recomentSection.data = self.data;
+        }
+        return self.recomentSection;
     }
     return nil;
 }
@@ -294,6 +294,7 @@
 
 
 -(void)dealloc{
+    [_recomentSection release];
     [oldIndexPath release];
     [super dealloc];
 }

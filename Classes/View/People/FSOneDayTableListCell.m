@@ -169,6 +169,7 @@ static void drawRoundCornerRect(CGContextRef context,CGRect aRect,CGFloat corneR
 
     _image_newsimage = [[UIImageView alloc] init];
     _image_newsimage.contentMode = UIViewContentModeScaleAspectFill;
+    _image_newsimage.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     _image_newsimage.clipsToBounds = YES;
     [_myContetView addSubview:_image_newsimage];
     
