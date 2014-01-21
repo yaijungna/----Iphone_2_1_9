@@ -138,7 +138,8 @@
             }
             
             
-            [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+            //[self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+            [self  presentModalViewController:fsNewsContainerViewController animated:YES];
             //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];
 
