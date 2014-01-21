@@ -447,6 +447,7 @@
 		582DE4EE183A26B9004AF13F /* MemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DE4ED183A26B9004AF13F /* MemCache.m */; };
 		58350A1217D0209700738DCC /* 刷新.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1017D0209700738DCC /* 刷新.png */; };
 		58350A1317D0209700738DCC /* 刷新@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58350A1117D0209700738DCC /* 刷新@2x.png */; };
+		583C8AC4188E46D90006DC20 /* LygCustermerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 583C8AC3188E46D90006DC20 /* LygCustermerBar.m */; };
 		584DA987187E39ED009012A3 /* UIViewController+changeContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 584DA986187E39ED009012A3 /* UIViewController+changeContent.m */; };
 		5850C1D4179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5850C1D2179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld */; };
 		58519A0517E003930055B764 /* 返回12x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58519A0317E003930055B764 /* 返回12x.png */; };
@@ -1502,6 +1503,8 @@
 		582DE4ED183A26B9004AF13F /* MemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemCache.m; sourceTree = "<group>"; };
 		58350A1017D0209700738DCC /* 刷新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新.png"; sourceTree = "<group>"; };
 		58350A1117D0209700738DCC /* 刷新@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新@2x.png"; sourceTree = "<group>"; };
+		583C8AC2188E46D90006DC20 /* LygCustermerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygCustermerBar.h; sourceTree = "<group>"; };
+		583C8AC3188E46D90006DC20 /* LygCustermerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygCustermerBar.m; sourceTree = "<group>"; };
 		58403E9917F7176400F06DB3 /* WBApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApiObject.h; sourceTree = "<group>"; };
 		58403E9A17F7176400F06DB3 /* WBApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApi.h; sourceTree = "<group>"; };
 		5847543A183464200070C8E9 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2858,6 +2861,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				583C8AC2188E46D90006DC20 /* LygCustermerBar.h */,
+				583C8AC3188E46D90006DC20 /* LygCustermerBar.m */,
 				0A3BD28018896E760011E89C /* UITableViewCell+updateImageView.h */,
 				0A3BD28118896E760011E89C /* UITableViewCell+updateImageView.m */,
 				58CBF11F1888BE48003A9FC9 /* normal */,
@@ -5066,6 +5071,7 @@
 				82CB2D0C16362FE50037AFD3 /* FSScrollPageView.m in Sources */,
 				82CB2D121636617A0037AFD3 /* FSDeepFloatingTitleView.m in Sources */,
 				82CB2D15163677730037AFD3 /* FSTopicListViewController.m in Sources */,
+				583C8AC4188E46D90006DC20 /* LygCustermerBar.m in Sources */,
 				82CB2D1816367A6A0037AFD3 /* FSTopicAbstractDAO.m in Sources */,
 				82CB2D1B16367A860037AFD3 /* FSTopicSubjectListDAO.m in Sources */,
 				82CB2D1E16367A9F0037AFD3 /* FSTopicSubjectTitleListDAO.m in Sources */,
