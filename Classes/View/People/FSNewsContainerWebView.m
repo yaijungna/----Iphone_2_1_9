@@ -218,7 +218,9 @@
         }
         NSLog(@"%@",timeStr);
         templateString = [self replayString:templateString oldString:@"{{ptime}}" newString:timeStr];
-        
+        if (cobj.source == NULL || cobj.source.length == 0) {
+            cobj.source = @"人民网";
+        }
         templateString = [self replayString:templateString oldString:@"{{source}}" newString:cobj.source];
         templateString = [self replayString:templateString oldString:@"{{fontClass}}" newString:[self returnFontSizeName:0]];
 
