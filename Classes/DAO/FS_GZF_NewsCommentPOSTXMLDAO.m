@@ -90,6 +90,12 @@
     FSHTTPPOSTItem *nickname = [[FSHTTPPOSTItem alloc] initWithName:@"nickname" withValue:self.username];
     [postItems addObject:nickname];
     [nickname release];
+    
+    NSString * tempstring= [NSString stringWithFormat:@"%d",self.isLocal];
+    FSHTTPPOSTItem *isdf     = [[FSHTTPPOSTItem alloc] initWithName:@"isdf" withValue:tempstring];
+    [postItems addObject:isdf];
+    [isdf release];
+    
 }
 
 

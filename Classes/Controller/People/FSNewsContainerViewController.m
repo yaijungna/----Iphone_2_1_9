@@ -306,9 +306,11 @@ NSString                       *_newsID;
     
     _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
     _fs_GZF_CommentListDAO.parentDelegate = self;
+    _fs_GZF_CommentListDAO.isLocalNews    =
     
     _fs_GZF_NewsCommentPOSTXMLDAO = [[FS_GZF_NewsCommentPOSTXMLDAO alloc] init];
     _fs_GZF_NewsCommentPOSTXMLDAO.parentDelegate = self;
+    _fs_GZF_NewsCommentPOSTXMLDAO.isLocal        = self.isLocal;
     
     
     
@@ -326,7 +328,7 @@ NSString                       *_newsID;
     if (_obj!=nil) {
         _fs_GZF_NewsContainerDAO.newsid = _obj.newsid;
         _fs_GZF_CommentListDAO.newsid   = _obj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.count    = @"6";
         if (self.isImportant) {
             _fs_GZF_CommentListDAO.newsid = _obj.secondNewsID;
             NSLog(@"%@",_obj.newsid);
@@ -335,20 +337,20 @@ NSString                       *_newsID;
     }
     else if (_FCObj!=nil) {
         _fs_GZF_NewsContainerDAO.newsid = _FCObj.newsid;
-        _fs_GZF_CommentListDAO.newsid =  _FCObj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   = _FCObj.newsid;
+        _fs_GZF_CommentListDAO.count    = @"6";
        
     }
     else if (_FavObj!=nil){
         _fs_GZF_NewsContainerDAO.newsid = _FavObj.newsid;
-        _fs_GZF_CommentListDAO.newsid = _FavObj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   =   _FavObj.newsid;
+        _fs_GZF_CommentListDAO.count    = @"6";
     }
     
     if (self.newsSourceKind == NewsSourceKind_PushNews) {
         _fs_GZF_NewsContainerDAO.newsid = self.newsID;
-        _fs_GZF_CommentListDAO.newsid = self.newsID;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   = self.newsID;
+        _fs_GZF_CommentListDAO.count    = @"6";
         if (self.isImportant) {
             _fs_GZF_CommentListDAO.newsid = _obj.secondNewsID;
             NSLog(@"%@",_obj.newsid);
@@ -357,7 +359,7 @@ NSString                       *_newsID;
 
     }
     
-    
+    _fs_GZF_CommentListDAO.isLocalNews = self.isLocal;
     _fs_GZF_NewsContainerDAO.newsSourceKind = self.newsSourceKind;
     //NSLog(@"doSomethingForViewFirstTimeShowdoSomethingForViewFirstTimeShow");
     [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];

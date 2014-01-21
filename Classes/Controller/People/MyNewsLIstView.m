@@ -21,6 +21,7 @@
 #import "LygAdsLoadingImageObject.h"
 #import "FSNewsViewController.h"
 #import "UITableViewCell+updateImageView.h"
+#import "LocalNewsViewController.h"
 @implementation MyNewsLIstView
 - (id)initWithFrame:(CGRect)frame
 {
@@ -695,6 +696,10 @@
                 fsNewsContainerViewController.newsSourceKind = NewsSourceKind_DiFangNews;
             }
             
+            
+            if (self.isLocal) {
+                fsNewsContainerViewController.isLocal = YES;
+            }
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];
@@ -772,7 +777,11 @@
                 blockCell.lab_NewsTitle.textColor  = [UIColor lightGrayColor];
                 //tempViewController.fpChangeTitleColor = nil;
             };
+            
             //[[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInt:1] forKey:o.newsid];
+            if (self.isLocal) {
+                fsNewsContainerViewController.isLocal = YES;
+            }
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];
             [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
@@ -816,7 +825,9 @@
                 blockCell.lab_NewsTitle.textColor  = [UIColor lightGrayColor];
                 //tempViewController.fpChangeTitleColor = nil;
             };
-
+            if (self.isLocal) {
+                fsNewsContainerViewController.isLocal = YES;
+            }
             [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
             [fsNewsContainerViewController release];
             [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];

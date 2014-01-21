@@ -5343,8 +5343,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5375,7 +5375,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "E2C82172-65C2-44B3-B5B0-BA89B4268E03";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E2C82172-65C2-44B3-B5B0-BA89B4268E03";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5446,8 +5446,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5477,7 +5477,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F9110A34-C56C-4487-977D-E92E1155A291";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9110A34-C56C-4487-977D-E92E1155A291";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
