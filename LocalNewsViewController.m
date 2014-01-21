@@ -9,6 +9,7 @@
 #import "LocalNewsViewController.h"
 #import "PeopleNewsReaderPhoneAppDelegate.h"
 #import "LocalProvinceNewsViewControllers.h"
+#import "LygCustermerBar.h"
 @interface LocalNewsViewController ()
 
 @end
@@ -42,37 +43,8 @@
     self.myNaviBar.topItem.titleView = _titleLabel;
     [_titleLabel release];
 }
--(void)initAreaLabel
-{
-    self.myNaviBar.topItem.rightBarButtonItem = nil;
-    
-    
-    UIBarButtonItem * itme = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(changeArea)];
-        itme.tintColor         =  [UIColor whiteColor];
-    NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
-    [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
-    
-    self.myNaviBar.topItem.rightBarButtonItem  = itme;
- //   float xx = (ISIOS7?35:15);
-//    UIImageView  * view = [[UIImageView alloc]initWithFrame:CGRectMake(265, xx, 10, 15)];
-//    view.image          = [UIImage imageNamed:@"dingwei.png"];
-//    [self.myNaviBar addSubview:view];
 
-    [itme release];
-}
-
--(void)getAreaIdFromProvinceName:(NSString*)proVinceName
-{
-    NSArray * arry = [NSArray arrayWithArray:self.memGetProvincesDao.objectList];
-    for (LygAreaObject * obj in arry) {
-        NSLog(@"%@",obj.areaName);
-        if ([obj.areaName hasPrefix:proVinceName]) {
-            self.currentAreaObject = obj;
-            NSLog(@"%@",self.currentAreaObject.areaId);
-        }
-    }
-}
--(void)changeArea
+-(void)touchEnd
 {
     LocalProvinceNewsViewControllers * localCityListController = [[LocalProvinceNewsViewControllers alloc] init];
     localCityListController.canBeHaveNaviBar = YES;
@@ -89,8 +61,33 @@
     }
     
     [localCityListController release];
-    
 }
+-(void)initAreaLabel
+{
+    self.myNaviBar.topItem.rightBarButtonItem = nil;
+   
+    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, 55, 44)];
+    _rightBar.delegate          = self;
+    UIBarButtonItem * itme = [[UIBarButtonItem alloc]initWithCustomView:_rightBar];
+    self.myNaviBar.topItem.rightBarButtonItem  = itme;
+    NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
+    [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
+    [_rightBar release];
+    [itme release];
+}
+
+-(void)getAreaIdFromProvinceName:(NSString*)proVinceName
+{
+    NSArray * arry = [NSArray arrayWithArray:self.memGetProvincesDao.objectList];
+    for (LygAreaObject * obj in arry) {
+        NSLog(@"%@",obj.areaName);
+        if ([obj.areaName hasPrefix:proVinceName]) {
+            self.currentAreaObject = obj;
+            NSLog(@"%@",self.currentAreaObject.areaId);
+        }
+    }
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -143,7 +140,7 @@
 -(void)haveChangedArea:(NSNotification*)sender
 {
     LygAreaObject * obj                             = sender.object;
-    self.myNaviBar.topItem.rightBarButtonItem.title = obj.areaName;
+    _rightBar.title                                 = obj.areaName;
     self.myNewsListView.areaID                      = obj.areaId.intValue;
     _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",obj.areaName];
 }
@@ -152,7 +149,8 @@
     self.myNewsListView.areaID  =  0;
     
     NSString * tempString       = @"未知地区";
-    self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    _rightBar.title             = tempString;
+    //self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
 }
 -(void)afterGetLocation
 {
@@ -160,7 +158,8 @@
     
     
     NSString * tempString       = [NSString stringWithFormat:@"%@",self.currentAreaObject.areaName];
-    self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    //self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    _rightBar.title             = tempString;
     _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",tempString];
 }
 
