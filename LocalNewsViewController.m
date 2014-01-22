@@ -143,6 +143,7 @@
     _rightBar.title                                 = obj.areaName;
     self.myNewsListView.areaID                      = obj.areaId.intValue;
     _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",obj.areaName];
+    [PeopleNewsStati localNewsStatic:obj.areaName];
 }
 -(void)dosomeThing
 {
@@ -161,6 +162,7 @@
     //self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
     _rightBar.title             = tempString;
     _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",tempString];
+        [PeopleNewsStati localNewsStatic:tempString];
 }
 
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status

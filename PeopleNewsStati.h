@@ -37,5 +37,7 @@ NSString * getCellularProviderName();
 +(void)appOpenStatic;
 +(void)appExitStatic;
 +(void)deepStatideepID:(NSString*)aID deepTitle:(NSString*)aTitle;
++(void)localNewsStatic:(NSString*)localName;
++(void)localNewsHeadPicStatic:(NSString*)eventName titile:(NSString*)aTitle newsId:(NSString*)newsId;
 @end
 

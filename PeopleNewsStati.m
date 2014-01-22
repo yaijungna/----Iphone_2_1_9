@@ -292,6 +292,60 @@ NSString * getIPAddress()
     [[NSUserDefaults standardUserDefaults]setObject:dict forKey:@"static.data"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
+
++(void)localNewsStatic:(NSString*)localName
+{
+    NSString * string = [NSString stringWithFormat:@"http://mobile.app.people.com.cn:81/total/total.php?act=local_channel&rt=xml&event_name=%@&appkey=rmw_t0vzf1&token=%@&count=1&type=get",localName,[OpenUDID value]];
+//    NSString * string = [NSString stringWithFormat:@"http://mobile.app.people.com.cn:81/total/total.php?act=event_deep&rt=xml&appkey=rmw_t0vzf1&token=%@&id=%@&title=%@&count=1&type=get",[OpenUDID value],aID,aTitle];
+    ASIHTTPRequest * request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSLog(@"%@",request.url.absoluteString);
+    [request setCompletionBlock:^{
+        NSLog(@"%@",request.responseString);
+        NSRange range = [request.responseString rangeOfString:@"<errorCode>0</errorCode>"];
+        if (range.length > 0) {
+            NSLog(@"xxxxxx");
+        }else
+        {
+            
+        }
+        [request release];
+    }];
+    [request setFailedBlock:^{
+        
+        [request release];
+    }];
+    [request startAsynchronous];
+    //http://mobile.app.people.com.cn:81/total/total.php?act=local_channel&rt=xml&event_name=北京&appkey=rmw_t0vzf1&token=tttt&count=1&type=get
+}
+
+//http://mobile.app.people.com.cn:81/total/total.php?act=local_headpic&rt=xml&event_name=北京头图&appkey=rmw_t0vzf1&token=tttt&id=1146&title=第十一届莫斯科航展开幕&count=10&type=get
++(void)localNewsHeadPicStatic:(NSString*)eventName titile:(NSString*)aTitle newsId:(NSString*)newsId
+{
+    
+    NSString * string = [NSString stringWithFormat:@"http://mobile.app.people.com.cn:81/total/total.php?act=local_headpic&rt=xml&event_name=%@头图&appkey=rmw_t0vzf1&token=%@&id=%@&title=%@&count=1&type=get",eventName,[OpenUDID value],newsId,aTitle];
+
+    ASIHTTPRequest * request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSLog(@"%@",request.url.absoluteString);
+    [request setCompletionBlock:^{
+        NSLog(@"%@",request.responseString);
+        NSRange range = [request.responseString rangeOfString:@"<errorCode>0</errorCode>"];
+        if (range.length > 0) {
+            NSLog(@"xxxxxx");
+        }else
+        {
+            
+        }
+        [request release];
+    }];
+    [request setFailedBlock:^{
+        
+        [request release];
+    }];
+    [request startAsynchronous];
+    //http://mobile.app.people.com.cn:81/total/total.php?act=local_channel&rt=xml&event_name=北京&appkey=rmw_t0vzf1&token=tttt&count=1&type=get
+}
+
 @end
 
 NSString* getCellularProviderName()
