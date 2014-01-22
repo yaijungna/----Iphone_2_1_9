@@ -171,7 +171,10 @@
     
     _hasebeenLoad  = YES;
     FSNewsDitailObject *cobj = [self.data valueForKey:@"NewsContainerDAO"];
-    _imageList = [self.data valueForKey:@"objectList"];
+    
+    NSArray * arryx = [self.data valueForKey:@"objectList"];
+    NSMutableArray * arry = [[NSMutableArray alloc]initWithObjects:[arryx objectAtIndex:0], nil];
+    _imageList = arry;
     
     NSObject *array = [self.data valueForKey:@"CommentListDAO"];
     self.objectList = (NSArray *)array;
@@ -180,7 +183,8 @@
     NSString *templatePath;
     if ([_imageList count]>1) {
         //多图模板
-        templatePath = [[NSBundle mainBundle] pathForResource:@"content_template" ofType:@"html"];//新闻显示模版
+        //templatePath = [[NSBundle mainBundle] pathForResource:@"content_template" ofType:@"html"];//新闻显示模版
+        templatePath = [[NSBundle mainBundle] pathForResource:@"content_template_onePIC" ofType:@"html"];//新闻显示模版
     }else{
         //单图模板
         templatePath = [[NSBundle mainBundle] pathForResource:@"content_template_onePIC" ofType:@"html"];//新闻显示模版
@@ -232,6 +236,9 @@
         }
          NSString *content = [cobj.content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
         content           = [content stringByReplacingOccurrencesOfString:@"\n\n" withString:@"<p>"];
+        content           = [content stringByReplacingOccurrencesOfString:@"   " withString:@"<p>"];
+        content           = [content stringByReplacingOccurrencesOfString:@" 　　" withString:@"<p>"];
+
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<p>"]];
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

@@ -302,6 +302,7 @@ NSString                       *_newsID;
 -(void)initDataModel{
     _fs_GZF_NewsContainerDAO = [[FS_GZF_NewsContainerDAO alloc] init];
     _fs_GZF_NewsContainerDAO.isImportNews = self.isImportant;
+    _fs_GZF_NewsContainerDAO.isGettingList = NO;
     _fs_GZF_NewsContainerDAO.parentDelegate = self;
     
     _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
