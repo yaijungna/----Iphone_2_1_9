@@ -33,7 +33,7 @@
         [self addSubview:self.nameLabel];
         float xxx = 54;
         self.nameLabel.frame = CGRectMake(0, 4, xxx, 44);
-        [self.nameLabel setTitle:@"未知地区" forState:UIControlStateNormal];
+        [self.nameLabel setTitle:@"切换" forState:UIControlStateNormal];
         [self.nameLabel.titleLabel setAdjustsFontSizeToFitWidth:YES];
         
         self.imageView              = [[[UIImageView alloc]init] autorelease];
@@ -75,6 +75,7 @@
 //}
 -(void)setTitle:(NSString *)title
 {
+    return;
     [self.nameLabel setTitle:title forState:UIControlStateNormal];
     
 //    [self.nameLabel  sizeToFit];
