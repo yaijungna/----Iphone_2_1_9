@@ -81,7 +81,6 @@
 }
 
 
-
 -(void)doSomethingAtInit{
     _webView = [[UIWebView alloc] init];
     _webView.delegate = self;
@@ -234,7 +233,8 @@
         
         htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{fontClass}}" withString:[self returnFontSizeName:0]];
          //templateString = [self replayString:templateString oldString:@"{{fontClass}}" newString:[self returnFontSizeName:0]];
-        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_contentObject.timestamp.doubleValue];
+        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{ptime}}" withString:[[date description] substringToIndex:20]];
         
         //STEP 3.
         NSMutableString *bodyString = [[NSMutableString alloc] init];
