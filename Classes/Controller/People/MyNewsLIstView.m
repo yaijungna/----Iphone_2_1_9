@@ -87,17 +87,23 @@
         self.lygAdsDao                                      = [[[LygAdsDao alloc]init] autorelease];
         self.lygAdsDao.parentDelegate                           = self;
         self.lygAdsDao.isGettingList                        = NO;
+        self.lygAdsDao.placeID                              = self.placeId;
         _refreshTimer                                       = 0;
         _tvList.parentDelegate = self;
         _tvList.delegate     = self;
         _tvList.dataSource   = self;
         _oldCount            = 0;
         _isfirstShow         = YES;
+         [self refreshDataSource];
         //_tvList.assistantViewFlag = FSTABLEVIEW_ASSISTANT_BOTTOM_BUTTON_VIEW | FSTABLEVIEW_ASSISTANT_TOP_VIEW | FSTABLEVIEW_ASSISTANT_BOTTOM_VIEW;
-        [self refreshDataSource];
+       
         
     }
 }
+//-(void)updateData
+//{
+//     [self refreshDataSource];
+//}
 -(id)initWithZoneId:(int)areaId  parentViewController:(UINavigationController*)aController
 {
     
@@ -413,12 +419,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([indexPath row] == 0) {
-        if (![self cellDataObjectWithIndexPath:indexPath]) {
-            return 0;
-        }else
-        {
+//        if (![self cellDataObjectWithIndexPath:indexPath]) {
+//            return 0;
+//        }else
+//        {
             return ROUTINE_NEWS_LIST_TOP_HEIGHT;
-        }
+//        }
     }
     else{
         _tvList.separatorStyle = YES;

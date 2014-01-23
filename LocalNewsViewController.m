@@ -147,6 +147,7 @@
 {
     LygAreaObject * obj                             = sender.object;
     _rightBar.title                                 = obj.areaName;
+    self.myNewsListView.placeId = [[obj valueForKey:@"iphone_id"] intValue];
     self.myNewsListView.areaID                      = obj.areaId.intValue;
     _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",obj.areaName];
     [PeopleNewsStati localNewsStatic:obj.areaName];
@@ -161,6 +162,8 @@
 }
 -(void)afterGetLocation
 {
+    //self.placeID                = [[self.currentAreaObject valueForKey:@"iphone_id"] intValue];
+    self.myNewsListView.placeId = [[self.currentAreaObject valueForKey:@"iphone_id"] intValue];
     self.myNewsListView.areaID  = self.currentAreaObject.areaId.intValue;
     
     

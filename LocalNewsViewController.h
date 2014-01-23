@@ -18,4 +18,5 @@
 @property(nonatomic,strong)LygAreaObject                     * currentAreaObject;
 @property(nonatomic,copy)void (^fpChangeTitleColor)(void);
 @property(nonatomic,retain)LygCustermerBar  * rightBar;
+@property(nonatomic,assign)int                placeID;
 @end
