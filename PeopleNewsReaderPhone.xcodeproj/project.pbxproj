@@ -277,8 +277,6 @@
 		04E2B05416674B1B00B839F4 /* 灰条.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2B05016674B1B00B839F4 /* 灰条.png */; };
 		04E2B05516674B1B00B839F4 /* 切图背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2B05116674B1B00B839F4 /* 切图背景.png */; };
 		04E2B05616674B1B00B839F4 /* 图片下的条.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2B05216674B1B00B839F4 /* 图片下的条.png */; };
-		04E2B05A16674D7200B839F4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2B05816674D7200B839F4 /* icon.png */; };
-		04E2B05B16674D7200B839F4 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2B05916674D7200B839F4 /* icon@2x.png */; };
 		04E2B05E1667731600B839F4 /* FS_GZF_PageControllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B05D1667731500B839F4 /* FS_GZF_PageControllView.m */; };
 		04E3010A16E08F4D009019EC /* 军事_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E300F516E08F4D009019EC /* 军事_n.png */; };
 		04E3010B16E08F4D009019EC /* 历史_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E300F616E08F4D009019EC /* 历史_n.png */; };
@@ -471,10 +469,6 @@
 		586AEE6017FC1B340094098F /* LygAdsLoadingImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 586AEE5F17FC1B340094098F /* LygAdsLoadingImageObject.m */; };
 		586D99F317F6AAB100AA4CDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586D99F217F6AAB100AA4CDF /* StoreKit.framework */; };
 		586EDF3917D5BF1B00429F58 /* LygNewViewControllerDataMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 586EDF3817D5BF1B00429F58 /* LygNewViewControllerDataMember.m */; };
-		5870278D17F3B3FF003B3BEB /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278C17F3B3FF003B3BEB /* icon3.png */; };
-		5870279117F3B599003B3BEB /* icon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278E17F3B599003B3BEB /* icon29x29.png */; };
-		5870279217F3B599003B3BEB /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870278F17F3B599003B3BEB /* icon58x58.png */; };
-		5870279317F3B599003B3BEB /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5870279017F3B599003B3BEB /* icon80x80.png */; };
 		587154111882981C00B0804B /* dingwei.png in Resources */ = {isa = PBXBuildFile; fileRef = 587154101882981C00B0804B /* dingwei.png */; };
 		587B28971884BE59009B0B78 /* 163.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B288F1884BE59009B0B78 /* 163.png */; };
 		587B28981884BE59009B0B78 /* 朋友圈.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28901884BE59009B0B78 /* 朋友圈.png */; };
@@ -485,10 +479,13 @@
 		587B289D1884BE59009B0B78 /* yixin-friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28951884BE59009B0B78 /* yixin-friend.png */; };
 		587B289E1884BE59009B0B78 /* yixin-pengyq.png in Resources */ = {isa = PBXBuildFile; fileRef = 587B28961884BE59009B0B78 /* yixin-pengyq.png */; };
 		587EC6DE187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */; };
-		587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 587EC6E318716CCF00664C4D /* LygAreaObject.m */; };
 		5882B5E417CC4EDD00B77388 /* LygDeepListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E317CC4EDD00B77388 /* LygDeepListView.m */; };
 		5882B5E717CC8EBB00B77388 /* LygDeepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882B5E617CC8EBB00B77388 /* LygDeepTableViewCell.m */; };
 		58847F91180197FE00B10BC6 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 58847F90180197FE00B10BC6 /* ads.png */; };
+		5885E373189106D400B83C1F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5885E372189106D400B83C1F /* icon.png */; };
+		5885E3751891070300B83C1F /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5885E3741891070300B83C1F /* icon3.png */; };
+		5885E3771891072D00B83C1F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5885E3761891072D00B83C1F /* icon@2x.png */; };
+		5885E37A18910C9900B83C1F /* LygAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885E37918910C9900B83C1F /* LygAreaObject.m */; };
 		588B051318161719001E2D33 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B051218161719001E2D33 /* Crashlytics.framework */; };
 		589004E817D16F970001AE30 /* MyIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589004E717D16F970001AE30 /* MyIndicatorView.m */; };
 		5890805F1863DC7600E3B923 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890805E1863DC7600E3B923 /* Appirater.m */; };
@@ -1235,8 +1232,6 @@
 		04E2B05016674B1B00B839F4 /* 灰条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰条.png"; sourceTree = "<group>"; };
 		04E2B05116674B1B00B839F4 /* 切图背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切图背景.png"; sourceTree = "<group>"; };
 		04E2B05216674B1B00B839F4 /* 图片下的条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片下的条.png"; sourceTree = "<group>"; };
-		04E2B05816674D7200B839F4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		04E2B05916674D7200B839F4 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		04E2B05C1667731500B839F4 /* FS_GZF_PageControllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FS_GZF_PageControllView.h; sourceTree = "<group>"; };
 		04E2B05D1667731500B839F4 /* FS_GZF_PageControllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FS_GZF_PageControllView.m; sourceTree = "<group>"; };
 		04E300F516E08F4D009019EC /* 军事_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "军事_n.png"; sourceTree = "<group>"; };
@@ -1540,10 +1535,6 @@
 		586D99F217F6AAB100AA4CDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		586EDF3717D5BF1B00429F58 /* LygNewViewControllerDataMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygNewViewControllerDataMember.h; sourceTree = "<group>"; };
 		586EDF3817D5BF1B00429F58 /* LygNewViewControllerDataMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygNewViewControllerDataMember.m; sourceTree = "<group>"; };
-		5870278C17F3B3FF003B3BEB /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
-		5870278E17F3B599003B3BEB /* icon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29x29.png; sourceTree = "<group>"; };
-		5870278F17F3B599003B3BEB /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
-		5870279017F3B599003B3BEB /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
 		587154101882981C00B0804B /* dingwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingwei.png; sourceTree = "<group>"; };
 		587B288F1884BE59009B0B78 /* 163.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 163.png; sourceTree = "<group>"; };
 		587B28901884BE59009B0B78 /* 朋友圈.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朋友圈.png"; sourceTree = "<group>"; };
@@ -1555,13 +1546,23 @@
 		587B28961884BE59009B0B78 /* yixin-pengyq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yixin-pengyq.png"; sourceTree = "<group>"; };
 		587EC6DC187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygListOfProvincesHaveAreaNewsDao.h; sourceTree = "<group>"; };
 		587EC6DD187166AE00664C4D /* LygListOfProvincesHaveAreaNewsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygListOfProvincesHaveAreaNewsDao.m; sourceTree = "<group>"; };
-		587EC6E218716CCF00664C4D /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
-		587EC6E318716CCF00664C4D /* LygAreaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygAreaObject.m; sourceTree = "<group>"; };
 		5882B5E217CC4EDD00B77388 /* LygDeepListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepListView.h; sourceTree = "<group>"; };
 		5882B5E317CC4EDD00B77388 /* LygDeepListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDeepListView.m; sourceTree = "<group>"; };
 		5882B5E517CC8EBB00B77388 /* LygDeepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepTableViewCell.h; sourceTree = "<group>"; };
 		5882B5E617CC8EBB00B77388 /* LygDeepTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDeepTableViewCell.m; sourceTree = "<group>"; };
 		58847F90180197FE00B10BC6 /* ads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ads.png; sourceTree = "<group>"; };
+		5885E36B1890FE7E00B83C1F /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
+		5885E36C1890FEA800B83C1F /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
+		5885E36D1890FECB00B83C1F /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		5885E36E1890FF2D00B83C1F /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		5885E36F1890FF6A00B83C1F /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
+		5885E3701890FFAA00B83C1F /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
+		5885E3711891034900B83C1F /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
+		5885E372189106D400B83C1F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		5885E3741891070300B83C1F /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		5885E3761891072D00B83C1F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		5885E37818910C9900B83C1F /* LygAreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygAreaObject.h; sourceTree = "<group>"; };
+		5885E37918910C9900B83C1F /* LygAreaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygAreaObject.m; sourceTree = "<group>"; };
 		588B051218161719001E2D33 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		589004E617D16F970001AE30 /* MyIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIndicatorView.h; sourceTree = "<group>"; };
 		589004E717D16F970001AE30 /* MyIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIndicatorView.m; sourceTree = "<group>"; };
@@ -2563,14 +2564,11 @@
 				04E518691700250300445E12 /* loadingbgd.png */,
 				04DA613116AFB00D009BDB36 /* aboutIcon.png */,
 				04DA612C16AF807F009BDB36 /* AsyncImage.png */,
-				5870278E17F3B599003B3BEB /* icon29x29.png */,
-				5870278F17F3B599003B3BEB /* icon58x58.png */,
-				5870279017F3B599003B3BEB /* icon80x80.png */,
 				04DA612D16AF807F009BDB36 /* AsyncImage@2x.png */,
 				04E5A0431682941B005349B0 /* Default-568h@2x.png */,
-				04E2B05816674D7200B839F4 /* icon.png */,
-				5870278C17F3B3FF003B3BEB /* icon3.png */,
-				04E2B05916674D7200B839F4 /* icon@2x.png */,
+				5885E3761891072D00B83C1F /* icon@2x.png */,
+				5885E3741891070300B83C1F /* icon3.png */,
+				5885E372189106D400B83C1F /* icon.png */,
 				A6A22E1A15D8988100E48EB8 /* Default.png */,
 				A6A22E1B15D8988100E48EB8 /* Default@2x.png */,
 			);
@@ -2857,6 +2855,15 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5885E37818910C9900B83C1F /* LygAreaObject.h */,
+				5885E37918910C9900B83C1F /* LygAreaObject.m */,
+				5885E3711891034900B83C1F /* 29.png */,
+				5885E3701890FFAA00B83C1F /* 32.png */,
+				5885E36F1890FF6A00B83C1F /* 80.png */,
+				5885E36E1890FF2D00B83C1F /* 58.png */,
+				5885E36D1890FECB00B83C1F /* 120.png */,
+				5885E36C1890FEA800B83C1F /* 114.png */,
+				5885E36B1890FE7E00B83C1F /* 57.png */,
 				583C8AC2188E46D90006DC20 /* LygCustermerBar.h */,
 				583C8AC3188E46D90006DC20 /* LygCustermerBar.m */,
 				0A3BD28018896E760011E89C /* UITableViewCell+updateImageView.h */,
@@ -2916,8 +2923,6 @@
 			isa = PBXGroup;
 			children = (
 				5850C1D2179D24720024218B /* PeopleNewsReaderPhone.xcdatamodeld */,
-				587EC6E218716CCF00664C4D /* LygAreaObject.h */,
-				587EC6E318716CCF00664C4D /* LygAreaObject.m */,
 				5890870918505343009553BA /* FSNewsDitailObject.h */,
 				5890870A18505343009553BA /* FSNewsDitailObject.m */,
 				5805AC23184331CA007D934E /* FSDeepPageObject.h */,
@@ -4507,8 +4512,6 @@
 				04E2B05416674B1B00B839F4 /* 灰条.png in Resources */,
 				04E2B05516674B1B00B839F4 /* 切图背景.png in Resources */,
 				04E2B05616674B1B00B839F4 /* 图片下的条.png in Resources */,
-				04E2B05A16674D7200B839F4 /* icon.png in Resources */,
-				04E2B05B16674D7200B839F4 /* icon@2x.png in Resources */,
 				04EF7D631675674C00E028B4 /* huitiaoxin@2x.png in Resources */,
 				04EF7D641675674C00E028B4 /* huitiaoxin.png in Resources */,
 				04EF7D651675674C00E028B4 /* pic@2x.png in Resources */,
@@ -4528,6 +4531,7 @@
 				04449B9A167724ED00A8F31C /* newsDitail_comment_1.png in Resources */,
 				04449B9B167724ED00A8F31C /* newsDitail_comment_1@2x.png in Resources */,
 				04449B9C167724ED00A8F31C /* newsDitail_comment_2.png in Resources */,
+				5885E3771891072D00B83C1F /* icon@2x.png in Resources */,
 				04449B9D167724ED00A8F31C /* newsDitail_comment_2@2x.png in Resources */,
 				58C850BB1850183D00362DCC /* 箭头右.png in Resources */,
 				04449B9E167724ED00A8F31C /* newsDitail_down.png in Resources */,
@@ -4540,7 +4544,6 @@
 				04449BA5167724ED00A8F31C /* newsDitail_font_1@2x.png in Resources */,
 				04449BA6167724ED00A8F31C /* newsDitail_font_2.png in Resources */,
 				04449BA7167724ED00A8F31C /* newsDitail_font_2@2x.png in Resources */,
-				5870279317F3B599003B3BEB /* icon80x80.png in Resources */,
 				04449BA8167724ED00A8F31C /* newsDitail_mid.png in Resources */,
 				04449BA9167724ED00A8F31C /* newsDitail_mid@2x.png in Resources */,
 				04449BAE167724ED00A8F31C /* newsDitail_tijiao.png in Resources */,
@@ -4579,7 +4582,6 @@
 				04DE0165167EC5D600085C30 /* BT_fanhui@2x.png in Resources */,
 				04DE0166167EC5D600085C30 /* BT_fasong.png in Resources */,
 				04DE0167167EC5D600085C30 /* BT_fasong@2x.png in Resources */,
-				5870279217F3B599003B3BEB /* icon58x58.png in Resources */,
 				04DE016A167EC5F700085C30 /* Share_tishi.png in Resources */,
 				58BD9CAE180662E7001164D9 /* newsDitail_shear_2@2x.png in Resources */,
 				04DE016B167EC5F700085C30 /* Share_tishi@2x.png in Resources */,
@@ -4644,6 +4646,7 @@
 				04E00CA516A63144004ADEDE /* deep_pageL.png in Resources */,
 				04E00CA616A63144004ADEDE /* deep_pageL@2x.png in Resources */,
 				04E00CA716A63144004ADEDE /* deep_pageM.png in Resources */,
+				5885E373189106D400B83C1F /* icon.png in Resources */,
 				587B289A1884BE59009B0B78 /* renmin.png in Resources */,
 				04E00CA816A63144004ADEDE /* deep_pageM@2x.png in Resources */,
 				04E00CA916A63144004ADEDE /* deep_pageR.png in Resources */,
@@ -4665,6 +4668,7 @@
 				58BD9CAA1806622E001164D9 /* newsDitail_shear_1@2x.png in Resources */,
 				042D746316A9305D003AB075 /* newscard_02@2x.png in Resources */,
 				042D746416A9305D003AB075 /* newscard_03.png in Resources */,
+				5885E3751891070300B83C1F /* icon3.png in Resources */,
 				587B289C1884BE59009B0B78 /* weixin.png in Resources */,
 				042D746516A9305D003AB075 /* newscard_03@2x.png in Resources */,
 				042B04EF16ACE167001920C7 /* Deep_coverline.png in Resources */,
@@ -4676,7 +4680,6 @@
 				042B04F916ACE4C8001920C7 /* open_mark@2x.png in Resources */,
 				042B050216AD0C65001920C7 /* Deep_EndTitle.png in Resources */,
 				587B28971884BE59009B0B78 /* 163.png in Resources */,
-				5870279117F3B599003B3BEB /* icon29x29.png in Resources */,
 				042B050316AD0C65001920C7 /* Deep_EndTitle@2x.png in Resources */,
 				042B050416AD0C65001920C7 /* Deep_TextTitle.png in Resources */,
 				58126C3318573525006C5D34 /* MJPhotoBrowser.bundle in Resources */,
@@ -4797,7 +4800,6 @@
 				58FA000117A7CDCD00841355 /* collect.png in Resources */,
 				587B28981884BE59009B0B78 /* 朋友圈.png in Resources */,
 				58FA000217A7CDCD00841355 /* collect@2x.png in Resources */,
-				5870278D17F3B3FF003B3BEB /* icon3.png in Resources */,
 				58FA000317A7CDCD00841355 /* collecth.png in Resources */,
 				58FA000417A7CDCD00841355 /* collecth@2x.png in Resources */,
 				58126C3018573525006C5D34 /* MBProgressHUD.bundle in Resources */,
@@ -5100,6 +5102,7 @@
 				586AEE5D17FC1ACA0094098F /* FSLoadingImageObject.m in Sources */,
 				821742B1163E18CB00AB1536 /* FSDeepLeadViewController.m in Sources */,
 				821742B4163E190700AB1536 /* FSDeepPictureVeiwController.m in Sources */,
+				5885E37A18910C9900B83C1F /* LygAreaObject.m in Sources */,
 				821742B7163E192000AB1536 /* FSDeepTextViewController.m in Sources */,
 				58E761871833A5FF00354AD6 /* UIImageManger.m in Sources */,
 				5805AC801843627B007D934E /* WeiboWrapper.m in Sources */,
@@ -5141,7 +5144,6 @@
 				5805AC25184331CA007D934E /* FSDeepPageObject.m in Sources */,
 				4CC14F7E16461E2A0007143D /* FSDeepContent_PicObject.m in Sources */,
 				27B2975C16474BA8005AFD50 /* FSLocalNewsListObject.m in Sources */,
-				587EC6E418716CCF00664C4D /* LygAreaObject.m in Sources */,
 				5805AC691843627B007D934E /* MicroBlogRequest.m in Sources */,
 				27B2976516474C2C005AFD50 /* FS_GZF_ForLocalNewsListDAO.m in Sources */,
 				27B2976616474C2C005AFD50 /* FS_GZF_ForNewsListDAO.m in Sources */,
