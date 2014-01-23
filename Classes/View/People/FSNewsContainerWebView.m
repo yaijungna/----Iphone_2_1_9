@@ -237,7 +237,7 @@
          NSString *content = [cobj.content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
         content           = [content stringByReplacingOccurrencesOfString:@"\n\n" withString:@"<p>"];
         content           = [content stringByReplacingOccurrencesOfString:@"   " withString:@"<p>"];
-        content           = [content stringByReplacingOccurrencesOfString:@" 　　" withString:@"<p>"];
+        content           = [content stringByReplacingOccurrencesOfString:@" 　　" withString:@"<p>　　"];
 
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<p>"]];
