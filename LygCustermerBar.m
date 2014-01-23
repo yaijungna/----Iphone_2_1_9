@@ -31,7 +31,7 @@
         //self.nameLabel.frame.origin = CGSizeMake(0, 0);
         
         [self addSubview:self.nameLabel];
-        float xxx = 54;
+        float xxx = 48;
         self.nameLabel.frame = CGRectMake(0, 4, xxx, 44);
         [self.nameLabel setTitle:@"切换" forState:UIControlStateNormal];
         [self.nameLabel.titleLabel setAdjustsFontSizeToFitWidth:YES];

@@ -65,8 +65,14 @@
 -(void)initAreaLabel
 {
     self.myNaviBar.topItem.rightBarButtonItem = nil;
-   
-    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, 55, 44)];
+    float xx;
+    if (ISIOS7) {
+        xx = 46;
+    }else
+    {
+        xx = 50;
+    }
+    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, xx, 44)];
     _rightBar.delegate          = self;
     UIBarButtonItem * itme = [[UIBarButtonItem alloc]initWithCustomView:_rightBar];
     self.myNaviBar.topItem.rightBarButtonItem  = itme;
