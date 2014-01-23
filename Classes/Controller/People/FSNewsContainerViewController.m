@@ -483,7 +483,7 @@ NSString                       *_newsID;
 
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status{
     NSLog(@"doSomethingWithDAO sender:%@ :%d",sender,status);
-    if (status == FSBaseDAOCallBack_WorkingStatus) {
+    if (status == FSBaseDAOCallBack_WorkingStatus && [sender isEqual:_fs_GZF_NewsContainerDAO]) {
         FSIndicatorMessageView *indicatorMessageView = [[FSIndicatorMessageView alloc] initWithFrame:CGRectZero andBool:YES];
         [indicatorMessageView showIndicatorMessageViewInView:self.view withMessage:[self indicatorMessageTextWithDAO:sender withStatus:status]];
         [indicatorMessageView release];
