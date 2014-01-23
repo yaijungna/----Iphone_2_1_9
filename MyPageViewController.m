@@ -159,7 +159,7 @@ static int isFirst = 0;
         tempSet = 20;
     }
     UIView * lineView           = [[UIView alloc]initWithFrame:CGRectMake(0, HeightOfChannel - 1, 320*40, 1)];
-    lineView.backgroundColor    = [UIColor lightGrayColor];
+    lineView.backgroundColor    = [UIColor colorWithRed:224.0/255 green:224.0/255 blue:224.0/255 alpha:1];
     [myScroview addSubview:lineView];
     [lineView release];
     
