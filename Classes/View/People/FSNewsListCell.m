@@ -133,7 +133,10 @@
             temp                = obj.deepPictureLink;
         }else
         {
-            _lab_NewsTitle.text = obj.title;
+            NSCharacterSet * set      = [NSCharacterSet characterSetWithCharactersInString:@"~!@#$%^&*()"];
+            NSString * temp           = [obj.title stringByTrimmingCharactersInSet:set];
+            _lab_NewsTitle.text       = temp;
+            _lab_NewsTitle.text = temp;
             //NSString * string   = obj.news_abstract;
             //_lab_NewsType.text  = obj.news_abstract;
             temp                = obj.picture;
@@ -157,7 +160,9 @@
     }
     else{
         FSOneDayNewsObject *obj   = (FSOneDayNewsObject *)self.data;
-        _lab_NewsTitle.text       = obj.title;
+        NSCharacterSet * set      = [NSCharacterSet characterSetWithCharactersInString:@"~!@#$%^&*()"];
+        NSString * temp           = [obj.title stringByTrimmingCharactersInSet:set];
+        _lab_NewsTitle.text       = temp;
 
         temp   = obj.picture;
         _lab_NewsTitle.frame = CGRectMake(10, 4, 310, 25);
