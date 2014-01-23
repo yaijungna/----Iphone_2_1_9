@@ -366,6 +366,7 @@
 
 -(void)operateOldBufferData{
     if (self.currentGetDataKind == GET_DataKind_Refresh) {
+        self.isRefreshToDeleteOldData = YES;
 		
         if (_isRefreshToDeleteOldData == YES) {
             NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getObjectsByKeyWithName:[self entityName] key:@"newsid" value:self.newsid];

@@ -52,6 +52,7 @@ typedef enum _Query_DataKind {
 }
 
 @property (nonatomic, readonly) NSTimeInterval lastGetDataTimestamp;
+@property (nonatomic, assign)BOOL isRefreshToDeleteOldData; 
 @property (nonatomic, readonly) GET_DataKind currentGetDataKind;
 @property (nonatomic) BOOL isRecordListTail;
 @property (nonatomic) BOOL getNextOnline;

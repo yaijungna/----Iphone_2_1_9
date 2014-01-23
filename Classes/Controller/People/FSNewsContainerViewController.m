@@ -109,6 +109,7 @@ NSString                       *_newsID;
     _fsNewsContainerView.parentDelegate   = nil;
     
     _fs_GZF_NewsContainerDAO.parentDelegate = NULL;
+    
     [_fs_GZF_NewsContainerDAO release];
     _fs_GZF_NewsContainerDAO = nil;
     _fs_GZF_NewsCommentPOSTXMLDAO.parentDelegate = NULL;
@@ -303,6 +304,7 @@ NSString                       *_newsID;
     _fs_GZF_NewsContainerDAO = [[FS_GZF_NewsContainerDAO alloc] init];
     _fs_GZF_NewsContainerDAO.isImportNews = self.isImportant;
     _fs_GZF_NewsContainerDAO.isGettingList = NO;
+    _fs_GZF_NewsContainerDAO.isRefreshToDeleteOldData = YES;
     _fs_GZF_NewsContainerDAO.parentDelegate = self;
     
     _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
