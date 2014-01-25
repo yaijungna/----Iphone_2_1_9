@@ -156,8 +156,10 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	self.currentElementName = elementName;
     if ([self.currentElementName isEqualToString:@"result"]) {
+        self.isRefreshToDeleteOldData = NO;
         return;
     }
+    self.isRefreshToDeleteOldData     = YES;
     //NSLog(@"ELementName:%@",elementName);
     if ([self.currentElementName isEqualToString:newscontainer_item]) {
         _cobj = (FSNewsDitailObject *)[self insertNewObjectTomanagedObjectContext:0];
@@ -366,7 +368,6 @@
 
 -(void)operateOldBufferData{
     if (self.currentGetDataKind == GET_DataKind_Refresh) {
-        self.isRefreshToDeleteOldData = YES;
 		
         if (_isRefreshToDeleteOldData == YES) {
             NSArray *array = [[FSBaseDB sharedFSBaseDBWithContext:self.managedObjectContext] getObjectsByKeyWithName:[self entityName] key:@"newsid" value:self.newsid];
