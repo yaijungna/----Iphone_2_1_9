@@ -445,6 +445,10 @@ NSString *toHTMLString(NSString *source) {
     result = [result stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
     result = [result stringByReplacingOccurrencesOfString:@"\r\n" withString:@"<br>"];
     result = [result stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+    
+    if ([result isEqualToString:@"<br>　　"]) {
+        result = @"";
+    }
 
     
 //    result = [result stringByReplacingOccurrencesOfString:@"" withString:@""];

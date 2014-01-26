@@ -84,20 +84,23 @@
     //_lab_time.text = @"2012-9-28";
     
     if ([_fsImagesScrInRowView.objectList count]>0) {
-        FSFocusTopObject *o = [_fsImagesScrInRowView.objectList objectAtIndex:0];
-        _fsNewsListTopCellTextFloatView.data = o;
-        
- //       _lab_VisitVolume.text = [NSString stringWithFormat:@"%d",[o.browserCount integerValue]];
-        if ([o.title length]>16) {
-            _lab_NewsType.text = [o.title substringToIndex:16];
-        }
-        else{
-            _lab_NewsType.text = o.title;
-        }
+        id xx  = [_fsImagesScrInRowView.objectList objectAtIndex:0];
+        if ([xx isKindOfClass:[FSFocusTopObject class]]) {
+            FSFocusTopObject *o = [_fsImagesScrInRowView.objectList objectAtIndex:0];
+            _fsNewsListTopCellTextFloatView.data = o;
+            
+            if ([o.title length]>16) {
+                _lab_NewsType.text = [o.title substringToIndex:16];
+            }
+            else{
+                _lab_NewsType.text = o.title;
+            }
+            
+            
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[o.timestamp doubleValue]];
+            _lab_time.text = dateToString_YMD(date);
 
-        
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[o.timestamp doubleValue]];
-        _lab_time.text = dateToString_YMD(date);
+        }
         
     }
     

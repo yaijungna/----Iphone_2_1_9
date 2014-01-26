@@ -1195,6 +1195,9 @@
 
 //****************************************************************
 -(NSString *)replayString:(NSString *)baseString oldString:(NSString *)oldString newString:(NSString *)newString{
+    if (baseString==nil || oldString == nil || newString == nil) {
+        return baseString;
+    }
     baseString = [baseString stringByReplacingOccurrencesOfString:oldString withString:newString];
     return baseString;
 }

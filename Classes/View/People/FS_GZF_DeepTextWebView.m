@@ -263,6 +263,8 @@
         
         //{{body}}
         htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{{body}}" withString:bodyString];
+        //htmlString = [htmlString stringByReplacingOccurrencesOfString:@"<div id='text_0'><br>" withString:@""];
+        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"<br><br>" withString:@"<br>"];
         
         //加载字符串
         NSString *commentListStr = @"";
@@ -348,14 +350,14 @@
             NSString *strCommentBlock = [NSString stringWithFormat:str1, nickName, datetime, body, comefrom];
             templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentBlock];
             
-            if ([o.nickname length]>0) {
-                NSString *admin = o.nickname;
-                NSDate *REdate = [[NSDate alloc] initWithTimeIntervalSince1970:[o.timestamp doubleValue]];
-                NSString *REdatetime = timeIntervalStringSinceNow(REdate);
-                NSString *REbody = o.content;
-                NSString *strCommentREBlock = [NSString stringWithFormat:str1, admin, REdatetime, REbody, comefrom];
-                templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentREBlock];
-            }
+//            if ([o.nickname length]>0) {
+//                NSString *admin = o.nickname;
+//                NSDate *REdate = [[NSDate alloc] initWithTimeIntervalSince1970:[o.timestamp doubleValue]];
+//                NSString *REdatetime = timeIntervalStringSinceNow(REdate);
+//                NSString *REbody = o.content;
+//                NSString *strCommentREBlock = [NSString stringWithFormat:str1, admin, REdatetime, REbody, comefrom];
+//                templateString = [NSString stringWithFormat:@"%@%@",templateString,strCommentREBlock];
+//            }
         }
         
     }
@@ -401,6 +403,10 @@
     else{
         
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:loaclFile];
+        if (_downloaodIndex == 0) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"updateShareData" object:image];
+        }
+        
         CGSize sizeTmp = scalImageSizeFixWidth(image, self.frame.size.width - FSDEEP_CONTENT_PICTURE_LEFT_RIGHT_SPACE * 2.0f);
         NSString *imgTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_DYNAMIC_IMAGE_TAG, picURL, loaclFile, sizeTmp.width, sizeTmp.height];
         NSString *jsString = [[NSString alloc] initWithFormat:FSDEE_DYNAMIC_IMAGE_JS, _downloaodIndex, imgTag];
@@ -430,6 +436,10 @@
     NSString *picURL = [_picURLs objectForKey:[NSString stringWithFormat:@"%d",_downloaodIndex]];
     NSString *loaclFile = getFileNameWithURLString(picURL, getCachesPath());
     UIImage *image = [[UIImage alloc] initWithData:data];
+    if (_downloaodIndex == 0) {
+        //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateShareData:) name:@"updateShareData" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"updateShareData" object:image];
+    }
     CGSize sizeTmp = scalImageSizeFixWidth(image, self.frame.size.width - FSDEEP_CONTENT_PICTURE_LEFT_RIGHT_SPACE * 2.0f);
     NSString *imgTag = [[NSString alloc] initWithFormat:FSDEEP_CONTENT_DYNAMIC_IMAGE_TAG, picURL, loaclFile, sizeTmp.width, sizeTmp.height];
     NSString *jsString = [[NSString alloc] initWithFormat:FSDEE_DYNAMIC_IMAGE_JS, _downloaodIndex, imgTag];

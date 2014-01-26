@@ -538,6 +538,13 @@
 		58AF708617D7F1AD0028832E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF706817D7F1AD0028832E /* Reachability.m */; };
 		58AF708B17D7F2050028832E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AF708917D7F2050028832E /* libxml2.2.dylib */; };
 		58AF708C17D7F2050028832E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AF708A17D7F2050028832E /* libxml2.dylib */; };
+		58BBCA881895357900BA5E35 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA811895357800BA5E35 /* 120.png */; };
+		58BBCA891895357900BA5E35 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA821895357800BA5E35 /* 114.png */; };
+		58BBCA8A1895357900BA5E35 /* 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA831895357800BA5E35 /* 80.png */; };
+		58BBCA8B1895357900BA5E35 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA841895357800BA5E35 /* 58.png */; };
+		58BBCA8C1895357900BA5E35 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA851895357800BA5E35 /* 57.png */; };
+		58BBCA8D1895357900BA5E35 /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA861895357800BA5E35 /* 32.png */; };
+		58BBCA8E1895357900BA5E35 /* 29.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BBCA871895357800BA5E35 /* 29.png */; };
 		58BD9CA91806622E001164D9 /* newsDitail_shear_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CA71806622E001164D9 /* newsDitail_shear_1.png */; };
 		58BD9CAA1806622E001164D9 /* newsDitail_shear_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CA81806622E001164D9 /* newsDitail_shear_1@2x.png */; };
 		58BD9CAD180662E7001164D9 /* newsDitail_shear_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */; };
@@ -1548,13 +1555,6 @@
 		5882B5E517CC8EBB00B77388 /* LygDeepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LygDeepTableViewCell.h; sourceTree = "<group>"; };
 		5882B5E617CC8EBB00B77388 /* LygDeepTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LygDeepTableViewCell.m; sourceTree = "<group>"; };
 		58847F90180197FE00B10BC6 /* ads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ads.png; sourceTree = "<group>"; };
-		5885E36B1890FE7E00B83C1F /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
-		5885E36C1890FEA800B83C1F /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
-		5885E36D1890FECB00B83C1F /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
-		5885E36E1890FF2D00B83C1F /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
-		5885E36F1890FF6A00B83C1F /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
-		5885E3701890FFAA00B83C1F /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
-		5885E3711891034900B83C1F /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
 		5885E372189106D400B83C1F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		5885E3741891070300B83C1F /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
 		5885E3761891072D00B83C1F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -1660,6 +1660,13 @@
 		58AF706817D7F1AD0028832E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		58AF708917D7F2050028832E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		58AF708A17D7F2050028832E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		58BBCA811895357800BA5E35 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		58BBCA821895357800BA5E35 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
+		58BBCA831895357800BA5E35 /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
+		58BBCA841895357800BA5E35 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		58BBCA851895357800BA5E35 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
+		58BBCA861895357800BA5E35 /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
+		58BBCA871895357800BA5E35 /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
 		58BD9CA71806622E001164D9 /* newsDitail_shear_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsDitail_shear_1.png; sourceTree = "<group>"; };
 		58BD9CA81806622E001164D9 /* newsDitail_shear_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsDitail_shear_1@2x.png"; sourceTree = "<group>"; };
 		58BD9CAB180662E7001164D9 /* newsDitail_shear_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsDitail_shear_2.png; sourceTree = "<group>"; };
@@ -2852,15 +2859,15 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				58BBCA811895357800BA5E35 /* 120.png */,
+				58BBCA821895357800BA5E35 /* 114.png */,
+				58BBCA831895357800BA5E35 /* 80.png */,
+				58BBCA841895357800BA5E35 /* 58.png */,
+				58BBCA851895357800BA5E35 /* 57.png */,
+				58BBCA861895357800BA5E35 /* 32.png */,
+				58BBCA871895357800BA5E35 /* 29.png */,
 				5885E37818910C9900B83C1F /* LygAreaObject.h */,
 				5885E37918910C9900B83C1F /* LygAreaObject.m */,
-				5885E3711891034900B83C1F /* 29.png */,
-				5885E3701890FFAA00B83C1F /* 32.png */,
-				5885E36F1890FF6A00B83C1F /* 80.png */,
-				5885E36E1890FF2D00B83C1F /* 58.png */,
-				5885E36D1890FECB00B83C1F /* 120.png */,
-				5885E36C1890FEA800B83C1F /* 114.png */,
-				5885E36B1890FE7E00B83C1F /* 57.png */,
 				583C8AC2188E46D90006DC20 /* LygCustermerBar.h */,
 				583C8AC3188E46D90006DC20 /* LygCustermerBar.m */,
 				0A3BD28018896E760011E89C /* UITableViewCell+updateImageView.h */,
@@ -4557,6 +4564,7 @@
 				04DD02A216797D6A00E23B3D /* beijingtiao.png in Resources */,
 				04DD02A316797D6A00E23B3D /* mail.png in Resources */,
 				04DD02A716797D6A00E23B3D /* 短信.png in Resources */,
+				58BBCA8A1895357900BA5E35 /* 80.png in Resources */,
 				5885E37E1891F18700B83C1F /* Default-568h@2x.png in Resources */,
 				278803B51679AAE10023B0E2 /* CellBackgroundMark.png in Resources */,
 				278803BB1679AD060023B0E2 /* moreCellBGR2.png in Resources */,
@@ -4565,6 +4573,7 @@
 				04AAA841167B111C001F800A /* naviOption.png in Resources */,
 				04AAA84C167B2144001F800A /* at.png in Resources */,
 				04AAA84D167B2144001F800A /* at@2x.png in Resources */,
+				58BBCA891895357900BA5E35 /* 114.png in Resources */,
 				581887F41806691900590FDC /* 跳转.png in Resources */,
 				04AAA84E167B2144001F800A /* baikuang.png in Resources */,
 				04AAA84F167B2144001F800A /* baikuang@2x.png in Resources */,
@@ -4598,6 +4607,7 @@
 				04E181421681B3AD00808D93 /* news@2x.png in Resources */,
 				04E181431681B3AD00808D93 /* oneday_sel.png in Resources */,
 				04E181441681B3AD00808D93 /* oneday_sel@2x.png in Resources */,
+				58BBCA8E1895357900BA5E35 /* 29.png in Resources */,
 				04E181451681B3AD00808D93 /* oneday.png in Resources */,
 				04E181461681B3AD00808D93 /* oneday@2x.png in Resources */,
 				04437FC01681B8A200FB812B /* moresubj_sel.png in Resources */,
@@ -4650,7 +4660,9 @@
 				581E0CAA186C1E6E00BA5C07 /* refresh2.png in Resources */,
 				04E00CAA16A63144004ADEDE /* deep_pageR@2x.png in Resources */,
 				04D6CC4116A790D700C72C30 /* Comment_title.png in Resources */,
+				58BBCA8D1895357900BA5E35 /* 32.png in Resources */,
 				04D6CC4216A790D700C72C30 /* Comment_title@2x.png in Resources */,
+				58BBCA881895357900BA5E35 /* 120.png in Resources */,
 				5861AE1717F559090067D74D /* 左右滑动切换主题.png in Resources */,
 				04D6CC4A16A7BFEE00C72C30 /* content_template_comment.html in Resources */,
 				042D744716A91F44003AB075 /* oneday_time.png in Resources */,
@@ -4688,6 +4700,7 @@
 				042B050D16AD16B3001920C7 /* Deep_picBottom@2x.png in Resources */,
 				042B050F16AD16C4001920C7 /* Deep_Leadmask.png in Resources */,
 				042B051216AD1EC0001920C7 /* Deep_pageline.png in Resources */,
+				58BBCA8B1895357900BA5E35 /* 58.png in Resources */,
 				042B051316AD1EC0001920C7 /* Deep_pageline@2x.png in Resources */,
 				042B051616AD2C07001920C7 /* Deep_textTitleM.png in Resources */,
 				042B051716AD2C07001920C7 /* Deep_textTitleM@2x.png in Resources */,
@@ -4815,6 +4828,7 @@
 				58FA002317A88D2300841355 /* shouqi.png in Resources */,
 				58FA002417A88D2300841355 /* shouqi@2x.png in Resources */,
 				58FA002717A8B20A00841355 /* topSelected.png in Resources */,
+				58BBCA8C1895357900BA5E35 /* 57.png in Resources */,
 				58FA002817A8B20A00841355 /* topSelected@2x.png in Resources */,
 				58FA002F17A9E59F00841355 /* goBack.png in Resources */,
 				58FA003017A9E59F00841355 /* goBack@2x.png in Resources */,
@@ -5337,8 +5351,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 线 吴 (R8HN2BNT6E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5369,7 +5383,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "9D8425A1-89B5-43C6-ADBE-DE54273E2D28";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D8425A1-89B5-43C6-ADBE-DE54273E2D28";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5380,8 +5394,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5410,7 +5424,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3747AE7C-6BF1-4771-8231-3EB670B95E9D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5440,8 +5454,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: People's Daily Online Development Co.Ltd (EB8QBCY43A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5471,7 +5485,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PeopleNewsReaderPhone;
-				PROVISIONING_PROFILE = "F9110A34-C56C-4487-977D-E92E1155A291";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9110A34-C56C-4487-977D-E92E1155A291";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;

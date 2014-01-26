@@ -104,15 +104,17 @@ NSString                       *_newsID;
     [[NSUserDefaults standardUserDefaults]setValue:string forKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
     [[NSUserDefaults standardUserDefaults]synchronize];
     _fs_GZF_CommentListDAO.parentDelegate = nil;
+    _fs_GZF_CommentListDAO.managedObjectContext = nil;
     [_fs_GZF_CommentListDAO release];
     _fs_GZF_CommentListDAO = nil;
     _fsNewsContainerView.parentDelegate   = nil;
     
     _fs_GZF_NewsContainerDAO.parentDelegate = NULL;
-    
+    _fs_GZF_NewsContainerDAO.managedObjectContext = nil;
     [_fs_GZF_NewsContainerDAO release];
     _fs_GZF_NewsContainerDAO = nil;
     _fs_GZF_NewsCommentPOSTXMLDAO.parentDelegate = NULL;
+    _fs_GZF_NewsCommentPOSTXMLDAO.managedObjectContext = nil;
     [_fs_GZF_NewsCommentPOSTXMLDAO release];
     _fs_GZF_NewsCommentPOSTXMLDAO = nil;
     [_sinaWBEngine release];
@@ -525,15 +527,16 @@ NSString                       *_newsID;
             _fsNewsContainerView.data = array;
             [array release];
             
-            if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-                [_fs_GZF_NewsContainerDAO operateOldBufferData];
-            }
+
             if (_obj) {
                 [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithInt:1] forKey:_obj.newsid];
                 [[NSUserDefaults standardUserDefaults]synchronize];
             }
             
             [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+            if (status == FSBaseDAOCallBack_SuccessfulStatus && _fs_GZF_NewsContainerDAO.objectList.count > 0) {
+                [_fs_GZF_NewsContainerDAO operateOldBufferData];
+            }
         }
         return;
     }

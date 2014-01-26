@@ -13,6 +13,7 @@
 #import "LygNavigationBar.h"
 #import "LocalNewsViewController.h"
 #import "UIViewController+changeContent.h"
+#import "PeopleNewsReaderPhoneAppDelegate.h"
 #define KIND_USERCHANNEL_SELECTED  @"YAOWENCHANNEL"
 #define WIDTHOFNAME 10
 #define BORDER      10
@@ -225,8 +226,11 @@ static int isFirst = 0;
 {
     [super viewDidAppear:NO];
     //[self  showBar];
-    
-    
+    float xxx = 0;
+    if (!ISIOS7) {
+        xxx = 20;
+    }
+    //self.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
     if (self.fpChangeTitleColor) {
         [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
     }
@@ -282,6 +286,14 @@ static int isFirst = 0;
     
     [self.navigationController pushViewController:local animated:YES];
     [local release];
+    
+    PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    //appdelgate.globaXXXXX                         = 1;
+    appdelgate.globaXXXXX                         = 1;
+
+    
+    
+    
 }
 
 
@@ -388,12 +400,13 @@ static int isFirst = 0;
 {
     if (ISIOS5) {
         return nil;
-    }
+    } 
     LygNewsViewController * temp = (LygNewsViewController*)viewController;
     if (temp.channelIndex == self.fs_GZF_ChannelListDAO.objectList.count -1) {
         return nil;
     }
     LygNewsViewController * xxx = [[LygNewsViewController alloc] initWithChannelIndex:temp.channelIndex+1 andChannel:self.fs_GZF_ChannelListDAO andNaviGationController:self.navigationController];
+    xxx.view.bounds             = self.view.bounds;
     return [xxx autorelease];
 }
 
@@ -407,6 +420,7 @@ static int isFirst = 0;
         return nil;
     }
     LygNewsViewController * xxx = [[LygNewsViewController alloc] initWithChannelIndex:temp.channelIndex-1 andChannel:self.fs_GZF_ChannelListDAO andNaviGationController:self.navigationController];
+    xxx.view.bounds              = self.view.bounds;
     return [xxx autorelease];
 }
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status{
@@ -512,6 +526,9 @@ static int isFirst = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CGRect rext = self.view.frame;
+    rext.origin.y = 0;
+    self.view.frame = rext;
     self.view.backgroundColor  = [UIColor whiteColor];
     [self initNaviBar];
     //[self addKindsScrollView];

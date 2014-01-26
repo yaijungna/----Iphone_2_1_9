@@ -86,7 +86,7 @@
         _imageView.image = [UIImage imageWithData:self.dataContent];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         //_imageView.frame = CGRectMake(SEND_MSG_LEFT_RIGHT_SPACE, top + 200, self.frame.size.width - SEND_MSG_LEFT_RIGHT_SPACE * 2.0f, self.frame.size.height - 200 - top - SEND_MSG_TOP_BOTTOM_SPACE);
-        _imageView.frame = CGRectMake((320 - _imageView.image.size.width/2)/2, self.frame.size.height -80, _imageView.image.size.width/2, _imageView.image.size.height/2);
+        _imageView.frame = CGRectMake((320 - _imageView.image.size.width/2)/2, self.frame.size.height -_imageView.image.size.height/2 - 80, _imageView.image.size.width/2, _imageView.image.size.height/2);
     }
     else{
         [_tvContent becomeFirstResponder];

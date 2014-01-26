@@ -11,6 +11,7 @@
 #import "FSNetworkDataManager.h"
 #define FSTABBAR_HEIGHT 49.0f
 #import "MyPageViewController.h"
+#import "PeopleNewsReaderPhoneAppDelegate.h"
 @interface FSTabBarViewCotnroller(PrivateMethod)
 - (void)inner_releaseFSViewControllers;
 - (void)inner_initializeFSViewControllers;
@@ -34,7 +35,11 @@
 }
 
 
-
+//-(void)loadView
+//{
+//    [super loadView];
+//    self.view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
+//}
 
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -44,6 +49,9 @@
 -(void)viewDidLoad
 {
     //[self fsTabBarDidSelected:_fsTabBar withFsTabIndex:0];
+    CGRect rect = self.view.frame;
+    rect.origin.y = 0;
+    self.view.frame = rect;
 }
 
 - (void)dealloc {
@@ -61,6 +69,7 @@
 		self.view.backgroundColor = [UIColor blackColor];
 	[self inner_initializeFSViewControllers];
     
+    //_fsTabBar.fsSelectedIndex = 3;
     _fsTabBar.fsSelectedIndex = 1;
     
 
@@ -129,13 +138,29 @@
 			
 
 			//继承触发
-
+            if (self.view.frame.origin.y > 10) {
+                CGRect rect = self.view.frame;
+                rect.origin.y = 0;
+                self.view.frame = rect;
+            }
 			[self.view addSubview:fsViewController.view];
             [self.view bringSubviewToFront:_fsTabBar];
 
 			_fsSelectedViewController = fsViewController;
 		}
 	}
+    
+    if (fsTabIndex != 1) {
+        PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+        appdelgate.globaXXXXX                         = 1;
+    }
+    //[self performSelector:@selector(chageValue) withObject:nil afterDelay:2];
+    
+
+}
+-(void)chageValue
+{
+    
 }
 
 - (void)fsViewControllerViewDidAppear:(UIViewController *)viewController {
@@ -156,8 +181,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	[_fsSelectedViewController viewDidAppear:animated];
+	[super viewDidAppear:NO];
+    CGRect rect = self.view.frame;
+    rect.origin.y = 0;
+    self.view.frame = rect;
+	[_fsSelectedViewController viewDidAppear:NO];
 }
 
 #pragma mark -

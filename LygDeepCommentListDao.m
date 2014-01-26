@@ -39,7 +39,8 @@
 }
 - (NSString *)readDataURLStringFromRemoteHostWithGETDataKind:(GET_DataKind)getDataKind {
     //self.newsid = @"1673597";
-    
+    NSString * string = [NSString stringWithFormat:DEEPCOMMENT_LIST_URL,self.deepid,self.count,@""];
+    string.copy;
     if (getDataKind == GET_DataKind_Refresh) {
         return [NSString stringWithFormat:DEEPCOMMENT_LIST_URL,self.deepid,self.count,@""];
     }
@@ -147,15 +148,26 @@
 - (void)executeFetchRequest:(NSFetchRequest *)request {
 	NSError *error = nil;
 	NSArray *resultSet = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    NSMutableArray * tempArry = [[NSMutableArray alloc]init];
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
+    for (FSDeepCommentObject * obj in resultSet) {
+        if (![dict valueForKey:obj.commentid.description]) {
+            [tempArry addObject:obj];
+            [dict setValue:@"1" forKey:obj.commentid.description];
+        }
+    }
 	if (!error) {
         
 		if ([resultSet count]>0) {
             //NSLog(@"[resultSet count]:%d",[resultSet count]);
-            self.objectList = (NSMutableArray *)resultSet;
+            self.objectList = tempArry;
             self.isRecordListTail = [self.objectList count] < [self.fetchRequest fetchLimit];
             [self setBufferFlag];
         }
 	}
+    [tempArry release];
+    [dict release];
 }
 -(void)setBufferFlag{
     

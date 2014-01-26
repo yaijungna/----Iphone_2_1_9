@@ -22,6 +22,7 @@
 #import "FSNewsViewController.h"
 #import "UITableViewCell+updateImageView.h"
 #import "LocalNewsViewController.h"
+#import "PeopleNewsReaderPhoneAppDelegate.h"
 @implementation MyNewsLIstView
 - (id)initWithFrame:(CGRect)frame
 {
@@ -419,12 +420,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([indexPath row] == 0) {
-//        if (![self cellDataObjectWithIndexPath:indexPath]) {
-//            return 0;
-//        }else
-//        {
+        if (![self cellDataObjectWithIndexPath:indexPath]) {
+            return 0;
+        }else
+        {
             return ROUTINE_NEWS_LIST_TOP_HEIGHT;
-//        }
+        }
     }
     else{
         _tvList.separatorStyle = YES;
@@ -655,20 +656,14 @@
 }
 -(void)tableViewTouchPicture:(FSTableContainerView *)sender index:(NSInteger)index{
     //NSLog(@"channel did selected!%d",index);
-    if (_lygAdsDao.objectList.count > 0 && index == 1) {
+    FSNewsListTopCell * top = (FSNewsListTopCell * )[self.tvList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    NSArray * arry = (NSArray*)top.data;
+    id xx          = [arry objectAtIndex:index];
+    
+    if ([xx isKindOfClass:[LygAdsLoadingImageObject class]]) {
         LygAdsLoadingImageObject *o = [_lygAdsDao.objectList objectAtIndex:0];
-        NSLog(@"%@",o.adLink);
         int flag = [o.adLinkFlag intValue];
         if (flag == 1) {
-            //                FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
-            //                fsNewsContainerViewController.FCObj = o;
-            //                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_ShiKeNews;
-            //
-            //                [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
-            //                //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
-            //
-            //                [fsNewsContainerViewController release];
-            //                [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
         }
         else if (flag == 3){
             NSString * string =[NSString stringWithFormat:@"%@",o.adLink];
@@ -682,15 +677,10 @@
             fsWebViewForOpenURLViewController.urlString = o.adLink;
             [self.parentNavigationController pushViewController:fsWebViewForOpenURLViewController animated:YES];
         }
+
     }else
     {
-        if (_lygAdsDao.objectList.count > 0) {
-            if (index > 1) {
-                index -= 1;
-            }
-        }
-        NSLog(@"%@",_channelName);
-        FSFocusTopObject *o = [_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:index];
+        FSFocusTopObject *o = xx;
         [PeopleNewsStati  headPicEvent:o.newsid nameOfEVent:_channelName andTitle:o.title];
         if ([o.flag isEqualToString:@"1"]) {
             FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
@@ -729,6 +719,86 @@
         }
 
     }
+    
+    PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    appdelgate.globaXXXXX                         = 1;
+    
+    
+    
+//    if (_lygAdsDao.objectList.count > 0 && index == 1) {
+//        LygAdsLoadingImageObject *o = [_lygAdsDao.objectList objectAtIndex:0];
+//        NSLog(@"%@",o.adLink);
+//        int flag = [o.adLinkFlag intValue];
+//        if (flag == 1) {
+//            //                FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
+//            //                fsNewsContainerViewController.FCObj = o;
+//            //                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_ShiKeNews;
+//            //
+//            //                [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+//            //                //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
+//            //
+//            //                [fsNewsContainerViewController release];
+//            //                [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
+//        }
+//        else if (flag == 3){
+//            NSString * string =[NSString stringWithFormat:@"%@",o.adLink];
+//            NSURL *url = [[NSURL alloc] initWithString:string];
+//            [[UIApplication sharedApplication] openURL:url];
+//            [url release];
+//        }
+//        else if (flag == 2){//内嵌浏览器
+//            FSWebViewForOpenURLViewController *fsWebViewForOpenURLViewController = [[FSWebViewForOpenURLViewController alloc] init];
+//            fsWebViewForOpenURLViewController.withOutToolbar                     = NO;
+//            fsWebViewForOpenURLViewController.urlString = o.adLink;
+//            [self.parentNavigationController pushViewController:fsWebViewForOpenURLViewController animated:YES];
+//        }
+//    }else
+//    {
+//        if (_lygAdsDao.objectList.count > 0) {
+//            if (index > 1) {
+//                index -= 1;
+//            }
+//        }
+//        NSLog(@"%@",_channelName);
+//        FSFocusTopObject *o = [_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:index];
+//        [PeopleNewsStati  headPicEvent:o.newsid nameOfEVent:_channelName andTitle:o.title];
+//        if ([o.flag isEqualToString:@"1"]) {
+//            FSNewsContainerViewController *fsNewsContainerViewController = [[FSNewsContainerViewController alloc] init];
+//            fsNewsContainerViewController.newsID                         = o.newsid;
+//            fsNewsContainerViewController.obj = nil;
+//            fsNewsContainerViewController.FCObj = o;
+//            fsNewsContainerViewController.newsSourceKind     = NewsSourceKind_PuTongNews;
+//            if (self.isLocal) {
+//                fsNewsContainerViewController.newsSourceKind = NewsSourceKind_DiFangNews;
+//            }
+//            
+//            
+//            if (self.isLocal) {
+//                fsNewsContainerViewController.isLocal = YES;
+//            }
+//            [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
+//            //[self.fsSlideViewController pres:fsNewsContainerViewController animated:YES];
+//            [fsNewsContainerViewController release];
+//            [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
+//        }
+//        else if ([o.flag isEqualToString:@"2"]){//内嵌浏览器
+//            
+//            NSURL *url = [[NSURL alloc] initWithString:o.link];
+//            [[UIApplication sharedApplication] openURL:url];
+//            [url release];
+//            
+//        }
+//        else if ([o.flag isEqualToString:@"3"]){
+//            
+//            FSWebViewForOpenURLViewController *fsWebViewForOpenURLViewController = [[FSWebViewForOpenURLViewController alloc] init];
+//            
+//            fsWebViewForOpenURLViewController.urlString = o.link;
+//            fsWebViewForOpenURLViewController.withOutToolbar = NO;
+//            [self.parentNavigationController pushViewController:fsWebViewForOpenURLViewController animated:YES];
+//            [fsWebViewForOpenURLViewController release];
+//        }
+//
+//    }
     
 }
 -(void)newsSlecterStati:(FSOneDayNewsObject*)oo
@@ -843,6 +913,8 @@
     
     //[_fs_GZF_ForNewsListDAO.managedObjectContext save:nil];
     //[FSBaseDB saveDB];
+    PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    appdelgate.globaXXXXX                         = 1;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -886,16 +958,22 @@
 -(NSObject *)tableViewCellData:(FSTableContainerView *)sender withIndexPath:(NSIndexPath *)indexPath{
 	NSInteger row = [indexPath row];
     
-    if ([_fs_GZF_ForOnedayNewsFocusTopDAO.objectList count]>0) {
+    if ([_fs_GZF_ForOnedayNewsFocusTopDAO.objectList count]>0 || _lygAdsDao.objectList.count > 0) {
         if (row==0) {
             NSMutableArray *  xxx = [[NSMutableArray alloc] init];
-            [xxx addObject:[_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:0]];
+            if (_fs_GZF_ForOnedayNewsFocusTopDAO.objectList && _fs_GZF_ForOnedayNewsFocusTopDAO.objectList.count > 0) {
+                [xxx addObject:[_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:0]];
+            }
+            
             if (_lygAdsDao.objectList.count > 0) {
                 [xxx addObject:[_lygAdsDao.objectList objectAtIndex:0]];
             }
-            for (int i = 1; i< _fs_GZF_ForOnedayNewsFocusTopDAO.objectList.count; i++) {
-                [xxx addObject:[_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:i]];
+             if (_fs_GZF_ForOnedayNewsFocusTopDAO.objectList && _fs_GZF_ForOnedayNewsFocusTopDAO.objectList.count > 0) {
+                 for (int i = 1; i< _fs_GZF_ForOnedayNewsFocusTopDAO.objectList.count; i++) {
+                     [xxx addObject:[_fs_GZF_ForOnedayNewsFocusTopDAO.objectList objectAtIndex:i]];
+                 }
             }
+            
             return [xxx autorelease];
             return _fs_GZF_ForOnedayNewsFocusTopDAO.objectList;
         }

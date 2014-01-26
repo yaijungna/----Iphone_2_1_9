@@ -32,7 +32,7 @@
     _titleLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
     _titleLabel.textColor       = [UIColor redColor];
     _titleLabel.textAlignment   = UITextAlignmentCenter;
-    _titleLabel.text            = @"";
+    
     _titleLabel.font            = [UIFont systemFontOfSize:22];
     _titleLabel.backgroundColor = [UIColor clearColor];
     
@@ -41,6 +41,7 @@
     self.myNaviBar.frame = CGRectMake(0, tmp, 320, xx);
     //self.myNaviBar.topItem.titleView = nil;
     self.myNaviBar.topItem.titleView = _titleLabel;
+    _titleLabel.text            = @"未知地区";
     [_titleLabel release];
 }
 
@@ -67,12 +68,12 @@
     self.myNaviBar.topItem.rightBarButtonItem = nil;
     float xx;
     if (ISIOS7) {
-        xx = 46;
+        xx = 50;
     }else
     {
-        xx = 50;
+        xx = 57;
     }
-    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, xx, 44)];
+    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, xx, 49)];
     _rightBar.delegate          = self;
     UIBarButtonItem * itme = [[UIBarButtonItem alloc]initWithCustomView:_rightBar];
     self.myNaviBar.topItem.rightBarButtonItem  = itme;

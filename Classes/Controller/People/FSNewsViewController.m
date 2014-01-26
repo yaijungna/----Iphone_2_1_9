@@ -34,7 +34,7 @@
 #define WIDTHOFNAME 10
 #define BORDER      10
 @implementation FSNewsViewController
-#define HeightOfChannel 30
+//#define HeightOfChannel 30
 
 - (id)init {
 	self = [super init];

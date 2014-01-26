@@ -8,6 +8,7 @@
 
 #import "LygNewsViewController.h"
 #import "UIViewController+changeContent.h"
+#import "PeopleNewsReaderPhoneAppDelegate.h"
 @interface LygNewsViewController ()
 
 @end
@@ -76,8 +77,15 @@
         xxxx = 460 - 44 - HeightOfChannel;
         offset = height - 460;
     }
+    float xxx = 0;
+    PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    //appdelgate.globaXXXXX                         = 1;
+    if (appdelgate.globaXXXXX == 0) {
+        xxx = 40;
+    }
+
     if (!ISIOS7) {
-        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset, 320, xxxx - 49);
+        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset - xxx, 320, xxxx - 49);
     }else
     {
         self.memNewsLIstView.frame = CGRectMake(0, 64 + HeightOfChannel, 320, xxxx - 49);
@@ -98,8 +106,21 @@
         xxxx = 460 - 44 - HeightOfChannel;
         offset = height - 460;
     }
+    float xxx = 0;
+    PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+    //appdelgate.globaXXXXX                         = 1;
+    if (appdelgate.globaXXXXX == 0) {
+        xxx = 20;
+    }
+    static int temp = 0;
+    if (temp == 0) {
+        offset = 0;
+    }else
+    {
+        offset = 20;
+    }
     if (!ISIOS7) {
-        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset, 320, xxxx - 49);
+        self.memNewsLIstView.frame = CGRectMake(0, 44 + HeightOfChannel - offset - xxx, 320, xxxx - 49);
     }else
     {
         self.memNewsLIstView.frame = CGRectMake(0, 64 + HeightOfChannel, 320, xxxx - 49);
