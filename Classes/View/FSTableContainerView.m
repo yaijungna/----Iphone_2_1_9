@@ -14,6 +14,7 @@
 
 #import "FSTableContainerView.h"
 #import "FSWithSwitchButtonCell.h"
+#import "FSNewsListCell.h"
 #define BOUNCE_TOP_FLAG (1)
 #define BOUNCE_BOTTOM_FLAG (1 << 2)
 
@@ -56,9 +57,11 @@
 
 
 - (void)dealloc {
+    _tvList.parentDelegate = nil;
 	_tvList.delegate = nil;
     _tvList.dataSource = nil;
 	[_tvList release];
+    _tvList = nil;
     [super dealloc];
 }
 
@@ -108,14 +111,19 @@
     @synchronized(self)
     {
         [_tvList loaddingComplete];
-        [_tvList reloadData];
+        [self loadDataWithOutCompelet];
     }
   
 	
 }
 
+
 -(void)loadDataWithOutCompelet{
-    [_tvList reloadData];
+    @synchronized(self)
+    {
+        [_tvList reloadData];
+    }
+    
 }
 
 - (void)layoutSubviews {
@@ -126,7 +134,7 @@
 	if (!CGSizeEqualToSize(_tvSize, _tvList.frame.size)) {
 		_tvSize = _tvList.frame.size;
 		//防止不重新装载数据
-		[_tvList reloadData];
+		[self loadDataWithOutCompelet];
 	}
 }
 
@@ -204,7 +212,7 @@
         if ([fsCell isKindOfClass:[FSWithSwitchButtonCell class]]) {
             [fsCell  doSomethingAtLayoutSubviews];
         }
-        //[fsCell doSomethingAtLayoutSubviews];
+    //[fsCell doSomethingAtLayoutSubviews];
 	} else {
 		[self initializeCell:cell withData:[self cellDataObjectWithIndexPath:indexPath] withIndexPath:indexPath];
 	}
@@ -329,6 +337,12 @@
 
 - (void)loaddingComplete {
 	[_tvList loaddingComplete];
+    [self updateImages];
+
+}
+-(void)updateImages
+{
+    
 }
 
 ////////////////////////////////////////////////////

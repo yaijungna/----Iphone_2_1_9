@@ -38,7 +38,7 @@
 }
 
 -(void)dealloc{
-    [_fs_GZF_PeopleBlogLoginPOSTXMLDAO release];
+    self.fs_GZF_PeopleBlogLoginPOSTXMLDAO = nil;
     
     [super dealloc];
 }
@@ -58,7 +58,9 @@
 
 
 -(void)loginServer:(FSBaseLoginViewController *)sender{
-    _fs_GZF_PeopleBlogLoginPOSTXMLDAO = [[FS_GZF_PeopleBlogLoginPOSTXMLDAO alloc] init];
+    
+    
+    self.fs_GZF_PeopleBlogLoginPOSTXMLDAO = [[[FS_GZF_PeopleBlogLoginPOSTXMLDAO alloc] init] autorelease];
     _fs_GZF_PeopleBlogLoginPOSTXMLDAO.parentDelegate = self;
     if ([_tfUser.text length] == 0) {
         
@@ -102,9 +104,11 @@
     if ([sender isEqual:_fs_GZF_PeopleBlogLoginPOSTXMLDAO]) {
         if (status == FSBaseDAOCallBack_SuccessfulStatus) {
             if ([self.parentDelegate respondsToSelector:@selector(loginSuccesss:)]) {
-                [self.parentDelegate loginSuccesss:YES];
+                //[self.parentDelegate loginSuccesss:YES];
             }
             
+            //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updatePeopleLoginStatus) name:@"updatePeopleLoginStatus" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePeopleLoginStatus" object:nil];
             /*
             FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
             informationMessageView.parentDelegate = self;
@@ -124,19 +128,33 @@
         }
         else if(status == FSBaseDAOCallBack_UnknowErrorStatus){
             if ([self.parentDelegate respondsToSelector:@selector(loginSuccesss:)]) {
-                [self.parentDelegate loginSuccesss:NO];
+                //[self.parentDelegate loginSuccesss:NO];
             }
-            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
-            informationMessageView.parentDelegate = self;
-            [informationMessageView showInformationMessageViewInView:self.view
-                                                         withMessage:@"登陆失败"
-                                                    withDelaySeconds:1.2
-                                                    withPositionKind:PositionKind_Horizontal_Center
-                                                          withOffset:40.0f];
-            [informationMessageView release];
+//            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
+//            informationMessageView.parentDelegate = self;
+//            [informationMessageView showInformationMessageViewInView:self.view
+//                                                         withMessage:@"登陆失败"
+//                                                    withDelaySeconds:1.2
+//                                                    withPositionKind:PositionKind_Horizontal_Center
+//                                                          withOffset:40.0f];
+//            [informationMessageView release];
             
             //[self performSelector:@selector(returnToParentView) withObject:nil afterDelay:1.5];
             //登陆失败
+        }else if(status == FSBaseDAOCallBack_WorkingStatus)
+        {
+//            FSInformationMessageView *informationMessageView = [[FSInformationMessageView alloc] initWithFrame:CGRectMake(70, 70, 70, 70)];
+//            informationMessageView.parentDelegate = self;
+//            [informationMessageView showInformationMessageViewInView:self.view
+//                                                         withMessage:@"登陆失败"
+//                                                    withDelaySeconds:1.2
+//                                                    withPositionKind:PositionKind_Horizontal_Center
+//                                                          withOffset:40.0f];
+//            [informationMessageView release];
+            FSIndicatorMessageView * info = [[FSIndicatorMessageView alloc]initWithFrame:CGRectMake(70, 70, 70, 70)];
+            [info showIndicatorMessageViewInView:self.view withMessage:@"正在登录人民微博"];
+            [info release];
+
         }
     }
 }

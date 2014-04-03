@@ -58,6 +58,7 @@
 @property (nonatomic,assign)  BOOL isImportant;
 @property (nonatomic,retain)  LygAdsDao  *      adsDao;
 @property (nonatomic,retain)  NSString   *      oldComment;
+@property (nonatomic,assign)  BOOL              isLocal;
 
 
 -(void)share;

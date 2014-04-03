@@ -69,6 +69,7 @@
 */
 
 - (void)dealloc {
+    self.parentDelegate = nil;
 	[_topLayer release];
 	[_bottomLayer release];
 	
@@ -287,7 +288,9 @@
 			
                 if (_dragging) {
                     _dragging = NO;
-                    [self performSelector:@selector(refreshDataSource_Inner) withObject:nil afterDelay:0.002f];
+                    if (self.delegate) {
+                        [self performSelector:@selector(refreshDataSource_Inner) withObject:nil afterDelay:0.002f];
+                    }
                 } else {
                     //回调进行刷新数据
                     if ([_parentDelegate respondsToSelector:@selector(tableViewRefreshDataSource:)]) {
@@ -315,10 +318,16 @@
 }
 
 - (void)refreshDataSource_Inner {
+    [self retain];
+    if (!_parentDelegate) {
+        [self release];
+        return;
+    }
     if ([_parentDelegate respondsToSelector:@selector(tableViewRefreshDataSource:)]) {
         _isRefreshing = YES;
 		[_parentDelegate tableViewRefreshDataSource:self];
 	}
+    [self release];
 }
 
 ////////////////////////////////////////////////////

@@ -39,7 +39,8 @@ typedef enum _TableDataSource {
 }
 
 @property (nonatomic, assign) id<FSTableContainerViewDelegate> parentDelegate;
-@property (nonatomic, retain) FSTableView *tvList; 
+@property (nonatomic, retain) FSTableView *tvList;
+-(void)updateImages;
 //开始加载数据
 - (void)loadData;
 - (void)loadDataWithOutCompelet;

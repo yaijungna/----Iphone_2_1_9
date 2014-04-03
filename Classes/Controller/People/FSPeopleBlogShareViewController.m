@@ -33,6 +33,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+-(id)init
+{
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updatePeopleLoginStatus) name:@"updatePeopleLoginStatus" object:nil];
+    }
+    return self;
+}
+-(void)updatePeopleLoginStatus
+{
+    NSArray *array = [[FSBaseDB sharedFSBaseDB] getObjectsByKeyWithName:@"FSLoginObject" key:@"userKind" value:LOGIN_USER_KIND_PEOPLE_BLOG];
+    if ([array count]>0) {
+        _isLogin = YES;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -56,6 +70,7 @@
 }
 
 -(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     _fs_GZF_PeopleBlogSharePOSTXMLDAO.parentDelegate = nil;
     [_fs_GZF_PeopleBlogSharePOSTXMLDAO release];
     _fs_GZF_PeopleBlogSharePOSTXMLDAO = nil;

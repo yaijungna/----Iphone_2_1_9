@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+char pinyinFirstLetter(unsigned short hanzi);
 @interface NSString (Additions)
 
 //can compare two string include chinese character. 

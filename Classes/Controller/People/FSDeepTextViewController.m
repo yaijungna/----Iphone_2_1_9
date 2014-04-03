@@ -161,7 +161,14 @@
 - (void)layoutControllerViewWithRect:(CGRect)rect {
    // _textView.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);
     //_fs_GZF_DeepTextView.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);
-    _fs_GZF_DeepTextWebView.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);
+    float xxx = 0;
+    if (ISIOS7) {
+        xxx = 20;
+    }else
+    {
+        xxx = 10;
+    }
+    _fs_GZF_DeepTextWebView.frame = CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height - xxx);
 }
 
 - (void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status {
@@ -200,11 +207,14 @@
                 
             }
         }
-        [self.getCommentListDao HTTPGetDataWithKind:GET_DataKind_Refresh];
+        [self.getCommentListDao HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
     }
     else if ([sender isEqual:self.getCommentListDao])
     {
        // [self processCommentList];
+        if (status == FSBaseDAOCallBack_SuccessfulStatus) {
+            [self.getCommentListDao operateOldBufferData];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateCommentList" object:self.getCommentListDao userInfo:nil];
     }
 }

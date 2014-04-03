@@ -76,8 +76,9 @@ NSString                       *_newsID;
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.navigationController.navigationBarHidden = YES;
+    //self.navigationController.navigationBarHidden = YES;
     //[super viewWillAppear:NO];
+    [super viewWillAppear:animated];
     if (self.isNewNavigation) {
         //_fsNewsContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         _fsNewsContainerView.frame = self.view.frame;
@@ -87,7 +88,6 @@ NSString                       *_newsID;
         
     }
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
@@ -104,14 +104,17 @@ NSString                       *_newsID;
     [[NSUserDefaults standardUserDefaults]setValue:string forKey:[NSString stringWithFormat:@"comment%@",self.newsID]];
     [[NSUserDefaults standardUserDefaults]synchronize];
     _fs_GZF_CommentListDAO.parentDelegate = nil;
+    _fs_GZF_CommentListDAO.managedObjectContext = nil;
     [_fs_GZF_CommentListDAO release];
     _fs_GZF_CommentListDAO = nil;
     _fsNewsContainerView.parentDelegate   = nil;
     
     _fs_GZF_NewsContainerDAO.parentDelegate = NULL;
+    _fs_GZF_NewsContainerDAO.managedObjectContext = nil;
     [_fs_GZF_NewsContainerDAO release];
     _fs_GZF_NewsContainerDAO = nil;
     _fs_GZF_NewsCommentPOSTXMLDAO.parentDelegate = NULL;
+    _fs_GZF_NewsCommentPOSTXMLDAO.managedObjectContext = nil;
     [_fs_GZF_NewsCommentPOSTXMLDAO release];
     _fs_GZF_NewsCommentPOSTXMLDAO = nil;
     [_sinaWBEngine release];
@@ -280,6 +283,15 @@ NSString                       *_newsID;
     _fsShareNoticView.alpha = 0.0f;
     [self.view addSubview:_fsShareNoticView];
     [_fsShareNoticView release];
+    
+    if (ISIOS7) {
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        [self.view addSubview:view];
+        view.backgroundColor   = [UIColor whiteColor];
+        [view release];
+        
+        [self.view bringSubviewToFront:view];
+    }
 }
 
 -(void)clearOldComment
@@ -293,13 +305,17 @@ NSString                       *_newsID;
 -(void)initDataModel{
     _fs_GZF_NewsContainerDAO = [[FS_GZF_NewsContainerDAO alloc] init];
     _fs_GZF_NewsContainerDAO.isImportNews = self.isImportant;
+    _fs_GZF_NewsContainerDAO.isGettingList = NO;
+    _fs_GZF_NewsContainerDAO.isRefreshToDeleteOldData = YES;
     _fs_GZF_NewsContainerDAO.parentDelegate = self;
     
     _fs_GZF_CommentListDAO = [[FS_GZF_CommentListDAO alloc] init];
     _fs_GZF_CommentListDAO.parentDelegate = self;
+    _fs_GZF_CommentListDAO.isLocalNews    =
     
     _fs_GZF_NewsCommentPOSTXMLDAO = [[FS_GZF_NewsCommentPOSTXMLDAO alloc] init];
     _fs_GZF_NewsCommentPOSTXMLDAO.parentDelegate = self;
+    _fs_GZF_NewsCommentPOSTXMLDAO.isLocal        = self.isLocal;
     
     
     
@@ -317,7 +333,7 @@ NSString                       *_newsID;
     if (_obj!=nil) {
         _fs_GZF_NewsContainerDAO.newsid = _obj.newsid;
         _fs_GZF_CommentListDAO.newsid   = _obj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.count    = @"6";
         if (self.isImportant) {
             _fs_GZF_CommentListDAO.newsid = _obj.secondNewsID;
             NSLog(@"%@",_obj.newsid);
@@ -326,20 +342,20 @@ NSString                       *_newsID;
     }
     else if (_FCObj!=nil) {
         _fs_GZF_NewsContainerDAO.newsid = _FCObj.newsid;
-        _fs_GZF_CommentListDAO.newsid =  _FCObj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   = _FCObj.newsid;
+        _fs_GZF_CommentListDAO.count    = @"6";
        
     }
     else if (_FavObj!=nil){
         _fs_GZF_NewsContainerDAO.newsid = _FavObj.newsid;
-        _fs_GZF_CommentListDAO.newsid = _FavObj.newsid;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   =   _FavObj.newsid;
+        _fs_GZF_CommentListDAO.count    = @"6";
     }
     
     if (self.newsSourceKind == NewsSourceKind_PushNews) {
         _fs_GZF_NewsContainerDAO.newsid = self.newsID;
-        _fs_GZF_CommentListDAO.newsid = self.newsID;
-        _fs_GZF_CommentListDAO.count = @"6";
+        _fs_GZF_CommentListDAO.newsid   = self.newsID;
+        _fs_GZF_CommentListDAO.count    = @"6";
         if (self.isImportant) {
             _fs_GZF_CommentListDAO.newsid = _obj.secondNewsID;
             NSLog(@"%@",_obj.newsid);
@@ -348,7 +364,7 @@ NSString                       *_newsID;
 
     }
     
-    
+    _fs_GZF_CommentListDAO.isLocalNews = self.isLocal;
     _fs_GZF_NewsContainerDAO.newsSourceKind = self.newsSourceKind;
     //NSLog(@"doSomethingForViewFirstTimeShowdoSomethingForViewFirstTimeShow");
     [_fs_GZF_NewsContainerDAO HTTPGetDataWithKind:GET_DataKind_ForceRefresh];
@@ -358,14 +374,18 @@ NSString                       *_newsID;
     _fsNewsContainerView.frame = self.view.frame;
     _fsShareNoticView.frame = CGRectMake((self.view.frame.size.width - 219)/2, (self.view.frame.size.height-160)/2, 219, 70);
 }
--(void)viewWillDisappear:(BOOL)animated
+//-(void)viewWillDisappear:(BOOL)animated
+//{
+//   // [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+//}
+
+-(void)viewDidAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+    [super viewDidAppear:NO];
+    _fsNewsContainerView.frame = self.view.frame;
 }
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];   
-    //NSLog(@"%@.viewDidDisappear:%d",self,[self retainCount]);
-}
+
+
 
 
 -(void)returnBack:(id)sender{
@@ -467,7 +487,7 @@ NSString                       *_newsID;
 
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status{
     NSLog(@"doSomethingWithDAO sender:%@ :%d",sender,status);
-    if (status == FSBaseDAOCallBack_WorkingStatus) {
+    if (status == FSBaseDAOCallBack_WorkingStatus && [sender isEqual:_fs_GZF_NewsContainerDAO]) {
         FSIndicatorMessageView *indicatorMessageView = [[FSIndicatorMessageView alloc] initWithFrame:CGRectZero andBool:YES];
         [indicatorMessageView showIndicatorMessageViewInView:self.view withMessage:[self indicatorMessageTextWithDAO:sender withStatus:status]];
         [indicatorMessageView release];
@@ -507,15 +527,16 @@ NSString                       *_newsID;
             _fsNewsContainerView.data = array;
             [array release];
             
-            if (status == FSBaseDAOCallBack_SuccessfulStatus) {
-                [_fs_GZF_NewsContainerDAO operateOldBufferData];
-            }
+
             if (_obj) {
                 [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithInt:1] forKey:_obj.newsid];
                 [[NSUserDefaults standardUserDefaults]synchronize];
             }
             
             [_fs_GZF_CommentListDAO HTTPGetDataWithKind:GET_DataKind_Refresh];
+            if (status == FSBaseDAOCallBack_SuccessfulStatus && _fs_GZF_NewsContainerDAO.objectList.count > 0) {
+                [_fs_GZF_NewsContainerDAO operateOldBufferData];
+            }
         }
         return;
     }

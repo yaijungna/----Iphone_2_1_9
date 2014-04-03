@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FS_GZF_ChannelListDAO.h"
-@interface MyPageViewController : UIPageViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+#import "FSTabBarItem.h"
+@interface MyPageViewController : UIPageViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate,FSTabBarItemDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)FS_GZF_ChannelListDAO * fs_GZF_ChannelListDAO;
 @property(nonatomic,assign)int                     currentIndex;
+@property(nonatomic,copy)void (^fpChangeTitleColor)(void);
+@property (nonatomic, retain) FSTabBarItem *fsTabBarItem;
+@property(nonatomic,copy)void (^changeTitleColorBlock)(int index);
 @end

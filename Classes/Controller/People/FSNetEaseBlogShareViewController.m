@@ -42,7 +42,7 @@
 }
 
 -(void)initDataModel{
-    
+
 }
 
 -(void)postShareMessage{
@@ -63,7 +63,7 @@
 //        NSString * string = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"png"];
 //        [weiboApi publishMessageWithContent:self.shareContent andBlogId:4 andImagePath:string];
         //[weiboApi publishMessageWithContent:self.shareContent andBlogId:4 andData:self.dataContent];
-        [_engine  sendNetEaseContent:self.shareContent];
+          [_engine  sendNetEaseContent:self.shareContent];
 	} else {
         if (self.withnavTopBar) {
             FSNetEaseBlogShareLoginViewController *fsNetEaseBlogShareLoginViewController = [[FSNetEaseBlogShareLoginViewController alloc] init];

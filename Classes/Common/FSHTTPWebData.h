@@ -36,7 +36,7 @@ typedef enum _HTTPResponseDataKind {
 @property (nonatomic, retain) NSPort *URLConnectionPort;
 @property (nonatomic, retain) NSRunLoop *URLConnectionRunLoop;
 @property (nonatomic, retain) NSString *URLConnectionString;
-@property (nonatomic, retain) id parentDelegate;
+@property (nonatomic, assign) id parentDelegate;
 @property (nonatomic, retain) NSMutableData *webDataBuffer;
 
 @end

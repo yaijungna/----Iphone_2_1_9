@@ -32,9 +32,11 @@
 @property(nonatomic,strong)FS_GZF_ForOnedayNewsFocusTopDAO *fs_GZF_ForOnedayNewsFocusTopDAO;
 @property(nonatomic,strong)LygAdsDao                       *lygAdsDao;
 @property(nonatomic,strong)FS_GZF_ForNewsListDAO           *fs_GZF_ForNewsListDAO;
+@property(nonatomic,assign)int                              placeId;
+-(void)updateData;
 
--(id)initWithChanel:(FS_GZF_ChannelListDAO*)aDao currentIndex:(int)index parentViewController:(UIViewController*)aController;
--(id)initWithZoneId:(int)areaId;
+-(id)initWithChanel:(FS_GZF_ChannelListDAO*)aDao currentIndex:(int)index parentViewController:(UINavigationController*)aController;
+-(id)initWithZoneId:(int)areaId  parentViewController:(UINavigationController*)aController;
 -(BOOL)isNeedRefresh;
 @property(nonatomic,assign)int currentIndex;
 @property(nonatomic,retain)FS_GZF_ChannelListDAO              *aChannelListDAO;

@@ -8,6 +8,8 @@
 
 #import "LocalNewsViewController.h"
 #import "PeopleNewsReaderPhoneAppDelegate.h"
+#import "LocalProvinceNewsViewControllers.h"
+#import "LygCustermerBar.h"
 @interface LocalNewsViewController ()
 
 @end
@@ -30,7 +32,7 @@
     _titleLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
     _titleLabel.textColor       = [UIColor redColor];
     _titleLabel.textAlignment   = UITextAlignmentCenter;
-    _titleLabel.text            = @"本地新闻";
+    
     _titleLabel.font            = [UIFont systemFontOfSize:22];
     _titleLabel.backgroundColor = [UIColor clearColor];
     
@@ -39,18 +41,45 @@
     self.myNaviBar.frame = CGRectMake(0, tmp, 320, xx);
     //self.myNaviBar.topItem.titleView = nil;
     self.myNaviBar.topItem.titleView = _titleLabel;
+    _titleLabel.text            = @"未知地区";
     [_titleLabel release];
+}
+
+-(void)touchEnd
+{
+    LocalProvinceNewsViewControllers * localCityListController = [[LocalProvinceNewsViewControllers alloc] init];
+    localCityListController.canBeHaveNaviBar = YES;
+    localCityListController.cityName = self.currentAreaObject.areaName;
+    localCityListController.localCity = self.currentAreaObject.areaName;
+    if (self.memGetProvincesDao.objectList > 0) {
+        localCityListController.provincesListDao = self.memGetProvincesDao;
+    }
+    if (self.navigationController) {
+        [self.navigationController pushViewController:localCityListController animated:YES];
+    }else
+    {
+        [self presentViewController:localCityListController animated:YES completion:nil];
+    }
+    
+    [localCityListController release];
 }
 -(void)initAreaLabel
 {
     self.myNaviBar.topItem.rightBarButtonItem = nil;
-    
-    
-    UIBarButtonItem * itme = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(changeArea)];
+    float xx;
+    if (ISIOS7) {
+        xx = 50;
+    }else
+    {
+        xx = 57;
+    }
+    _rightBar = [[LygCustermerBar alloc] initWithFrame:CGRectMake(0, 0, xx, 49)];
+    _rightBar.delegate          = self;
+    UIBarButtonItem * itme = [[UIBarButtonItem alloc]initWithCustomView:_rightBar];
+    self.myNaviBar.topItem.rightBarButtonItem  = itme;
     NSDictionary * dict2            = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0, 0)],UITextAttributeTextShadowOffset,nil];
     [itme setTitleTextAttributes:dict2 forState:UIControlStateNormal];
-    
-    self.myNaviBar.topItem.rightBarButtonItem  = itme;
+    [_rightBar release];
     [itme release];
 }
 
@@ -65,23 +94,40 @@
         }
     }
 }
--(void)changeArea
-{
-    
-}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    if (self.fpChangeTitleColor) {
+        [self performSelector:@selector(xxxxxx) withObject:self afterDelay:0.15];
+    }
+
+}
+-(void)xxxxxx
+{
+    if (self.fpChangeTitleColor)
+    {
+        self.fpChangeTitleColor();
+        self.fpChangeTitleColor = nil;
+    }
+}
 
 
 
 
 - (void)viewDidLoad
 {
-    
+    [super viewDidLoad];
     [self initTitleLabel];
     [self initMyListView];
     
     [self initAreaLabel];
     [self initMyDataModel];
+    
+    CGRect rect = self.myNaviBar.frame;
+    rect.origin.y = 0;
+    self.myNaviBar.frame = rect;
 }
 
 
@@ -91,19 +137,42 @@
     self.memGetProvincesDao.parentDelegate    = self;
     self.memGetProvincesDao.isGettingList     = YES;
     [self.memGetProvincesDao HTTPGetDataWithKind:GET_DataKind_Refresh];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(haveChangedArea:) name:LOCALPROVINCESELECTED object:nil];
  
+}
+
+-(void)haveChangedArea:(NSNotification*)sender
+{
+    LygAreaObject * obj                             = sender.object;
+    _rightBar.title                                 = obj.areaName;
+    self.myNewsListView.placeId = [[obj valueForKey:@"iphone_id"] intValue];
+    self.myNewsListView.areaID                      = obj.areaId.intValue;
+    _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",obj.areaName];
+    [PeopleNewsStati localNewsStatic:obj.areaName];
 }
 -(void)dosomeThing
 {
+    self.myNewsListView.areaID  =  0;
     
+    NSString * tempString       = @"未知地区";
+    _rightBar.title             = tempString;
+    //self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
 }
 -(void)afterGetLocation
 {
+    //self.placeID                = [[self.currentAreaObject valueForKey:@"iphone_id"] intValue];
+    self.myNewsListView.placeId = [[self.currentAreaObject valueForKey:@"iphone_id"] intValue];
     self.myNewsListView.areaID  = self.currentAreaObject.areaId.intValue;
     
     
-    NSString * tempString       = [NSString stringWithFormat:@"%@▼",self.currentAreaObject.areaName];
-    self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    NSString * tempString       = [NSString stringWithFormat:@"%@",self.currentAreaObject.areaName];
+    //self.myNaviBar.topItem.rightBarButtonItem.title = tempString;
+    _rightBar.title             = tempString;
+    _titleLabel.text                                = [NSString stringWithFormat:@"%@新闻",tempString];
+        [PeopleNewsStati localNewsStatic:tempString];
 }
 
 -(void)doSomethingWithDAO:(FSBaseDAO *)sender withStatus:(FSBaseDAOCallBackStatus)status
@@ -125,6 +194,17 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    CGRect xx = self.view.frame;
+    if (ISIOS7) {
+        xx.size.height -= 64;
+    }else
+    {
+        xx.size.height -= 44;
+    }
+    _myNewsListView.frame = CGRectMake(0, self.view.frame.size.height - xx.size.height, 320, xx.size.height);
+}
 
 -(void)initMyListView
 {
@@ -138,11 +218,11 @@
         xx.size.height -= 44;
     }
     //_myNewsListView = [[MyNewsLIstView alloc] initWithChanel:nil currentIndex:nil parentViewController:self];
-    _myNewsListView = [[MyNewsLIstView alloc] initWithZoneId:-1];
+    _myNewsListView = [[MyNewsLIstView alloc] initWithZoneId:-1 parentViewController:self.navigationController];
     _myNewsListView.parentDelegate = _myNewsListView;
     
     
-    [_myNewsListView addObserver:self forKeyPath:@"areaID" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionInitial  context:nil];
+    //[_myNewsListView addObserver:self forKeyPath:@"areaID" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionInitial  context:nil];
     
     _myNewsListView.frame = CGRectMake(0, self.view.frame.size.height - xx.size.height, 320, xx.size.height);
     [self.view addSubview:_myNewsListView];

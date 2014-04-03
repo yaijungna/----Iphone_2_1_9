@@ -37,7 +37,7 @@
 //- (NSData *)networkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName;
 + (NSData *)networkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate;
 
-+ (NSData *)oprationNetworkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate;
++ (FSNetworkData *)oprationNetworkDataWithURLString:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate;
 
 -(void)oprationNetWorkDataBegin:(NSString *)URLString withLocalStoreFileName:(NSString *)localStoreFileName withDelegate:(id)delegate;
 

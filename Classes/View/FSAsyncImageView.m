@@ -57,7 +57,7 @@
         _imageView.backgroundColor   = [UIColor clearColor];
 		_imageView = [[UIImageView alloc] initWithFrame:frame];
         _imageView.clipsToBounds = YES;
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.contentMode = UIViewContentModeScaleToFill;
         //_imageView.backgroundColor = [UIColor whiteColor];
 		[self addSubview:_imageView];
         //self.defaultFileName = @"AsyncImage.png";

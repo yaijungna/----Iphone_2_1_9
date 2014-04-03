@@ -27,6 +27,7 @@
 @property (nonatomic,retain)  NSString *username;
 
 @property (nonatomic,retain)  NSString *result;
+@property (nonatomic,assign)  BOOL      isLocal;
 
 
 @end

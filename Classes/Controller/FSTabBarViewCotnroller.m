@@ -10,7 +10,8 @@
 #import "FSBasePeopleViewController.h"
 #import "FSNetworkDataManager.h"
 #define FSTABBAR_HEIGHT 49.0f
-
+#import "MyPageViewController.h"
+#import "PeopleNewsReaderPhoneAppDelegate.h"
 @interface FSTabBarViewCotnroller(PrivateMethod)
 - (void)inner_releaseFSViewControllers;
 - (void)inner_initializeFSViewControllers;
@@ -32,17 +33,29 @@
 	}
 	return self;
 }
-//-(void)changeTheTabBarIndex
+
+
+//-(void)loadView
 //{
-//    _fsTabBar.fsSelectedIndex = 0;
+//    [super loadView];
+//    self.view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
 //}
+
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+}
 -(void)viewDidLoad
 {
     //[self fsTabBarDidSelected:_fsTabBar withFsTabIndex:0];
+    CGRect rect = self.view.frame;
+    rect.origin.y = 0;
+    self.view.frame = rect;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObject:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     [super dealloc];
 }
 
@@ -56,10 +69,13 @@
 		self.view.backgroundColor = [UIColor blackColor];
 	[self inner_initializeFSViewControllers];
     
+    //_fsTabBar.fsSelectedIndex = 3;
     _fsTabBar.fsSelectedIndex = 1;
     
 
 }
+
+//+(void)
 
 
 - (void)setFsViewControllers:(NSMutableArray *)value {
@@ -122,13 +138,29 @@
 			
 
 			//继承触发
-
+            if (self.view.frame.origin.y > 10) {
+                CGRect rect = self.view.frame;
+                rect.origin.y = 0;
+                self.view.frame = rect;
+            }
 			[self.view addSubview:fsViewController.view];
             [self.view bringSubviewToFront:_fsTabBar];
 
 			_fsSelectedViewController = fsViewController;
 		}
 	}
+    
+    if (fsTabIndex != 1) {
+        PeopleNewsReaderPhoneAppDelegate * appdelgate = (PeopleNewsReaderPhoneAppDelegate*)[UIApplication sharedApplication].delegate;
+        appdelgate.globaXXXXX                         = 1;
+    }
+    //[self performSelector:@selector(chageValue) withObject:nil afterDelay:2];
+    
+
+}
+-(void)chageValue
+{
+    
 }
 
 - (void)fsViewControllerViewDidAppear:(UIViewController *)viewController {
@@ -149,8 +181,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	[_fsSelectedViewController viewDidAppear:animated];
+	[super viewDidAppear:NO];
+    CGRect rect = self.view.frame;
+    rect.origin.y = 0;
+    self.view.frame = rect;
+	[_fsSelectedViewController viewDidAppear:NO];
 }
 
 #pragma mark -
@@ -200,7 +235,19 @@
 		for (UIViewController *childViewController in arrCtrls) {
 			[self inner_initializeController:childViewController withFSTabBarItem:fsItem];
 		}
-	}
+	}else if ([controller isKindOfClass:[MyPageViewController class]]){
+        MyPageViewController * fsViewController = (MyPageViewController *)controller;
+        fsViewController.fsTabBarItem = fsItem;
+		if ([fsViewController conformsToProtocol:@protocol(FSTabBarItemDelegate)]) {
+			id<FSTabBarItemDelegate> itemDelegate = (id<FSTabBarItemDelegate>)fsViewController;
+			UIImage *normalImage = [itemDelegate tabBarItemNormalImage];
+			UIImage *selectedImage = [itemDelegate tabBarItemSelectedImage];
+			NSString *text = [itemDelegate tabBarItemText];
+			[fsItem setTabBarItemWithNormalImage:normalImage withSelectedImage:selectedImage withText:text];
+		}
+
+    }
+    
 }
 
 - (void)setHideTabBar:(BOOL)hide withAnimation:(BOOL)animation {

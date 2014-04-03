@@ -95,8 +95,10 @@
 		//NSString *content = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
 		_obj.areaName = trimString(string);
 		//[content release];
-	}
-
+	} else
+    {
+        [_obj setValue:trimString(string) forKey:_currentElementName];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {

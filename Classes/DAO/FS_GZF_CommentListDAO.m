@@ -23,7 +23,7 @@
 
 #import "FSCommentObject.h"
 
-#define COMMENT_LIST_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=getcomment&rt=xml&newsid=%@&count=%@&commentid=%@"
+#define COMMENT_LIST_URL @"http://mobile.app.people.com.cn:81/news2/news.php?act=getcomment&rt=xml&newsid=%@&count=%@&commentid=%@&isdf=%d"
 
 
 
@@ -64,10 +64,10 @@
     //self.newsid = @"1673597";
     
     if (getDataKind == GET_DataKind_Refresh) {
-        return [NSString stringWithFormat:COMMENT_LIST_URL,self.newsid,self.count,@""];
+        return [NSString stringWithFormat:COMMENT_LIST_URL,self.newsid,self.count,@"",self.isLocalNews];
     }
     else{
-        return [NSString stringWithFormat:COMMENT_LIST_URL,self.newsid,self.count,self.lastCommentid];
+        return [NSString stringWithFormat:COMMENT_LIST_URL,self.newsid,self.count,self.lastCommentid,self.isLocalNews];
     }
 }
 

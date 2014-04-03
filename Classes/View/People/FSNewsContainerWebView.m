@@ -171,7 +171,10 @@
     
     _hasebeenLoad  = YES;
     FSNewsDitailObject *cobj = [self.data valueForKey:@"NewsContainerDAO"];
-    _imageList = [self.data valueForKey:@"objectList"];
+    
+    NSArray * arryx = [self.data valueForKey:@"objectList"];
+    NSMutableArray * arry = [[NSMutableArray alloc]initWithObjects:[arryx objectAtIndex:0], nil];
+    _imageList = arry;
     
     NSObject *array = [self.data valueForKey:@"CommentListDAO"];
     self.objectList = (NSArray *)array;
@@ -180,7 +183,8 @@
     NSString *templatePath;
     if ([_imageList count]>1) {
         //多图模板
-        templatePath = [[NSBundle mainBundle] pathForResource:@"content_template" ofType:@"html"];//新闻显示模版
+        //templatePath = [[NSBundle mainBundle] pathForResource:@"content_template" ofType:@"html"];//新闻显示模版
+        templatePath = [[NSBundle mainBundle] pathForResource:@"content_template_onePIC" ofType:@"html"];//新闻显示模版
     }else{
         //单图模板
         templatePath = [[NSBundle mainBundle] pathForResource:@"content_template_onePIC" ofType:@"html"];//新闻显示模版
@@ -218,7 +222,9 @@
         }
         NSLog(@"%@",timeStr);
         templateString = [self replayString:templateString oldString:@"{{ptime}}" newString:timeStr];
-        
+        if (cobj.source == NULL || cobj.source.length == 0) {
+            cobj.source = @"人民网";
+        }
         templateString = [self replayString:templateString oldString:@"{{source}}" newString:cobj.source];
         templateString = [self replayString:templateString oldString:@"{{fontClass}}" newString:[self returnFontSizeName:0]];
 
@@ -230,6 +236,9 @@
         }
          NSString *content = [cobj.content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
         content           = [content stringByReplacingOccurrencesOfString:@"\n\n" withString:@"<p>"];
+        content           = [content stringByReplacingOccurrencesOfString:@"   " withString:@"<p>"];
+        content           = [content stringByReplacingOccurrencesOfString:@" 　　" withString:@"<p>　　"];
+
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<p>"]];
         content           = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -461,15 +470,17 @@
 }
 
 -(NSString *) generateImageHTML:(UIImage *)image url:(NSString *)url{
-    
+    NSLog(@"%f %f",image.size.width,image.size.height);
     float rule = 90;
 	float height = image.size.height;
 	float width = image.size.width;
     
-    if ([_imageList count]>1) {
+
+    if (1) {
         if (width>height) {
-            width = width/height*rule;
-            height = rule;
+            float tempWidth = 300<(width/2)?300:(width/2);
+            height /= (width/tempWidth);
+            width  = tempWidth;
         }else {
             height = height/width*rule;
             width = rule;
@@ -486,9 +497,7 @@
 	
 	
 	NSString *realPath = getFileNameWithURLString(url, getCachesPath());//图片存放位置
-	
-	
-    return [NSString stringWithFormat:@"<div class='plus'></div><a class='photo_box' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
+    return [NSString stringWithFormat:@"<div class='plus' ></div><a class='photo_box' align='center' href='javascript:void(0)' onclick=extend_image('%@')><img src='%@' width='%.0f' height='%.0f' /></a>",url,realPath,width,height];
 	
 }
 
@@ -1186,6 +1195,9 @@
 
 //****************************************************************
 -(NSString *)replayString:(NSString *)baseString oldString:(NSString *)oldString newString:(NSString *)newString{
+    if (baseString==nil || oldString == nil || newString == nil) {
+        return baseString;
+    }
     baseString = [baseString stringByReplacingOccurrencesOfString:oldString withString:newString];
     return baseString;
 }

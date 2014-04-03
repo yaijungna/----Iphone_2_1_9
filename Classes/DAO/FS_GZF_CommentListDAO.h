@@ -25,5 +25,6 @@
 @property (nonatomic,retain) NSString *count;
 @property (nonatomic,retain) NSString *newsid;
 @property (nonatomic,retain) NSString *lastCommentid;
+@property (nonatomic,assign) BOOL      isLocalNews;
 
 @end

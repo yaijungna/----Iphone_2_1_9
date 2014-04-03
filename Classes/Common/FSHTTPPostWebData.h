@@ -23,7 +23,7 @@ typedef enum _HTTPPOSTDataKind {
 
 }
 
-+ (void)HTTPPOSTDataWithURLString:(NSString *)URLString withDelegate:(id)delegate withParameters:(NSArray *)parameters withStringEncoding:(NSStringEncoding)stringEncoding withHTTPPOSTDataKind:(HTTPPOSTDataKind)postDataKind;
++ (FSHTTPPostWebData*)HTTPPOSTDataWithURLString:(NSString *)URLString withDelegate:(id)delegate withParameters:(NSArray *)parameters withStringEncoding:(NSStringEncoding)stringEncoding withHTTPPOSTDataKind:(HTTPPOSTDataKind)postDataKind;
 
 @end
 

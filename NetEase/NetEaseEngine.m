@@ -14,7 +14,7 @@
 #import "SFHFKeychainUtils.h"
 #import "FSInformationMessageView.h"
 #import "SBJSON.h"
-
+#import "NSString+Additions.h"
 
 
 #define NETEASE_WBURLSchemePrefix              @"NETEASE_WB_"
@@ -232,10 +232,9 @@ static NSData *HMAC_SHA1(NSString *data, NSString *key) {
 							 oauth_nonce,
 							 oauth_timestamp,
 							 self.accessTokenKey,
-							 content,
+							 [content  URLEncodedString],
 							 oauth_signature];
 	
-	NSLog(@"queryString:%@", queryString);
     
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setHTTPMethod:@"POST"];
@@ -628,16 +627,11 @@ static NSData *HMAC_SHA1(NSString *data, NSString *key) {
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request{
-    NSError *error = [request error];
-	NSLog(@"Error: %@", error);
 }
 
 
 
 -(void)requestFinished:(ASIHTTPRequest *)request{
-    
-    NSString *responseString = [request responseString];
-    NSLog(@"requestFinished:%@",responseString);
 }
 
 //- (NSMutableURLRequest *)requestPostWithFile:(NSDictionary *)files url:(NSString *)aUrl queryString:(NSString *)aQueryString 

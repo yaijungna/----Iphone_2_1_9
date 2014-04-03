@@ -79,6 +79,10 @@
 	[_tfPWD resignFirstResponder];
 	
 	[_engine logInUsingUserID:_tfUser.text password:_tfPWD.text];
+    FSIndicatorMessageView * info = [[FSIndicatorMessageView alloc]initWithFrame:CGRectMake(70, 70, 70, 70)];
+    [info showIndicatorMessageViewInView:self.view withMessage:@"正在登录人民微博"];
+    info.tag                      =  100;
+    [info release];
     if ([_engine isLogIn]) {
         //[CommonFuncs showMessage:@"" ContentMessage:@"登录成功"];
         NSLog(@"FSNetEaseBlogShareLoginViewController 登陆成功");
@@ -108,6 +112,11 @@
         [self.navigationController popViewControllerAnimated:YES];
 		
 	} else {
+        
+        UIView * view = [self.view viewWithTag:100];
+        if (view) {
+            [view removeFromSuperview];
+        }
         //[CommonFuncs showMessage:@"" ContentMessage:@"登录失败"];
         NSLog(@"FSNetEaseBlogShareLoginViewController 登陆失败");
         
@@ -116,7 +125,7 @@
         [informationMessageView showInformationMessageViewInView:self.view
                                                      withMessage:@"登陆失败"
                                                 withDelaySeconds:1.2
-                                                withPositionKind:PositionKind_Horizontal_Center
+                                                withPositionKind:PositionKind_Vertical_Horizontal_Center
                                                       withOffset:40.0f];
         [informationMessageView release];
         

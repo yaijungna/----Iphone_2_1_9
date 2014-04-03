@@ -359,7 +359,13 @@
         
         //[self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
         //[self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
-        [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+        if (ISIOS7) {
+            [self.navigationController pushViewController:fsNewsContainerViewController animated:YES];
+        }else
+        {
+            [self.parentNavigationController pushViewController:fsNewsContainerViewController animated:YES];
+        }
+        
         [fsNewsContainerViewController release];
         [[FSBaseDB sharedFSBaseDB] updata_visit_message:o.channelid];
     }

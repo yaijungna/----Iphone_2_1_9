@@ -20,7 +20,6 @@
 @protected
     FSLocalNewsCityListView *_localNewsCityListView;
     UINavigationBar *_navTopBar;
-    FSTitleView *_titleView;
     FS_GZF_CityListDAO *_fsCityListData;
     NSMutableArray *_sectionArrary;
     NSMutableArray *_sectionNumberArrary;
@@ -37,5 +36,6 @@
 -(void)getSectionsTitle;
 
 -(FSUserSelectObject *)insertCityselectedObject:(FSCityObject *)obj;
+-(void)returnBack:(id)sender;
 
 @end

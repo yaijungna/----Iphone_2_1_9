@@ -40,15 +40,17 @@
 -(void)showLoadingView{
     float xxx = ISIPHONE5?568:480;
     [self performSelectorInBackground:@selector(xxxxxxxxxxx) withObject:nil];
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    UIWindow * window = [UIApplication sharedApplication].windows[0];
     
     //FSLoadingImageView *loadingView = [[FSLoadingImageView alloc] initWithFrame:CGRectMake(-320, 0, 320, xxx)];
     
     FSLoadingImageView *loadingView = [[FSLoadingImageView alloc] initWithFrame:CGRectMake(-320, 0, 320, xxx) andISNeedAutoClose:NO];
+    loadingView.tag                 = 3000;
     loadingView.parentDelegate = self;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
     [window addSubview:loadingView];
+    [window bringSubviewToFront:loadingView];
     loadingView.frame = CGRectMake(0, 0, 320, xxx);
     [UIView commitAnimations];
     
@@ -154,6 +156,17 @@
 
 - (UIImage *)tabBarItemSelectedImage {
 	return nil;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showTabBar" object:nil];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTabBar" object:nil];
+        
+    }
 }
 
 -(void)updataWeatherMessage{

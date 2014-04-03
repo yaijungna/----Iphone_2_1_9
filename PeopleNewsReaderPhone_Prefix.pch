@@ -2,7 +2,6 @@
 // Prefix header for all source files of the 'PeopleNewsReaderPhone' target in the 'PeopleNewsReaderPhone' project
 //
 #import <Availability.h>
-
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iPhone SDK 3.0 and later."
 #endif
@@ -20,7 +19,7 @@
 
 #define RELEASE
 #ifdef  RELEASE
-//#define NSLog(...)
+#define NSLog(...)
 #define printf(...)
 #endif
 
@@ -28,13 +27,14 @@
 #define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 //#define FSLog(fmt, ...) NSLog((@"[%s] %s [Line %d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define FSLog(...)g
+#define FSLog(...)
 #endif
 
 #define ISIPHONE5   ([UIScreen mainScreen].bounds.size.height - 480 > 10?1:0)
-
+#define ISIOS5   ([UIDevice currentDevice].systemVersion.floatValue <6.0?1:0)
 #ifdef  __IPHONE_7_0
 #define ISIOS7   ([UIDevice currentDevice].systemVersion.floatValue >6.5?1:0)
+#define NOTIOS7   ([UIDevice currentDevice].systemVersion.floatValue <6.5?1:0)
 #else
 #define ISIOS7   (0)
 #endif
@@ -67,4 +67,6 @@ typedef enum _newTye
     importantNews = 1,
     areaNews      = 2
 }NewsType;
+
+#define HeightOfChannel 35
 
